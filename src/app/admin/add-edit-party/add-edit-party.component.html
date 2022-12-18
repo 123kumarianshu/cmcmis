@@ -1,0 +1,68 @@
+<mat-toolbar>
+    <span class="example-spacer">Add Party</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div mat-dialog-content>
+    <form [formGroup]="addparty">
+        <div class="column">
+            <input type="number" formControlName="party_id" readonly hidden>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input formControlName="party_name" matInput placeholder="Name">
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" formControlName="party_email" matInput placeholder="Email">
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Mobile Number</mat-label>
+                <input type="number" formControlName="party_mobile" matInput placeholder="Mobile">
+            </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-form-field appearance="fill">
+                <mat-label>Contact Person</mat-label>
+                <input type="text" formControlName="party_contact_person" matInput placeholder="Contact Person">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>GST Number</mat-label>
+                <input type="number" formControlName="party_gst_no" matInput placeholder="Gst No">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>A/C Holder Name</mat-label>
+                <input formControlName="party_account_holder_name" matInput placeholder="A/c Holder Number">
+            </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-form-field appearance="fill">
+                <mat-label>Whatsapp</mat-label>
+                <input type="number" formControlName="party_whatsapp" matInput placeholder="Whatsapp">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>A/C Number </mat-label>
+                <input type="number" formControlName="party_account_no" matInput placeholder="Ac Number">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>IFSC</mat-label>
+                <input formControlName="party_ifsc" matInput placeholder="Ac IFSC Code">
+            </mat-form-field>
+            <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly>          
+        </div> 
+        <div class="column_1">
+            <mat-form-field appearance="fill" style="width:400px;margin-top: 5px;">
+                <mat-label>Address</mat-label>
+                <textarea formControlName="party_address" matInput placeholder="Address"></textarea>
+            </mat-form-field>           
+        </div>      
+        <div mat-dialog-action [align]="'end'">
+            <button mat-raised-button color="warn" (click)="resetparty()" class="reset_btn">Reset</button>
+            <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+                [disabled]="!addparty.valid">{{actionBtn}}</button>
+        </div>
+    </form>
+</div>

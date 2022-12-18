@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+button{
+    border: none;
+    background-color:transparent;
+}
+.openLogin .mat-dialog-container{
+  /* background-image:url(https://greensoft.net.in/addbox/assets/upload/login_img1.jpg) ; */
+  background-image:url(https://addbox.in/assets/upload/login_img1.jpg) ;
+  background-size: cover;
+}
+.myMenu{
+    margin-top: 19px;
+    background-color:#14595c !important;
+    text-align: center;
+    color: whitesmoke;
+}
+
+@media(min-width:920px)and (max-width:1199px){
+  .openLogin .mat-dialog-container{
+    background-size:100%; 
+  } 
+  
+}
+@media(min-width:720px)and(max-width:919px){
+  .openLogin .mat-dialog-container{
+    background-size:100%;  
+}
+}
+
+@media(min-width:420px)and(max-width:719px){
+  .openLogin .mat-dialog-container{
+    background-size:100%;  
+    
+  }  
+}
+/* ..for mobile size.. */
+
+@media(max-width:420px){
+  .openLogin .mat-dialog-container{  
+     background-size:100%;    
+}
+}
+

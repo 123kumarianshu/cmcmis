@@ -1,0 +1,60 @@
+<div class="view_notice">
+    <span class="notice_text">Reciept Details</span>   
+  </div>
+  <div class="count_search">
+    <span class="notice_text"> Total :</span>
+    <div class="search">
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+    </div>
+  </div>
+  <div class="cotainer">
+    <form>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort id="table">
+          <ng-container matColumnDef="slno">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+            <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
+              paginatorRef.pageSize)+(i+1)}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="reciept_customer">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Customer</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_customer}}</td>
+          </ng-container>
+          
+          <ng-container matColumnDef="reciept_bill_number">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number </th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_bill_number}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="reciept_back_dues">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Back dues </th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_back_dues}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="reciept_paid">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Paid </th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_back_dues}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="reciept_current_dues">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Current dues</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_current_dues}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="reciept_date">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date </th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_date}}</td>
+          </ng-container>       
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+          </tr>
+        </table>
+        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+    </form>
+  </div>
+

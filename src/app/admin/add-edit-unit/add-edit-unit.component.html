@@ -1,0 +1,25 @@
+<mat-toolbar>
+    <span class="example-spacer">Add Unit</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div mat-dialog-content>
+    <form [formGroup]="addUnit" novalidate>
+        <input formControlName="unit_id" hidden>
+        <mat-form-field appearance="fill">
+            <mat-label>Unit</mat-label>
+            <input formControlName="unit_name" matInput placeholder=" Unit Name">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill">
+            <mat-label> Description</mat-label>
+            <textarea class="textarea" formControlName="unit_description" matInput
+                placeholder=" Description"></textarea>
+        </mat-form-field><br>
+        <input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden >
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" (click)="resetUnit()" class="reset_btn">Reset</button>
+    <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+        [disabled]="!addUnit.valid">{{actionBtn}}</button>
+</div>

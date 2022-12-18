@@ -1,0 +1,26 @@
+.reset_btn{
+    margin-right: 30px; 
+}
+.add_btn{
+    margin-right:20px;
+    background-color: green;
+    color: whitesmoke;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+textarea{
+    height: 18px;
+      
+ } 
+ mat-toolbar {
+    height: 40px;
+    margin-bottom:-25px ;
+    background: none;
+    color: #f4f8f8;
+    padding: 0px;
+    position: relative;
+    top: -25px;    
+    background-color:#14595c;
+  }
+

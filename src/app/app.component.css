@@ -1,0 +1,55 @@
+mat-sidenav{
+    background-color:#14595c;
+    height:100%;    
+    width:250px;   
+}
+mat-sidenav-content{
+    height: 100vh;
+    background-color: whitesmoke;
+}
+.main{
+    padding: 5px;
+}
+mat-toolbar{
+    background-color:#14595c;
+    justify-content: space-between;   
+}
+mat-icon{
+    color: whitesmoke;
+    cursor: pointer;
+}
+.loginas{
+    font-size: 18px;
+    color: whitesmoke;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.user-icon{
+    position: relative;
+    top: 7px;
+}
+table {
+    width: 100%;
+  }
+  a{
+    text-decoration: none;
+   
+  }
+  a button{
+    color: whitesmoke;
+    text-align: center;
+  }
+ 
+  @media(min-width:420px)and (max-width:719px) {
+    .loginas{
+       display: none;
+    }
+  }
+  @media(max-width:420px){
+    mat-sidenav{        
+        width:170px;
+    } 
+    .loginas{
+      display: none;
+   }    
+  }
+  

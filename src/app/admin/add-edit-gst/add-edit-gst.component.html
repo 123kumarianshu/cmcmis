@@ -1,0 +1,34 @@
+<mat-toolbar>
+    <span class="example-spacer">Add Gst</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div mat-dialog-content>
+    <form [formGroup]="addGst" novalidate>
+        <input formControlName="gst_id" hidden>
+        <mat-form-field appearance="fill">
+            <mat-label>GST(%)</mat-label>
+            <input formControlName="gst_in_percentage" matInput placeholder="GST(%)">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill">
+            <mat-label>CGST(%)</mat-label>
+            <input formControlName="gst_in_percentage" matInput placeholder="CGST(%)">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill">
+            <mat-label>gst(%)</mat-label>
+            <input formControlName="gst_sgst" matInput placeholder="SGST(%)">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill">
+            <mat-label>GST Des</mat-label>
+            <input formControlName="gst_in_percentage" matInput placeholder="Gst Description">
+        </mat-form-field><br>
+        <input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" (click)="resetUnit()" class="reset_btn">Reset</button>
+    <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+        [disabled]="!addGst.valid">{{actionBtn}}</button>
+</div>

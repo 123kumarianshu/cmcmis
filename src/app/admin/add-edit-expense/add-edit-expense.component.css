@@ -1,0 +1,34 @@
+.column {
+    margin-right:5px;
+    width:200px;
+    height:300px;
+    float: left;   
+  } 
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .reset_btn {
+    width: 80px;
+    height: 40px;
+    margin-right:60px;     
+  }
+  .add_btn {
+    width: 80px;
+    height: 40px;    
+    margin-right:100px;
+    background-color: green;
+    color: white;
+  }
+  .date_box {
+    width: 200px;
+ }
+  mat-toolbar {
+    height:40px;
+    background: none;
+    color:whitesmoke;
+    padding: 0px;
+    position: relative;
+    top: -10px;
+    background-color:#14595c; ;
+  }
+ 

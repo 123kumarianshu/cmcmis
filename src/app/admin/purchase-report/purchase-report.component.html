@@ -1,0 +1,54 @@
+<div class="view_notice">
+    <span class="notice_text">Purchase Report</span>
+    <mat-icon id="add_dues" (click)="add_purchase_report()">add_circle</mat-icon>
+  </div>
+  <div class="count_search">
+    <span class="notice_text"> Total :</span>
+    <div class="search">
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+    </div>
+  </div>
+  <div class="cotainer">
+    <form>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort id="table">
+          <ng-container matColumnDef="slno">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+            <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
+              paginatorRef.pageSize)+(i+1)}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="cust_shop_name">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Shop Name</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_name}}</td>
+          </ng-container>
+          
+          <ng-container matColumnDef="cust_owner_name">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Owner Name</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cust_owner_name}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="cust_contact_no">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Contact Number</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Action">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+            <td class="data" mat-cell *matCellDef="let row">
+              <mat-icon (click)="edit_purchase_report(row)">edit</mat-icon>
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+          </tr>
+        </table>
+        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+    </form>
+  </div>
+
+

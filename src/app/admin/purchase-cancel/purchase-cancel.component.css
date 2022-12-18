@@ -1,0 +1,93 @@
+.view_notice {
+    height: 40px;
+    width: 100%;
+    background-color: #0b4648;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#add_purchase_cancel {
+    position: relative;
+    top: -5px;
+    left: 2px;
+    cursor: pointer;
+}
+
+.notice_text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.count_search {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #0d5e58;
+}
+
+.search input {
+    border-bottom: 1px solid #0a4547;
+    outline: none;
+    padding: 5px;
+    background-color: whitesmoke;
+    position: relative;
+    top: -5px;
+    left: 0px;
+}
+
+mat-icon {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+#table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.trth {
+    color: white;
+    background-color: #0f575a;
+    height: 40px;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: whitesmoke;
+    height: 35px;
+}
+
+tr:nth-child(odd) {
+    height: 35px;
+}
+
+tr:hover {
+    background-color: #0f575a;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+ng-container {
+    text-align: center;
+}
+
+.cotainer {
+    margin-top: 5px;
+}
+
+.mat-form-field {
+    font-size: 18px;
+    width: 100%;
+}
+
+.data:hover {
+    color: white;
+}

@@ -1,0 +1,61 @@
+<div class="view_notice">
+    <span class="notice_text">Expense Details</span>
+    <mat-icon id="add_dues" (click)="add_expense()">add_circle</mat-icon>
+  </div>
+  <div class="count_search">
+    <span class="notice_text"> Total :</span>
+    <div class="search">
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+    </div>
+  </div>
+  <div class="cotainer">
+    <form>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort id="table">
+          <ng-container matColumnDef="slno">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+            <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
+              paginatorRef.pageSize)+(i+1)}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="expense_type">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Expense Type</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_type}}</td>
+          </ng-container>
+          
+          <ng-container matColumnDef="expense_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_amount}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="expense_pay_to">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Pay to</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_pay_to}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="expense_contact">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Contact</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_contact}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="expense_date">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_date}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="expense_desc">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Description </th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_desc}}</td>
+          </ng-container>         
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+          </tr>
+        </table>
+        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+    </form>
+  </div>
+
