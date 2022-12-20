@@ -23,14 +23,14 @@ export class AreaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.partyservice.getItem().subscribe(
-    //   (itemresult: any) => {
-    //     this.dataSource = new MatTableDataSource(itemresult.data);
-    //     this.dataSource.sort = this.sort;
-    //     this.dataSource.paginator = this.paginator;
+    this.areaservice.getArea().subscribe(
+      (itemresult: any) => {
+        this.dataSource = new MatTableDataSource(itemresult.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
 
-    //   }
-    // )
+      }
+    )
   }
   add_area(): any {
     this.addarea.open(AddEditAreaComponent, {
@@ -41,13 +41,10 @@ export class AreaComponent implements OnInit {
       }
     })
   }
+  ///// for edit subject ///// 
   editArea(row: any) {
     this.addarea.open(AddEditAreaComponent, {
       data: row
-    }).afterClosed().subscribe(val => {
-      if (val === 'update') {
-        this.ngOnInit();
-      }
     })
   }
 

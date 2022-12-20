@@ -13,7 +13,7 @@ import { AddEditEmployeeComponent } from '../add-edit-employee/add-edit-employee
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-        displayedColumns: string[] = ['slno', 'emp_name', 'emp_mobile', 'emp_adhar_no', 'emp_image','emp_address',];
+        displayedColumns: string[] = ['slno', 'emp_name', 'emp_mobile', 'emp_aadhar_no', 'emp_photo','emp_address','Action'];
         dataSource!: MatTableDataSource<any>;
          @ViewChild(MatPaginator) paginator!: MatPaginator;
          @ViewChild(MatSort) sort!: MatSort;
@@ -23,14 +23,14 @@ export class EmployeeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.partyservice.getItem().subscribe(
-    //   (itemresult: any) => {
-    //     this.dataSource = new MatTableDataSource(itemresult.data);
-    //     this.dataSource.sort = this.sort;
-    //     this.dataSource.paginator = this.paginator;
+    this.empservice.getEmployee().subscribe(
+      (itemresult: any) => {
+        this.dataSource = new MatTableDataSource(itemresult.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
 
-    //   }
-    // )
+      }
+    )
   }
   add_Employee():any{
     this.addemp.open(AddEditEmployeeComponent, {
