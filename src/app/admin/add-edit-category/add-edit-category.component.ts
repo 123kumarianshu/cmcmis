@@ -19,6 +19,8 @@ export class AddEditCategoryComponent implements OnInit {
   addcategory: any;
   actionBtn: string = 'Add'
 
+  ///////////////////////////////////////////////// For The constructor Cat Data ////////////////////////////////////////
+
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
