@@ -15,6 +15,7 @@
     height:28px ;
     border-bottom:1px solid black ;
 }
+
 .btn{
     background-color: #0b4648;
     height:35px;
@@ -32,6 +33,7 @@
     margin-top:-15px;
     border-radius:5px ;
 }
+
 
 .view_notice {
     height: 40px;
@@ -51,12 +53,19 @@
     cursor: pointer;
 }
 
+
 .add_btn {
     height: 40px;
-    background-color: #0d5e58;
-    margin-right: 500px;
-    margin-top: 10px;
+    width: 105px;
+    margin-right: 620px;
+    margin-top: 19px;
+    font-size: 17px;
+    color: whitesmoke;
+    cursor: pointer;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
 }
+ 
 
 .notice_text {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -99,32 +108,47 @@ mat-form-field {
 }
 
 .textarea_box {
-    width: 75%;
+    width: 64%;
 }
 
 .content_area {
     text-align: center;
     margin-top: 10px;
+    height: 526px;
 }
 
 .date_box {
     width: 200px;
-    float: left;
-    margin-left: 140px;
+    float: right;
+    margin-right: 850px;
 }
 
  ng-container a {
     background-color: #05363c;
 } 
 
+/* =============================================Button Change================================================= */
 .submitbtn {
-    width: 100px;
+    width: 126px;
     height: 35px;
-    background-color: #0b4648;
     float: left;
-    margin-top: 20px;
+    padding-left: -20px;
+    top: 40px;
+    cursor: pointer;
+    margin-top: -35px;
+    margin-left: 585px;
 }
-
+.submitbtn p{
+    background-color: #05363c;
+    width: 129px;
+    font-size: 19px;
+    word-spacing: 4px;
+    border-radius: 5px;
+    color: whitesmoke;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-left: -20px;
+}
+/* ============================================================================================================= */
 .customer_btn {
     background-color: #05363c;
     border-radius: 5px;
@@ -133,7 +157,9 @@ mat-form-field {
 #billnobtn{
     position: absolute;
     right: 10px;
-    top:140px;
+    height: 38px;
+    top:138px;
+    margin-right: -4px;
 }
 
 a{

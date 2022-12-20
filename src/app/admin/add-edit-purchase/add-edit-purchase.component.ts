@@ -16,9 +16,9 @@ import { validateHorizontalPosition } from '@angular/cdk/overlay';
 export class AddEditPurchaseComponent implements OnInit {
     action_text:string='Add Party details'
     partyform:any
-    actionBtn="Add"
+    actionBtn="Save & next"
     saleform: any
-    action_Btn="add&next";
+    action_Btn="Add";
    
     
   constructor(
