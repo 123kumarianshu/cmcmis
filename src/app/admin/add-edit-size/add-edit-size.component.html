@@ -12,14 +12,14 @@
 
         <mat-form-field appearance="fill">
             <mat-label> Description</mat-label>
-            <textarea class="textarea" formControlName="unit_description" matInput
+            <textarea class="textarea" formControlName="size_description" matInput
                 placeholder=" Description"></textarea>
         </mat-form-field><br>
-        <input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden >
+        <input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden>
     </form>
 </div>
 <div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="warn" (click)="resetSize()" class="reset_btn">Reset</button>
+    <button mat-raised-button color="warn" (click)="reset_Size()" class="reset_btn">Reset</button>
     <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
         [disabled]="!addsize.valid">{{actionBtn}}</button>
 </div>
