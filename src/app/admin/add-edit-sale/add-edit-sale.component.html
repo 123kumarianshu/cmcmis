@@ -46,7 +46,7 @@
 		</ng-template>
 	</ng-container>
 	<ng-container ngbNavItem>
-		<a ngbNavLink style="background-color:#05363c; border-radius: 5px; color: whitesmoke; height:37px;" (click)="item()">Item</a>
+		<a ngbNavLink style="background-color:#05363c; border-radius: 5px; color: whitesmoke; height:37px;" (click)="items()">Item</a>
 		<ng-template ngbNavContent>
 			<div class="content_area">
 				<form [formGroup]="saleform">
@@ -104,93 +104,18 @@
 							<input formControlName="net_rate" matInput placeholder="Net Rate">
 						</mat-form-field><br>
 
-						<mat-form-field appearance="fill">
+						<mat-form-field appearance="fill" class="text_amount">
 							<mat-label>Amount</mat-label>
 							<input formControlName="amount" matInput placeholder="Amount">
 						</mat-form-field><br>
 					</div>
 				</form>
 				<div mat-dialog-action [align]="'end'">
-					<button mat-raised-button (click)="onSubmit()" class="item_add_btn" type="submit"
-						[disabled]="!saleform.valid">{{action_Btn}}</button>
+					<button mat-raised-button (click)="onSubmit()" class="item_add_btn" style="background-color: #05363c; color: white;" type="submit"
+					[disabled]="!saleform.valid">{{action_Btn}}</button>
 				</div>
 			</div>
-			<div class="cotainer">
-				<form>
-					<div class="mat-elevation-z8">
-						<table mat-table [dataSource]="dataSource" matSort id="table">    
-						<ng-container matColumnDef="slno">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
-							<td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
-								paginatorRef.pageSize)+(i+1)}}</td>
-						</ng-container>
-						<ng-container matColumnDef="item_name">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Item name</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.item_name}}</td>
-						</ng-container>
-						<ng-container matColumnDef="item_pack">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Pack</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.item_pack}}</td>
-						</ng-container>
-
-						<ng-container matColumnDef="item_company">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Company</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.item_company}}</td>
-						</ng-container>
-
-						<ng-container matColumnDef="item_quantity">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.item_quantity}}</td>
-						</ng-container>
-
-						<ng-container matColumnDef="item_rate">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.item_rate}}</td>
-						</ng-container>
-
-						<ng-container matColumnDef="item_disc">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.item_disc}}</td>
-						</ng-container>
-
-						<ng-container matColumnDef="item_rate">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.item_rate}}</td>
-						</ng-container>
-
-						<ng-container matColumnDef="item_rate">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.item_rate}}</td>
-						</ng-container>
-
-						<ng-container matColumnDef="item_rate">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.item_rate}}</td>
-						</ng-container>
-
-						<ng-container matColumnDef="item_rate">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.item_rate}}</td>
-						</ng-container>
-
-
-						<ng-container matColumnDef="Action">
-						<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-						<td class="data" mat-cell *matCellDef="let row"> <mat-icon >edit</mat-icon></td>
-					  </ng-container> 
-						 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-					  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>     
-					  <tr class="mat-row" *matNoDataRow>
-						<td class="mat-cell" colspan="4">No data show"</td>
-					  </tr> 
-						</table>    
-						<mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
-							aria-label="Select page of users"></mat-paginator>
-					</div>
-				</form>
-			</div>
-
-
+			
 		</ng-template>
 	</ng-container>
 	<ng-container ngbNavItem><br>
@@ -202,7 +127,7 @@
 					<div class="column">
 						<mat-form-field appearance="fill">
 							<mat-label>Sale by:</mat-label>
-							<input formControlName="item_sale_by" matInput placeholder="Sale by">
+							<input formControlName="item_sale_by" matInput placeholder="Sale by" >
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
@@ -267,9 +192,10 @@
 							<mat-datepicker #picker></mat-datepicker>
 						</mat-form-field>
 					</div>
+					<!-- ---------------------------------------------Change--------------------------------------- -->
 					<div mat-dialog-action [align]="'end'">
 						<button mat-raised-button (click)="finalsubmit()" class="submitbtn" type="submit"
-							[disabled]="!saleform.valid">{{actionBtn}}</button>
+							[disabled]="!saleform.valid">{{actionBTN}}<p>Final Submit</p></button>
 					</div>
 				</form>
 			</div>

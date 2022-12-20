@@ -26,6 +26,7 @@ export class AddEditSaleComponent implements OnInit {
   saleform: any
   actionBtn = 'Save & Next';
   action_Btn='Add'
+  actionBTN ='';
   addcustomer: any;
   additem:any
   custform:any
@@ -86,7 +87,7 @@ export class AddEditSaleComponent implements OnInit {
   cus(){
     this.action_text = 'Add customer details'
   }
-  item(){
+  items(){
     this.action_text = 'Add item details'
   }
   final_bill(){
