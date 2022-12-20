@@ -33,7 +33,7 @@ export class PartyComponent implements OnInit {
   }
   add_party():any{
     this.addparty.open(AddEditPartyComponent,{
-      disableClose:true
+      disableClose:true,
     }).afterClosed().subscribe(val =>{
       if(val === 'save'){
        this.ngOnInit(); 
