@@ -7,28 +7,28 @@
         <input formControlName="gst_id" hidden>
         <mat-form-field appearance="fill">
             <mat-label>GST(%)</mat-label>
-            <input formControlName="gst_in_percentage" matInput placeholder="GST(%)">
+            <input formControlName="gst_in_percentage" matInput placeholder="GST(%)" type="number">
         </mat-form-field><br>
 
         <mat-form-field appearance="fill">
             <mat-label>CGST(%)</mat-label>
-            <input formControlName="gst_in_percentage" matInput placeholder="CGST(%)">
+            <input formControlName="cgst_in_percentage" matInput placeholder="CGST(%)" type="number">
         </mat-form-field><br>
 
         <mat-form-field appearance="fill">
-            <mat-label>gst(%)</mat-label>
-            <input formControlName="gst_sgst" matInput placeholder="SGST(%)">
+            <mat-label>SGST(%)</mat-label>
+            <input formControlName="sgst_in_percentage" matInput placeholder="SGST(%)" type="number">
         </mat-form-field><br>
 
         <mat-form-field appearance="fill">
             <mat-label>GST Des</mat-label>
-            <input formControlName="gst_in_percentage" matInput placeholder="Gst Description">
+            <input formControlName="gst_des" matInput placeholder="Gst Description">
         </mat-form-field><br>
         <input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden>
     </form>
 </div>
 <div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="warn" (click)="resetUnit()" class="reset_btn">Reset</button>
+    <button mat-raised-button color="warn" (click)="resetGst()" class="reset_btn">Reset</button>
     <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
         [disabled]="!addGst.valid">{{actionBtn}}</button>
 </div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Party,Unit,gst} from './add_edit_manage';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +19,43 @@ export class ManageService {
   
 
 
-  //************** */ for role function starting here**************
+   //************** */ for party function starting here**************
+
+  
+   getParty() {
+    return this.http.get<Party[]>(this.baseUrl + 'party_view.php');
+  }
+  postParty(data: any) {
+    return this.http.post(this.baseUrl + 'party_insert.php', data);
+  }  
+  putParty(data: any,) {
+    return this.http.put<any>(this.baseUrl + 'party_update.php',data)
+  }
+
+  //**************** */ for Unit Function Starting here ********************
+
+  getUnit() {
+    return this.http.get<Unit[]>(this.baseUrl + 'unit_view.php');
+  }
+  postUnit(data: any) {
+    return this.http.post(this.baseUrl + 'unit_insert.php', data);
+  }  
+  putUnit(data: any,) {
+    return this.http.put<any>(this.baseUrl + 'unit_update.php',data)
+  }
+
+
+  //**************** */ for GST Function Starting here ********************
+ 
+  getGst() {
+    return this.http.get<gst[]>(this.baseUrl + 'gst_view.php');
+  }
+  postGst(data: any) {
+    return this.http.post(this.baseUrl + 'gst_insert.php', data);
+  }  
+  putGst(data: any,) {
+    return this.http.put<any>(this.baseUrl + 'gst_update.php',data)
+  }
 
   // ****************************************************weight CRUD Method*****************************************//
 
@@ -61,7 +98,11 @@ export class ManageService {
 
   putSize(data: any) {
     return this.http.put<any>(this.baseUrl + 'size_update.php', data);
-  }
+  }  
 
 }
+
+
+
+
 

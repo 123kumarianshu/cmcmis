@@ -15,6 +15,7 @@ import { NgToastService } from 'ng-angular-popup';
 export class AddEditUnitComponent implements OnInit {
         admin_id = 1;
         addUnit: any;
+        unitdata:any
         actionBtn: string = 'Add'
   constructor(
     private popup: NgToastService,
@@ -34,18 +35,90 @@ export class AddEditUnitComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.manageService.getUnit().subscribe(
+      (res:any)=>{
+        this.unitdata = res.data
+        console.log(res)
+      }
+      
+    )
+    
+    console.log(this.editData)
+    if (this.editData) {
+      this.actionBtn = 'Update'
+      this.addUnit.controls['unit_id'].setValue(this.editData.unit_id);
+      this.addUnit.controls['unit_name'].setValue(this.editData.unit_name);
+      this.addUnit.controls['unit_description'].setValue(this.editData.unit_description);     
+      this.addUnit.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
+    }
   }
+  resetUnit(){    
+      this.addUnit.reset();    
+  }
+  onSubmit() {
+    console.log(this.editData);
+    if (!this.editData) {
+      if (this.addUnit.valid) {
+        this.manageService.postUnit(this.addUnit.value).subscribe(
+          (data: any) => {
+            this.router.navigate(['/unit']);           
+            this.addUnit.reset();
+            this.matref.close('save');
+            this.popup.success({detail:'Success',summary:'Unit Submit Successfully...',sticky:true,position:'tr'})
+          },
+          (error: any) => {
+            console.log(['message']);
+            this.popup.error({detail:'message',summary:' Unit  data is not Submit' , sticky:true,position:'tr',})
+          }
+        );
+      }
+    }
+    else {
+      this.updateUnit()
+    }
+  }
+  updateUnit() {
+    this.manageService.putUnit(this.addUnit.value)
+       .subscribe({
+        next: (res) => {
+          this.addUnit.reset();
+          this.matref.close('update')
+          console.log(res)
+       },
+        error: () => {
+          
+        }
+     })
 
-  onSubmit(){
+   if (this.addUnit.valid) {
+       this.manageService.putUnit(this.addUnit.value).subscribe(
+        (data: any) => {
+          this.router.navigate(['/unit']);
+         this.addUnit.reset();
+         this.matref.close('save');
+         this.popup.success({detail:'Success',summary:'Unit  Update Successfully...',sticky:true,position:'tr'})
+       },
+       (error: any) => {
+         console.log(['message']);
+           this.popup.error({detail:'message',summary:'Unit data is not  Update', sticky:true,position:'tr'})        
+
+        }
+      );
+    }
 
   }
-
-
-  resetUnit(){
-
-  }
-
 }
+
+
+
+
+  
+ 
+
+
+ 
+
+
 
 
 

@@ -13,7 +13,7 @@ import { AddEditGstComponent } from '../add-edit-gst/add-edit-gst.component';
   styleUrls: ['./gst.component.css']
 })
 export class GstComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'gst_in_percentage','gst_cgst','gst_sgst', 'gst_des', 'Action',];
+  displayedColumns: string[] = ['slno','gst_in_percentage','cgst_in_percentage','sgst_in_percentage','gst_des','Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -23,15 +23,15 @@ export class GstComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.partyservice.getItem().subscribe(
-    //   (itemresult:any)=>{   
-    //   this.dataSource = new MatTableDataSource(itemresult.data);
-    //   this.dataSource.sort = this.sort;
-    //   this.dataSource.paginator = this.paginator;
+    this.gstservice.getGst().subscribe(
+      (gstresult:any)=>{   
+      this.dataSource = new MatTableDataSource(gstresult.data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
 
 
-    //   }
-    // )
+      }
+    )
   }
 
   add_Gst():any{
