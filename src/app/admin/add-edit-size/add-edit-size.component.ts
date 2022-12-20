@@ -14,16 +14,18 @@ import { NgToastService } from 'ng-angular-popup';
 export class AddEditSizeComponent implements OnInit {
         admin_id = 1;
         addsize: any;
-        actionBtn: string = 'Add'  
+        actionBtn: string = 'Add'
   constructor(
       private popup: NgToastService,
       private fb: FormBuilder,
       private router: Router,
       private manageService: ManageService,
-      @Inject(MAT_DIALOG_DATA) public editData:any,
       private matref: MatDialogRef<AddEditSizeComponent>
   
-  ) {
+  ) { }
+   
+
+  ngOnInit(): void {
     this.addsize = this.fb.group({
       size_id: [''],
       size_name: ['', Validators.required],
@@ -31,12 +33,9 @@ export class AddEditSizeComponent implements OnInit {
       admin_id_fk: ['', Validators.required],
     })
   }
-   
-
-  ngOnInit(): void {
-  }
 
   onSubmit(){
+    console.log(this.addsize.value)
 
   }
 

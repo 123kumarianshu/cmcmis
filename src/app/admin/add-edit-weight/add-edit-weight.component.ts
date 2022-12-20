@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { DialogConfig } from '@angular/cdk/dialog';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from '../manage.service';
 import { Router } from '@angular/router';
@@ -16,14 +15,14 @@ export class AddEditWeightComponent implements OnInit {
   addWeight: any;
   actionBtn: string = 'Add'
   constructor(
-    private popup: NgToastService,
     private fb: FormBuilder,
-    private router: Router,
     private manageService: ManageService,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
+    private router: Router,
     private matref: MatDialogRef<AddEditWeightComponent>
   ) {
+  }
 
+  ngOnInit(): void {
     this.addWeight = this.fb.group({
       weight_id: [''],
       weight_name: ['', Validators.required],
@@ -32,10 +31,20 @@ export class AddEditWeightComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
-
   onSubmit() {
+    console.log(this.addWeight.value)
+    if(this.addWeight.valid){
+      this.manageService.postWeight(this.addWeight.value).subscribe(
+        (result:any) => {
+          console.log(result)
+          alert('form sucessfull')
+        },
+        (error: any) => {
+          console.log(error)
+          alert('Data Not Insert')
+        }
+      )
+    }
 
   }
 
@@ -45,20 +54,3 @@ export class AddEditWeightComponent implements OnInit {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

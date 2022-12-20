@@ -21,9 +21,10 @@ export class AddEditCategoryComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private manageService: ManageService,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
     private matref: MatDialogRef<AddEditCategoryComponent>
-  ) { 
+  ) {  }
+
+  ngOnInit(): void {
     this.addcategory = this.fb.group({
       cat_id: [''],
       cat_name: ['', Validators.required],
@@ -32,11 +33,8 @@ export class AddEditCategoryComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
-
   onSubmit() {
-
+    console.log(this.addcategory.value)
   }
 
 
