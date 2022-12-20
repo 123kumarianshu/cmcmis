@@ -21,7 +21,7 @@
     </form>
 </div>
 <div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="warn" (click)="resetUnit()" class="reset_btn">Reset</button>
+    <button mat-raised-button color="warn" class="reset_btn" (click)="form_reset()">Reset</button>
     <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
         [disabled]="!addcategory.valid">{{actionBtn}}</button>
 </div>

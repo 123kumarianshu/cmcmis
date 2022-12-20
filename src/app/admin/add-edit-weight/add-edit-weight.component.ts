@@ -1,9 +1,11 @@
+
+/////////////////////////////////////////////// For The Import Weight Data ///////////////////////////////////////////////////
+
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from '../manage.service';
-import { Router } from '@angular/router';
+import { Router, RouterLinkWithHref } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-add-edit-weight',
@@ -11,15 +13,20 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./add-edit-weight.component.css']
 })
 export class AddEditWeightComponent implements OnInit {
-  admin_id = 1;
+  admin_id: number = 1;
   addWeight: any;
   actionBtn: string = 'Add'
   constructor(
     private fb: FormBuilder,
     private manageService: ManageService,
     private router: Router,
-    private matref: MatDialogRef<AddEditWeightComponent>
+    private matref: MatDialogRef<AddEditWeightComponent>,
+    @Inject(MAT_DIALOG_DATA) public edit_data: any,
+
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
   }
 
   ngOnInit(): void {
@@ -29,28 +36,69 @@ export class AddEditWeightComponent implements OnInit {
       weight_description: ['', Validators.required],
       admin_id_fk: ['', Validators.required],
     })
+
+    ////////////////////////////////////////////// For The Edit Weight Data ////////////////////////////////////////////////////
+
+    if (this.edit_data) {
+      this.actionBtn = "Update";
+      this.addWeight.controls['weight_id'].setValue(this.edit_data.weight_id);
+      this.addWeight.controls['weight_name'].setValue(this.edit_data.weight_name);
+      this.addWeight.controls['weight_description'].setValue(this.edit_data.weight_description);
+      this.addWeight.controls['admin_id_fk'].setValue(this.edit_data.admin_id_fk);
+    }
   }
+
+  ///////////////////////////////////////////////// For The Post Weight Data ///////////////////////////////////////////////////
 
   onSubmit() {
     console.log(this.addWeight.value)
-    if(this.addWeight.valid){
-      this.manageService.postWeight(this.addWeight.value).subscribe(
-        (result:any) => {
-          console.log(result)
-          alert('form sucessfull')
-        },
-        (error: any) => {
-          console.log(error)
-          alert('Data Not Insert')
-        }
-      )
+    if (!this.edit_data) {
+      if (this.addWeight.valid) {
+        this.manageService.postWeight(this.addWeight.value).subscribe(
+          (result: any) => {
+            console.log(result)
+            this.matref.close();
+            this.addWeight.reset();
+            alert('Form Sucessfull')
+            this.router.navigate(['weight'])
+
+          },
+          (error: any) => {
+            alert('Dta Not Insert')
+          }
+        )
+      }
     }
+    //////////////////////////////////////////////// For The Update Weight Data //////////////////////////////////////////////
 
+    else {
+      this.update_Weight()
+    }
   }
 
+  update_Weight() {
+    console.log(this.addWeight.value)
+    this.manageService.putWeight(this.addWeight.value).subscribe({
+      next: (result: any) => {
+        console.log(result)
+        this.matref.close();
+        this.addWeight.reset();
+        alert("Data Update Successfully");
+        this.router.navigate(['weight'])
 
-  resetUnit() {
+      },
+      error: () => {
+        alert('Dta Not Update');
+      }
 
+    })
   }
 
+  ///////////////////////////////////////////////// For The Reset Weight Data //////////////////////////////////////////////////
+
+  reset_form() {
+    this.addWeight.reset();
+    this.matref.close();
+    alert('Data All Reset')
+  }
 }

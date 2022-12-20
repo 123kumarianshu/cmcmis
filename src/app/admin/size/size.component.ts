@@ -13,8 +13,9 @@ import { AddEditSizeComponent } from '../add-edit-size/add-edit-size.component';
   styleUrls: ['./size.component.css']
 })
 export class SizeComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'size_name', 'size_desc', 'Action',];
+  displayedColumns: string[] = ['size_id', 'size_name', 'size_description', 'Action',];
   dataSource!: MatTableDataSource<any>;
+  size_count: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
@@ -24,15 +25,15 @@ export class SizeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.partyservice.getItem().subscribe(
-    //   (itemresult:any)=>{   
-    //   this.dataSource = new MatTableDataSource(itemresult.data);
-    //   this.dataSource.sort = this.sort;
-    //   this.dataSource.paginator = this.paginator;
+    this.partyservice.getSize().subscribe(
+      (itemresult:any)=>{   
+      this.dataSource = new MatTableDataSource(itemresult.data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.size_count = itemresult.data.length;
 
-
-    //   }
-    // )
+      }
+    )
   }
 
   add_size(): any {
