@@ -12,20 +12,26 @@ mat-sidenav-content{
 }
 mat-toolbar{
     background-color:#14595c;
-    justify-content: space-between;   
+    justify-content: space-between;  
+    
+   
 }
 mat-icon{
     color: whitesmoke;
     cursor: pointer;
 }
+
 .loginas{
     font-size: 18px;
     color: whitesmoke;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
 }
 .user-icon{
     position: relative;
     top: 7px;
+    
+   
 }
 table {
     width: 100%;
@@ -39,15 +45,20 @@ table {
     text-align: center;
   }
  
-  @media(min-width:420px)and (max-width:719px) {
+  @media(min-width:420px)and (max-width:768px) {
     .loginas{
        display: none;
+    }
+    .main{
+      padding: 0px;
     }
   }
   @media(max-width:420px){
     mat-sidenav{        
         width:170px;
+       
     } 
+    
     .loginas{
       display: none;
    }    
