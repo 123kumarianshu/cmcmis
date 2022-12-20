@@ -17,17 +17,13 @@ textarea {
 
 }
 
-element.style {
-}
-mat-toolbar[_ngcontent-kht-c166] {
+mat-toolbar {
     height: 40px;
-    margin-bottom: -15px;
-    padding: 0px;
+    margin-bottom:-25px;
     background: none;
+    color: #f4f8f8;
+    padding: 0px;
     position: relative;
     top: -25px;
-    width: 125%;
-    left: -25px;
-    color: whitesmoke;
-    background-color: #14595c;
+    background-color: #14595c; 
 }
