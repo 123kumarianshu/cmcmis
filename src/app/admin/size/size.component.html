@@ -3,7 +3,7 @@
   <mat-icon id="add_size" (click)="add_size()">add_circle</mat-icon>
 </div>
 <div class="count_search">
-  <span class="notice_text"> Total :</span>
+  <span class="notice_text"> Total : {{size_count}}</span>
   <div class="search">
     <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
   </div>
@@ -12,17 +12,17 @@
   <form>
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort id="table">    
-        <ng-container matColumnDef="slno">
+        <ng-container matColumnDef="size_id">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
           <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
         </ng-container>    
         <ng-container matColumnDef="size_name">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Size</th>
-          <td  class="data"mat-cell *matCellDef="let row">{{row.weight_name}}</td>
+          <td  class="data"mat-cell *matCellDef="let row">{{row.size_name}}</td>
         </ng-container>
-        <ng-container matColumnDef="size_desc">
+        <ng-container matColumnDef="size_description">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.size_desc}}</td>
+          <td class="data" mat-cell *matCellDef="let row">{{row.size_description}}</td>
         </ng-container>       
         <ng-container matColumnDef="Action">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>

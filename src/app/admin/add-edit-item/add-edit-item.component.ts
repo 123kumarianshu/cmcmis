@@ -12,11 +12,11 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./add-edit-item.component.css']
 })
 export class AddEditItemComponent implements OnInit {
-      admin_id = 1;
-      itemForm: any;
-      actionBtn: string = 'Add'
+  admin_id = 1;
+  itemForm: any;
+  actionBtn: string = 'Add'
   constructor(
-    private popup:NgToastService,
+    private popup: NgToastService,
     private fb: FormBuilder,
     private router: Router,
     private manageService: ManageService,
@@ -24,27 +24,27 @@ export class AddEditItemComponent implements OnInit {
     private matref: MatDialogRef<AddEditItemComponent>
   ) { }
 
-  ngOnInit(): void {  
-  this.itemForm = this.fb.group({
-    item_id:[''],
-    item_name: ['', Validators.required],
-    item_size_id_fk:['',Validators.required],
-    item_unit_id_fk:['',Validators.required],
-    item_gsm_id_fk:['',Validators.required],
-    item_weight_id_fk:['',Validators.required],
-    item_rate:['',Validators.required],
-    item_cat_id_fk:['',Validators.required],
-    admin_id_fk:['',Validators.required]
-   
-   
-  })
+  ngOnInit(): void {
+    this.itemForm = this.fb.group({
+      item_id: [''],
+      item_name: ['', Validators.required],
+      item_size_id_fk: ['', Validators.required],
+      item_unit_id_fk: ['', Validators.required],
+      item_gsm_id_fk: ['', Validators.required],
+      item_weight_id_fk: ['', Validators.required],
+      item_rate: ['', Validators.required],
+      item_cat_id_fk: ['', Validators.required],
+      admin_id_fk: ['', Validators.required]
 
-}
-onSubmit(){
 
-}
+    })
 
-resetItem(){
+  }
+  onSubmit() {
+    console.log(this.itemForm.value)
+  }
 
-}
+  resetItem() {
+
+  }
 }
