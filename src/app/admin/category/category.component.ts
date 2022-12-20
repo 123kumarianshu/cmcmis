@@ -13,8 +13,9 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'cat_name', 'cat_desc', 'Action',];
+  displayedColumns: string[] = ['cat_id', 'cat_name', 'cat_desc', 'Action',];
   dataSource!: MatTableDataSource<any>;
+  cat_count: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -24,15 +25,14 @@ export class CategoryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.partyservice.getItem().subscribe(
-    //   (itemresult:any)=>{   
-    //   this.dataSource = new MatTableDataSource(itemresult.data);
-    //   this.dataSource.sort = this.sort;
-    //   this.dataSource.paginator = this.paginator;
-
-
-    //   }
-    // )
+    this.partyservice.getCat().subscribe(
+      (itemresult:any)=>{   
+      this.dataSource = new MatTableDataSource(itemresult.data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.cat_count = itemresult.data.length;
+      }
+    )
   }
 
   add_category(): any {

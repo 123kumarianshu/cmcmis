@@ -23,13 +23,13 @@ export class PartyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.partyservice.getParty().subscribe(
-    //   (partyresult: any) => {
-    //     this.dataSource = new MatTableDataSource(partyresult.data);
-    //     this.dataSource.sort = this.sort;
-    //     this.dataSource.paginator = this.paginator;
-    //   }
-    // )
+    this.partyservice.getParty().subscribe(
+      (partyresult: any) => {
+        this.dataSource = new MatTableDataSource(partyresult.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      }
+    )
   }
   add_party():any{
     this.addparty.open(AddEditPartyComponent,{

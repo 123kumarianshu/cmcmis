@@ -3,7 +3,7 @@
   <mat-icon id="add_weight" (click)="add_weight()">add_circle</mat-icon>
 </div>
 <div class="count_search">
-  <span class="notice_text"> Total :</span>
+  <span class="notice_text"> Total : {{weight_count}} </span>
   <div class="search">
     <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
   </div>
@@ -22,9 +22,9 @@
           <td  class="data"mat-cell *matCellDef="let row">{{row.weight_name}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="weight_desc">
+        <ng-container matColumnDef="weight_description">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.weight_desc}}</td>
+          <td class="data" mat-cell *matCellDef="let row">{{row.weight_description}}</td>
         </ng-container>
 
         <ng-container matColumnDef="Action">

@@ -12,8 +12,9 @@ import { AddEditWeightComponent } from '../add-edit-weight/add-edit-weight.compo
   styleUrls: ['./weight.component.css']
 })
 export class WeightComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'weight_name', 'weight_desc', 'Action',];
+  displayedColumns: string[] = ['slno', 'weight_name', 'weight_description', 'Action',];
   dataSource!: MatTableDataSource<any>;
+  weight_count: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
@@ -22,15 +23,15 @@ export class WeightComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.partyservice.getItem().subscribe(
-    //   (itemresult:any)=>{   
-    //   this.dataSource = new MatTableDataSource(itemresult.data);
-    //   this.dataSource.sort = this.sort;
-    //   this.dataSource.paginator = this.paginator;
-
-
-    //   }
-    // )
+    this.weightservice.getWeight().subscribe(
+      (weight_data:any)=>{   
+      this.dataSource = new MatTableDataSource(weight_data.data);
+      console.log(weight_data)
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.weight_count = weight_data.data.length;
+      }
+    )
   }
   add_weight(): any {
     this.addweight.open(AddEditWeightComponent, {
@@ -60,10 +61,3 @@ export class WeightComponent implements OnInit {
     }
   }
 }
-
-
-
-
-
-
-

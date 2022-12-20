@@ -6,6 +6,7 @@
     <form [formGroup]="areaForm">
         <div class="column">
             <input type="number" formControlName="emp_id" readonly hidden>
+
             <mat-form-field appearance="fill">
                 <mat-label>Area</mat-label>
                 <input formControlName="area_name" matInput placeholder="Area">
@@ -13,17 +14,19 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Distance</mat-label>
-                <input  formControlName="area_distance" matInput placeholder="Distance">
+                <input formControlName="area_distance" matInput placeholder="Distance">
             </mat-form-field><br>
 
             <mat-form-field appearance="fill">
                 <mat-label>Discription</mat-label>
-                <input  formControlName="area_decs" matInput placeholder="Discription">
-            </mat-form-field>           
+                <input formControlName="area_desc" matInput placeholder="Discription">
+            </mat-form-field>
         </div>
-        <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
+        <input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
+
         <div mat-dialog-action [align]="'end'">
             <button mat-raised-button color="warn" (click)="resetArea()" class="reset_btn">Reset</button>
+
             <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
                 [disabled]="!areaForm.valid">{{actionBtn}}</button>
         </div>

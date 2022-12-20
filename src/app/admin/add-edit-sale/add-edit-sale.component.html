@@ -2,7 +2,7 @@
 	<span class="notice_text">{{action_text}}</span>
 </div>
 
-<nav ngbNav #nav="ngbNav" class="nav-tabs">
+<nav ngbNav #nav="ngbNav" class="nav-tabs" style="height: 46px;">
 	<ng-container ngbNavItem>
 		<a ngbNavLink style="background-color:#05363c; border-radius: 5px; height:37px;color: whitesmoke; "
 			(click)="cus()">Customer</a>
@@ -39,7 +39,7 @@
 					</div>
 				</form>
 				<div mat-dialog-action [align]="'end'">
-					<button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+					<button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit" style="background-color: #0d5e58; color: white;"
 						[disabled]="!saleform.valid">{{actionBtn}}</button>
 				</div>
 			</div>
@@ -200,7 +200,6 @@
 			<div class="content_area">
 				<form [formGroup]="saleform">
 					<div class="column">
-						<!-- <input type="number" formControlName="cust_id" readonly> -->
 						<mat-form-field appearance="fill">
 							<mat-label>Sale by:</mat-label>
 							<input formControlName="item_sale_by" matInput placeholder="Sale by">

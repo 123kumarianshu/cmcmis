@@ -12,8 +12,11 @@
 #add_purchase {
     position: relative;
     top: -5px;
-    left: 2px;
+    left: 5px;
+    width: 27px;
+    height: 29px;
     cursor: pointer;
+    font-size: 25px;
 }
 
 .notice_text {
