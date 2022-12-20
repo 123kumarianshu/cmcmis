@@ -13,9 +13,9 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  // baseUrl: string = 'https://greensoft.net.in/addbox/api/';
-  baseUrl: string = 'http://localhost/api/';
-
+  baseUrl: string = 'http://adityaradhaya.com/api/';
+  // baseUrl: string = 'http://localhost/api/';
+  
 
 
   //************** */ for role function starting here**************
