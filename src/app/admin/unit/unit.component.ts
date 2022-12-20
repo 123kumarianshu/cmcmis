@@ -13,27 +13,25 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./unit.component.css']
 })
 export class UnitComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'unit_name', 'unit_description', 'Action',];
+  displayedColumns: string[] = ['slno','unit_name','unit_description','Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatSort) sort!: MatSort;  
   constructor(
     private addunit: MatDialog,
     private unitservice: ManageService,
   ) { }
 
   ngOnInit(): void {
-    // this.partyservice.getItem().subscribe(
-    //   (itemresult:any)=>{   
-    //   this.dataSource = new MatTableDataSource(itemresult.data);
-    //   this.dataSource.sort = this.sort;
-    //   this.dataSource.paginator = this.paginator;
-
-
-    //   }
-    // )
+    this.unitservice.getUnit().subscribe(
+      (unitresult:any)=>{   
+      this.dataSource = new MatTableDataSource(unitresult.data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+        console.log(unitresult)
+      }
+    )
   }
-
   add_unit(): any {
     this.addunit.open(AddEditUnitComponent, {
       disableClose: true
