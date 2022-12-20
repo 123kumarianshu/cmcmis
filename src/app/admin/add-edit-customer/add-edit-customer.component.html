@@ -9,29 +9,33 @@
             <mat-form-field appearance="fill">
                 <mat-label>Name</mat-label>
                 <input formControlName="cust_name" matInput placeholder="Name">
-            </mat-form-field>   
+            </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill"> 
                 <mat-label>Shop</mat-label>
                 <input formControlName="cust_shop_name" matInput placeholder="Shop">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Owner Name</mat-label>
-                <input  formControlName="cust_owner_name" matInput placeholder="Owner Name">
+                <input formControlName="cust_owner_name" matInput placeholder="Owner Name">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Contact number</mat-label>
-                <input type="number" formControlName="cust_contact_no" matInput placeholder="Contact number">
-            </mat-form-field>          
+                <input type="number" formControlName="cust_contact_no" matInput placeholder="Contact number"
+                    onkeypress="return this.value.length < 10;"
+                    oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
+            </mat-form-field>
         </div>
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Whatsapp Number</mat-label>
-                <input type="number" formControlName="cust_whatsapp" matInput placeholder="Whatsapp">
+                <input type="number" formControlName="cust_whatsapp" matInput placeholder="Whatsapp"
+                    onkeypress="return this.value.length < 10;"
+                    oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
             </mat-form-field>
-            
+
             <mat-form-field appearance="fill">
                 <mat-label>Email Id</mat-label>
                 <input type="email" formControlName="cust_email" matInput placeholder="Email Id">
@@ -39,17 +43,17 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Contact Person</mat-label>
-                <input  formControlName="cust_cont_person" matInput placeholder="Contact Person">
+                <input formControlName="cust_cont_person" matInput placeholder="Contact Person">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Address</mat-label>
                 <textarea formControlName="cust_shop_address" matInput placeholder="Address"></textarea>
             </mat-form-field>
-            <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
-         </div>        
+            <input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
+        </div>
         <div mat-dialog-action [align]="'end'">
-            <button mat-raised-button color="warn" (click)="resetcust()" class="reset_btn">Reset</button>
+            <button mat-raised-button color="warn" class="reset_btn" (click)="resetcust()">Reset</button>
             <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
                 [disabled]="!custForm.valid">{{actionBtn}}</button>
         </div>

@@ -12,25 +12,27 @@ import { AddEditCustomerComponent } from '../add-edit-customer/add-edit-customer
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class CustomerComponent implements OnInit {        
-        displayedColumns: string[] = ['slno','cust_shop_name','cust_owner_name','cust_contact_no','Action',];
-        dataSource!: MatTableDataSource<any>;
-        @ViewChild(MatPaginator) paginator!: MatPaginator;
-        @ViewChild(MatSort) sort!: MatSort;
+export class CustomerComponent implements OnInit {
+  displayedColumns: string[] = ['slno','cust_name','cust_shop_name', 'cust_owner_name', 'cust_contact_no', 'Action',];
+  dataSource!: MatTableDataSource<any>;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   constructor(
-      private addcustomer: MatDialog,
-      private customerservice: ManageService,
+    private addcustomer: MatDialog,
+    private customerservice: ManageService,
   ) { }
 
   ngOnInit(): void {
-    // this.partyservice.getItem().subscribe(
-    //   (itemresult: any) => {
-    //     this.dataSource = new MatTableDataSource(itemresult.data);
-    //     this.dataSource.sort = this.sort;
-    //     this.dataSource.paginator = this.paginator;
+    this.customerservice.getCustomer().subscribe(
+      (itemresult: any) => {
+        this.dataSource = new MatTableDataSource(itemresult.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
 
-    //   }
-    // )
+      }
+    )
+
   }
   add_customer(): any {
     this.addcustomer.open(AddEditCustomerComponent, {
@@ -41,16 +43,13 @@ export class CustomerComponent implements OnInit {
       }
     })
   }
+ 
+  ///// for edit subject ///// 
   editCustomer(row: any) {
     this.addcustomer.open(AddEditCustomerComponent, {
       data: row
-    }).afterClosed().subscribe(val => {
-      if (val === 'update') {
-        this.ngOnInit();
-      }
     })
   }
-
 
 
   applyFilter(event: Event) {
@@ -70,6 +69,6 @@ export class CustomerComponent implements OnInit {
 
 
 
-  
+
 
 

@@ -18,18 +18,22 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Mobile</mat-label>
-                <input type="number" formControlName="emp_mobile" matInput placeholder="Mobile">
+                <input type="number" formControlName="emp_mobile" matInput placeholder="Mobile"
+                    onkeypress="return this.value.length < 10;"
+                    oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
             </mat-form-field>
         </div>
-        <div class="column">            
+        <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Whatsapp</mat-label>
-                <input type="number" formControlName="emp_whatsapp" matInput placeholder="Whatsapp">
+                <input type="number" formControlName="emp_whatsapp" matInput placeholder="Whatsapp"
+                    onkeypress="return this.value.length < 10;"
+                    oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Adhar Number </mat-label>
-                <input formControlName="emp_aadhar_no" matInput placeholder="AAdhar Number">
+                <input type="number" formControlName="emp_aadhar_no" matInput placeholder="AAdhar Number">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -37,10 +41,10 @@
                 <input formControlName="emp_ac_holder_name" matInput placeholder="Ac Holder Name">
             </mat-form-field>
         </div>
-        <div class="column">            
+        <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label> A/C number</mat-label>
-                <input formControlName="emp_ac_no" matInput placeholder="A/c number">
+                <input type="number" formControlName="emp_account_no" matInput placeholder="A/c number">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -48,15 +52,15 @@
                 <input formControlName="emp_ifsc" matInput placeholder="IFSC">
             </mat-form-field>
 
-             <div class="upload_box"><button type="button" mat-raised-button
-                    (click)="fileInput2.click()">Image</button>{{profileI?.name}}{{photo}}</div>
-            <input hidden (change)="onPhotoUpload($event)" #fileInput2 type="file">           
+            <div class="upload_box"><button type="button" mat-raised-button
+                    (click)="fileInput2.click()" formControlName="emp_photo">Image</button>{{profileI?.name}}{{photo}}</div>
+            <input hidden (change)="onPhotoUpload($event)" #fileInput2 type="file">
         </div>
         <mat-form-field appearance="fill">
             <mat-label>Address</mat-label>
             <textarea formControlName="emp_address" matInput placeholder="Address"></textarea>
         </mat-form-field><br>
-        <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly><br><br>
+        <input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
 
         <div mat-dialog-action [align]="'end'">
             <button mat-raised-button color="warn" (click)="resetEmp()" class="reset_btn">Reset</button>

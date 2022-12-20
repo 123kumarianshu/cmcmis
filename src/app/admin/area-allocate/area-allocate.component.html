@@ -1,50 +1,55 @@
 <div class="view_notice">
-    <span class="notice_text">Area Allocate  Details</span>
-    <mat-icon id="add_area_allocate" (click)="add_area_allocate()">add_circle</mat-icon>
+  <span class="notice_text">Area Allocate  Details</span>
+  <mat-icon id="add_area_allocate" (click)="add_area_allocate()">add_circle</mat-icon>
+</div>
+<div class="count_search">
+  <span class="notice_text"> Total :</span>
+  <div class="search">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
   </div>
-  <div class="count_search">
-    <span class="notice_text"> Total :</span>
-    <div class="search">
-      <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
-    </div>
-  </div>
-  <div class="cotainer">
-    <form>
-      <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort id="table">    
-          <ng-container matColumnDef="slno">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
-            <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
-          </ng-container>                  
-          <ng-container matColumnDef="alct_area_name">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Area</th>
-            <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_name}}</td>
-          </ng-container>
-          <ng-container matColumnDef="alct_area_distance">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Distance</th>
-            <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_distance}}</td>
-          </ng-container>
-          <ng-container matColumnDef="alct_area_date">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.alct_area_date}}</td>
-          </ng-container> 
-          <ng-container matColumnDef="alct_area_des">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-            <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_des}}</td>
-          </ng-container>        
-          <ng-container matColumnDef="Action">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-            <td class="data" mat-cell *matCellDef="let row"><mat-icon (click)="editarea_allocate(row)">edit</mat-icon></td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>     
-          <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
-          </tr>
-        </table>    
-        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-      </div>    
-    </form>
-  </div>
+</div>
+<div class="cotainer">
+  <form>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort id="table">    
+        <ng-container matColumnDef="slno">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+          <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
+        </ng-container>                  
+        <ng-container matColumnDef="alct_area_emp_id_fk">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Emp name</th>
+          <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_emp_id_fk}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="alct_area_name_id_fk">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Area</th>
+          <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_name_id_fk}}</td>
+        </ng-container>
+        <ng-container matColumnDef="alct_area_distance_id_fk">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Distance</th>
+          <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_distance_id_fk}}</td>
+        </ng-container>
+        <ng-container matColumnDef="alct_area_date">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+          <td class="data" mat-cell *matCellDef="let row">{{row.alct_area_date}}</td>
+        </ng-container> 
+        <ng-container matColumnDef="alct_area_desc">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+          <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_desc}}</td>
+        </ng-container>        
+        <ng-container matColumnDef="Action">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+          <td class="data" mat-cell *matCellDef="let row"><mat-icon (click)="editarea_allocate(row)">edit</mat-icon></td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>     
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+        </tr>
+      </table>    
+      <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>    
+  </form>
+</div>
 
 
