@@ -15,22 +15,31 @@
     .reset_btn {
     width: 80px;
     height: 40px;
-    margin-right:50px;     
+    float: left; 
+    margin-left: px;   
+    margin-top: 12px; 
   }
     .add_btn {
     width: 80px;
     height: 40px;    
-    margin-right:100px;
+    float: right;
     background-color: green;
     color: white;
+    margin-top: 12px;
   }
     mat-toolbar {
         height: 40px;
         background: none;
-        margin-bottom:-20px;
-        color:whitesmoke;
+        margin-bottom:11px;
+        color: #14595c; 
         padding: 0px;
         position: relative;
-        top:-25px;
-        background-color: #14595c; ;
+        margin-top: -12px;
     }
+    @media (max-width: 576px) {
+        .mat-form-field{
+            width: 100%;
+        } 
+        
+    }
+  
