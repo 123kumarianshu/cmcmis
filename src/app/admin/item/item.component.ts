@@ -12,7 +12,7 @@ import { AddEditItemComponent } from '../add-edit-item/add-edit-item.component';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'item_name', 'item_cat', 'item_weight','item_rate','item_size', 'item_unit','Action',];
+  displayedColumns: string[] = ['slno', 'item_name', 'cat_name', 'weight_name','item_rate','size_name','unit_name','Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -22,14 +22,14 @@ export class ItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.partyservice.getItem().subscribe(
-    //   (itemresult:any)=>{   
-    //   this.dataSource = new MatTableDataSource(itemresult.data);
-    //   this.dataSource.sort = this.sort;
-    //   this.dataSource.paginator = this.paginator;    
-
-    //   }
-    // )
+    this.itemservice.getItem().subscribe(
+      (itemresult:any)=>{
+        console.log(itemresult)   
+      this.dataSource = new MatTableDataSource(itemresult.data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;    
+      }
+    )
   }
   add_item(): any {
     this.additem.open(AddEditItemComponent, {

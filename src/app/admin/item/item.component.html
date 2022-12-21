@@ -20,13 +20,13 @@
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
             <td  class="data"mat-cell *matCellDef="let row">{{row.item_name}}</td>
           </ng-container>
-          <ng-container matColumnDef="item_cat">
+          <ng-container matColumnDef="cat_name">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.item_cat}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
           </ng-container> 
-          <ng-container matColumnDef="item_weight">
+          <ng-container matColumnDef="weight_name">                                                   
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
-            <td  class="data"mat-cell *matCellDef="let row">{{row.item_weight}}</td>
+            <td  class="data"mat-cell *matCellDef="let row">{{row.weight_name}}</td>                                                                                 
           </ng-container>    
           
           <ng-container matColumnDef="item_rate">
@@ -34,14 +34,14 @@
             <td  class="data"mat-cell *matCellDef="let row">{{row.item_rate}}</td>
           </ng-container> 
           
-          <ng-container matColumnDef="item_size">
+          <ng-container matColumnDef="size_name">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Size</th>
-            <td  class="data"mat-cell *matCellDef="let row">{{row.item_size}}</td>
+            <td  class="data"mat-cell *matCellDef="let row">{{row.size_name}}</td>
           </ng-container> 
            
-          <ng-container matColumnDef="item_unit">
+          <ng-container matColumnDef="unit_name">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Unit</th>
-            <td  class="data"mat-cell *matCellDef="let row">{{row.item_unit}}</td>
+            <td  class="data"mat-cell *matCellDef="let row">{{row.unit_name}}</td>
           </ng-container>  
          
           <ng-container matColumnDef="Action">
