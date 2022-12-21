@@ -42,12 +42,14 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field><br>
+
+            <div mat-dialog-action [align]="'end'">
+                <button mat-raised-button color="warn" (click)="resetamount()" class="reset_btn">Reset</button>
+                <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+                    [disabled]="!addAccount.valid">{{actionBtn}}</button>
+            </div>
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
         </div>
-        <div mat-dialog-action [align]="'end'">
-            <button mat-raised-button color="warn" (click)="resetamount()" class="reset_btn">Reset</button>
-            <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
-                [disabled]="!addAccount.valid">{{actionBtn}}</button>
-        </div>
+       
     </form>
 </div>
