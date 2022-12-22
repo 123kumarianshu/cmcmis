@@ -4,15 +4,15 @@
 
 <nav ngbNav #nav="ngbNav" class="nav-tabs" style=" height:46px; ">
 	<ng-container ngbNavItem>
-		<a ngbNavLink 
-			(click)="party()" style="background-color: #0b4648; height: 37px; color: white; border-radius: 5px; font-size: 16px;">Party</a>
+	<a ngbNavLink style="background-color:#05363c;  color: whitesmoke; " 
+    	(click)="party()" class="party_btn">Party</a>
 		<ng-template ngbNavContent>
 			<div class="content_area">
 				<form [formGroup]="saleform">
 					<div class="column">
 						<input type="number" formControlName="cust_id" readonly hidden>
 						<mat-form-field appearance="fill" style="margin-top: 28px;">
-							<mat-label>Customer Id</mat-label>
+				     	<mat-label>Customer Id</mat-label>
 							<input formControlName="cust_id" matInput placeholder="Customer Id">
 						</mat-form-field>
 
@@ -38,22 +38,19 @@
 						</mat-form-field>
 					</div>
 				</form>
-				<div mat-dialog-action [align]="'end'">
-					<button mat-raised-button (click)="onSubmit()" class="add_btn" style="background-color: #0b4648; width: 140px; color: whitesmoke;" type="submit" 
-						[disabled]="!saleform.valid">{{actionBtn}}</button>
-				</div>
+				<button mat-raised-button color="primary" class="save_btn">Save & next</button>
 			</div>
 		</ng-template>
 	</ng-container>
 	<ng-container ngbNavItem>
-		<a ngbNavLink style="background-color:#05363c; border-radius: 5px; font-size: 18px; color: whitesmoke; height:37px; font-family: Cambria;" (click)="item()">Item</a>
+		<a ngbNavLink style="background-color: #05363c; color: white; " (click)="item()" class="item_btn">Item</a>
 		<ng-template ngbNavContent>
 			<div class="content_area" >
 				<form [formGroup]="saleform">
 					<div class="column">
 						<!-- <input type="number" formControlName="cust_id" readonly> -->
 						<mat-form-field appearance="fill" style="margin-top: 20px;">
-							<mat-label>Customer</mat-label>
+							<mat-label>Party</mat-label>
 							<input formControlName="cust_name" matInput placeholder="Name">
 						</mat-form-field>
 
@@ -107,53 +104,85 @@
 						<mat-form-field appearance="fill" style="margin-left: -822px;">
 							<mat-label>Amount</mat-label>
 							<input formControlName="amount" matInput placeholder="Amount">
-						</mat-form-field><br>
+						</mat-form-field>
+							<mat-icon class="addButton">add</mat-icon>
+						
+					
 					</div>
 				</form>
-				<div mat-dialog-action [align]="'end'">
-					<button  mat-raised-button (click)="onSubmit()" class="add_btn" style="margin-top: 39px; background-color:#0b4648; color: white;"  type="submit"
-						[disabled]="!saleform.valid">{{action_Btn}}</button>
-						
-				</div>
-			</div>
+				
+			
 			<div class="cotainer">
 				<form>
-					<div class="mat-elevation-z8">
-						<!-- <table mat-table [dataSource]="dataSource" matSort id="table">     -->
-						<ng-container matColumnDef="slno">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
-							<td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
-								paginatorRef.pageSize)+(i+1)}}</td>
-						</ng-container>
-						<ng-container matColumnDef="cat_name">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Category</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
-						</ng-container>
-						<ng-container matColumnDef="cat_desc">
-							<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-							<td class="data" mat-cell *matCellDef="let row">{{row.cat_desc}}</td>
-						</ng-container>
-						<!-- <ng-container matColumnDef="Action">
+				  <div class="mat-elevation-z8">
+					<table mat-table [dataSource]="dataSource" matSort id="table">    
+					  <ng-container matColumnDef="slno">
+						<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+						<td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
+					  </ng-container>
+					  
+					  <ng-container matColumnDef="purch_party">
+						<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party</th>
+						<td  class="data"mat-cell *matCellDef="let row">{{row.purch_party}}</td>
+					  </ng-container>
+			
+					  <ng-container matColumnDef="purch_disc">
+						<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
+						<td  class="data"mat-cell *matCellDef="let row">{{row.purch_disc}}</td>
+					  </ng-container>
+			
+					  <ng-container matColumnDef="purch_amount">
+						<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic Amount</th>
+						<td  class="data"mat-cell *matCellDef="let row">{{row.purch_amount}}</td>
+					  </ng-container>
+			
+					  <ng-container matColumnDef="purch_net_payment">
+						<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Net Amount</th>
+						<td class="data" mat-cell *matCellDef="let row">{{row.purch_net_payment}}</td>
+					  </ng-container> 
+			
+					  <ng-container matColumnDef="purch_cgst">
+						<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>CGST</th>
+						<td class="data" mat-cell *matCellDef="let row">{{row.purch_cgst}}</td>
+					  </ng-container> 
+			
+					  <ng-container matColumnDef="purch_sgst">
+						<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SGST</th>
+						<td class="data" mat-cell *matCellDef="let row">{{row.purch_sgst}}</td>
+					  </ng-container> 
+			
+					  <ng-container matColumnDef="purch_ro">
+						<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>R/O</th>
+						<td class="data" mat-cell *matCellDef="let row">{{row.purch_ro}}</td>
+					  </ng-container>           
+					  <ng-container matColumnDef="purch_party_bill_no">
+						<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
+						<td  class="data"mat-cell *matCellDef="let row">{{row.purch_party_bill_no}}</td>
+					  </ng-container>
+			
+					  <ng-container matColumnDef="Action">
 						<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-						<td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="editItem(row)">edit</mat-icon></td>
-					  </ng-container> -->
-						<!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-							<tr class="mat-row" *matNoDataRow>
+						<td class="data" mat-cell *matCellDef="let row"> <mat-icon >edit</mat-icon></td>
+					  </ng-container>
+			
+					  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 					  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>     
-						<td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
-					  </tr> -->
-						<!-- </table>     -->
-						<mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
-							aria-label="Select page of users"></mat-paginator>
-					</div>
+					  <tr class="mat-row" *matNoDataRow>
+						<td class="mat-cell" colspan="4">No data show</td>
+					  </tr>
+					</table>    
+					<mat-paginator #paginatorRef [pageSizeOptions]="[5]" aria-label="Select page of users"></mat-paginator>
+				  </div>    
 				</form>
+			  </div>
 			</div>
+			
 
 
 		</ng-template>
 	</ng-container>
 	<ng-container ngbNavItem><br>
-		<a ngbNavLink (click)="final_bill()" style=" font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 17px; background-color:#05363c; border-radius: 5px;color: whitesmoke; height:37px" >Final bill</a>
+		<a ngbNavLink (click)="final_bill()" class="final_btn" style="background-color: #05363c; color: white;" >Final bill</a>
 		<button id="billnobtn">Bill Ref.No:VE/0/22-23</button>
 		<ng-template ngbNavContent>
 			<div class="content_area">
@@ -227,10 +256,7 @@
 							<mat-datepicker #picker></mat-datepicker>
 						</mat-form-field>
 					</div>
-					<div mat-dialog-action [align]="'end'">
-						<button mat-raised-button (click)="finalsubmit()"class="submitbtn"  type="submit"
-							[disabled]="!saleform.valid"><p>Final Submit</p></button>
-					</div>
+					<button mat-raised-button color="primary" class="save_btn">Final Submit</button>
 				</form>
 			</div>
 		</ng-template>

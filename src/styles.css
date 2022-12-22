@@ -15,7 +15,7 @@ button{
     margin-top: 19px;
     background-color:#14595c !important;
     text-align: center;
-    color: whitesmoke;
+     color: whitesmoke; 
 }
 
 @media(min-width:920px)and (max-width:1199px){

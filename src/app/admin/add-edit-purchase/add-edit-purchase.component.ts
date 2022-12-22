@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from '../manage.service';
 import { Router } from '@angular/router';
@@ -6,6 +6,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgToastService } from 'ng-angular-popup';
 import { MatButtonModule } from '@angular/material/button';
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 
 @Component({
@@ -19,7 +22,10 @@ export class AddEditPurchaseComponent implements OnInit {
     actionBtn="Save & next"
     saleform: any
     action_Btn="Add";
-   
+    displayedColumns: string[] = ['slno','purch_party', 'purch_amount', 'purch_disc', 'purch_net_payment', 'purch_party_bill_no','purch_cgst','purch_sgst', 'purch_ro','Action',];
+    dataSource!: MatTableDataSource<any>;
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+    @ViewChild(MatSort) sort!: MatSort;
     
   constructor(
     private popup: NgToastService,
@@ -77,6 +83,20 @@ export class AddEditPurchaseComponent implements OnInit {
   finalsubmit(){
 
   }
+
+  
+
+
+
+
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  //   if (this.dataSource.paginator) {
+  //     this.dataSource.paginator.firstPage();
+  //   }
+  // }
   
 
 }
