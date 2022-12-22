@@ -5,29 +5,20 @@
 <div mat-dialog-content>
     <form [formGroup]="area_allocateForm">
         <div class="column">
-            <input type="number" formControlName="alct_area_id" readonly hidden>
-            <input formControlName="alct_distance_id_fk" type="number" ngModel={{distance_id}} readonly hidden>
-            <input formControlName="alct_area_emp_id_fk" type="number" ngModel={{area_emp_id}} readonly hidden>
-            <input formControlName="alct_area_name_id_fk" type="number" ngModel={{area_name_id}} readonly hidden>
-
+            <input type="number" formControlName="alct_area_id" readonly hidden>           
             <mat-form-field appearance="fill">
                 <mat-label>Employee Name</mat-label>
                 <mat-select formControlName="alct_area_emp_id_fk">
-                    <!-- <mat-option *ngFor="let roledata of roledata" [value]="roledata.role_id">{{roledata.role_name}}</mat-option> -->
+                    <mat-option *ngFor="let empdata of empdata" [value]="empdata.emp_id">{{empdata.emp_name}}</mat-option>
                 </mat-select>
             </mat-form-field><br>
 
             <mat-form-field appearance="fill">
                 <mat-label>Area</mat-label>
                 <mat-select formControlName="alct_area_name_id_fk">
-                    <!-- <mat-option *ngFor="let roledata of roledata" [value]="roledata.role_id">{{roledata.role_name}}</mat-option> -->
+                    <mat-option *ngFor="let areadata of areadata" [value]="areadata.area_id">{{areadata.area_name}}</mat-option>
                 </mat-select>
-            </mat-form-field><br>
-           
-            <mat-form-field appearance="fill">
-                <mat-label>Distance</mat-label>
-                <input  formControlName="alct_area_dis" matInput placeholder="Distance">
-            </mat-form-field><br>
+            </mat-form-field><br>                    
 
             <mat-form-field appearance="fill" class="date">
                 <mat-label>Choose a date</mat-label>
@@ -40,7 +31,7 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Discription</mat-label>
-                <input  formControlName="alct_area_discription" matInput placeholder="Discription">
+                <input  formControlName="alct_area_des" matInput placeholder="Discription">
             </mat-form-field><br>
         </div>
         <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>

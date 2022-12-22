@@ -3,7 +3,7 @@
   <mat-icon id="add_area_allocate" (click)="add_area_allocate()">add_circle</mat-icon>
 </div>
 <div class="count_search">
-  <span class="notice_text"> Total :</span>
+  <span class="notice_text"> Total :{{areallocatecount}}</span>
   <div class="search">
     <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
   </div>
@@ -16,26 +16,22 @@
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
           <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
         </ng-container>                  
-        <ng-container matColumnDef="alct_area_emp_id_fk">
+        <ng-container matColumnDef="emp_name">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Emp name</th>
-          <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_emp_id_fk}}</td>
+          <td  class="data"mat-cell *matCellDef="let row">{{row.emp_name}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="alct_area_name_id_fk">
+        <ng-container matColumnDef="area_name">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Area</th>
-          <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_name_id_fk}}</td>
-        </ng-container>
-        <ng-container matColumnDef="alct_area_distance_id_fk">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Distance</th>
-          <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_distance_id_fk}}</td>
+          <td  class="data"mat-cell *matCellDef="let row">{{row.area_name}}</td>
         </ng-container>
         <ng-container matColumnDef="alct_area_date">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
           <td class="data" mat-cell *matCellDef="let row">{{row.alct_area_date}}</td>
         </ng-container> 
-        <ng-container matColumnDef="alct_area_desc">
+        <ng-container matColumnDef="alct_area_des">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-          <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_desc}}</td>
+          <td  class="data"mat-cell *matCellDef="let row">{{row.alct_area_des}}</td>
         </ng-container>        
         <ng-container matColumnDef="Action">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
