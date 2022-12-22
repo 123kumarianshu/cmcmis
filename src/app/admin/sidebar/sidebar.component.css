@@ -70,9 +70,10 @@
   }
 
 
+/* ===========================================media Query================================================== */
 
-
-/* @media(max-width:420px){
+ @media(max-width:420px){
+   
     img {       
         width: 50px;
         height: 40px;
@@ -81,10 +82,10 @@
         font-size:20px;      
     }
     .menu-button {       
-        font-size:14px;
+        font-size:16px;
         color: whitesmoke;
         margin-top: 10px;    
     }
     
     
-} */
+} 

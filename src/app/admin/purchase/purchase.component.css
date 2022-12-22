@@ -54,17 +54,20 @@ mat-icon {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+   
 }
 
+
 .trth {
+    width: 1000px;
     color: white;
-    background-color: #0f575a;
     height: 40px;
     font-weight: bold;
+    background-color:  #0a4547;
 }
 
 tr:nth-child(even) {
-    background-color: whitesmoke;
+ background-color: whitesmoke; 
     height: 35px;
 }
 
@@ -93,4 +96,25 @@ ng-container {
 
 .data:hover {
     color: white;
+}
+/* ============================================media Query======================================================== */
+
+@media(max-width:420px){
+    .search input{
+        left: 5px;
+        width: 89px;
+    }
+    #table{
+        width: 10%;
+        background-color: #0f575a;
+        position: relative;
+    }
+    .trth{
+        background-color: #0f575a;
+        display: flex;
+        text-align: center;
+        width: 339px;
+        padding-left: 10px;
+    }
+   
 }
