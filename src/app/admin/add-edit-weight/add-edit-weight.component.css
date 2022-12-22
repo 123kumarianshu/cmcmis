@@ -12,6 +12,7 @@
     flex: 1 1 auto;
     color: rgb(20,89,92);
     margin-bottom: 20px;
+    font-size: 18px;
 }
 .material-icons{
     color: rgb(20,89,92);
@@ -30,6 +31,6 @@ mat-toolbar {
     color: #f4f8f8;
     padding: 0px;
     position: relative;
-    top: -25px;
-    background-color: #14595c;
+    /* top: -25px; */
+    /* background-color: #14595c; */
 }

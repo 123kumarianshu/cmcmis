@@ -16,7 +16,7 @@
                 <input type="email" formControlName="emp_email" matInput placeholder="Email">
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" id="mobil">
                 <mat-label>Mobile</mat-label>
                 <input type="number" formControlName="emp_mobile" matInput placeholder="Mobile"
                     onkeypress="return this.value.length < 10;"
@@ -36,13 +36,13 @@
                 <input type="number" formControlName="emp_aadhar_no" matInput placeholder="AAdhar Number">
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" id="account">
                 <mat-label>A/C Holder Name </mat-label>
                 <input formControlName="emp_ac_holder_name" matInput placeholder="Ac Holder Name">
             </mat-form-field>
         </div>
         <div class="column">
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" >
                 <mat-label> A/C number</mat-label>
                 <input type="number" formControlName="emp_account_no" matInput placeholder="A/c number">
             </mat-form-field>
@@ -56,7 +56,7 @@
                     (click)="fileInput2.click()" formControlName="emp_photo">Image</button>{{profileI?.name}}{{photo}}</div>
             <input hidden (change)="onPhotoUpload($event)" #fileInput2 type="file">
         </div>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" id="adress">
             <mat-label>Address</mat-label>
             <textarea formControlName="emp_address" matInput placeholder="Address"></textarea>
         </mat-form-field><br>
