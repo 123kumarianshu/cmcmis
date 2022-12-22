@@ -17,6 +17,8 @@ export class UnitComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;  
+
+  unitcount:any
   constructor(
     private addunit: MatDialog,
     private unitservice: ManageService,
@@ -28,6 +30,7 @@ export class UnitComponent implements OnInit {
       this.dataSource = new MatTableDataSource(unitresult.data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
+      this.unitcount = unitresult.data.length
         console.log(unitresult)
       }
     )

@@ -147,6 +147,10 @@ export class ManageService {
   postItem(data: any) {
     return this.http.post<any>(this.baseUrl + 'item_insert.php', data);
   }
+  putItem(data: any) {
+    return this.http.put<any>(this.baseUrl + 'item_update.php', data);
+  }
+
 
   
 }
