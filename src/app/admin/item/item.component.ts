@@ -16,6 +16,7 @@ export class ItemComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+   itemcount:any
   constructor(
     private additem: MatDialog,
     private itemservice: ManageService,
@@ -24,10 +25,11 @@ export class ItemComponent implements OnInit {
   ngOnInit(): void {
     this.itemservice.getItem().subscribe(
       (itemresult:any)=>{
-        console.log(itemresult)   
+        // console.log(itemresult)   
       this.dataSource = new MatTableDataSource(itemresult.data);
       this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;    
+      this.dataSource.paginator = this.paginator;
+      this.itemcount = itemresult.data.length   
       }
     )
   }

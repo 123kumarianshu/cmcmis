@@ -16,7 +16,7 @@ export class PartyComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+        partycount:any
   constructor(
     private addparty: MatDialog,
     private partyservice: ManageService,
@@ -28,6 +28,7 @@ export class PartyComponent implements OnInit {
         this.dataSource = new MatTableDataSource(partyresult.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        this.partycount = partyresult.data.length
       }
     )
   }

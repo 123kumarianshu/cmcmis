@@ -17,6 +17,7 @@ export class GstComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+     gstcount:any
   constructor(
     private addgst: MatDialog,
     private gstservice: ManageService,
@@ -28,6 +29,7 @@ export class GstComponent implements OnInit {
       this.dataSource = new MatTableDataSource(gstresult.data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
+      this.gstcount = gstresult.data.length
 
 
       }

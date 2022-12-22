@@ -3,7 +3,7 @@
   <mat-icon id="add_party" (click)="add_party()">add_circle</mat-icon>
 </div>
   <div class="count_search">
-    <span class="notice_text"> Total :</span>       
+    <span class="notice_text"> Total :{{partycount}}</span>       
     <div class="search">
       <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
     </div>
