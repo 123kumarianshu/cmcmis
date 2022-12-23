@@ -17,7 +17,14 @@ button{
     text-align: center;
      color: whitesmoke; 
 }
-
+::-webkit-scrollbar{
+  width: 5px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 50px;
+  background-color: #033b3e;
+}
 @media(min-width:920px)and (max-width:1199px){
   .openLogin .mat-dialog-container{
     background-size:100%; 
