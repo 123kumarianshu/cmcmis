@@ -14,7 +14,7 @@ import { NgToastService } from 'ng-angular-popup';
 export class AddEditAreaAllocateComponent implements OnInit {
        area_allocateForm: any
        actionBtn:string='add'
-       admin_id:any      
+       admin_id=1      
        empdata:any
        areadata:any
       constructor(
@@ -27,34 +27,35 @@ export class AddEditAreaAllocateComponent implements OnInit {
       ) { 
         this.area_allocateForm = this.fb.group({
           alct_area_id: [''],         
-          alct_area_emp_id_fk: ['', Validators.required],       
-          alct_area_name_id_fk: ['',Validators.required],
+          area_id_fk: ['', Validators.required],       
+          alct_area_des: ['',Validators.required],
           alct_area_date: ['', Validators.required],    
-          alct_area_des: ['',Validators.required],         
+          emp_id_fk : ['',Validators.required],         
           admin_id_fk: [''], 
     
         })
         if (this.editData) {
+          console.log(editData)            
           this.actionBtn = 'Update'   
-          this.area_allocateForm.controls['alct_area_id'].setValue(this.editData.item_id);
-          this.area_allocateForm.controls['alct_area_emp_id_fk'].setValue(this.editData.emp_id);
-          this.area_allocateForm.controls['alct_area_name_id_fk'].setValue(this.editData.area_id);
+          this.area_allocateForm.controls['alct_area_id'].setValue(this.editData.alct_area_id);
+          this.area_allocateForm.controls['area_id_fk'].setValue(this.editData.area_id_fk);
+          this.area_allocateForm.controls['alct_area_des'].setValue(this.editData.alct_area_des);
           this.area_allocateForm.controls['alct_area_date'].setValue(this.editData.alct_area_date);
-          this.area_allocateForm.controls['alct_area_des'].setValue(this.editData.alct_area_des);          
+          this.area_allocateForm.controls['emp_id_fk'].setValue(this.editData.emp_id_fk);          
           this.area_allocateForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
         }
       }
   ngOnInit(): void {
     this.manageService.getEmployee().subscribe(
       (res:any)=>{
-        console.log(res)
+        // console.log(res)
         this.empdata = res.data
       }
     )
 
     this.manageService.getArea().subscribe(
       (res:any)=>{
-        console.log(res)
+        // console.log(res)
         this.areadata = res.data
       }
     )
@@ -84,7 +85,7 @@ export class AddEditAreaAllocateComponent implements OnInit {
         const updateData = new FormData();
         this.manageService.putAllocatearea(this.area_allocateForm.value).subscribe({
           next: (res) => {
-            console.log(res);
+            // console.log(res);
             this.router.navigate(['/area_allocate']);
             this.area_allocateForm.reset();
             this.popup.success({ detail: 'Success', summary: 'Area Allocate Update Successfully...', sticky: true, position: 'tr' })
