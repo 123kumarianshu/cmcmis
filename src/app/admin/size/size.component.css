@@ -1,3 +1,6 @@
+#wrapper{
+    margin-top: 63px;
+}
 .view_notice{
     height: 40px;
     width: 100%;
@@ -61,7 +64,7 @@ mat-icon{
       height: 35px;
   }
   tr:hover{
-      background-color:#d21003;
+      background-color: rgb(15,87,90);
       color: aliceblue;
       cursor: pointer;
   }

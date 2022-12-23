@@ -1,63 +1,72 @@
 .column {
-    margin-right:5px;
-    width:215px;
-    height: 285px;
-    float: left;   
-    padding-left: 10px;
+  margin-right: 5px;
+  width: 215px;
+  height: 285px;
+  float: left;
+  padding-left: 10px;
 
-  }
-   textarea{
-    height: 18px;   
-  }
-  
-  .example-spacer {
-    flex: 1 1 auto;
-    margin-bottom: 20px;
-    color: rgb(20,89,92);
-    font-size: 18px;
-  }
-  .material-icons{
-    color: rgb(20,89,92);
-    margin-bottom: 20px;
-  }
-  .reset_btn {
-    width: 80px;
-    height: 40px;
-    margin-right:20px;     
-  }
-  .add_btn {
-    width: 80px;
-    height: 40px;    
-    margin-right:130px;
-    background-color: green;
-    color: white;
-  }
-  mat-toolbar {
-    height: 40px;
-    background: none;
-    color:whitesmoke;
+}
+
+textarea {
+  height: 18px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+  margin-bottom: 20px;
+  color: rgb(20, 89, 92);
+  font-size: 18px;
+}
+
+.material-icons {
+  color: rgb(20, 89, 92);
+  margin-bottom: 20px;
+}
+
+.reset_btn {
+  width: 80px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+.add_btn {
+  width: 80px;
+  height: 40px;
+  margin-right: 130px;
+  background-color: green;
+  color: white;
+}
+
+mat-toolbar {
+  height: 40px;
+  background: none;
+  color: whitesmoke;
+  padding: 0px;
+  position: relative;
+}
+
+@media(max-width:768px) {
+  .column {
+    width: 100%;
+    height: auto;
     padding: 0px;
-    position: relative;
   }
-  @media(max-width:768px){
-    .column{
-      width: 100%;
-      height: auto;
-      padding: 0px;
-    }
-    .column mat-form-field{
-      width: 100%;
-    }
-    .reset_btn{
-      width: 30%;
-      float: left;
-      margin: 0px;
-      margin-left: 10%;
-    }
-    .add_btn{
-      width: 30%;
-      float: right;
-      margin: 0px;
-     margin-right: 10%;
-    }
+
+  .column mat-form-field {
+    width: 100%;
   }
+
+  .reset_btn {
+    width: 30%;
+    float: left;
+    margin: 0px;
+    margin-left: 10%;
+  }
+
+  .add_btn {
+    width: 30%;
+    float: right;
+    margin: 0px;
+    margin-right: 10%;
+  }
+}

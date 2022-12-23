@@ -1,56 +1,64 @@
 .column {
-  margin-right:5px;
-  width:200px;
-  height:213px;
-  float: left;   
+  margin-right: 5px;
+  width: 200px;
+  height: 213px;
+  float: left;
 }
- textarea{
-  height: 18px;   
+
+textarea {
+  height: 18px;
 }
 
 .example-spacer {
   flex: 1 1 auto;
 }
+
 .reset_btn {
   width: 100px;
   height: 40px;
   margin-top: 28px;
-  
+
 }
- .add_btn {
+
+.add_btn {
   width: 100px;
-  height: 40px;  
+  height: 40px;
   background-color: green;
-  color: white; 
+  color: white;
   /* margin-right:600px; */
-} 
+}
+
 mat-toolbar {
   height: 40px;
   background: none;
 
-  color:#14595c; 
+  color: #14595c;
   padding: 0px;
   position: relative;
-  top:-10px;
+  top: -10px;
 }
+
 .upload_box {
   width: 200px;
   height: 53px;
   /* border: 0.5px solid rgb(228, 226, 226); */
-  border-bottom:0.5px solid rgb(228, 226, 226); 
+  border-bottom: 0.5px solid rgb(228, 226, 226);
   /* border-radius: 5px;     */
-  margin-bottom: 25px; 
+  margin-bottom: 25px;
   overflow: hidden;
 }
+
 .upload_box button {
   width: 100px;
   height: 44px;
   margin: 3px;
 }
-.upload_box:hover{
+
+.upload_box:hover {
   border: 2px solid black;
 
 }
+
 @media (min-width:1200px) and (max-width:2000px) {
   .column mat-form-field {
     width: 93%;
@@ -88,6 +96,7 @@ mat-toolbar {
     margin-top: -7%;
   }
 }
+
 @media (min-width:768px) and (max-width:1200px) {
   .column {
     width: 100%;
@@ -141,9 +150,11 @@ mat-toolbar {
     width: 100%;
     margin-top: -5px;
   }
+
   .upload_box {
     width: 100%;
   }
+
   .reset_btn {
     width: 30%;
     float: left;

@@ -1,67 +1,69 @@
-<div class="view_notice">
-    <span class="notice_text">Sale cancel bill :</span>
-</div>
-<div class="count_search">
-    <span class="notice_text">Total :</span>
-    <div class="search">
-        <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+<div id="wrapper">
+    <div class="view_notice">
+        <span class="notice_text">Sale cancel bill :</span>
     </div>
-</div>
-<div class="cotainer">
-    <form>
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort id="table">
-                <ng-container matColumnDef="slno">
-                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
-                    <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
-                        paginatorRef.pageSize)+(i+1)}}
-                    </td>
-                </ng-container>
-                <ng-container matColumnDef="cust_name">
-                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Customer</th>
-                    <td class="data" mat-cell *matCellDef="let row">{{row.cust_name}}</td>
-                </ng-container>
-                <ng-container matColumnDef="sale_bill_no">
-                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill number</th>
-                    <td class="data" mat-cell *matCellDef="let row">{{row.sale_bill_no}}</td>
-                </ng-container>
-                <ng-container matColumnDef="sale_total_amount">
-                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total amount</th>
-                    <td class="data" mat-cell *matCellDef="let row">{{row.sale_total_amount}}</td>
-                </ng-container>
-                <ng-container matColumnDef="sale_dues">
-                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Dues</th>
-                    <td class="data" mat-cell *matCellDef="let row">{{row.sale_dues}}</td>
-                </ng-container>
-                <ng-container matColumnDef="sale_gst">
-                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
-                    <td class="data" mat-cell *matCellDef="let row">{{row.sale_gst}}</td>
-                </ng-container>
-                <ng-container matColumnDef="sale_discount">
-                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
-                    <td class="data" mat-cell *matCellDef="let row">{{row.sale_discount}}</td>
-                </ng-container>
-                <ng-container matColumnDef="sale_Cancel_reason">
-                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-heade>Cancel Reason</th>
-                    <td class="data" mat-cell *matCellDef="let row">{{row.sale_Cancel_reason}}</td>
-                </ng-container>
-                <ng-container matColumnDef="sale_date">
-                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-                    <td class="data" mat-cell *matCellDef="let row">{{row.sale_date}}</td>
-                </ng-container>
-                <ng-container matColumnDef="Action">
-                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-                    <td class="data" mat-cell *matCellDef="let row">                  
-                    </td>
-                  </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                <tr class="mat-row" *matNoDataRow>
-                    <td class="mat-cell" colspan="4">No show data"{{input.value}}"</td>
-                </tr>
-            </table>
-            <mat-paginator #paginatorRef [pageSizeOptions]="[ 10, 25, 100]" aria-label="Select page of users">
-            </mat-paginator>
+    <div class="count_search">
+        <span class="notice_text">Total :</span>
+        <div class="search">
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
         </div>
-    </form>
+    </div>
+    <div class="cotainer">
+        <form>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort id="table">
+                    <ng-container matColumnDef="slno">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+                        <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
+                            paginatorRef.pageSize)+(i+1)}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="cust_name">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Customer</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.cust_name}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="sale_bill_no">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill number</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.sale_bill_no}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="sale_total_amount">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total amount</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.sale_total_amount}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="sale_dues">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Dues</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.sale_dues}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="sale_gst">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.sale_gst}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="sale_discount">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.sale_discount}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="sale_Cancel_reason">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-heade>Cancel Reason</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.sale_Cancel_reason}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="sale_date">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.sale_date}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="Action">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                        <td class="data" mat-cell *matCellDef="let row">
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No show data"{{input.value}}"</td>
+                    </tr>
+                </table>
+                <mat-paginator #paginatorRef [pageSizeOptions]="[ 10, 25, 100]" aria-label="Select page of users">
+                </mat-paginator>
+            </div>
+        </form>
+    </div>
 </div>

@@ -1,3 +1,6 @@
+#wrapper{
+    margin-top: 63px;
+}
 .view_notice{
     height: 40px;
     width: 100%;
@@ -7,6 +10,7 @@
     justify-content: space-between;
     padding: 10px;
     box-sizing: border-box;
+   
 }
 #add_unit{
     position: relative;
@@ -25,6 +29,7 @@
     padding: 10px;
     box-sizing: border-box;
     color: #0d5e58;
+    
 }
 .search input{   
     border-bottom: 1px solid #0a4547;
@@ -70,6 +75,7 @@ mat-icon{
   }
   .cotainer{
       margin-top: 5px;
+     
   }
   .mat-form-field {
       font-size: 18px;

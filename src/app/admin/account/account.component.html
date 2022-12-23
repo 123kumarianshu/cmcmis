@@ -1,4 +1,5 @@
-<div class="view_notice">
+<div id="wrapper">
+  <div class="view_notice">
     <span class="notice_text">Account</span>
     <mat-icon id="add_account" (click)="add_account()">add_circle</mat-icon>
   </div>
@@ -11,15 +12,16 @@
   <div class="cotainer">
     <form>
       <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort id="table">    
+        <table mat-table [dataSource]="dataSource" matSort id="table">
           <ng-container matColumnDef="slno">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
-            <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
-          </ng-container> 
+            <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
+              paginatorRef.pageSize)+(i+1)}}</td>
+          </ng-container>
 
           <ng-container matColumnDef="today_sale">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Today sale</th>
-            <td  class="data"mat-cell *matCellDef="let row">{{row.today_sale}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.today_sale}}</td>
           </ng-container>
 
           <ng-container matColumnDef="today_expense">
@@ -30,38 +32,37 @@
           <ng-container matColumnDef="cash_in_hand">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Cash in Hand</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.cash_in_hand}}</td>
-          </ng-container> 
+          </ng-container>
 
           <ng-container matColumnDef="deposit_into_bank">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Deposit into Bank</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.deposit_into_bank}}</td>
-          </ng-container> 
+          </ng-container>
 
           <ng-container matColumnDef="closing_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Closing Amount</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.closing_amount}}</td>
-          </ng-container> 
+          </ng-container>
 
           <ng-container matColumnDef="date">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.date}}</td>
-          </ng-container> 
-          
+          </ng-container>
+
           <ng-container matColumnDef="remarks">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Remarks</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.remarks}}</td>
-          </ng-container>    
+          </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>     
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
           </tr>
-        </table>    
-        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-      </div>    
+        </table>
+        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
+          aria-label="Select page of users"></mat-paginator>
+      </div>
     </form>
   </div>
-  
-  
-  
+</div>

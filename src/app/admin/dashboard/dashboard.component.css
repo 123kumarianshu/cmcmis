@@ -1,11 +1,11 @@
 .main_thumbnail {
   padding-right: 20px;
-  /* padding-top: 57px; */
+  padding-top: 61px;
 }
 
 .thumbnail {
   width: calc(25% - 20px);
-  height: 100px;  
+  height: 100px;
   background-color: rgb(174, 199, 204);
   border-left: 5px solid#14595c;
   border-radius: 5px;
@@ -43,26 +43,29 @@ mat-icon {
   .main_thumbnail {
     padding-right: 0px;
   }
+
   .thumbnail {
     width: 27%;
     height: 100px;
     float: left;
     margin-top: 5%;
-    margin-left: 5%;
+    margin-left: 4.4%;
 
   }
+
   .thumbnail span {
     font-size: 20px;
     line-height: 25px;
     margin-left: 10px;
   }
+
   mat-icon {
     width: 30px;
     height: 30px;
-    font-size: 30px;   
+    font-size: 30px;
     margin-top: 35px;
   }
-  
+
   /* .main_thumbnail {
     padding-right: 10px;
   }
@@ -85,56 +88,62 @@ mat-icon {
   } */
 
 }
+
 @media(min-width:768px)and (max-width:919px) {
   .main_thumbnail {
     padding-right: 0px;
   }
+
   .thumbnail {
     width: 43%;
     height: 100px;
     float: left;
     margin-top: 5%;
-    margin-left: 5%;
+    margin-left: 4.4%;
 
   }
+
   .thumbnail span {
     font-size: 20px;
     line-height: 25px;
     margin-left: 10px;
   }
+
   mat-icon {
     width: 30px;
     height: 30px;
-    font-size: 30px;   
+    font-size: 30px;
     margin-top: 35px;
   }
-  
+
 }
 
 @media(min-width:420px)and (max-width:767px) {
   .main_thumbnail {
     padding-right: 0px;
   }
+
   .thumbnail {
     width: 90%;
     height: 100px;
     float: left;
-    margin-top: 5%;
-    margin-left: 5%;
+    margin: 4% 4% 0% 4%;
 
   }
+
   .thumbnail span {
     font-size: 20px;
     line-height: 25px;
     margin-left: 10px;
   }
+
   mat-icon {
     width: 30px;
     height: 30px;
-    font-size: 30px;   
+    font-size: 30px;
     margin-top: 35px;
   }
-  
+
 }
 
 @media(max-width:420px) {
@@ -149,6 +158,7 @@ mat-icon {
     margin-left: 2px;
 
   }
+
   .thumbnail span {
     font-size: 15px;
     line-height: 25px;
@@ -158,7 +168,7 @@ mat-icon {
   mat-icon {
     width: 25px;
     height: 25px;
-    font-size: 25px;   
+    font-size: 25px;
     margin-top: 35px;
   }
 }
