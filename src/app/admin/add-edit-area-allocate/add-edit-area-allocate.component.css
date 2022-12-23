@@ -20,10 +20,16 @@ textarea{
     width: 200px;
 }
 
-  mat-toolbar {
-      height: 49px;
-      padding: 0px;
-      background: none;
-      position: relative;
-      color: whitesmoke;
-  }
+mat-toolbar{
+    height:49px;
+    margin-bottom:-20px;
+    padding: 0px;
+    background: none;
+    position: relative;
+    top:-25px;
+    color:whitesmoke;
+    background-color:#14595c; ;
+}
+
+
+ 
