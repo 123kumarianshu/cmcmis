@@ -1,34 +1,24 @@
-  .reset_btn {
-      margin-right: 30px;
-  }
-
-  .add_btn {
-      margin-right: 20px;
-      background-color: green;
-      color: whitesmoke;
-  }
-
-  .example-spacer {
-      flex: 1 1 auto;
-      margin-bottom: 20px;
-      color: rgb(20, 89, 92);
-      font-size: 18px;
-  }
-
-  .material-icons {
-      color: rgb(20, 89, 92);
-      margin-bottom: 20px;
-  }
+  .reset_btn{
+    margin-right: 30px; 
+}
+.add_btn{
+    margin-right:20px;
+    background-color: green;
+    color: whitesmoke;
+}
+.example-spacer {
+    flex: 1 5 auto;
+    
+}
 
 
-  textarea {
-      height: 18px;
-
-  }
-
-  .date {
-      width: 200px;
-  }
+textarea{
+    height: 18px;
+      
+ }
+ .date{
+    width: 200px;
+}
 
   mat-toolbar {
       height: 49px;

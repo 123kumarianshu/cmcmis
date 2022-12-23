@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Party, Unit, gst } from './add_edit_manage';
+import { AreaAllocateComponent } from './area-allocate/area-allocate.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -151,6 +152,16 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'item_update.php', data);
   }
 
+  // *******************************AreaAllocate funcation start here**************************
+  getAllocatearea() {
+    return this.http.get<[]>(this.baseUrl + 'allocate_area_view.php');
+  }
+  postAllocatearea(data: any) {
+    return this.http.post<any>(this.baseUrl + 'allocate_area_insert.php', data);
+  }
+  putAllocatearea(data: any) {
+    return this.http.put<any>(this.baseUrl + 'allocate_area_update.php', data);
+  }
 
   
 }
