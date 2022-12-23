@@ -1,5 +1,6 @@
-<div class="view_notice">
-    <span class="notice_text">Reciept Details</span>   
+<div id="wrapper">
+  <div class="view_notice">
+    <span class="notice_text">Reciept Details</span>
   </div>
   <div class="count_search">
     <span class="notice_text"> Total :</span>
@@ -16,17 +17,17 @@
             <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
               paginatorRef.pageSize)+(i+1)}}</td>
           </ng-container>
-  
+
           <ng-container matColumnDef="reciept_customer">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Customer</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.reciept_customer}}</td>
           </ng-container>
-          
+
           <ng-container matColumnDef="reciept_bill_number">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number </th>
             <td class="data" mat-cell *matCellDef="let row">{{row.reciept_bill_number}}</td>
           </ng-container>
-  
+
           <ng-container matColumnDef="reciept_back_dues">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Back dues </th>
             <td class="data" mat-cell *matCellDef="let row">{{row.reciept_back_dues}}</td>
@@ -45,16 +46,17 @@
           <ng-container matColumnDef="reciept_date">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date </th>
             <td class="data" mat-cell *matCellDef="let row">{{row.reciept_date}}</td>
-          </ng-container>       
-  
+          </ng-container>
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
           </tr>
         </table>
-        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
+          aria-label="Select page of users"></mat-paginator>
       </div>
     </form>
   </div>
-
+</div>
