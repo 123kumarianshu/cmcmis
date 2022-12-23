@@ -20,7 +20,12 @@
           </ng-container>
 
           <ng-container matColumnDef="cust_shop_name">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Shop Name</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party Name</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="party_gst_no">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_name}}</td>
           </ng-container>
 
@@ -52,4 +57,5 @@
       </div>
     </form>
   </div>
-</div>
+
+
