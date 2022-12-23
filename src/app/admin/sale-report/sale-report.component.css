@@ -61,6 +61,7 @@ mat-icon {
     background-color: #0f575a;
     height: 40px;
     font-weight: bold;
+    padding-left: 50px;
 }
 
 tr:nth-child(even) {
@@ -111,7 +112,12 @@ ng-container {
   
     
 }
-			
+.example-full-width{
+    width: 150px;
+   height: 200;
+    position: absolute;
+}
+		
 		
 		
    
