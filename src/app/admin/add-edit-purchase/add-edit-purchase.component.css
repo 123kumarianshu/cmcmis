@@ -1,6 +1,7 @@
-#wrapper{
+#wrapper {
     margin-top: 63px;
 }
+
 .view_notice {
     height: 40px;
     width: 100%;
@@ -9,6 +10,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    margin-top: 67px;
     box-sizing: border-box;
 }
 
@@ -118,11 +120,6 @@ button {
 
 }
 
-.nav-tabs {
-    background-color: #0f575a;
-}
-
-
 mat-form-field {
     margin-right: 5px;
 }
@@ -228,15 +225,19 @@ a {
     border-radius: 5px;
 }
 
+.text_amount {
+    margin-right: 59.2em;
+}
+
 
 .addButton {
     background-color: #05363c;
+    height: 52px;
+    width: 52px;
     color: aliceblue;
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    font-style: bold;
-
+    font-size: 50px;
+    margin: -90px 11.3em 33px 0px;
+    
 }
 
 /* ====================================================Media Queryss===================================================== */

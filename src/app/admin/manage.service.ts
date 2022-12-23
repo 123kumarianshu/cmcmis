@@ -15,9 +15,9 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  baseUrl: string = 'http://adityaradhaya.com/api/';  
-  // baseUrl: string = 'http://localhost/cmcmisapi/';
-  //  baseUrl: string = 'http://localhost/cmcmisAPI/';
+  // baseUrl: string = 'http://adityaradhaya.com/api/';  
+   baseUrl: string = 'http://localhost/api/';
+ 
 
 
 
@@ -162,8 +162,15 @@ export class ManageService {
   putAllocatearea(data: any) {
     return this.http.put<any>(this.baseUrl + 'allocate_area_update.php', data);
   }
-
   
+  getPtr(data: any) {
+    return this.http.get<[]>(this.baseUrl + 'party_single_view.php');
+  }
+
+  postpur(data: any) {
+    return this.http.post<any>(this.baseUrl + 'pur_party_insert.php', data);
+  }
+
 }
 
 
