@@ -5,12 +5,14 @@
     height: 40px;
     width: 100%;
     background-color: #0b4648;
-    color: whitesmoke;
+    color: whitesmoke; 
     display: flex;
     justify-content: space-between;
     padding: 10px;
     box-sizing: border-box;
-   
+    /* position: fixed;
+    top: 63px; */
+
 }
 #add_unit{
     position: relative;
@@ -29,7 +31,10 @@
     padding: 10px;
     box-sizing: border-box;
     color: #0d5e58;
-    
+    /* position: fixed;
+    top: 102px;
+    z-index: 8;
+    background-color: white; */
 }
 .search input{   
     border-bottom: 1px solid #0a4547;
@@ -75,7 +80,7 @@ mat-icon{
   }
   .cotainer{
       margin-top: 5px;
-     
+      /* margin-top: 142px; */
   }
   .mat-form-field {
       font-size: 18px;
