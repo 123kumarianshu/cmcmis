@@ -25,7 +25,8 @@ export class AccountComponent implements OnInit {
   }
   add_account(): any {
     this.addaccount.open(AddEditAccountComponent, {
-      disableClose: true
+      disableClose: true,
+      // height:'60%'
     }).afterClosed().subscribe(val => {
       if (val === 'save') {
         this.ngOnInit();

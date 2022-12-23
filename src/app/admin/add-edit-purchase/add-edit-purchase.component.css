@@ -8,31 +8,35 @@
     padding: 10px;
     box-sizing: border-box;
 }
+
 .notice_text {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.button_area{
-    height:28px ;
-    border-bottom:1px solid black ;
+
+.button_area {
+    height: 28px;
+    border-bottom: 1px solid black;
 }
 
-.btn{
+.btn {
     background-color: #0b4648;
-    height:35px;
-    width:100px;
+    height: 35px;
+    width: 100px;
     color: whitesmoke;
-    margin-left:5px ;
-    margin-top:-15px ;
+    margin-left: 5px;
+    margin-top: -15px;
 }
-#Total_bill_btn{
+
+#Total_bill_btn {
     background-color: #0b4648;
-    height:35px;
-    width:150px;
+    height: 35px;
+    width: 150px;
     color: whitesmoke;
-    float:right;  
-    margin-top:-15px;
-    border-radius:5px ;
+    float: right;
+    margin-top: -15px;
+    border-radius: 5px;
 }
+
 .view_notice {
     height: 40px;
     width: 100%;
@@ -63,7 +67,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
- 
+
 
 .notice_text {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -88,7 +92,8 @@
     top: -5px;
     left: 0px;
 }
-.save_btn{
+
+.save_btn {
     margin-right: 558px;
     margin-top: 18px;
     height: 40px;
@@ -109,8 +114,9 @@ button {
     margin-bottom: 20px;
 
 }
-.nav-tabs{
-   background-color: #0f575a;
+
+.nav-tabs {
+    background-color: #0f575a;
 }
 
 
@@ -134,9 +140,9 @@ mat-form-field {
     margin-right: 850px;
 }
 
- ng-container a {
+ng-container a {
     background-color: #05363c;
-} 
+}
 
 /* =============================================Button Change================================================= */
 .submitbtn {
@@ -149,7 +155,8 @@ mat-form-field {
     margin-top: -35px;
     margin-left: 585px;
 }
-.submitbtn p{
+
+.submitbtn p {
     background-color: #05363c;
     width: 129px;
     font-size: 19px;
@@ -159,32 +166,35 @@ mat-form-field {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin-left: -20px;
 }
+
 /* ============================================================================================================= */
 .customer_btn {
     background-color: #05363c;
     border-radius: 5px;
     color: whitesmoke;
 }
-#billnobtn{
+
+#billnobtn {
     position: absolute;
     right: 10px;
     height: 38px;
-    top:138px;
+    top: 138px;
     margin-right: -4px;
 }
 
-a{
+a {
     position: relative;
     top: 3px;
     margin: 1px;
-    }
-    .add_btn{
-        margin-top: 39px;
-        background-color: #0b4648;
-        color: white;
-    }
-  
-    
+}
+
+.add_btn {
+    margin-top: 39px;
+    background-color: #0b4648;
+    color: white;
+}
+
+
 /* .footer{
     background-color: #0b4648;
     width:100%;
@@ -193,19 +203,21 @@ a{
     margin-top:274px;
 } */
 /* ==============================================change======================================================= */
-.party_btn{
+.party_btn {
     width: 70px;
     height: 36px;
     border-radius: 5px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-.item_btn{
+
+.item_btn {
     width: 70px;
     height: 36px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    border-radius: 5px;  
+    border-radius: 5px;
 }
-.final_btn{
+
+.final_btn {
     width: 90px;
     margin-left: 2px;
     height: 36px;
@@ -214,17 +226,18 @@ a{
 }
 
 
-.addButton{
+.addButton {
     background-color: #05363c;
     color: aliceblue;
     width: 40px;
     height: 40px;
     border-radius: 5px;
     font-style: bold;
-    
+
 }
+
 /* ====================================================Media Queryss===================================================== */
-@media(max-width: 420px){
+@media(max-width: 420px) {
     .mat-form-field-infix {
         display: block;
         position: relative;
@@ -232,71 +245,82 @@ a{
         min-width: -28px;
         width: 243px;
     }
-    .textarea_box{
+
+    .textarea_box {
         width: 200px;
         height: 20px;
     }
-   
-    .save_btn{
+
+    .save_btn {
         margin-right: 145px;
         margin-top: 42px;
         font-size: 17px;
     }
-.party_btn{ 
-    width: 56px;
-    padding-right: -5px;
-    padding-left: 11px;
-    height: 36px;
+
+    .party_btn {
+        width: 56px;
+        padding-right: -5px;
+        padding-left: 11px;
+        height: 36px;
+    }
+
+    .item_btn {
+        width: 57px;
+        height: 36px;
+        padding-left: 14px;
+
+    }
+
+    .final_btn {
+        width: 77px;
+        margin-left: 1px;
+        padding-left: 4px;
+        padding-right: 0px;
+        text-align: center;
+        height: 36px;
+    }
+
+    #billnobtn {
+
+        right: 10px;
+        height: 38px;
+        top: 121px;
+        width: 131px;
+        margin-right: -4px;
+    }
 }
-.item_btn{
-    width: 57px;
-    height: 36px;
-    padding-left: 14px;
-   
-}
-.final_btn{
-    width: 77px;
-    margin-left: 1px;
-    padding-left: 4px;
-    padding-right: 0px;
-    text-align: center;
-    height: 36px;
-}
-#billnobtn{
-   
-    right: 10px;
-    height: 38px;
-    top: 121px;
-    width: 131px;
-    margin-right: -4px;
-}
-}
+
 @media(max-width: 520px) {
-    .textarea_box{
+    .textarea_box {
         width: 03px;
         margin-left: -22px;
         padding-left: 37px;
     }
-    #billnobtn{
+
+    #billnobtn {
         top: 125px;
     }
-    .save_btn{
+
+    .save_btn {
         margin-right: 150px;
-      
-    }  
-}
-@media(max-width: 620px){
-    #billnobtn{
-        top: 125px;
-       
+
     }
-    .textarea_box{
+}
+
+@media(max-width: 620px) {
+    #billnobtn {
+        top: 125px;
+
+    }
+
+    .textarea_box {
         width: 200px;
         margin-left: -210px;
     }
-    .save_btn{
+
+    .save_btn {
         margin-right: 210px;
-    } 
+    }
 }
 
 
@@ -342,7 +366,7 @@ a{
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-   
+
 }
 
 
@@ -351,11 +375,11 @@ a{
     color: white;
     height: 40px;
     font-weight: bold;
-    background-color:  #0a4547;
+    background-color: #0a4547;
 }
 
 tr:nth-child(even) {
- background-color: whitesmoke; 
+    background-color: whitesmoke;
     height: 35px;
 }
 
@@ -374,5 +398,3 @@ ng-container {
 }
 
 /* for table css ending here */
-
-

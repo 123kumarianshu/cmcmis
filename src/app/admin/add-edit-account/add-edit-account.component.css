@@ -1,11 +1,27 @@
     .column {
-        margin-right:10px;
-        width:199px;
-        height: 300px;
+        width: 199px;
+        height: auto;
         float: left;
     }
+
+    .column mat-form-field {
+        width: 90%;
+    }
+
+    form {
+        padding-left: 20px;
+    }
+
     .example-spacer {
         flex: 1 1 auto;
+        margin-bottom: 20px;
+        color: rgb(20, 89, 92);
+        font-size: 18px;
+    }
+
+    .material-icons {
+        color: rgb(20, 89, 92);
+        margin-bottom: 20px;
     }
 
     .date_box {
@@ -13,33 +29,59 @@
     }
 
     .reset_btn {
-    width: 80px;
-    height: 40px;
-    float: left; 
-    margin-left: px;   
-    margin-top: 12px; 
-  }
+        width: 80px;
+        height: 40px;
+        float: left;
+        margin-top: 12px;
+        margin-left: 1px;
+    }
+
     .add_btn {
-    width: 80px;
-    height: 40px;    
-    float: right;
-    background-color: green;
-    color: white;
-    margin-top: 12px;
-  }
+        width: 80px;
+        height: 40px;
+        float: right;
+        background-color: green;
+        color: white;
+        margin-top: 12px;
+        margin-right: 20px;
+    }
+
     mat-toolbar {
         height: 40px;
         background: none;
-        margin-bottom:11px;
-        color: #14595c; 
+        color: #14595c;
         padding: 0px;
         position: relative;
-        margin-top: -12px;
     }
-    @media (max-width: 576px) {
-        .mat-form-field{
+
+
+    @media (max-width: 583px) {
+        .column {
             width: 100%;
-        } 
-        
+            height: auto;
+        }
+
+        form {
+            padding-left: 0px;
+        }
+
+        .column mat-form-field {
+            width: 100%;
+        }
+
+        .reset_btn {
+            width: 30%;
+            float: left;
+            margin-left: 10%;
+
+        }
+
+        .add_btn {
+            width: 30%;
+            float: right;
+            margin-right: 10%;
+            /* margin-right: 20%; */
+            /* float: right; */
+        }
+
     }
-  

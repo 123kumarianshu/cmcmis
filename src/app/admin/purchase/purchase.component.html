@@ -1,4 +1,5 @@
-<div class="view_notice">
+<div id="wrapper">
+  <div class="view_notice">
     <span class="notice_text">Purchase Details</span>
     <mat-icon id="add_purchase" routerLink="/add_edit_purchase">add_circle</mat-icon>
   </div>
@@ -11,49 +12,50 @@
   <div class="cotainer">
     <form>
       <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort id="table">    
+        <table mat-table [dataSource]="dataSource" matSort id="table">
           <ng-container matColumnDef="slno">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
-            <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
+            <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
+              paginatorRef.pageSize)+(i+1)}}</td>
           </ng-container>
-          
+
           <ng-container matColumnDef="purch_party">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party</th>
-            <td  class="data"mat-cell *matCellDef="let row">{{row.purch_party}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_party}}</td>
           </ng-container>
 
           <ng-container matColumnDef="purch_disc">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
-            <td  class="data"mat-cell *matCellDef="let row">{{row.purch_disc}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_disc}}</td>
           </ng-container>
 
           <ng-container matColumnDef="purch_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic Amount</th>
-            <td  class="data"mat-cell *matCellDef="let row">{{row.purch_amount}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_amount}}</td>
           </ng-container>
 
           <ng-container matColumnDef="purch_net_payment">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Net Amount</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.purch_net_payment}}</td>
-          </ng-container> 
+          </ng-container>
 
           <ng-container matColumnDef="purch_cgst">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>CGST</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.purch_cgst}}</td>
-          </ng-container> 
+          </ng-container>
 
           <ng-container matColumnDef="purch_sgst">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SGST</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.purch_sgst}}</td>
-          </ng-container> 
+          </ng-container>
 
           <ng-container matColumnDef="purch_ro">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>R/O</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.purch_ro}}</td>
-          </ng-container>           
+          </ng-container>
           <ng-container matColumnDef="purch_party_bill_no">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
-            <td  class="data"mat-cell *matCellDef="let row">{{row.purch_party_bill_no}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_party_bill_no}}</td>
           </ng-container>
 
           <ng-container matColumnDef="Action">
@@ -62,14 +64,14 @@
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>     
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
           </tr>
-        </table>    
-        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-      </div>    
+        </table>
+        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
+          aria-label="Select page of users"></mat-paginator>
+      </div>
     </form>
   </div>
-  
-  
+</div>
