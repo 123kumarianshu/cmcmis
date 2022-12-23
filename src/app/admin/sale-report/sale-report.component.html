@@ -1,5 +1,6 @@
-<div class="view_notice">
-    <span class="notice_text">Sale Report</span>   
+<div id="wrapper">
+  <div class="view_notice">
+    <span class="notice_text">Sale Report</span>
     <mat-icon id="print_sale_report" routerLink="/add_customer_details">local_printshop</mat-icon>
   </div>
   <div class="count_search">
@@ -18,17 +19,17 @@
             <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
               paginatorRef.pageSize)+(i+1)}}</td>
           </ng-container>
-  
+
           <ng-container matColumnDef="bill_number">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill number </th>
             <td class="data" mat-cell *matCellDef="let row">{{row.bill_number}}</td>
           </ng-container>
-          
+
           <ng-container matColumnDef="product">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product </th>
             <td class="data" mat-cell *matCellDef="let row">{{row.product}}</td>
           </ng-container>
-  
+
           <ng-container matColumnDef="quantity">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Quantity</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.quantity}}</td>
@@ -57,15 +58,16 @@
           <ng-container matColumnDef="total_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total amount</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.total_amount}}</td>
-          </ng-container>   
-         
+          </ng-container>
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
           </tr>
         </table>
-        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
+          aria-label="Select page of users"></mat-paginator>
       </div>
     </form>
   </div>
@@ -73,8 +75,6 @@
     <span class="total">Total GST : 0 |</span>
     <span class="total">Discount : 0 |</span>
     <span class="total">Basic amount : 0 |</span>
-    <span class="total">Total amount :  0 </span>
+    <span class="total">Total amount : 0 </span>
   </div>
-
-
-
+</div>

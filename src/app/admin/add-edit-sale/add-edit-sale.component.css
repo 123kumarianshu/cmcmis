@@ -15,7 +15,8 @@
     left: 2px;
     cursor: pointer;
 }
-.text_amount{
+
+.text_amount {
     margin-right: 830px;
 }
 
@@ -85,9 +86,10 @@ mat-form-field {
 }
 
 
- ng-container a {
+ng-container a {
     background-color: #05363c;
-} 
+}
+
 /* =============================================Button============================================================ */
 .submitbtn {
     width: 100px;
@@ -96,7 +98,8 @@ mat-form-field {
     float: left;
     margin-top: 90px;
 }
-.submitbtn p{
+
+.submitbtn p {
     width: 130px;
     height: 40px;
     border-radius: 5px;
@@ -117,19 +120,21 @@ mat-form-field {
     border-radius: 5px;
     color: whitesmoke;
 }
-#billnobtn{
+
+#billnobtn {
     position: absolute;
     right: 10px;
-    top:139px;
+    top: 139px;
     margin-right: -6px;
     height: 37px;
 }
 
-a{
+a {
     position: relative;
     top: 3px;
     margin: 1px;
-    }
+}
+
 /* .footer{
     background-color: #0b4648;
     width:100%;
@@ -139,7 +144,7 @@ a{
 }
 
 */
-.item_add_btn{
+.item_add_btn {
     margin-right: 599px;
     margin-top: 5px;
     width: 80px;
@@ -147,7 +152,7 @@ a{
     font-size: 18px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     cursor: pointer;
- 
+
 }
 
 #table {
@@ -160,7 +165,7 @@ a{
     color: white;
     background-color: #0f575a;
     height: 40px;
-    font-weight: bold;  
+    font-weight: bold;
 }
 
 tr:nth-child(even) {
@@ -177,6 +182,3 @@ tr:hover {
     color: aliceblue;
     cursor: pointer;
 }
-
-
-

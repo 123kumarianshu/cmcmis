@@ -10,6 +10,8 @@
     flex: 1 5 auto;
     
 }
+
+
 textarea{
     height: 18px;
       
@@ -25,8 +27,8 @@ mat-toolbar{
     background: none;
     position: relative;
     top:-25px;
-    color: #14595c;
-
+    color:whitesmoke;
+    background-color:#14595c; ;
 }
 
 

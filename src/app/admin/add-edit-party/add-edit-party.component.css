@@ -1,51 +1,57 @@
 .column {
   margin-right: 1px;
   width: 205px;
-  height:200px;
+  height: 200px;
   float: left;
 
 }
-.column_1 mat-form-field{
+
+.column_1 mat-form-field {
   width: 400px;
   margin-top: 5px;
 }
+
 textarea {
-  height: 18px;      
-} 
+  height: 18px;
+}
 
 .example-spacer {
   flex: 1 1 auto;
   margin-bottom: 20px;
-  color: rgb(20,89,92);
+  color: rgb(20, 89, 92);
   font-size: 18px;
-}  
-.material-icons{
-  color: rgb(20,89,92);
+}
+
+.material-icons {
+  color: rgb(20, 89, 92);
   margin-bottom: 20px;
 }
+
 .reset_btn {
-  width:80px;
+  width: 80px;
   height: 40px;
-  margin-right:180px ;
+  margin-right: 180px;
 
 }
-button{
-  top:20px;
+
+button {
+  top: 20px;
 }
 
 .add_btn {
   width: 80px;
-  height: 40px;  
+  height: 40px;
   background-color: green;
-  color: whitesmoke; 
-  margin-right:150px ;   
+  color: whitesmoke;
+  margin-right: 150px;
 
-} 
+}
+
 mat-toolbar {
   height: 40px;
   background: none;
   color: #f4f8f8;
-  padding:0px;
+  padding: 0px;
   position: relative;
   /* background-color:#14595c; */
 }
@@ -53,48 +59,53 @@ mat-toolbar {
 mat-icon {
   float: right;
 }
-@media (min-width:1200px) and (max-width:2000px){
+
+@media (min-width:1200px) and (max-width:2000px) {
   .column_1 mat-form-field {
     width: 99%;
   }
+
   .reset_btn {
-    width:80px;
+    width: 80px;
     height: 40px;
-    margin-right:180px ;
+    margin-right: 180px;
 
   }
+
   .add_btn {
     width: 80px;
-    height: 40px;  
+    height: 40px;
     background-color: green;
-    color: whitesmoke; 
-    margin-right:150px ;   
- 
-  } 
+    color: whitesmoke;
+    margin-right: 150px;
+
+  }
 }
 
 
-@media (min-width:768px) and (max-width:1200px){
-  .column{
+@media (min-width:768px) and (max-width:1200px) {
+  .column {
     width: 100%;
-    height: auto; 
+    height: auto;
     display: flex;
   }
-  .column mat-form-field{
+
+  .column mat-form-field {
     width: 30.5%;
     margin-left: 2%;
   }
- 
-  .column_1{
+
+  .column_1 {
     width: 96%;
     margin-left: 2%;
   }
-  .column_1 mat-form-field{
+
+  .column_1 mat-form-field {
     width: 100%;
     margin-top: 2px;
   }
- 
-  .reset_btn{
+
+  .reset_btn {
     width: 30%;
     float: left;
     margin: 0px;
@@ -102,33 +113,37 @@ mat-icon {
     margin-top: -18px;
 
   }
-  .add_btn{
+
+  .add_btn {
     width: 30%;
     float: right;
     margin: 0px;
-   margin-right: 10%;
-   margin-top: -18px;
+    margin-right: 10%;
+    margin-top: -18px;
   }
 }
 
-@media (min-width:521px) and (max-width:767px){
-  .column{
+@media (min-width:521px) and (max-width:767px) {
+  .column {
     width: 100%;
     height: auto;
-    
+
   }
-  .column mat-form-field{
+
+  .column mat-form-field {
     width: 100%;
   }
-  .column_1{
+
+  .column_1 {
     width: 100%;
     height: auto;
   }
-  .column_1 mat-form-field{
+
+  .column_1 mat-form-field {
     width: 100%;
   }
- 
-  .reset_btn{
+
+  .reset_btn {
     width: 30%;
     float: left;
     margin: 0px;
@@ -136,31 +151,37 @@ mat-icon {
     margin-top: -18px;
 
   }
-  .add_btn{
+
+  .add_btn {
     width: 30%;
     float: right;
     margin: 0px;
-   margin-right: 10%;
-   margin-top: -18px;
+    margin-right: 10%;
+    margin-top: -18px;
   }
- 
+
 }
-@media (max-width:521px){
-  .column{
+
+@media (max-width:521px) {
+  .column {
     width: 100%;
     height: auto;
   }
-  .column mat-form-field{
+
+  .column mat-form-field {
     width: 100%;
   }
-  .column_1{
+
+  .column_1 {
     width: 100%;
     height: auto;
   }
-  .column_1 mat-form-field{
+
+  .column_1 mat-form-field {
     width: 100%;
   }
-  .reset_btn{
+
+  .reset_btn {
     width: 30%;
     float: left;
     margin: 0px;
@@ -168,12 +189,13 @@ mat-icon {
     margin-top: -18px;
 
   }
-  .add_btn{
+
+  .add_btn {
     width: 30%;
     float: right;
     margin: 0px;
-   margin-right: 10%;
-   margin-top: -18px;
+    margin-right: 10%;
+    margin-top: -18px;
   }
- 
+
 }

@@ -1,52 +1,58 @@
 .column {
-  margin-right:10px;
+  margin-right: 10px;
   width: 200px;
-  height:285px;
+  height: 285px;
   float: left;
-}  
+}
+
 .example-spacer {
   flex: 1 1 auto;
   margin-bottom: 20px;
-  color: rgb(20,89,92);
+  color: rgb(20, 89, 92);
   font-size: 18px;
 }
 
-.material-icons{
-  color: rgb(20,89,92);
+.material-icons {
+  color: rgb(20, 89, 92);
   margin-bottom: 20px;
 }
+
 .reset_btn {
   width: 80px;
   height: 40px;
-  margin-right:60px;   
-  
+  margin-right: 60px;
+
 }
+
 .add_btn {
   width: 80px;
-  height: 40px;    
-  margin-right:100px;
+  height: 40px;
+  margin-right: 100px;
   background-color: green;
   color: white;
 }
+
 mat-toolbar {
   height: 40px;
   /* margin-bottom: 20px; */
   background: none;
-  color:whitesmoke;
+  color: whitesmoke;
   padding: 0px;
   position: relative;
   /* background-color:#14595c;  */
 }
-@media (min-width:1200px) and (max-width:2000px){
+
+@media (min-width:1200px) and (max-width:2000px) {
   #weight {
     width: 410px;
   }
 }
 
-@media (min-width:768px) and (max-width:1200px){
+@media (min-width:768px) and (max-width:1200px) {
   #weight {
     width: 410px;
   }
+
   /* .column{
    width: 100%;
    height: auto;
@@ -79,41 +85,47 @@ mat-toolbar {
   } */
 }
 
-@media (min-width:521px) and (max-width:767px){
-  .column{
+@media (min-width:521px) and (max-width:767px) {
+  .column {
     width: 100%;
     height: auto;
   }
-  .column mat-form-field{
+
+  .column mat-form-field {
     width: 100%;
   }
-  .reset_btn{
+
+  .reset_btn {
     float: left;
     margin: 0px;
     margin-left: 13%;
   }
-  .add_btn{
+
+  .add_btn {
     float: right;
     margin: 0px;
     margin-right: 13%;
 
   }
 }
-@media (max-width:521px){
-  .column{
+
+@media (max-width:521px) {
+  .column {
     width: 100%;
     height: auto;
   }
-  .column mat-form-field{
+
+  .column mat-form-field {
     width: 100%;
   }
- 
-  .reset_btn{
+
+  .reset_btn {
     float: left;
     margin: 0px;
     margin-left: 13%;
   }
-  .add_btn{
+
+  .add_btn {
     float: right;
     margin: 0px;
     margin-right: 13%;
