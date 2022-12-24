@@ -11,7 +11,7 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./purchase-report.component.css']
 })
 export class PurchaseReportComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'cust_shop_name', 'cust_owner_name', 'cust_contact_no', 'Action',];
+  displayedColumns: string[] = ['slno', 'cust_shop_name', 'ppt','cust_owner_name', 'cust_contact_no', 'Account', 'cust_contact', 'Net_amount', 'Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
