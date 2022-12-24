@@ -164,6 +164,45 @@ export class ManageService {
   }
 
   //////////////////////////////////////////// Purchase Working Starting Here ////////////////////////////////////////
+
+   // *******************************Product funcation start here**************************
+  getProduct() {
+    return this.http.get<[]>(this.baseUrl + 'product_view.php');
+  }
+  postProduct(data: any) {
+    return this.http.post<any>(this.baseUrl + 'product_insert.php', data);
+  }
+  putProduct(data: any) {
+    return this.http.put<any>(this.baseUrl + 'product_update.php', data);
+  }
+
+    // *******************************Production funcation start here**************************
+    getProduction() {
+      return this.http.get<[]>(this.baseUrl + 'production_view.php');
+    }
+    postProduction(data: any) {
+      return this.http.post<any>(this.baseUrl + 'production_insert.php', data);
+    }
+    putProduction(data: any) {
+      return this.http.put<any>(this.baseUrl + 'production_update.php', data);
+    }
+
+     // *******************************MaterialHandover funcation start here**************************
+     getMaterialHandover() {
+      return this.http.get<[]>(this.baseUrl + 'MaterialHandover_view.php');
+    }
+    postMaterialHandover(data: any) {
+      return this.http.post<any>(this.baseUrl + 'MaterialHandover_insert.php', data);
+    }
+    putMaterialHandover(data: any) {
+      return this.http.put<any>(this.baseUrl + 'MaterialHandover_update.php', data);
+    }
+    
+
+    
+
+
+
   
   getPtr(data: any) {
     return this.http.post<any>(this.baseUrl + 'party_single_view.php', data);

@@ -1,0 +1,44 @@
+.column {
+    margin-right: 10px;
+    width: 200px;
+    height: 230px;
+    float: left;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    color: rgb(20, 89, 92);
+    font-size: 18px;
+  }
+  
+  .material-icons {
+    color: rgb(20, 89, 92);
+    margin-bottom: 20px;
+  }
+  
+  .reset_btn {
+    width: 80px;
+    height: 40px;
+    margin-right: 60px;
+  
+  }
+  
+  .add_btn {
+    width: 80px;
+    height: 40px;
+    margin-right: 100px;
+    background-color: green;
+    color: white;
+  }
+  
+  mat-toolbar {
+    height: 40px;
+    background: none;
+    color: whitesmoke;
+    padding: 0px;
+    position: relative;
+  }
+  
+ 
+    
