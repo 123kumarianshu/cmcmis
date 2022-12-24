@@ -7,7 +7,7 @@
 }
 
 .column_1 mat-form-field {
-  width: 400px;
+  width: 99.1%;
   margin-top: 5px;
 }
 
@@ -30,20 +30,19 @@ textarea {
 .reset_btn {
   width: 80px;
   height: 40px;
-  margin-right: 180px;
+  margin-right: 20px;
 
 }
 
-button {
+/* button {
   top: 20px;
-}
+} */
 
 .add_btn {
   width: 80px;
   height: 40px;
-  background-color: green;
   color: whitesmoke;
-  margin-right: 150px;
+  margin-right: 222px;
 
 }
 
@@ -53,14 +52,13 @@ mat-toolbar {
   color: #f4f8f8;
   padding: 0px;
   position: relative;
-  /* background-color:#14595c; */
 }
 
 mat-icon {
   float: right;
 }
 
-@media (min-width:1200px) and (max-width:2000px) {
+  @media (min-width:1200px) and (max-width:2000px) {
   .column_1 mat-form-field {
     width: 99%;
   }
@@ -68,20 +66,18 @@ mat-icon {
   .reset_btn {
     width: 80px;
     height: 40px;
-    margin-right: 180px;
+    margin-right: 20px;
 
   }
 
   .add_btn {
     width: 80px;
     height: 40px;
-    background-color: green;
     color: whitesmoke;
-    margin-right: 150px;
+    margin-right: 222px;
 
   }
-}
-
+}   
 
 @media (min-width:768px) and (max-width:1200px) {
   .column {
