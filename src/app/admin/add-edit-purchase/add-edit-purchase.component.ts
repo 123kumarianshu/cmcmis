@@ -13,12 +13,13 @@ import { ManageService } from '../manage.service';
   templateUrl: './add-edit-purchase.component.html',
   styleUrls: ['./add-edit-purchase.component.css']
 })
+
 export class AddEditPurchaseComponent implements OnInit {
   displayedColumns: string[] = ['slno', 'cust_name', 'item_amount', 'item_disc', 'item_net_payment', 'item_bill_no', 'item_cgst', 'item_sgst', 'item_ro', 'Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  action_text: string = 'Add customer details'
+  action_text: string = 'Add party details'
   addCategory: any
   admin_id = 1
   party_form !: FormGroup
@@ -26,6 +27,7 @@ export class AddEditPurchaseComponent implements OnInit {
   final_form !: FormGroup
   purch_bill_no: string = "AA/0/23-24"
   actionBtn = 'Save & Next';
+  actionBtn1 = 'Final Submit'
   action_Btn = 'Add'
   actionBTN = '';
   addcustomer: any;
@@ -33,9 +35,14 @@ export class AddEditPurchaseComponent implements OnInit {
   custform: any
   itemform: any
   party_data: any;
-  cust_single_data: any;
+  cat_data: any;
   item_data: any;
   party_single_data: any;
+  cat_single_data: any;
+  single_item_data: any;
+  item_final_data: any;
+  des_data: any;
+
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
@@ -43,16 +50,46 @@ export class AddEditPurchaseComponent implements OnInit {
     private fb2: FormBuilder,
     private router: Router,
     private manageService: ManageService,
-    // @Inject(MAT_DIALOG_DATA) public editData: any,
-    // private matref: MatDialogRef<AddEditPurchaseComponent>
   ) { }
+
+  /////////////////////////////////////////////// for Party Get starting ///////////////////////////////////////////
+
 
   ngOnInit(): void {
     this.manageService.getParty().subscribe(
       (party_res: any) => {
         this.party_data = party_res.data
       }
-    )
+
+    ),
+
+      /////////////////////////////////////////////// for Categori Get starting ///////////////////////////////////////////
+
+      this.manageService.getCat().subscribe(
+        (cat_res: any) => {
+          this.cat_data = cat_res.data
+
+        }
+      )
+      /////////////////////////////////////////////// for Categori Get starting ///////////////////////////////////////////
+
+      this.manageService.getItem().subscribe(
+        (item_res: any) => {
+          this.item_data = item_res.data
+
+        }
+      )
+
+      this.manageService.getDescription().subscribe(
+        (itemresult:any)=>{   
+        this.dataSource = new MatTableDataSource(itemresult.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        }
+      )
+
+
+    /////////////////////////////////////////////// for Party Accessing starting ///////////////////////////////////////////
 
 
     this.party_form = this.fb.group({
@@ -62,19 +99,25 @@ export class AddEditPurchaseComponent implements OnInit {
       party_email: ['', Validators.required],
       party_address: ['', Validators.required],
     })
+
+    /////////////////////////////////////////////// for Item Accessing starting ///////////////////////////////////////////
+
+
     this.item_form = this.fb1.group({
-      party_id_fk: ['', Validators.required],
-      item_prt_id_fk: ['', Validators.required],
-      Item_name: ['', Validators.required],
+      party_name: ['', Validators.required],
+      cat_id_fk: ['', Validators.required],
+      item_id_fk: ['', Validators.required],
       item_unit: ['', Validators.required],
       item_rate: ['', Validators.required],
       item_quantity: ['', Validators.required],
-      free: ['', Validators.required],
       discount: ['', Validators.required],
       gst: ['', Validators.required],
       net_rate: ['', Validators.required],
       amount: ['', Validators.required],
     })
+
+    /////////////////////////////////////////////// for Final Accessing starting ///////////////////////////////////////////
+
 
     this.final_form = this.fb2.group({
       item_sale_by: ['', Validators.required],
@@ -94,8 +137,10 @@ export class AddEditPurchaseComponent implements OnInit {
     })
 
   }
+
+  /////////////////////////////////////////////// for Party Submit starting ///////////////////////////////////////////
+
   onSubmit() {
-    console.log(this.party_form.value)
     const formdata = new FormData()
     formdata.append('party_id', this.party_form.get('party_id')?.value)
     formdata.append('purch_bill_no', this.purch_bill_no)
@@ -103,7 +148,7 @@ export class AddEditPurchaseComponent implements OnInit {
     this.manageService.postpur(formdata).subscribe(
       (res: any) => {
         console.log(res)
-        alert("sucess")
+        alert("Data Sucessfull")
 
       },
       (error: any) => {
@@ -112,6 +157,9 @@ export class AddEditPurchaseComponent implements OnInit {
       }
     )
   }
+
+  /////////////////////////////////////////////// for reset data starting ///////////////////////////////////////////
+
   resetcustomer() {
 
   }
@@ -130,28 +178,54 @@ export class AddEditPurchaseComponent implements OnInit {
 
   /////////////////////////////////////////////// for Party id Selection starting ///////////////////////////////////////////
 
-  get_party() {
-    console.log(this.party_form.value)
+  get_party(event: any) {
     const formdata = new FormData();
-    formdata.append('party_name', this.party_form.get('party_name')?.value)
-    console.log(this.party_form.get('party_name')?.value)
+    formdata.append('party_id', event)
     this.manageService.getPtr(formdata).subscribe(
       (res: any) => {
         this.party_single_data = res.data
-        console.log(res)
-        console.log(this.party_single_data.party_name)
+        this.party_form.controls['party_id'].setValue(this.party_single_data.party_id);
+        this.party_form.controls['party_name'].setValue(this.party_single_data.party_name);
+        this.party_form.controls['party_mobile'].setValue(this.party_single_data.party_mobile);
+        this.party_form.controls['party_email'].setValue(this.party_single_data.party_email);
+        this.party_form.controls['party_address'].setValue(this.party_single_data.party_address);
       }
     )
 
-    this.party_form.controls['party_id'].setValue(this.party_single_data.party_id);
-    this.party_form.controls['party_name'].setValue(this.party_single_data.party_name);
-    this.party_form.controls['party_mobile'].setValue(this.party_single_data.party_mobile);
-    this.party_form.controls['party_email'].setValue(this.party_single_data.party_email);
-    this.party_form.controls['party_address'].setValue(this.party_single_data.party_address);
-
   }
 
-  //////////////////////////////////////////// for Party id Selection ending ////////////////////////////////////////////
+
+  /////////////////////////////////////////////// for Cat single data Selection starting ///////////////////////////////////////////
+
+  get_single_cat(event: any) {
+    console.log(event)
+    const formdata = new FormData();
+    formdata.append('cat_id_fk', event)
+    this.manageService.get_single_item(formdata).subscribe(
+      (res: any) => {
+        this.single_item_data = res.data
+
+
+      }
+    )
+  }
+
+  item_single_data(event: any) {
+     console.log(event)
+     const itemformdata = new FormData();
+     itemformdata.append('item_id_fk', event)
+     this.manageService.get_single_data(itemformdata).subscribe(
+       (res: any) => {
+         this. item_final_data = res.data
+        console.log(res)
+         this.item_form.controls['item_unit'].setValue(this.item_final_data.item_unit_id_fk);
+         this.item_form.controls['item_rate'].setValue(this.item_final_data.item_rate);
+         this.item_form.controls['gst'].setValue(this.item_final_data.item_gst_id_fk);
+
+       }
+     )
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

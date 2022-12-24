@@ -2,11 +2,10 @@
 	<span class="notice_text">{{action_text}}</span>
 </div>
 
-<nav ngbNav #nav="ngbNav" class="nav-tabs" style="height: 46px;">
-	<!-- //////////////////////// for customer table data start ///////////////// -->
+<nav ngbNav #nav="ngbNav" style="border-bottom: 1px solid gray; height: 47px;">
+	<!-- ////////////////////////////////////////// for Party table data start ////////////////////////////////// -->
 	<ng-container ngbNavItem>
-		<a ngbNavLink style="background-color:#05363c; border-radius: 5px; height:37px;color: whitesmoke; "
-			(click)="party()">Party</a>
+		<a ngbNavLink class="puechase_link" (click)="party()">Party</a>
 		<ng-template ngbNavContent>
 			<div class="content_area">
 				<form [formGroup]="party_form">
@@ -18,9 +17,9 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Party Name</mat-label>
-							<mat-select formControlName="party_name" (selectionChange)="get_party()">
+							<mat-select formControlName="party_id" (valueChange)="get_party($event)">
 								<mat-option *ngFor="let party of party_data"
-									[value]="party.party_name">{{party.party_name}}</mat-option>
+									[value]="party.party_id">{{party.party_name}}</mat-option>
 							</mat-select>
 						</mat-form-field>
 
@@ -49,40 +48,36 @@
 			</div>
 		</ng-template>
 	</ng-container>
-	<!-- //////////////////////// for customer table data end ///////////////// -->
-	<!-- //////////////////////// for item table data start ///////////////// -->
+	<!-- /////////////////////////////////////////// for Party table data end /////////////////////////////////////// -->
+
+	<!-- /////////////////////////////////////////// for item table data start ////////////////////////////////////// -->
 	<ng-container ngbNavItem>
-		<a ngbNavLink style="background-color:#05363c; border-radius: 5px; color: whitesmoke; height:37px;"
-			(click)="items()">Item</a>
+		<a ngbNavLink class="puechase_link" (click)="items()">Item</a>
 		<ng-template ngbNavContent>
 			<div class="content_area">
 				<form [formGroup]="item_form">
 					<div class="column">
 						<mat-form-field appearance="fill">
-							<mat-label>Party Id</mat-label>
-							<input formControlName="party_id_fk" matInput placeholder="Party">
+							<mat-label>Party Name</mat-label>
+							<input formControlName="party_name" matInput placeholder="Party">
 						</mat-form-field>
 
-						<mat-form-field appearance="fill" class="select">
+
+						<mat-form-field appearance="fill">
 							<mat-label>Category</mat-label>
-							<mat-select formControlName="item_prt_id_fk">
-								<mat-option *ngFor="let item of item_data"
-									[value]="item.item_id">{{item.item_name}}</mat-option>
+							<mat-select formControlName="cat_id_fk" (valueChange)="get_single_cat($event)">
+								<mat-option *ngFor="let cat of cat_data"
+									[value]="cat.cat_id">{{cat.cat_name}}</mat-option>
 							</mat-select>
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Item</mat-label>
-							<input formControlName="Item_name" matInput placeholder="Item Name">
-						</mat-form-field>
-
-						<!-- <mat-form-field appearance="fill" class="select">
-							<mat-label>Item</mat-label>
-							<mat-select formControlName="Item_name" (selectionChange)="getitem()">
-								<mat-option *ngFor="let item of item_data"
-									[value]="item.item_id">{{item.item_id}}</mat-option>
+							<mat-select formControlName="item_id_fk" (valueChange)="item_single_data($event)">
+								<mat-option *ngFor="let item of single_item_data"
+									[value]="item.item_id">{{item.item_name}}</mat-option>
 							</mat-select>
-						</mat-form-field> -->
+						</mat-form-field>
 
 
 						<mat-form-field appearance="fill">
@@ -101,29 +96,30 @@
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
-							<mat-label>Free</mat-label>
-							<input formControlName="free" matInput placeholder="Free">
-						</mat-form-field>
-
-						<mat-form-field appearance="fill">
 							<mat-label>Discount</mat-label>
 							<input formControlName="discount" matInput placeholder="Discount">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
 							<mat-label>GST</mat-label>
-							<input formControlName="gst" matInput placeholder="GST">
+							<input formControlName="gst" matInput placeholder="gst">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Net Rate</mat-label>
 							<input formControlName="net_rate" matInput placeholder="Net Rate">
-						</mat-form-field><br>
+						</mat-form-field>
 
-						<mat-form-field appearance="fill" class="text_amount">
+						<mat-form-field appearance="fill">
 							<mat-label>Amount</mat-label>
 							<input formControlName="amount" matInput placeholder="Amount">
 						</mat-form-field><br>
+
+						<!-- <mat-form-field appearance="fill" class="text_amount">
+							<mat-label>Amount</mat-label>
+							<input formControlName="amount" matInput placeholder="Amount">
+						</mat-form-field><br> -->
+						
 						<mat-icon class="addButton">add</mat-icon>
 					</div>
 				</form>
@@ -199,12 +195,12 @@
 
 		</ng-template>
 	</ng-container>
-	<!-- //////////////////////// for item table data end ///////////////// -->
-	<!-- //////////////////////// for final bill  table data start ///////////////// -->
+	<!-- ///////////////////////////////////////// for item table data end ///////////////////////////////////////// -->
+
+	<!-- /////////////////////////////////////// for final bill  table data start ////////////////////////////////// -->
 
 	<ng-container ngbNavItem><br>
-		<a ngbNavLink (click)="final_bill()"
-			style="background-color:#05363c; border-radius: 5px;color: whitesmoke; height:37px">Final bill</a>
+		<a ngbNavLink class="puechase_link" (click)="final_bill()">Final bill</a>
 		<button id="billnobtn">Bill Ref.No:{{purch_bill_no}}</button>
 		<ng-template ngbNavContent>
 			<div class="content_area">
@@ -278,15 +274,19 @@
 						</mat-form-field>
 					</div>
 					<!-- ---------------------------------------------Change--------------------------------------- -->
+
 					<div mat-dialog-action [align]="'end'">
-						<button mat-raised-button (click)="finalsubmit()" class="submitbtn" type="submit"
-							[disabled]="!final_form.valid">{{actionBTN}}<p>Final Submit</p></button>
+						<button mat-raised-button (click)="finalsubmit()" class="add_btn" type="submit"
+							style="background-color: #0d5e58; color: white;"
+							[disabled]="!party_form.valid">{{actionBtn1}}</button>
 					</div>
+
+
 				</form>
 			</div>
 		</ng-template>
 	</ng-container>
-	<!-- //////////////////////// for final bill  table data end ///////////////// -->
+	<!-- ////////////////////////////////////////// for final bill  table data end ///////////////////////////// -->
 
 </nav>
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
