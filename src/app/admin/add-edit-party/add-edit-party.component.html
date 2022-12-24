@@ -18,7 +18,7 @@
             <br>
             <mat-form-field appearance="fill">
                 <mat-label>Mobile Number</mat-label>
-                <input type="number" formControlName="party_mobile" matInput placeholder="Mobile" class="mobil_number">
+                <input type="number" formControlName="party_mobile" matInput placeholder="Mobile" class="mobil_number" onkeypress="return this.value.length < 10;" oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
             </mat-form-field>
         </div>
         <div class="column">
@@ -29,7 +29,7 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>GST Number</mat-label>
-                <input type="number" formControlName="party_gst_no" matInput placeholder="Gst No">
+                <input type="text" formControlName="party_gst_no" matInput placeholder="Gst No">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -40,7 +40,9 @@
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Whatsapp</mat-label>
-                <input type="number" formControlName="party_whatsapp" matInput placeholder="Whatsapp">
+                <input type="number" formControlName="party_whatsapp" matInput placeholder="Whatsapp" 
+                onkeypress="return this.value.length < 10;" oninput="if(this.value.length>=10) 
+                { this.value = this.value.slice(0,10); }">
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>A/C Number </mat-label>
