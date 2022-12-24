@@ -65,22 +65,30 @@
                             <button mat-button class="menu-button" routerLink="/area_allocate" routerLinkActive="active">
                                 <mat-icon>area_chart</mat-icon>
                                 <span>Area Allocate</span>
-                            </button>
-
+                            </button>                           
                         </div>
-                    </div>
-                
-        </div>               
-             <button mat-button class="menu-button" routerLink="/purchase" routerLinkActive="active">
+                    </div>                
+        </div>            
+            <button mat-button class="menu-button" routerLink="/purchase" routerLinkActive="active">
                 <mat-icon>area_chart</mat-icon>
                 <span>Purchase</span>
             </button>
-
+            <button mat-button class="menu-button" routerLink="/material_handover" routerLinkActive="active">
+                <mat-icon>area_chart</mat-icon>
+                <span>Material Handover</span>
+            </button>
+            <button mat-button class="menu-button" routerLink="/production" routerLinkActive="active">
+                <mat-icon>area_chart</mat-icon>
+                <span>Production</span>
+            </button>
+            <button mat-button class="menu-button" routerLink="/product" routerLinkActive="active">
+                <mat-icon>area_chart</mat-icon>
+                <span>Product</span>
+            </button>  
             <button mat-button class="menu-button" routerLink="/sale" routerLinkActive="active">
                 <mat-icon>local_grocery_store</mat-icon>
                 <span>Sale</span>
-            </button>
-
+            </button>    
             <button mat-button class="menu-button" routerLink="/dues" routerLinkActive="active">
                 <mat-icon>area_chart</mat-icon>
                 <span>Dues</span>
@@ -96,9 +104,9 @@
             <button mat-button class="menu-button" routerLink="/expense" routerLinkActive="active">
                 <mat-icon>area_chart</mat-icon>
                 <span>Expense</span>
-            </button>
+            </button>           
             <div >
-                <button   mat-button class="menu-button" (click)="report_dropdown()">
+                <button  mat-button class="menu-button" (click)="report_dropdown()">
                     <mat-icon >card_travel</mat-icon>
                     <span >Report</span>   
                     <mat-icon [hidden]="action_icon3">chevron_right</mat-icon>
