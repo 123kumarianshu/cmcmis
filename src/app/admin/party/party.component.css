@@ -23,6 +23,8 @@
 
 .notice_text {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    font-size: 15px;
 }
 
 .count_search {
@@ -63,6 +65,7 @@ mat-icon {
     background-color: #0f575a;
     height: 40px;
     font-weight: bold;
+    font-size: 15;
 }
 
 tr:nth-child(even) {
@@ -79,20 +82,51 @@ tr:hover {
     color: aliceblue;
     cursor: pointer;
 }
+.mat-row:hover > .mat-cell {
+    color:  white
+  }
+ 
 
 ng-container {
     text-align: center;
 }
 
-.cotainer {
+/* .cotainer {
     margin-top: 5px;
-}
+} */
 
 .mat-form-field {
     font-size: 18px;
     width: 100%;
 }
 
-.data:hover {
+/* .data:hover {
     color: white;
+} */
+
+/* //////////////////////////table media q//////////////////////////// */
+
+@media (max-width:460px){
+table th{
+    font-size: 11px;
+    font-weight: 540;
+}
+table td{
+    font-size: 12px;
+}
+th.mat-header-cell:first-of-type{
+    padding-left: 13px;
+}
+th.mat-header-cell:last-of-type{
+    padding-right: 0px;
+    width: 0%;
+}
+td.mat-cell:first-of-type{
+    padding-left: 20px;
+}
+td.mat-cell:last-of-type{
+    padding-right: 0px;
+    padding-left: 10px;
+}
+
 }
