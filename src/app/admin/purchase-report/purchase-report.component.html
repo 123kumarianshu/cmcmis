@@ -1,55 +1,85 @@
-<div id="wrapper">
-  <div class="view_notice">
-    <span class="notice_text">Purchase Report</span>
-    <mat-icon id="add_dues" (click)="add_purchase_report()">add_circle</mat-icon>
+<div class="view_notice">
+  <span class="notice_text">Purchase Report</span>
+  <mat-icon id="add_dues" (click)="add_purchase_report()">add_circle</mat-icon>
+</div>
+<div class="count_search">
+  <div class="datetime">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matIconSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
   </div>
-  <div class="count_search">
-    <span class="notice_text"> Total :</span>
-    <div class="search">
-      <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+  
+  <div class="search">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+  </div>
+</div>
+<div class="cotainer">
+  <form>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort id="table">
+        <ng-container matColumnDef="slno">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+          <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
+            paginatorRef.pageSize)+(i+1)}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cust_shop_name">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party</th>
+          <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_name}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="ppt">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>product</th>
+          <td class="data" mat-cell *matCellDef="let row">{{row.ppt}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cust_owner_name">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+          <td class="data" mat-cell *matCellDef="let row">{{row.cust_owner_name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cust_contact_no">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>CGST</th>
+          <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cust_contact">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SGST</th>
+          <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Account">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
+          <td class="data" mat-cell *matCellDef="let row">{{row.Account}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Net_amount">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
+          <td class="data" mat-cell *matCellDef="let row">{{row.Net_amount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Action">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic Amount</th>
+          <td class="data" mat-cell *matCellDef="let row">
+            <mat-icon (click)="edit_purchase_report(row)">edit</mat-icon>
+          </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+        </tr>
+      </table>
+      <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>
-  </div>
-  <div class="cotainer">
-    <form>
-      <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort id="table">
-          <ng-container matColumnDef="slno">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
-            <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
-              paginatorRef.pageSize)+(i+1)}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="cust_shop_name">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Shop Name</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_name}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="cust_owner_name">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Owner Name</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cust_owner_name}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="cust_contact_no">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Contact Number</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="Action">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-            <td class="data" mat-cell *matCellDef="let row">
-              <mat-icon (click)="edit_purchase_report(row)">edit</mat-icon>
-            </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
-          </tr>
-        </table>
-        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
-          aria-label="Select page of users"></mat-paginator>
-      </div>
-    </form>
-  </div>
+  </form>
 </div>

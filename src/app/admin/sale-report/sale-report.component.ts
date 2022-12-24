@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 @Component({
   selector: 'app-sale-report',
@@ -19,6 +21,7 @@ export class SaleReportComponent implements OnInit {
     private add: MatDialog,
     private customerservice: ManageService,
   ) { }
+  
 
   ngOnInit(): void {
   }
