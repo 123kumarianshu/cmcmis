@@ -15,9 +15,9 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  // baseUrl: string = 'http://adityaradhaya.com/api/';  
+  baseUrl: string = 'http://adityaradhaya.com/api/';  
   // baseUrl: string = 'http://localhost/cmcmisapi/';
-   baseUrl: string = 'http://localhost/cmcmisAPI/';
+  //  baseUrl: string = 'http://localhost/cmcmisAPI/';
 
 
 
@@ -162,6 +162,44 @@ export class ManageService {
   putAllocatearea(data: any) {
     return this.http.put<any>(this.baseUrl + 'allocate_area_update.php', data);
   }
+
+   // *******************************Product funcation start here**************************
+  getProduct() {
+    return this.http.get<[]>(this.baseUrl + 'product_view.php');
+  }
+  postProduct(data: any) {
+    return this.http.post<any>(this.baseUrl + 'product_insert.php', data);
+  }
+  putProduct(data: any) {
+    return this.http.put<any>(this.baseUrl + 'product_update.php', data);
+  }
+
+    // *******************************Production funcation start here**************************
+    getProduction() {
+      return this.http.get<[]>(this.baseUrl + 'production_view.php');
+    }
+    postProduction(data: any) {
+      return this.http.post<any>(this.baseUrl + 'production_insert.php', data);
+    }
+    putProduction(data: any) {
+      return this.http.put<any>(this.baseUrl + 'production_update.php', data);
+    }
+
+     // *******************************MaterialHandover funcation start here**************************
+     getMaterialHandover() {
+      return this.http.get<[]>(this.baseUrl + 'MaterialHandover_view.php');
+    }
+    postMaterialHandover(data: any) {
+      return this.http.post<any>(this.baseUrl + 'MaterialHandover_insert.php', data);
+    }
+    putMaterialHandover(data: any) {
+      return this.http.put<any>(this.baseUrl + 'MaterialHandover_update.php', data);
+    }
+    
+
+    
+
+
 
   
 }

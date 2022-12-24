@@ -27,6 +27,9 @@ import { SaleCancelComponent } from './admin/sale-cancel/sale-cancel.component';
 import { AddEditAccountComponent } from './admin/add-edit-account/add-edit-account.component';
 import { AddEditSaleComponent } from './admin/add-edit-sale/add-edit-sale.component';
 import { AddEditPurchaseComponent } from './admin/add-edit-purchase/add-edit-purchase.component';
+import { ProductionComponent } from './admin/production/production.component';
+import { MaterialHandoverComponent } from './admin/material-handover/material-handover.component';
+import { ProductComponent } from './admin/product/product.component';
 
 
 
@@ -63,6 +66,11 @@ const routes: Routes = [
   {path:'sale_cancel',component:SaleCancelComponent},
   {path:'add_edit_sale',component:AddEditSaleComponent},
   {path:'add_edit_purchase',component:AddEditPurchaseComponent},
+  {path:'production',component:ProductionComponent},
+  {path:'material_handover',component:MaterialHandoverComponent},
+  {path:'product',component:ProductComponent}
+  
+  
   
   
   

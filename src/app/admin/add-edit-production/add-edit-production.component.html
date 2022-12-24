@@ -1,0 +1,51 @@
+<mat-toolbar>
+    <span class="example-spacer">Add Production</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div mat-dialog-content>
+    <form [formGroup]="ProductionForm">
+        <div class="column">
+            <input type="number" formControlName="production_id" readonly hidden>
+            <mat-form-field appearance="fill">
+                <mat-label>Quantity</mat-label>
+                <input formControlName="production_quantity" matInput placeholder="Quantity">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input  formControlName="production_date" matInput placeholder="production_date" type="date">
+            </mat-form-field><br>          
+
+            <mat-form-field appearance="fill">
+                <mat-label>Total</mat-label>
+                <input formControlName="production_total" matInput placeholder="Total">
+            </mat-form-field>                   
+        </div>
+        <div class="column" id="column_1">            
+            <mat-form-field appearance="fill">
+                <mat-label>Unit</mat-label>
+                <mat-select formControlName="production_unit_id_fk">
+                    <mat-option *ngFor="let unitdata of unitdata" [value]="unitdata.unit_id">{{unitdata.unit_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Employee</mat-label>
+                <mat-select formControlName="production_emp_id_fk">
+                    <mat-option *ngFor="let empdata of empdata" [value]="empdata.emp_id">{{empdata.emp_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Product</mat-label>
+                <mat-select formControlName="production_product_id_fk">
+                    <mat-option *ngFor="let sizedata of productdata" [value]="productdata.product_id">{{productdata.product_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>            
+            <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
+        </div>       
+    </form>
+    
+    <div mat-dialog-action [align]="'end'">
+        <button mat-raised-button color="warn" (click)="resetProduction()" class="reset_btn">Reset</button>
+        <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+            [disabled]="!ProductionForm.valid">{{actionBtn}}</button>
+    </div>
