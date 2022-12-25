@@ -70,7 +70,7 @@ export class AddEditCustomerComponent implements OnInit {
           this.router.navigate(['/customer']);
         },
         (error: any) => {
-          alert("Data not insert ")
+          alert("Data not Insert ")
         }
       )
     }
@@ -84,12 +84,12 @@ export class AddEditCustomerComponent implements OnInit {
     this.manageService.putCustomer(this.custForm.value).subscribe({
       next: (res) => {
         console.log(res)
-        alert("Student update Successfully");
+        alert("Customer Update Successfully");
         this.matref.close();
         this.router.navigate(['/customer']);
       },
       error: () => {
-        alert("Student not update");
+        alert("Customer not Update");
       }
 
     })

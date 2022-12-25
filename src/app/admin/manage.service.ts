@@ -16,7 +16,11 @@ export class ManageService {
     private http: HttpClient
   ) { }
   // baseUrl: string = 'http://adityaradhaya.com/api/';  
-  baseUrl: string = 'http://localhost/api/';
+
+  baseUrl: string = 'http://localhost/cmcmisapi/';
+  //  baseUrl: string = 'http://localhost/cmcmisAPI/';
+
+  // baseUrl: string = 'http://localhost/api/';
 
 
 
@@ -163,10 +167,69 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'allocate_area_update.php', data);
   }
 
-  // *******************************Product funcation start here**************************
+
+  ///////////////////////// for sale customer starting ///////////////////////////
+  ///// for customer view in sale table ////////
+  GetCust(data: any) {
+    return this.http.post<any>(this.baseUrl + 'cust_single_view.php', data);
+  }
+
+  /////////// insert data on submit btn in sale customer ///////////
+  postSale(data: any) {
+    return this.http.post<any>(this.baseUrl + 'sale_insert.php', data);
+  }
+
+  /////////// view sale table data ////////////////
+  getSale() {
+    return this.http.get<[]>(this.baseUrl + 'sale_tbl_view.php');
+  }
+
+  /////////// category data show in sale item table ////////////
+  getCate(data: any) {
+    return this.http.post<any>(this.baseUrl + 'cat_single_view.php', data);
+  }
+
+  ///////////// items data show in sale item table ///////////////
+  getProd(data: any) {
+    return this.http.post<any>(this.baseUrl + 'product_single_view.php', data);
+  }
+
+  getprodfilter(data: any) {
+    return this.http.post<any>(this.baseUrl + 'product_filter_data.php', data);
+  }
+  ///////////////////// for sale customer Ending //////////////////////////
+
+  /////////////////////// product view /////////////////////
   getProduct() {
     return this.http.get<[]>(this.baseUrl + 'product_view.php');
   }
+
+  ///////////////////// for sale description /////////////////////////
+  postSaledes(data: any) {
+    return this.http.post<any>(this.baseUrl + 'sale_desc_insert.php', data);
+  }
+  getSaledes() {
+    return this.http.get<[]>(this.baseUrl + 'sale_desc_view.php');
+  }
+
+
+  postProd(data: any) {
+    return this.http.post<any>(this.baseUrl + 'product_des_insert.php', data);
+  }
+
+  ///////////////// sale filter data in final form  in sale table//////////////////
+
+  // getSalefilter(data: any) {
+  //   return this.http.post<any>(this.baseUrl + 'sale_filter_view.php', data);
+  // }
+
+  putFinalSale(data: any) {
+    return this.http.put<any>(this.baseUrl + 'final_sale_update.php', data);
+  }
+  // *******************************Product funcation start here**************************
+  // getProduct() {
+  //   return this.http.get<[]>(this.baseUrl + 'product_view.php');
+  // }
   postProduct(data: any) {
     return this.http.post<any>(this.baseUrl + 'product_insert.php', data);
   }
