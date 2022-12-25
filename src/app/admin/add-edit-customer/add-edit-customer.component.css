@@ -23,18 +23,22 @@ textarea {
   margin-bottom: 20px;
 }
 
+#main_button{
+  width: 190px;
+  margin: auto;
+}
 .reset_btn {
   width: 80px;
   height: 40px;
-  margin-right: 20px;
+  float: left;
 }
 
 .add_btn {
   width: 80px;
   height: 40px;
-  margin-right: 130px;
-  background-color: green;
+  float: right;
   color: white;
+  background-color: green;
 }
 
 mat-toolbar {
@@ -56,17 +60,4 @@ mat-toolbar {
     width: 100%;
   }
 
-  .reset_btn {
-    width: 30%;
-    float: left;
-    margin: 0px;
-    margin-left: 10%;
-  }
-
-  .add_btn {
-    width: 30%;
-    float: right;
-    margin: 0px;
-    margin-right: 10%;
-  }
 }

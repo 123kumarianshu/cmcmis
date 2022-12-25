@@ -42,6 +42,7 @@ textarea {
   width: 80px;
   height: 40px;
   color: whitesmoke;
+  background-color: green;
   margin-right: 222px;
 
 }
@@ -101,64 +102,23 @@ mat-icon {
     margin-top: 2px;
   }
 
-  .reset_btn {
-    width: 30%;
+  .main_button{
+    width: 190px;
+    margin: auto;
+  }
+   .reset_btn {
     float: left;
     margin: 0px;
-    margin-left: 10%;
-    margin-top: -18px;
-
   }
 
   .add_btn {
-    width: 30%;
     float: right;
     margin: 0px;
-    margin-right: 10%;
-    margin-top: -18px;
-  }
+  } 
 }
 
-@media (min-width:521px) and (max-width:767px) {
-  .column {
-    width: 100%;
-    height: auto;
 
-  }
-
-  .column mat-form-field {
-    width: 100%;
-  }
-
-  .column_1 {
-    width: 100%;
-    height: auto;
-  }
-
-  .column_1 mat-form-field {
-    width: 100%;
-  }
-
-  .reset_btn {
-    width: 30%;
-    float: left;
-    margin: 0px;
-    margin-left: 10%;
-    margin-top: -18px;
-
-  }
-
-  .add_btn {
-    width: 30%;
-    float: right;
-    margin: 0px;
-    margin-right: 10%;
-    margin-top: -18px;
-  }
-
-}
-
-@media (max-width:521px) {
+@media (max-width:768px) {
   .column {
     width: 100%;
     height: auto;
@@ -177,21 +137,18 @@ mat-icon {
     width: 100%;
   }
 
-  .reset_btn {
-    width: 30%;
+  .main_button{
+    width: 190px;
+    margin: auto;
+  }
+   .reset_btn {
     float: left;
     margin: 0px;
-    margin-left: 10%;
-    margin-top: -18px;
-
   }
 
   .add_btn {
-    width: 30%;
     float: right;
     margin: 0px;
-    margin-right: 10%;
-    margin-top: -18px;
-  }
+  } 
 
 }
