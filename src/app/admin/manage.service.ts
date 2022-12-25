@@ -186,22 +186,33 @@ export class ManageService {
     }
 
      // *******************************MaterialHandover funcation start here**************************
-     getMaterialHandover() {
-      return this.http.get<[]>(this.baseUrl + 'MaterialHandover_view.php');
+    getMaterialHandover() {
+      return this.http.get<[]>(this.baseUrl + 'mh_view.php');
     }
+ 
     postMaterialHandover(data: any) {
       return this.http.post<any>(this.baseUrl + 'MaterialHandover_insert.php', data);
     }
+    
     putMaterialHandover(data: any) {
       return this.http.put<any>(this.baseUrl + 'MaterialHandover_update.php', data);
     }
     
 
-    
+    // for matrial hand over work
 
+   
+    getEmpSingle(data: any) {
+      return this.http.post<any>(this.baseUrl + 'emp_single_view.php', data);
+    }
+     // for matrial hand over work
 
-
-  
+    getCatSingle(data: any) {
+      return this.http.post<any>(this.baseUrl + 'cat_single_view.php', data);
+    }
+    get_mh_view() {
+      return this.http.get<[]>(this.baseUrl + 'mh_view.php');
+    }
 }
 
 
