@@ -10,8 +10,7 @@
     justify-content: space-between;
     padding: 10px;
     box-sizing: border-box;
-    /* position: fixed;
-    top: 63px; */
+    
 
 }
 #add_product{
@@ -21,25 +20,23 @@
     cursor: pointer;
 }
 .notice_text{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    font-size: 16px;}
 .count_search{
     height: 40px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
     box-sizing: border-box;
     color: #0d5e58;
-    /* position: fixed;
-    top: 102px;
-    z-index: 8;
-    background-color: white; */
+   
 }
 .search input{   
     border-bottom: 1px solid #0a4547;
     outline: none;
-    padding: 5px;
+    padding: 7px 2px 6px 7px;
     background-color: whitesmoke;
     position: relative;
     top: -5px;
@@ -53,7 +50,7 @@ mat-icon{
 }
 
 #table{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-collapse: collapse;
     width: 100%;
   }
@@ -61,8 +58,9 @@ mat-icon{
       color: white;
       background-color:  #0f575a;
       height: 40px;
-      font-weight: bold;
-  }
+      font-size: 16px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+    }
   tr:nth-child(even){
       background-color: whitesmoke;
       height: 35px;
@@ -75,20 +73,18 @@ mat-icon{
       color: aliceblue;
       cursor: pointer;
   }
+  .mat-row:hover > .mat-cell {
+    color:  white
+  }
   ng-container{
       text-align: center;
   }
-  .cotainer{
-      margin-top: 5px;
-      /* margin-top: 142px; */
-  }
+  
   .mat-form-field {
       font-size: 18px;
       width: 100%;
   }
-  .data:hover{
-      color:white ;
-  }
+  
   
     
   

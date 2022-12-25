@@ -25,7 +25,7 @@ export class ProductionComponent implements OnInit {
 
   add_production(){
     this.addproduction.open(AddEditProductionComponent, {
-      disableClose: true
+      disableClose: true,
     }).afterClosed().subscribe(val => {
       if (val === 'save') {
         this.ngOnInit();

@@ -52,7 +52,7 @@
             </mat-form-field>
             <input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
         </div>
-        <div mat-dialog-action [align]="'end'">
+        <div mat-dialog-action [align]="'end'" id="main_button">
             <button mat-raised-button color="warn" class="reset_btn" (click)="resetcust()">Reset</button>
             <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
                 [disabled]="!custForm.valid">{{actionBtn}}</button>
