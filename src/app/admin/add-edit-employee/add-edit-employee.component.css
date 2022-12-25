@@ -25,7 +25,6 @@ textarea {
   height: 40px;
   background-color: green;
   color: white;
-  /* margin-right:600px; */
 }
 
 mat-toolbar {
@@ -124,16 +123,24 @@ mat-toolbar {
     margin-top: -5px;
   }
 
+  #main_button{
+    width: 190px;
+      margin: auto;
+  }
+  
   .reset_btn {
+    width: 80px;
+    height: 40px;
     float: left;
-    margin-top: 0px;
-    margin-left: 30%;
+    margin: 0px;
   }
-
+  
   .add_btn {
+    width: 80px;
+    height: 40px;
     float: right;
-    margin-right: 30%;
-  }
+    margin: 0px;
+  } 
 }
 
 @media(max-width:768px) {
@@ -154,19 +161,22 @@ mat-toolbar {
   .upload_box {
     width: 100%;
   }
+#main_button{
+  width: 190px;
+    margin: auto;
+}
 
-  .reset_btn {
-    width: 30%;
-    float: left;
-    margin-left: 10%;
-    margin-top: 0px;
-  }
+.reset_btn {
+  width: 80px;
+  height: 40px;
+  float: left;
+  margin: 0px;
+}
 
-  .add_btn {
-    width: 30%;
-    float: right;
-    margin-right: 10%;
-  }
-
-
+.add_btn {
+  width: 80px;
+  height: 40px;
+  float: right;
+  margin: 0px;
+} 
 }

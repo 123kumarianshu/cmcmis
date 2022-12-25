@@ -61,7 +61,7 @@
                 <textarea formControlName="party_address" matInput placeholder="Address" ></textarea>
             </mat-form-field>           
         </div>      
-        <div mat-dialog-action [align]="'end'" class="main_box">
+        <div mat-dialog-action [align]="'end'" class="main_button">
             <button mat-raised-button color="warn" (click)="resetparty()" class="reset_btn">Reset</button>
             <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
                 [disabled]="!addparty.valid">{{actionBtn}}</button>

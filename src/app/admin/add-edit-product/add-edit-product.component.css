@@ -1,134 +1,72 @@
 .column {
-    margin-right: 10px;
-    width: 200px;
-    height:350px;
-    float: left;
+  width: 100%;
+  height: auto;
+}
+
+.column mat-form-field {
+  width: 31%;
+  margin-left: 1.2%;
+  margin-right: 1%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+  margin-bottom: 20px;
+  color: rgb(20, 89, 92);
+  font-size: 18px;
+}
+
+.material-icons {
+  color: rgb(20, 89, 92);
+  margin-bottom: 20px;
+}
+
+#main_button {
+  width: 160px;
+  margin: auto;
+}
+
+.reset_btn {
+  float: left;
+}
+
+.add_btn {
+  float: right;
+  color: white;
+  background-color: green;
+}
+
+mat-toolbar {
+  height: 40px;
+  background: none;
+  color: whitesmoke;
+  padding: 0px;
+  position: relative;
+}
+
+
+@media (min-width:521px) and (max-width:767px) {
+  .column {
+    width: 100%;
+    height: auto;
   }
-  
-  .example-spacer {
-    flex: 1 1 auto;
-    margin-bottom: 20px;
-    color: rgb(20, 89, 92);
-    font-size: 18px;
+
+  .column mat-form-field {
+    width: 100%;
   }
-  
-  .material-icons {
-    color: rgb(20, 89, 92);
-    margin-bottom: 20px;
+
+
+}
+
+@media (max-width:521px) {
+  .column {
+    width: 100%;
+    height: auto;
   }
-  
-  .reset_btn {
-    width: 80px;
-    height: 40px;
-    margin-right: 60px;
-  
+
+  .column mat-form-field {
+    width: 100%;
   }
-  
-  .add_btn {
-    width: 80px;
-    height: 40px;
-    margin-right: 100px;
-    background-color: green;
-    color: white;
-  }
-  
-  mat-toolbar {
-    height: 40px;
-    /* margin-bottom: 20px; */
-    background: none;
-    color: whitesmoke;
-    padding: 0px;
-    position: relative;
-    /* background-color:#14595c;  */
-  }
-  
-  @media (min-width:1200px) and (max-width:2000px) {
-    #weight {
-      width: 410px;
-    }
-  }
-  
-  @media (min-width:768px) and (max-width:1200px) {
-    #weight {
-      width: 410px;
-    }
-  
-    /* .column{
-     width: 100%;
-     height: auto;
-    }
-    .column mat-form-field{
-     width: 31%;
-     margin-left: 2%;
-    }
-    #column_1 mat-form-field{
-      position: relative;
-      bottom: 67px;
-    }
-    #weight{
-      position: relative;
-      top: 80px;
-  
-    }
-    .reset_btn{
-      float: left;
-      margin: 0px;
-      margin-top: -47px;
-      margin-left: 52%;
-    } 
-     .add_btn{
-      float: right;
-      margin: 0px;
-      margin-top: -47px;
-      margin-right: 18%;
-  
-    } */
-  }
-  
-  @media (min-width:521px) and (max-width:767px) {
-    .column {
-      width: 100%;
-      height: auto;
-    }
-  
-    .column mat-form-field {
-      width: 100%;
-    }
-  
-    .reset_btn {
-      float: left;
-      margin: 0px;
-      margin-left: 13%;
-    }
-  
-    .add_btn {
-      float: right;
-      margin: 0px;
-      margin-right: 13%;
-  
-    }
-  }
-  
-  @media (max-width:521px) {
-    .column {
-      width: 100%;
-      height: auto;
-    }
-  
-    .column mat-form-field {
-      width: 100%;
-    }
-  
-    .reset_btn {
-      float: left;
-      margin: 0px;
-      margin-left: 13%;
-    }
-  
-    .add_btn {
-      float: right;
-      margin: 0px;
-      margin-right: 13%;
-  
-    }
-  }
+
+
+}

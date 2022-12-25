@@ -1,117 +1,128 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject,ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from '../manage.service';
 import { Router } from '@angular/router';
 import { DialogConfig } from '@angular/cdk/dialog';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgToastService } from 'ng-angular-popup';
-
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-add-edit-production',
   templateUrl: './add-edit-production.component.html',
   styleUrls: ['./add-edit-production.component.css']
 })
-export class AddEditProductionComponent implements OnInit {
-      ProductionForm:any
-      admin_id:any
-      actionBtn='Add'
-      unitdata:any
-      empdata:any
-      productdata:any
-  constructor(
-    private popup: NgToastService,
-    private fb: FormBuilder,
-    private router: Router,
-    private manageService: ManageService,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
-    private matref: MatDialogRef<AddEditProductionComponent>
+export class AddEditProductionComponent implements OnInit {displayedColumns: string[] = ['slno','emp_name','cat_name','mh_item','mh_quantity','mh_date','Action',];
+dataSource!: MatTableDataSource<any>;
+@ViewChild(MatPaginator) paginator!: MatPaginator;
+@ViewChild(MatSort) sort!: MatSort;
+empdata:any
+MaterialForm:any
+admin_id=1
+actionBtn='Add'
+itemdata:any 
+catdata:any 
+constructor(
+  private popup: NgToastService,
+  private fb: FormBuilder,
+  private router: Router,
+  private manageService: ManageService,
+  @Inject(MAT_DIALOG_DATA) public editData: any,
+  private matref: MatDialogRef<AddEditProductionComponent>
+) { }
 
-  ) { }
-
-  ngOnInit(): void {
-
-    this.manageService.getEmployee().subscribe(
-      (emp_res: any) => {
-        this.empdata = emp_res.data
-      }
-    )
-    this.manageService.getUnit().subscribe(
-      (unit_: any) => {
-        this.unitdata = unit_.data
-      }
-    )
-    this.manageService.getProduct().subscribe(
-      (product_res: any) => {
-        this.productdata = product_res.data
-      }
-    )
-   
-    this.ProductionForm = this.fb.group({
-      production_id: [''],
-      production_quantity: ['', Validators.required],
-      production_date: ['', Validators.required],
-      production_total: ['', Validators.required],
-      production_unit_id_fk: ['', Validators.required],
-      production_emp_id_fk: ['', Validators.required],
-      production_product_id_fk: ['', Validators.required],
-      admin_id_fk: ['',]
-
-    })
-    if (this.editData) {
-      this.actionBtn = 'Update'   
-      this.ProductionForm.controls['production_id'].setValue(this.editData.production_id);
-      this.ProductionForm.controls['production_quantity'].setValue(this.editData.production_quantity);
-      this.ProductionForm.controls['production_date'].setValue(this.editData.production_date);
-      this.ProductionForm.controls['production_total'].setValue(this.editData.production_total);
-      this.ProductionForm.controls['production_unit_id_fk'].setValue(this.editData.unit_id);
-      this.ProductionForm.controls['production_emp_id_fk'].setValue(this.editData.emp_id);
-      this.ProductionForm.controls['production_product_id_fk'].setValue(this.editData.product_id);
-      this.ProductionForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
+ngOnInit(): void {
+  this.manageService.getEmployee().subscribe(
+    (emp_res: any) => {
+      this.empdata = emp_res.data
     }
-  }
-  onSubmit(): void {
-    if (!this.editData) {
-      if (this.ProductionForm.valid) {
-        this.manageService.postItem(this.ProductionForm.value).subscribe({
-          next: (res) => {          
-            this.ProductionForm.reset();
-            this.popup.success({ detail: 'Success', summary: 'Item  Submit  Successfully...', sticky: true, position: 'tr' })
-            this.matref.close('save');
-          },
-          error: (err) => {
-            console.log(err);
-            this.popup.error({ detail: 'message', summary: 'Item data is Not Submit', sticky: true, position: 'tr' })
-          }
-        });
-      }
+  )
+  this.manageService.getItem().subscribe(
+    (item_res: any) => {
+      this.itemdata = item_res.data
     }
-     else {
-      this.updateProduction()
+  ) 
+  this.manageService.getCat().subscribe(
+    (cat_res: any) => {
+      this.catdata = cat_res.data
     }
-  }
-  updateProduction() {
-  if (this.ProductionForm.valid) {
-    const updateData = new FormData();
-    this.manageService.putItem(this.ProductionForm.value).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.router.navigate(['/item']);
-        this.ProductionForm.reset();
-        this.popup.success({ detail: 'Success', summary: 'Item Update Successfully...', sticky: true, position: 'tr' })
-        this.matref.close('save');
-      },
-      error: (err) => {
-        console.log(err);
-        this.popup.error({ detail: 'message', summary: 'Item data is Not Update', sticky: true, position: 'tr' })
-      }
-    });
+  )    
+  this.MaterialForm = this.fb.group({
+    mh_id: [''],
+    mh_quantity: ['', Validators.required],
+    mh_date: ['', Validators.required],
+    mh_desc: ['', Validators.required],
+    emp_mobile:['',Validators.required] ,     
+    mh_emp_id_fk: ['', Validators.required],
+    mh_item_id_fk: ['', Validators.required],
+    cat_id_fk: ['', Validators.required],
+    admin_id_fk: ['',]
+
+  })
+  if (this.editData) {
+    this.MaterialForm = 'Update'   
+    this.MaterialForm.controls['mh_id'].setValue(this.editData.mh_id);
+    this.MaterialForm.controls['mh_quantity'].setValue(this.editData.mh_quantity);
+    this.MaterialForm.controls['mh_date'].setValue(this.editData.mh_date);
+    this.MaterialForm.controls['mh_desc'].setValue(this.editData.mh_desc);
+    this.MaterialForm.controls['Handover_by'].setValue(this.editData.Handover_by);
+    this.MaterialForm.controls['mh_emp_id_fk'].setValue(this.editData.emp_id_fk);
+    this.MaterialForm.controls['cat_id_fk'].setValue(this.editData.cat_id_fk);
+    this.MaterialForm.controls['mh_item_id_fk'].setValue(this.editData.item_id);     
+    this.MaterialForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
   }
 }
-
-resetProduction() {
-  this.ProductionForm.reset();
+onSubmit(): void {
+  if (!this.editData) {
+    if (this.MaterialForm.valid) {
+      this.manageService.postProduction(this.MaterialForm.value).subscribe({
+        next: (res) => {
+          console.log(this.MaterialForm.value)          
+          this.MaterialForm.reset();
+          this.popup.success({ detail: 'Success', summary: 'Production  Submit  Successfully...', sticky: true, position: 'tr' })
+          this.matref.close('save');
+        },
+        error: (err) => {
+          console.log(err);
+          this.popup.error({ detail: 'message', summary: 'Production  data is Not Submit', sticky: true, position: 'tr' })
+        }
+      });
+    }
+  }
+   else {
+    this.updatemh()
+  }
+}
+updatemh() {
+if (this.MaterialForm.valid) {
+  const updateData = new FormData();
+  this.manageService.putProduction(this.MaterialForm.value).subscribe({
+    next: (res) => {
+      console.log(res);
+      this.router.navigate(['/material_handover']);
+      this.MaterialForm.reset();
+      this.popup.success({ detail: 'Success', summary: 'Production Update Successfully...', sticky: true, position: 'tr' })
+      this.matref.close('save');
+    },
+    error: (err) => {
+      console.log(err);
+      this.popup.error({ detail: 'message', summary: 'Production data is Not Update', sticky: true, position: 'tr' })
+    }
+  });
 }
 }
 
+resetmh() {
+this.MaterialForm.reset();
+}
+applyFilter(event: Event) {
+const filterValue = (event.target as HTMLInputElement).value;
+this.dataSource.filter = filterValue.trim().toLowerCase();
 
+if (this.dataSource.paginator) {
+  this.dataSource.paginator.firstPage();
+}
+}
+}
 

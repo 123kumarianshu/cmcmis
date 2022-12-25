@@ -1,51 +1,103 @@
 <mat-toolbar>
-    <span class="example-spacer">Add Production</span>
+    <span class="example-spacer">Production</span>
     <mat-icon mat-dialog-close>cancel</mat-icon>
 </mat-toolbar>
+<span>Select Employee</span>
 <div mat-dialog-content>
-    <form [formGroup]="ProductionForm">
+    <form [formGroup]="MaterialForm">
         <div class="column">
-            <input type="number" formControlName="production_id" readonly hidden>
+            <input type="number" formControlName="mh_id" readonly hidden>
             <mat-form-field appearance="fill">
-                <mat-label>Quantity</mat-label>
-                <input formControlName="production_quantity" matInput placeholder="Quantity">
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-                <mat-label>Date</mat-label>
-                <input  formControlName="production_date" matInput placeholder="production_date" type="date">
-            </mat-form-field><br>          
-
-            <mat-form-field appearance="fill">
-                <mat-label>Total</mat-label>
-                <input formControlName="production_total" matInput placeholder="Total">
-            </mat-form-field>                   
-        </div>
-        <div class="column" id="column_1">            
-            <mat-form-field appearance="fill">
-                <mat-label>Unit</mat-label>
-                <mat-select formControlName="production_unit_id_fk">
-                    <mat-option *ngFor="let unitdata of unitdata" [value]="unitdata.unit_id">{{unitdata.unit_name}}</mat-option>
+                <mat-label>Employee</mat-label>
+                <mat-select formControlName="mh_emp_id_fk">
+                    <mat-option *ngFor="let empdata of empdata"
+                        [value]="empdata.emp_id">{{empdata.emp_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
-                <mat-label>Employee</mat-label>
-                <mat-select formControlName="production_emp_id_fk">
-                    <mat-option *ngFor="let empdata of empdata" [value]="empdata.emp_id">{{empdata.emp_name}}</mat-option>
+                <mat-label>Mobile Number</mat-label>
+                <input type="number" formControlName="emp_mobile" matInput placeholder="Mobile">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Email ID</mat-label>
+                <input type="email" formControlName="emp_mobile" matInput placeholder="Mobile">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Address</mat-label>
+                <input type="text" formControlName="emp_mobile" matInput placeholder="Mobile">
+            </mat-form-field> <br>
+            <span>Add Item</span><br>
+            <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="cat_id_fk">
+                    <mat-option *ngFor="let catdata of catdata"
+                        [value]="catdata.cat_id">{{catdata.cat_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Product</mat-label>
-                <mat-select formControlName="production_product_id_fk">
-                    <mat-option *ngFor="let sizedata of productdata" [value]="productdata.product_id">{{productdata.product_name}}</mat-option>
+                <mat-select formControlName="mh_item_id_fk">
+                    <mat-option *ngFor="let itemdata of itemdata"
+                        [value]="itemdata.item_id">{{itemdata.item_name}}</mat-option>
                 </mat-select>
-            </mat-form-field>            
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Quantity</mat-label>
+                <input formControlName="mh_quantity" matInput placeholder="Quantity">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input formControlName="mh_desc" matInput placeholder="Description">
+            </mat-form-field>
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
-        </div>       
+        </div>
+        <button class="addbtn" (click)="onSubmit()">Add</button>
     </form>
-    
-    <div mat-dialog-action [align]="'end'">
-        <button mat-raised-button color="warn" (click)="resetProduction()" class="reset_btn">Reset</button>
-        <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
-            [disabled]="!ProductionForm.valid">{{actionBtn}}</button>
+    <div class="cotainer">
+        <div class="count_search">
+            <!-- <span class="notice_text"> Total :</span> -->
+            <div class="search">
+                <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+            </div>
+        </div>
+        <form>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort id="table">
+                    <ng-container matColumnDef="slno">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
+                    </ng-container>
+                    <ng-container matColumnDef="emp_name">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Employee</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.emp_name}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="mh_quantity">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.item_name}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="mh_date">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.mh_date}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="cat_name">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="mh_item">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.mh_item}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="Action">
+                        <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                        <td class="data" mat-cell *matCellDef="let row"><mat-icon>edit</mat-icon></td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr class="mat-row" *matNoDataRow>
+                    </tr>
+                </table>
+                <mat-paginator #paginatorRef [pageSizeOptions]="[5]" aria-label="Select page of users"></mat-paginator>
+            </div>
+        </form>
+        <br>
     </div>

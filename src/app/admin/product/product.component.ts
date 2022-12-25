@@ -12,7 +12,7 @@ import { AddEditProductComponent } from '../add-edit-product/add-edit-product.co
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-      displayedColumns: string[] = ['slno','product_name','product_size_id_fk','product_weight_id_fk','product_page','product_produ_cost','product_cost_price','product_retail_price','product_unit_id_fk','product_cat_id_fk','Action',];
+      displayedColumns: string[] = ['slno','product_cat_id_fk','product_name','product_size_id_fk','product_weight_id_fk','product_unit_id_fk','product_page','product_produ_cost','product_cost_price','product_retail_price','Action',];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
@@ -38,7 +38,8 @@ export class ProductComponent implements OnInit {
 
   add_product(): any {
     this.addproduct.open(AddEditProductComponent, {
-      disableClose: true
+      disableClose: true,
+      width:'40%'
     }).afterClosed().subscribe(val => {
       if (val === 'save') {
         this.ngOnInit();
