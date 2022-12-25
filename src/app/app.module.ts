@@ -66,6 +66,14 @@ import { AddEditAccountComponent } from './admin/add-edit-account/add-edit-accou
 import { AddEditExpenseComponent } from './admin/add-edit-expense/add-edit-expense.component';
 import { AddEditSaleComponent } from './admin/add-edit-sale/add-edit-sale.component';
 import { AddEditPurchaseComponent } from './admin/add-edit-purchase/add-edit-purchase.component';
+import { ProductionComponent } from './admin/production/production.component';
+import { MaterialHandoverComponent } from './admin/material-handover/material-handover.component';
+import { AddEditMaterialHandoverComponent } from './admin/add-edit-material-handover/add-edit-material-handover.component';
+import { AddEditProductionComponent } from './admin/add-edit-production/add-edit-production.component';
+import { ProductComponent } from './admin/product/product.component';
+import { AddEditProductComponent } from './admin/add-edit-product/add-edit-product.component';
+
+
 
 
 
@@ -113,6 +121,14 @@ import { AddEditPurchaseComponent } from './admin/add-edit-purchase/add-edit-pur
     AddEditExpenseComponent,
     AddEditSaleComponent,
     AddEditPurchaseComponent,
+    ProductionComponent,
+    MaterialHandoverComponent,
+    AddEditMaterialHandoverComponent,
+    AddEditProductionComponent,
+    ProductComponent,
+    AddEditProductComponent,
+    
+    
     
     
     

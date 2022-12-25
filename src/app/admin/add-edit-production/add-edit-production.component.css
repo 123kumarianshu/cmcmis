@@ -1,0 +1,117 @@
+.example-spacer {
+  flex: 1 5 auto;
+
+}
+
+.date {
+  width: 200px;
+}
+
+mat-toolbar {
+  height: 38px;
+  margin-bottom: -20px;
+  padding: 0px;
+  background: none;
+  position: relative;
+  top: -20px;
+  color: #14595c;
+
+}
+
+mat-form-field {
+  margin-right: 5px;
+  top: 5px;
+}
+
+.Add_item {
+  color: #14595c;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.addmh {
+  border: 2px solid gray;
+}
+
+mat-icon {
+  font-size: 25px;
+  float: right;
+
+}
+
+#table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.trth {
+  color: white;
+  background-color: #0f575a;
+  height: 40px;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: whitesmoke;
+  height: 35px;
+}
+
+tr:nth-child(odd) {
+  height: 35px;
+}
+
+tr:hover {
+  background-color: #0f575a;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+ng-container {
+  text-align: center;
+}
+
+.cotainer {
+  margin-top: -39px;
+}
+
+.data:hover {
+  color: white;
+}
+
+.addbtn {
+  width: 100px;
+  top: 5px;
+  height: 35px;
+  background-color: #0f575a;
+  color: whitesmoke;
+  border-radius: 5px;
+}
+
+span {
+  color: #0f575a;
+}
+
+.count_search {
+  height: 40px;
+  width: 100%;
+  float: right;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  padding: 10px 0px 10px 10px;
+  box-sizing: border-box;
+  color: #0d5e58;
+
+}
+
+.search input {
+  border-bottom: 1px solid #0a4547;
+  outline: none;
+  padding: 4px;
+  background-color: whitesmoke;
+  width: 25%;
+  float: right;
+  /* position: relative;
+  top: -5px;
+  left:630px; */
+}

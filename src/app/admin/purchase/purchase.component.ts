@@ -12,16 +12,25 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./purchase.component.css']
 })
 export class PurchaseComponent implements OnInit {
-  displayedColumns: string[] = ['slno','purch_party', 'purch_amount', 'purch_disc', 'purch_net_payment', 'purch_party_bill_no','purch_cgst','purch_sgst', 'purch_ro','Action',];
+  displayedColumns: string[] = ['slno','purch_party', 'purch_amount', 'purch_disc', 'purch_net_payment', 'purch_bill_no','purch_cgst','purch_sgst', 'purch_ro','Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  pur_count: any;
   constructor(
     private addpurch: MatDialog,
     private partyservice: ManageService,
   ) { }
 
   ngOnInit(): void {
+    this.partyservice.get_pur().subscribe(
+      (partyresult: any) => {
+        this.dataSource = new MatTableDataSource(partyresult.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.pur_count = partyresult.data.length
+      }
+    )
   }
 
   add_Purchase(): any {

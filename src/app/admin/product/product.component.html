@@ -1,0 +1,77 @@
+<div id="wrapper">
+    <div class="view_notice">
+      <span class="notice_text">Product Details</span>
+      <mat-icon id="add_product" (click)="add_product()">add_circle</mat-icon>
+    </div>
+    <div class="count_search">
+      <span class="notice_text"> Total :{{productcount}}</span>
+      <div class="search">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+      </div>
+    </div>
+    <div class="cotainer">
+      <form>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort id="table">
+            <ng-container matColumnDef="slno">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
+              <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
+                paginatorRef.pageSize)+(i+1)}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="product_cat_id_fk">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_cat_id_fk}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="product_name">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="product_size_id_fk">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Size</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_size_id_fk}}</td>
+            </ng-container>
+            <ng-container matColumnDef="product_weight_id_fk">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_weight_id_fk}}</td>
+            </ng-container>
+            <ng-container matColumnDef="product_page">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product page</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_page}}</td>
+            </ng-container>
+            <ng-container matColumnDef="product_produ_cost">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Production Cost</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_produ_cost}}</td>
+            </ng-container>
+            <ng-container matColumnDef="product_cost_price">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Cost Price</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_cost_price}}</td>
+            </ng-container>
+           
+            <ng-container matColumnDef="product_retail_price">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Retail Price</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_retail_price}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="product_unit_id_fk">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Unit</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_unit_id_fk}}</td>
+            </ng-container>
+            
+            <ng-container matColumnDef="Action">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+              <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="editProduct(row)">edit</mat-icon></td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+            </tr>
+          </table>
+          <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
+            aria-label="Select page of users"></mat-paginator>
+        </div>
+      </form>
+    </div>
+  </div>
