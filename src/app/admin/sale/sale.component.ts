@@ -14,7 +14,7 @@ import { AddEditSaleComponent } from '../add-edit-sale/add-edit-sale.component';
   styleUrls: ['./sale.component.css']
 })
 export class SaleComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'sale_total_amount', 'sale_gst', 'sale_dues', 'sale_discount', 'sale_date', 'Action',];
+  displayedColumns: string[] = ['slno', 'sale_total_amount', 'sale_gst', 'sale_dues', 'sale_discount','sale_bill_no', 'sale_date', 'Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -28,7 +28,14 @@ export class SaleComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.saleservice.getSale().subscribe(
+      (saleresult: any) => {
+        this.dataSource = new MatTableDataSource(saleresult.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
 
+      }
+    )
   }
   // addSale() {
   //   alert("ok")
