@@ -185,21 +185,23 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'production_update.php', data);
   }
 
-  // *******************************MaterialHandover funcation start here**************************
-  getMaterialHandover() {
-    return this.http.get<[]>(this.baseUrl + 'MaterialHandover_view.php');
-  }
-  postMaterialHandover(data: any) {
-    return this.http.post<any>(this.baseUrl + 'MaterialHandover_insert.php', data);
-  }
-  putMaterialHandover(data: any) {
-    return this.http.put<any>(this.baseUrl + 'MaterialHandover_update.php', data);
-  }
+     // *******************************MaterialHandover funcation start here**************************
+     getMaterialHandover() {
+      return this.http.get<[]>(this.baseUrl + 'MaterialHandover_view.php');
+    }
+    postMaterialHandover(data: any) {
+      return this.http.post<any>(this.baseUrl + 'MaterialHandover_insert.php', data);
+    }
+    putMaterialHandover(data: any) {
+      return this.http.put<any>(this.baseUrl + 'MaterialHandover_update.php', data);
+    }
+    
+
+    
 
 
-  ////////////////////////////////////////////////// Purchase Working Starting Here /////////////////////////////////////////////////////
 
-
+  
   getPtr(data: any) {
     return this.http.post<any>(this.baseUrl + 'party_single_view.php', data);
   }
@@ -212,29 +214,21 @@ export class ManageService {
     return this.http.get<[]>(this.baseUrl + 'pur_view.php');
   }
 
+  // getCusto(data: any) {
+  //   return this.http.post<any>(this.baseUrl + 'cat_single_view.php',data);
+  // }
   get_single_item(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_view.php', data);
+    return this.http.post<any>(this.baseUrl + 'get_single_view.php',data);
   }
 
   get_single_data(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
   }
 
 
   getDescription() {
-    return this.http.get<[]>(this.baseUrl + 'des_view.php',)
+      return this.http.get<[]>(this.baseUrl + 'des_view.php',)
   }
-
-  postDes(data: any) {
-    return this.http.post<any>(this.baseUrl + 'des_item_insert.php', data);
-  }
-
-  putFinal(data: any) {
-    return this.http.put<any>(this.baseUrl + 'pur_final_update.php', data);
-  }
-
-
-
   ////////////////////////////////////////////// Purchase Working Ending Here ///////////////////////////////////////////
 
 }

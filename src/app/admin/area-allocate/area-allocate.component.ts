@@ -12,7 +12,7 @@ import { AddEditAreaAllocateComponent } from '../add-edit-area-allocate/add-edit
   styleUrls: ['./area-allocate.component.css']
 })
 export class AreaAllocateComponent implements OnInit {
-  displayedColumns: string[] = ['slno','alct_area_emp_id_fk', 'alct_area_name_id_fk', 'alct_area_distance_id_fk', 'alct_area_date','alct_area_desc','Action',];
+  displayedColumns: string[] = ['slno','emp_name', 'area_name', 'alct_area_date', 'alct_area_des','Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

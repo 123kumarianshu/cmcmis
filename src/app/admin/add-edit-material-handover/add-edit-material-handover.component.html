@@ -9,96 +9,104 @@
             <input type="number" formControlName="mh_id" readonly hidden>
             <mat-form-field appearance="fill">
                 <mat-label>Employee</mat-label>
-                <mat-select formControlName="mh_emp_id_fk">
+                <mat-select formControlName="emp_id_fk" (valueChange)="getEmpData($event)">
                     <mat-option *ngFor="let empdata of empdata" [value]="empdata.emp_id">{{empdata.emp_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Mobile Number</mat-label>
-                <input  type="number"formControlName="emp_mobile" matInput placeholder="Mobile">
+                <input  type="number"formControlName="emp_mobile" matInput placeholder="Mobile" readonly>
             </mat-form-field>          
             <mat-form-field appearance="fill">
               <mat-label>Email ID</mat-label>
-              <input  type="email"formControlName="emp_mobile" matInput placeholder="Mobile">
+              <input  type="email"formControlName="emp_email" matInput placeholder="Email" readonly>
           </mat-form-field>  
           <mat-form-field appearance="fill">
             <mat-label>Address</mat-label>
-            <input  type="text"formControlName="emp_mobile" matInput placeholder="Mobile">
+            <input  type="text"formControlName="emp_address" matInput placeholder="Address" readonly>
           </mat-form-field> <br>            
            <span>Add Item</span><br>
             <mat-form-field appearance="fill">
               <mat-label>Category</mat-label>
-              <mat-select formControlName="cat_id_fk">
+              <mat-select formControlName="cat_id_fk" (valueChange)="getcatdata($event)">
                   <mat-option *ngFor="let catdata of catdata" [value]="catdata.cat_id">{{catdata.cat_name}}</mat-option>
               </mat-select>
           </mat-form-field>            
             <mat-form-field appearance="fill">
                 <mat-label>Item</mat-label>
-                <mat-select formControlName="mh_item_id_fk">
-                    <mat-option *ngFor="let itemdata of itemdata" [value]="itemdata.item_id">{{itemdata.item_name}}</mat-option>
+                <mat-select formControlName="item_id_fk">
+                    <mat-option *ngFor="let itemdata of item_single_data" [value]="itemdata.item_id">{{itemdata.item_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Quantity</mat-label>
-                <input formControlName="mh_quantity" matInput placeholder="Quantity">
+                <input formControlName="quantity" matInput placeholder="Quantity">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
-                <input formControlName="mh_desc" matInput placeholder="Description">
+                <input formControlName="description" matInput placeholder="Description">
             </mat-form-field>
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>             
           </div>
-          <button class="addbtn" (click)="onSubmit()">Add</button>            
+          <button class="addbtn" (click)="addDescription()">Add</button>            
     </form>    
-        <div class="cotainer">
+        <div class="cotainer">    
           <div class="count_search">
-            <!-- <span class="notice_text"> Total :{{mhcount}}</span> -->
+            <span class="notice_text"> Total :</span>
             <div class="search">
               <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
             </div>
           </div>
-          <form>
-            <div class="mat-elevation-z8">
-              <table mat-table [dataSource]="dataSource" matSort id="table">
-                <ng-container matColumnDef="slno">
-                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
-                </ng-container>
-                <ng-container matColumnDef="emp_name">
-                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Employee</th>
-                  <td class="data" mat-cell *matCellDef="let row">{{row.emp_name}}</td>
-                </ng-container>  
-                <ng-container matColumnDef="mh_quantity">
-                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
-                  <td class="data" mat-cell *matCellDef="let row">{{row.item_name}}</td>
-                </ng-container>
-                <ng-container matColumnDef="mh_date">
-                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-                  <td class="data" mat-cell *matCellDef="let row">{{row.mh_date}}</td>
-                </ng-container>
-                <ng-container matColumnDef="cat_name">
-                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
-                  <td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
-                </ng-container>  
-                <ng-container matColumnDef="mh_item">
-                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Item</th>
-                  <td class="data" mat-cell *matCellDef="let row">{{row.mh_item}}</td>
-                </ng-container>                         
-                <ng-container matColumnDef="Action">
-                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-                  <td class="data" mat-cell *matCellDef="let row"><mat-icon>edit</mat-icon></td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                <tr class="mat-row" *matNoDataRow>
-                </tr>
-              </table>
-              <mat-paginator #paginatorRef [pageSizeOptions]="[5]"
-                aria-label="Select page of users"></mat-paginator>
-            </div>
-          </form>
-          <br>
-          <button class="Submitbtn">Submit</button>
+          <div class="cotainer">
+            <form>
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort id="table">
+                  <ng-container matColumnDef="slno">
+                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+                    <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
+                      paginatorRef.pageSize)+(i+1)}}</td>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="emp_name">
+                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Employee</th>
+                    <td class="data" mat-cell *matCellDef="let row">{{row.emp_name}}</td>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="cat_name">
+                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+                    <td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="item_name">
+                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Item</th>
+                    <td class="data" mat-cell *matCellDef="let row">{{row.item_name}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="quantity">
+                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+                    <td class="data" mat-cell *matCellDef="let row">{{row.quantity}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="mh_date">
+                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+                    <td class="data" mat-cell *matCellDef="let row">{{row.mh_date}}</td>
+                  </ng-container>        
+                  <ng-container matColumnDef="Action">
+                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                    <!-- <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="editweight(row)">edit</mat-icon></td> -->
+                  </ng-container>
+        
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+                  </tr>
+                </table>
+                <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
+                  aria-label="Select page of users"></mat-paginator>
+              </div>
+            </form>
+          </div>      
         </div>
      
     

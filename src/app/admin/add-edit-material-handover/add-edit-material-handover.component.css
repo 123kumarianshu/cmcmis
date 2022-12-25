@@ -66,21 +66,11 @@ ng-container {
 }
 
 .cotainer {
-    margin-top: 5px;
+    /* margin-top: 5px; */
+    margin-top: -5px;
 }
 .data:hover {
     color: white;
-}
-.Submitbtn{
-    width: 120px;
-    height: 40px;
-    background-color: #0f575a;
-    border-radius:5px;
-    color: white;
-    position:absolute; 
-    bottom:40px ;   
-    margin-left:370px; 
-    
 }
 .addbtn{
     width:50px;
@@ -93,31 +83,21 @@ ng-container {
 span{
     color: #0f575a;
 }
-.count_search {
+.search input{
+    border-bottom: 1px solid black;
+    outline: none;
+    padding: 4px;
+    background-color: whitesmoke;
+    width: 25%;
+    float: right;
+}
+.count_search{
     height: 40px;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
+    padding:10px 0px 10px 10px;
     box-sizing: border-box;
     color: #0d5e58;
 }
-
-.search input {
-    border-bottom: 1px solid #0a4547;
-    outline: none;
-    padding: 5px;
-    background-color: whitesmoke;
-    position: relative;
-    top: -5px;
-    left:636px;
-}
-
-
-
-
-
-
 
 
   

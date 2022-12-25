@@ -32,9 +32,9 @@ mat-toolbar{
     padding: 0px;
     background: none;
     position: relative;
-    /* top:-25px; */
+    top:-25px;
     color:whitesmoke;
-    /* background-color:#14595c; ; */
+    background-color:#14595c; ;
 }
 
 
