@@ -15,9 +15,9 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  baseUrl: string = 'http://adityaradhaya.com/api/';  
-  // baseUrl: string = 'http://localhost/cmcmisapi/';
-  //  baseUrl: string = 'http://localhost/cmcmisAPI/';
+  // baseUrl: string = 'http://adityaradhaya.com/api/';  
+  baseUrl: string = 'http://localhost/api/';
+
 
 
 
@@ -163,6 +163,8 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'allocate_area_update.php', data);
   }
 
+  //////////////////////////////////////////// Purchase Working Starting Here ////////////////////////////////////////
+
    // *******************************Product funcation start here**************************
   getProduct() {
     return this.http.get<[]>(this.baseUrl + 'product_view.php');
@@ -199,20 +201,11 @@ export class ManageService {
     }
     
 
-    // for matrial hand over work
+    
 
-   
-    getEmpSingle(data: any) {
-      return this.http.post<any>(this.baseUrl + 'emp_single_view.php', data);
-    }
-     // for matrial hand over work
 
-    getCatSingle(data: any) {
-      return this.http.post<any>(this.baseUrl + 'cat_single_view.php', data);
-    }
-    get_mh_view() {
-      return this.http.get<[]>(this.baseUrl + 'mh_view.php');
-    }
+
+  
 }
 
 
