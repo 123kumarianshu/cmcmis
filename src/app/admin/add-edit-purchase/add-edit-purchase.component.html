@@ -12,7 +12,7 @@
 					<div class="column">
 						<mat-form-field appearance="fill">
 							<mat-label>Party Id</mat-label>
-							<input formControlName="party_id" matInput placeholder="Party Id">
+							<input formControlName="party_id" matInput placeholder="Party Id" readonly="party_id">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
@@ -41,7 +41,7 @@
 					</div>
 				</form>
 				<div mat-dialog-action [align]="'end'">
-					<button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+					<button mat-raised-button (click)="save_next()" class="add_btn" type="submit"
 						style="background-color: #0d5e58; color: white;"
 						[disabled]="!party_form.valid">{{actionBtn}}</button>
 				</div>
@@ -59,7 +59,7 @@
 					<div class="column">
 						<mat-form-field appearance="fill">
 							<mat-label>Party Name</mat-label>
-							<input formControlName="party_name" matInput placeholder="Party">
+							<input formControlName="party_id_fk" matInput placeholder="Party">
 						</mat-form-field>
 
 
@@ -73,7 +73,8 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Item</mat-label>
-							<mat-select formControlName="item_id_fk" (valueChange)="item_single_data($event)">
+							<mat-select formControlName="purch_item_des_pur_id_fk"
+								(valueChange)="item_single_data($event)">
 								<mat-option *ngFor="let item of single_item_data"
 									[value]="item.item_id">{{item.item_name}}</mat-option>
 							</mat-select>
@@ -87,12 +88,12 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Rate</mat-label>
-							<input formControlName="item_rate" matInput placeholder="Rate">
+							<input formControlName="pur_item_des_rate" matInput placeholder="Rate">
 						</mat-form-field><br>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Quantity</mat-label>
-							<input formControlName="item_quantity" matInput placeholder="Quantity">
+							<input formControlName="pur_item_des_quantity" matInput placeholder="Quantity">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
@@ -112,15 +113,17 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Amount</mat-label>
-							<input formControlName="amount" matInput placeholder="Amount">
+							<input formControlName="pur_item_des_amount" matInput placeholder="Amount">
 						</mat-form-field><br>
+
+						<input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden type="number">
 
 						<!-- <mat-form-field appearance="fill" class="text_amount">
 							<mat-label>Amount</mat-label>
 							<input formControlName="amount" matInput placeholder="Amount">
 						</mat-form-field><br> -->
-						
-						<mat-icon class="addButton">add</mat-icon>
+
+						<mat-icon class="addButton" (click)="des_next()">add</mat-icon>
 					</div>
 				</form>
 
@@ -136,48 +139,61 @@
 										{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
 								</ng-container>
 
-								<ng-container matColumnDef="cust_name">
+								<ng-container matColumnDef="purch_item_des_item_id_fk">
+									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+									<td class="data" mat-cell *matCellDef="let row">{{row.purch_item_des_item_id_fk}}
+									</td>
+								</ng-container>
+
+
+								<ng-container matColumnDef="purch_item_des_pur_id_fk">
+									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Item</th>
+									<td class="data" mat-cell *matCellDef="let row">{{row.purch_item_des_pur_id_fk}}
+									</td>
+								</ng-container>
+
+								<ng-container matColumnDef="party_name">
 									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party</th>
-									<td class="data" mat-cell *matCellDef="let row">{{row.cust_name}}</td>
+									<td class="data" mat-cell *matCellDef="let row">{{row.party_name}}</td>
 								</ng-container>
 
-								<ng-container matColumnDef="item_disc">
+								<ng-container matColumnDef="item_unit">
+									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Unit</th>
+									<td class="data" mat-cell *matCellDef="let row">{{row.item_unit}}</td>
+								</ng-container>
+
+								<ng-container matColumnDef="gst">
+									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
+									<td class="data" mat-cell *matCellDef="let row">{{row.gst}}</td>
+								</ng-container>
+
+								<ng-container matColumnDef="pur_item_des_rate">
+									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
+									<td class="data" mat-cell *matCellDef="let row">{{row.pur_item_des_rate}}</td>
+								</ng-container>
+
+								<ng-container matColumnDef="pur_item_des_quantity">
+									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+									<td class="data" mat-cell *matCellDef="let row">{{row.pur_item_des_quantity}}</td>
+								</ng-container>
+
+								<ng-container matColumnDef="net_rate">
+									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Net Rat</th>
+									<td class="data" mat-cell *matCellDef="let row">{{row.net_rate}}</td>
+								</ng-container>
+
+								<ng-container matColumnDef="discount">
 									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
-									<td class="data" mat-cell *matCellDef="let row">{{row.item_disc}}</td>
+									<td class="data" mat-cell *matCellDef="let row">{{row.discount}}</td>
 								</ng-container>
-
-								<ng-container matColumnDef="item_amount">
-									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic Amount</th>
-									<td class="data" mat-cell *matCellDef="let row">{{row.item_amount}}</td>
-								</ng-container>
-
-								<ng-container matColumnDef="item_net_payment">
-									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Net Amount</th>
-									<td class="data" mat-cell *matCellDef="let row">{{row.item_net_payment}}</td>
-								</ng-container>
-
-								<ng-container matColumnDef="item_cgst">
-									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>CGST</th>
-									<td class="data" mat-cell *matCellDef="let row">{{row.item_cgst}}</td>
-								</ng-container>
-
-								<ng-container matColumnDef="item_sgst">
-									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SGST</th>
-									<td class="data" mat-cell *matCellDef="let row">{{row.item_sgst}}</td>
-								</ng-container>
-
-								<ng-container matColumnDef="item_ro">
-									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>R/O</th>
-									<td class="data" mat-cell *matCellDef="let row">{{row.item_ro}}</td>
-								</ng-container>
-								<ng-container matColumnDef="item_bill_no">
-									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
-									<td class="data" mat-cell *matCellDef="let row">{{row.item_bill_no}}</td>
+								<ng-container matColumnDef="pur_item_des_amount">
+									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+									<td class="data" mat-cell *matCellDef="let row">{{row.pur_item_des_amount}}</td>
 								</ng-container>
 
 								<ng-container matColumnDef="Action">
 									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-									<td class="data" mat-cell *matCellDef="let row"> <mat-icon>edit</mat-icon></td>
+									<td class="data" mat-cell *matCellDef="let row"> <mat-icon>delete</mat-icon></td>
 								</ng-container>
 
 								<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -201,11 +217,12 @@
 
 	<ng-container ngbNavItem><br>
 		<a ngbNavLink class="puechase_link" (click)="final_bill()">Final bill</a>
-		<button id="billnobtn">Bill Ref.No:{{purch_bill_no}}</button>
+		<button id="billnobtn">Bill Ref.No: {{purch_bill_no}} </button>
 		<ng-template ngbNavContent>
 			<div class="content_area">
 				<form [formGroup]="final_form">
 					<div class="column">
+
 						<mat-form-field appearance="fill">
 							<mat-label>Party by:</mat-label>
 							<input formControlName="item_sale_by" matInput placeholder="Party by">
@@ -221,15 +238,6 @@
 							<input formControlName="item_gst" matInput placeholder="GST">
 						</mat-form-field>
 
-						<mat-form-field appearance="fill">
-							<mat-label>SGST</mat-label>
-							<input formControlName="item_sgst" matInput placeholder="SGST">
-						</mat-form-field><br>
-
-						<mat-form-field appearance="fill">
-							<mat-label>CGST</mat-label>
-							<input formControlName="item_cgst" matInput placeholder="CGST">
-						</mat-form-field>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Discount</mat-label>
@@ -237,14 +245,14 @@
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
-							<mat-label>Amount</mat-label>
-							<input formControlName="item_amount" matInput placeholder="Amount">
-						</mat-form-field>
+							<mat-label>Net Amount</mat-label>
+							<input formControlName="item_amount" matInput placeholder="Net Amount">
+						</mat-form-field><br>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Backdues</mat-label>
 							<input formControlName="item_backdues" matInput placeholder="Backdues">
-						</mat-form-field><br>
+						</mat-form-field>
 
 						<mat-form-field appearance="fill">
 							<mat-label>R/O</mat-label>
@@ -253,7 +261,7 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Total Amount</mat-label>
-							<input formControlName="item_total_amount" matInput placeholder="Net amount">
+							<input formControlName="item_total_amount" matInput placeholder="total amount">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
@@ -266,6 +274,11 @@
 							<input formControlName="item_dues" matInput placeholder="Dues">
 						</mat-form-field>
 						<br>
+						<mat-form-field appearance="fill">
+							<mat-label>Upload Bill</mat-label>
+							<input formControlName="bill_img" matInput>
+						</mat-form-field>
+
 						<mat-form-field appearance="fill" class="date_box">
 							<mat-label>Date</mat-label>
 							<input formControlName="final_bill_date" matInput [matDatepicker]="picker">
@@ -277,8 +290,7 @@
 
 					<div mat-dialog-action [align]="'end'">
 						<button mat-raised-button (click)="finalsubmit()" class="add_btn" type="submit"
-							style="background-color: #0d5e58; color: white;"
-							[disabled]="!party_form.valid">{{actionBtn1}}</button>
+							style="background-color: #0d5e58; color: white;">{{actionBtn1}}</button>
 					</div>
 
 

@@ -87,6 +87,7 @@ ng-container a {
     position: relative;
     left: 21.1em;
     bottom: 55px;
+    cursor: pointer;
 
 }
 
