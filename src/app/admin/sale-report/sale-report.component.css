@@ -1,10 +1,11 @@
 #wrapper{
     margin-top: 63px;
 }
+
 .view_notice {
     height: 40px;
     width: 100%;
-    background-color: #0b4648;
+    background-color: #0a4547 ;
     color: whitesmoke;
     display: flex;
     justify-content: space-between;
@@ -18,31 +19,53 @@
     left: 2px;
     cursor: pointer;
 }
+.text_box{
+    width: 150px;
+    float: right;
+    padding: 31px 2px 1px 5px;
+    border-bottom: 1px solid black;
+}
+.text_boxe{
+    width: 200px;
+    float: left;
+    position: absolute;
+    margin-left: 11px;
+    padding: 35px 1px 2px 5px;
+    border-bottom: 1px solid black;
+    
+}
 
+/* -----------------------------------------------------------------change me------------------------------------------------------- */
+
+mat-form-field {
+    margin-right: 3px;
+    width: 15%;
+    height: 30px;
+    /* line-height: ; */
+   
+  }
+  
+  
+  
+
+  mat-datepicker-toggle{
+  
+    position: fixed;
+    /* left: 70px; */
+    right: 60%;
+    top: 15%;
+  }
+ 
 .notice_text {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
-.count_search {
-    height: 40px;
+.search_area{
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    box-sizing: border-box;
-    color: #0d5e58;
+    height: 52px;
 }
-
-.search input {
-    border-bottom: 1px solid #0a4547;
-    outline: none;
-    padding: 5px;
-    background-color: whitesmoke;
-    position: relative;
-    top: -5px;
-    left: 0px;
+.ppt{
+    right: 47%
 }
-
 mat-icon {
     background-color: transparent;
     border: none;
@@ -63,6 +86,14 @@ mat-icon {
     font-weight: bold;
     padding-left: 50px;
 }
+.example-full-width{
+    height: 20px;
+    width: 100px;
+}
+.box_text{
+    height: 10px;
+}
+
 
 tr:nth-child(even) {
     background-color: whitesmoke;
@@ -84,12 +115,7 @@ ng-container {
 }
 
 .cotainer {
-    margin-top: 5px;
-}
-
-.mat-form-field {
-    font-size: 18px;
-    width: 100%;
+    margin-top: 2px;
 }
 
 .data:hover {
@@ -99,12 +125,12 @@ ng-container {
     height:40px;
     width: 100%;
     background-color: #070f17;
-    margin-top:470px ;    
+    margin-top:458px ;    
 }
 .total{    
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color:whitesmoke; 
-    padding-left:100px;   
+    padding-left:136px;   
     margin-left:50px;    
     line-height:45px;
     float:left;
@@ -112,11 +138,82 @@ ng-container {
   
     
 }
-.example-full-width{
-    width: 150px;
-   height: 200;
-    position: absolute;
+/* --------------------------------------------------------Media Query-------------------------------------------- */
+@media(max-width: 420px) {
+    mat-form-field{
+        width: 90px;
+    }
+    .text_boxe{
+        width: 89px;
+        margin-left: 13px;
+        padding: 35px 1px 2px 0px;
+    }
+    .text_box{
+        width: 65px;
+    }
+    .trth{
+        padding-left: 1px;
+        font-size: 10px;
+        
+    }
+    .footer_amount{
+        width: 100%;
+        margin-top: 194px;
+    }
+    .total{
+        padding-left: 0px;
+        margin-left: 12px;
+        font-size: 12px;
+    }
 }
+
+@media(max-width: 520px){
+    mat-form-field{
+        width: 90px;
+    }
+    .text_boxe{
+        width: 89px;
+        margin-left: 13px;
+        padding: 35px 1px 2px 0px;
+    }
+    .text_box{
+        width: 70px;
+    }
+    .trth{
+        padding-left: 0px;
+        font-size: 10px;
+        
+    }
+    .total{
+        padding-left: 11px;
+        margin-left: 12px;
+        font-size: 12px;
+    }
+    .footer_amount{
+        width: 100%;
+        margin-top: 192px;
+    }
+}
+@media(max-width:620px){
+    mat-form-field{
+        width: 90px;
+    }
+    .text_box{
+        width: 70px;
+    } 
+    .text_boxe{
+        width: 70px;
+    }  
+    .trth{
+        padding-left: 0px;
+        font-size: 10px;
+        
+    }                                                                            
+}
+    
+    
+ 
+
 		
 		
 		

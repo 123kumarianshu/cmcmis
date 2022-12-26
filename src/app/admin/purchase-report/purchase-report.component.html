@@ -1,23 +1,37 @@
 <div class="view_notice">
   <span class="notice_text">Purchase Report</span>
-  <mat-icon id="add_dues" (click)="add_purchase_report()">add_circle</mat-icon>
+  <mat-icon id="add_dues">add_circle</mat-icon>
 </div>
-<div class="count_search">
-  <div class="datetime">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matIconSuffix [for]="picker">
-        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-      </mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </div>
+
+<div class="search_area">
+ 
+  <mat-form-field appearance="fill">
+    <mat-label>Month</mat-label>
+    <mat-select>
+      <mat-option>Month</mat-option>
+      <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>From</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>To</mat-label>
+    <input matInput [matDatepicker]="picker1" >
+ 
+    <mat-datepicker-toggle class="ppt" matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
   
-  <div class="search">
-    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
-  </div>
+  <input matInput type="Search" placeholder="Search" #input class="text_box">
 </div>
+
 <div class="cotainer">
   <form>
     <div class="mat-elevation-z8">
@@ -70,9 +84,6 @@
             <mat-icon (click)="edit_purchase_report(row)">edit</mat-icon>
           </td>
         </ng-container>
-
-
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         <tr class="mat-row" *matNoDataRow>
@@ -82,4 +93,24 @@
       <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>
   </form>
+  <div class="footer_amount">
+    <span class="total">Total GST : 1 |</span>
+    <span class="total">Discount : 0 |</span>
+    <span class="total">Basic amount : 0 |</span>
+    <span class="total">Net amount : 0 </span>
+  </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
