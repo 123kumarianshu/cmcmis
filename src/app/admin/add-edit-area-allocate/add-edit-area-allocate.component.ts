@@ -29,7 +29,8 @@ export class AddEditAreaAllocateComponent implements OnInit {
           alct_area_id: [''],         
           area_id_fk: ['', Validators.required],       
           alct_area_des: ['',Validators.required],
-          alct_area_date: ['', Validators.required],    
+          alct_area_date: ['', Validators.required], 
+          alct_area_distance_id_fk:['',Validators.required] ,  
           emp_id_fk : ['',Validators.required],         
           admin_id_fk: [''], 
     
@@ -41,6 +42,7 @@ export class AddEditAreaAllocateComponent implements OnInit {
           this.area_allocateForm.controls['area_id_fk'].setValue(this.editData.area_id_fk);
           this.area_allocateForm.controls['alct_area_des'].setValue(this.editData.alct_area_des);
           this.area_allocateForm.controls['alct_area_date'].setValue(this.editData.alct_area_date);
+          this.area_allocateForm.controls['alct_area_distance_id_fk'].setValue(this.editData.alct_area_distance_id_fk);         
           this.area_allocateForm.controls['emp_id_fk'].setValue(this.editData.emp_id_fk);          
           this.area_allocateForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
         }
@@ -48,8 +50,9 @@ export class AddEditAreaAllocateComponent implements OnInit {
   ngOnInit(): void {
     this.manageService.getEmployee().subscribe(
       (res:any)=>{
-        // console.log(res)
-        this.empdata = res.data
+        console.log(res)
+        // this.empdata = res.data
+        alert(this.empdata)
       }
     )
 
@@ -68,6 +71,7 @@ export class AddEditAreaAllocateComponent implements OnInit {
                 this.area_allocateForm.reset();
                 this.popup.success({ detail: 'Success', summary: 'Area Allocate  Submit  Successfully...', sticky: true, position: 'tr' })
                 this.matref.close('save');
+                console.log(this.area_allocateForm.value)
               },
               error: (err) => {
                 console.log(err);
@@ -101,6 +105,12 @@ export class AddEditAreaAllocateComponent implements OnInit {
     
     resetArea() {
       this.area_allocateForm.reset();
+    }
+
+    // for get employee datata
+    getEmpData(event:any){
+      console.log(event)
+
     }
     }
     

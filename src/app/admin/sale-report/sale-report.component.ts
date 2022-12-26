@@ -4,10 +4,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
+<<<<<<< HEAD
 import {MatSelectModule} from '@angular/material/select';
 
 
 
+=======
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { FormControl } from '@angular/forms';
+>>>>>>> bc7463bbdb4a20f79d9228f6d53d6258c806d2e5
 
 @Component({
   selector: 'app-sale-report',
@@ -42,7 +47,11 @@ export class SaleReportComponent implements OnInit {
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+<<<<<<< HEAD
 state: any
+=======
+date: FormControl<any> | undefined;
+>>>>>>> bc7463bbdb4a20f79d9228f6d53d6258c806d2e5
   constructor(
     private add: MatDialog,
     private customerservice: ManageService,

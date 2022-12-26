@@ -1,0 +1,77 @@
+<mat-toolbar>
+    <span class="example-spacer">Add Product</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div mat-dialog-content>
+    <form [formGroup]="productForm">
+        <div class="column">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="product_cat_id_fk">
+                    <mat-option *ngFor="let catdata of catdata"
+                        [value]="catdata.cat_id">{{catdata.cat_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <input type="number" formControlName="product_id" readonly hidden>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input formControlName="product_name" matInput placeholder="Name">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Weight</mat-label>
+                <mat-select formControlName="product_weight_id_fk">
+                    <mat-option *ngFor="let weightdata of weightdata"
+                        [value]="weightdata.weight_id">{{weightdata.weight_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Unit</mat-label>
+                <mat-select formControlName="product_unit_id_fk">
+                    <mat-option *ngFor="let unitdata of unitdata"
+                        [value]="unitdata.unit_id">{{unitdata.unit_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Size</mat-label>
+                <mat-select formControlName="product_size_id_fk">
+                    <mat-option *ngFor="let sizedata of sizedata"
+                        [value]="sizedata.size_id">{{sizedata.size_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Pages</mat-label>
+                <input formControlName="product_page" matInput placeholder="Product page">
+            </mat-form-field>
+
+        </div>
+        <div class="column" id="column_1">
+            <mat-form-field appearance="fill">
+                <mat-label>production Cost</mat-label>
+                <input formControlName="product_produ_cost" matInput placeholder="produ Cost">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Product Cost</mat-label>
+                <input formControlName="product_cost_price" matInput placeholder="Cost Price">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Retail Price</mat-label>
+                <input formControlName="product_retail_price" matInput placeholder="Retail Price">
+            </mat-form-field>
+
+            <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
+        </div>
+    </form>
+
+    <div mat-dialog-action [align]="'end'" id="main_button">
+        <button mat-raised-button color="warn" (click)="resetProduct()" class="reset_btn">Reset</button>
+        <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+            [disabled]="!productForm.valid">{{actionBtn}}</button>
+    </div>

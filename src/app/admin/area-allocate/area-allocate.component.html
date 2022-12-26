@@ -14,7 +14,7 @@
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort id="table">
           <ng-container matColumnDef="slno">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
             <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
               paginatorRef.pageSize)+(i+1)}}</td>
           </ng-container>
@@ -22,7 +22,6 @@
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Emp name</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.alct_area_emp_id_fk}}</td>
           </ng-container>
-
           <ng-container matColumnDef="alct_area_name_id_fk">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Area</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.alct_area_name_id_fk}}</td>

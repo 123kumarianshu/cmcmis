@@ -1,109 +1,38 @@
-#wrapper{
-    margin-top: 63px;
+
+/********************************************* party css style starting here ****************************************/
+
+.nav-tabs {
+    height: 46px;
 }
+
 .view_notice {
-    height: 40px;
-    width: 100%;
     background-color: #0b4648;
     color: whitesmoke;
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    box-sizing: border-box;
+    margin-top: 67px;
 }
 
 .notice_text {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: cambria;
 }
 
-.button_area {
-    height: 28px;
-    border-bottom: 1px solid black;
-}
-
-.btn {
-    background-color: #0b4648;
-    height: 35px;
-    width: 100px;
-    color: whitesmoke;
-    margin-left: 5px;
-    margin-top: -15px;
-}
-
-#Total_bill_btn {
-    background-color: #0b4648;
-    height: 35px;
-    width: 150px;
-    color: whitesmoke;
-    float: right;
-    margin-top: -15px;
+.puechase_link {
+    background-color: #05363c;
     border-radius: 5px;
-}
-
-.view_notice {
-    height: 40px;
-    width: 100%;
-    background-color: #0b4648;
+    height: 37px;
+    font-size: 12px;
     color: whitesmoke;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    box-sizing: border-box;
+    margin: 2px 5px 0px 0px;
 }
-
-#add_customer {
-    position: relative;
-    top: -5px;
-    left: 2px;
-    cursor: pointer;
-}
-
 
 .add_btn {
     height: 40px;
     width: 105px;
-    margin-right: 620px;
-    margin-top: 19px;
-    font-size: 17px;
+    margin-top: 5px;
+    margin-right: 41.5em;
     color: whitesmoke;
     cursor: pointer;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-}
-
-
-.notice_text {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.count_search {
-    height: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    box-sizing: border-box;
-    color: #0d5e58;
-}
-
-.search input {
-    border-bottom: 1px solid #0a4547;
-    outline: none;
-    padding: 5px;
-    background-color: whitesmoke;
-    position: relative;
-    top: -5px;
-    left: 0px;
-}
-
-.save_btn {
-    margin-right: 558px;
-    margin-top: 18px;
-    height: 40px;
-    font-size: 15px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    word-spacing: 4px;
-    background-color: #0a4547;
+    font-family: cambria;
 }
 
 button {
@@ -118,11 +47,6 @@ button {
 
 }
 
-.nav-tabs {
-    background-color: #0f575a;
-}
-
-
 mat-form-field {
     margin-right: 5px;
 }
@@ -131,57 +55,52 @@ mat-form-field {
     width: 64%;
 }
 
+
 .content_area {
     text-align: center;
     margin-top: 10px;
     height: 526px;
 }
 
-.date_box {
-    width: 200px;
-    float: right;
-    margin-right: 850px;
-}
 
 ng-container a {
     background-color: #05363c;
 }
 
-/* =============================================Button Change================================================= */
-.submitbtn {
-    width: 126px;
-    height: 35px;
-    float: left;
-    padding-left: -20px;
-    top: 40px;
+/********************************************* party css style Ending here ****************************************/
+
+
+/********************************************* item css style starting here ****************************************/
+
+/* 
+.text_amount {
+    margin-right: 59.2em;
+} */
+
+
+.addButton {
+    background-color: #05363c;
+    height: 25px;
+    width: 25px;
+    color: aliceblue;
+    font-size: 25px;
+    position: relative;
+    left: 21.1em;
+    bottom: 55px;
     cursor: pointer;
-    margin-top: -35px;
-    margin-left: 585px;
+
 }
 
-.submitbtn p {
-    background-color: #05363c;
-    width: 129px;
-    font-size: 19px;
-    word-spacing: 4px;
-    border-radius: 5px;
-    color: whitesmoke;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    margin-left: -20px;
-}
+/********************************************* item css style ending here ****************************************/
 
-/* ============================================================================================================= */
-.customer_btn {
-    background-color: #05363c;
-    border-radius: 5px;
-    color: whitesmoke;
-}
+/********************************************* Final css style starting here ****************************************/
+
 
 #billnobtn {
     position: absolute;
     right: 10px;
     height: 38px;
-    top: 138px;
+    top: 137px;
     margin-right: -4px;
 }
 
@@ -191,55 +110,23 @@ a {
     margin: 1px;
 }
 
-.add_btn {
-    margin-top: 39px;
-    background-color: #0b4648;
-    color: white;
+
+
+.date_box {
+    width: 200px;
+    float: right;
+    margin-right: 850px;
 }
 
 
-/* .footer{
-    background-color: #0b4648;
-    width:100%;
-    height:40px ;
-    color:whitesmoke;
-    margin-top:274px;
-} */
-/* ==============================================change======================================================= */
-.party_btn {
-    width: 70px;
-    height: 36px;
-    border-radius: 5px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.item_btn {
-    width: 70px;
-    height: 36px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    border-radius: 5px;
-}
-
-.final_btn {
-    width: 90px;
-    margin-left: 2px;
-    height: 36px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    border-radius: 5px;
-}
+/********************************************* Final css style Ending here ****************************************/
 
 
-.addButton {
-    background-color: #05363c;
-    color: aliceblue;
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    font-style: bold;
 
-}
 
 /* ====================================================Media Queryss===================================================== */
+
+
 @media(max-width: 420px) {
     .mat-form-field-infix {
         display: block;
@@ -267,13 +154,6 @@ a {
         height: 36px;
     }
 
-    .item_btn {
-        width: 57px;
-        height: 36px;
-        padding-left: 14px;
-
-    }
-
     .final_btn {
         width: 77px;
         margin-left: 1px;
@@ -282,6 +162,8 @@ a {
         text-align: center;
         height: 36px;
     }
+
+
 
     #billnobtn {
 
@@ -399,5 +281,8 @@ tr:hover {
 ng-container {
     text-align: center;
 }
+
+
+/* =============================================Button Change================================================= */
 
 /* for table css ending here */
