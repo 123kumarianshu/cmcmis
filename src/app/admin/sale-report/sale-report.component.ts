@@ -5,10 +5,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import {MatSelectModule} from '@angular/material/select';
-
-
-
-
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { FormControl } from '@angular/forms';
 
