@@ -15,15 +15,15 @@
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Mobile Number</mat-label>
-                <input  type="number"formControlName="emp_mobile" matInput placeholder="Mobile" readonly>
+                <input  type="number" formControlName="emp_mobile" matInput placeholder="Mobile" onkeypress=" return this.value.length < 10" oninput="if(this.value.length>=10) {this.value=this.value.slice(0,10);}">
             </mat-form-field>          
             <mat-form-field appearance="fill">
               <mat-label>Email ID</mat-label>
-              <input  type="email"formControlName="emp_email" matInput placeholder="Email" readonly>
+              <input  type="email"formControlName="emp_email" matInput placeholder="Email" >
           </mat-form-field>  
           <mat-form-field appearance="fill">
             <mat-label>Address</mat-label>
-            <input  type="text"formControlName="emp_address" matInput placeholder="Address" readonly>
+            <input  type="text"formControlName="emp_address" matInput placeholder="Address" >
           </mat-form-field> <br>            
            <span>Add Item</span><br>
             <mat-form-field appearance="fill">
@@ -63,7 +63,7 @@
               <div class="mat-elevation-z8">
                 <table mat-table [dataSource]="dataSource" matSort id="table">
                   <ng-container matColumnDef="slno">
-                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+                    <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
                     <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
                       paginatorRef.pageSize)+(i+1)}}</td>
                   </ng-container>
