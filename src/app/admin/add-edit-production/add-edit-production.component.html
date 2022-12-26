@@ -16,7 +16,7 @@
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Mobile Number</mat-label>
-                <input type="number" formControlName="emp_mobile" matInput placeholder="Mobile">
+                <input type="number" formControlName="emp_mobile" matInput placeholder="Mobile" onkeypress="return this.value.length < 10;" oninput="if(this.value.length>=10) {this.value = this.value.slice(0,10);}">
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Email ID</mat-label>
@@ -56,7 +56,7 @@
     </form>
     <div class="cotainer">
         <div class="count_search">
-            <!-- <span class="notice_text"> Total :</span> -->
+            <span class="notice_text"> Total :</span>
             <div class="search">
                 <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
             </div>
