@@ -36,8 +36,8 @@ export class MaterialHandoverComponent implements OnInit {
 }
 add_materialhandover(): any {  
   this.addmh.open(AddEditMaterialHandoverComponent, {
-    width:'100wh',
-    height:'90vh',
+    // width:'100wh',
+    // height:'90vh',
     disableClose: true
   }).afterClosed().subscribe(val => {
     if (val === 'save') {

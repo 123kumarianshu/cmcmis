@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sale-report',
@@ -17,6 +17,7 @@ export class SaleReportComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+date: FormControl<any> | undefined;
   constructor(
     private add: MatDialog,
     private customerservice: ManageService,

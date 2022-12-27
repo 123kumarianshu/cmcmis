@@ -12,7 +12,7 @@
     box-sizing: border-box;
 }
 
-#add_production {
+#add_dues {
     position: relative;
     top: -5px;
     left: 2px;
@@ -47,13 +47,6 @@
     left: 0px;
 }
 
-#add_dues{
-    position: relative;
-    top: -5px;
-    left: 2px;
-    cursor: pointer;
-}
-
 mat-icon {
     background-color: transparent;
     border: none;
@@ -72,7 +65,7 @@ mat-icon {
     background-color: #0f575a;
     height: 40px;
     font-size: 16px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 tr:nth-child(even) {
@@ -101,3 +94,39 @@ ng-container {
     width: 100%;
 }
 
+/* //////////////////////////table media q//////////////////////////// */
+
+@media (max-width:460px) {
+    .notice_text {
+        font-size: 13px;
+    }
+    .count_search .notice_text{
+        font-size: 13px;
+    }
+    table th {
+        font-size: 13px;
+    }
+
+    table td {
+        font-size: 13px;
+    }
+
+    th.mat-header-cell:first-of-type {
+        padding-left: 13px;
+    }
+
+    th.mat-header-cell:last-of-type {
+        padding-right: 0px;
+        width: 0%;
+    }
+
+    td.mat-cell:first-of-type {
+        padding-left: 20px;
+    }
+
+    td.mat-cell:last-of-type {
+        padding-right: 0px;
+        padding-left: 10px;
+    }
+    
+}

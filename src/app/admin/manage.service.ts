@@ -16,12 +16,6 @@ export class ManageService {
     private http: HttpClient
   ) { }
   baseUrl: string = 'http://adityaradhaya.com/api/';  
-
-
-
-
-
-
   //************** */ for party function starting here**************
 
 
@@ -164,10 +158,69 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'allocate_area_update.php', data);
   }
 
-  // *******************************Product funcation start here**************************
+
+  ///////////////////////// for sale customer starting ///////////////////////////
+  ///// for customer view in sale table ////////
+  GetCust(data: any) {
+    return this.http.post<any>(this.baseUrl + 'cust_single_view.php', data);
+  }
+
+  /////////// insert data on submit btn in sale customer ///////////
+  postSale(data: any) {
+    return this.http.post<any>(this.baseUrl + 'sale_insert.php', data);
+  }
+
+  /////////// view sale table data ////////////////
+  getSale() {
+    return this.http.get<[]>(this.baseUrl + 'sale_tbl_view.php');
+  }
+
+  /////////// category data show in sale item table ////////////
+  getCate(data: any) {
+    return this.http.post<any>(this.baseUrl + 'cat_single_view.php', data);
+  }
+
+  ///////////// items data show in sale item table ///////////////
+  getProd(data: any) {
+    return this.http.post<any>(this.baseUrl + 'product_single_view.php', data);
+  }
+
+  getprodfilter(data: any) {
+    return this.http.post<any>(this.baseUrl + 'product_filter_data.php', data);
+  }
+  ///////////////////// for sale customer Ending //////////////////////////
+
+  /////////////////////// product view /////////////////////
   getProduct() {
     return this.http.get<[]>(this.baseUrl + 'product_view.php');
   }
+
+  ///////////////////// for sale description /////////////////////////
+  postSaledes(data: any) {
+    return this.http.post<any>(this.baseUrl + 'sale_desc_insert.php', data);
+  }
+  getSaledes() {
+    return this.http.get<[]>(this.baseUrl + 'sale_desc_view.php');
+  }
+
+
+  postProd(data: any) {
+    return this.http.post<any>(this.baseUrl + 'product_des_insert.php', data);
+  }
+
+  ///////////////// sale filter data in final form  in sale table//////////////////
+
+  // getSalefilter(data: any) {
+  //   return this.http.post<any>(this.baseUrl + 'sale_filter_view.php', data);
+  // }
+
+  putFinalSale(data: any) {
+    return this.http.put<any>(this.baseUrl + 'final_sale_update.php', data);
+  }
+  // *******************************Product funcation start here**************************
+  // getProduct() {
+  //   return this.http.get<[]>(this.baseUrl + 'product_view.php');
+  // }
   postProduct(data: any) {
     return this.http.post<any>(this.baseUrl + 'product_insert.php', data);
   }
@@ -224,29 +277,52 @@ export class ManageService {
   getDescription() {
       return this.http.get<[]>(this.baseUrl + 'des_view.php',)
   }
+
+  // for 
+  get_mh_view() {
+      return this.http.get<[]>(this.baseUrl + 'des_view.php',)
+  }
+     
+  getEmpSingle(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+  }
+  getCatSingle(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+  }
+  postDes(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+  }
+  
+  putFinal(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+  }
+  
+
+
+
   ////////////////////////////////////////////// Purchase Working Ending Here ///////////////////////////////////////////
 
   // get_mh_view(){
   //      return this.http.get<[]>(this.baseUrl + 'des_view.php',)
   // }
-  getEmpSingle(data:any){
-       return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+//   getEmpSingle(data:any){
+//        return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
 
-  }
-  getCatSingle(data:any){
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+//   }
+//   getCatSingle(data:any){
+//     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
 
-  }
-  postDes(data:any){ 
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
-  }
-  putFinal(data:any){
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+//   }
+//   postDes(data:any){ 
+//     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+//   }
+//   putFinal(data:any){
+//     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
 
-  }
-  get_mh_view(){
-    return this.http.get<[]>(this.baseUrl + 'mh_view.php',)
-}
+//   }
+//   get_mh_view(){
+//     return this.http.get<[]>(this.baseUrl + 'mh_view.php',)
+// }
 
 }
 

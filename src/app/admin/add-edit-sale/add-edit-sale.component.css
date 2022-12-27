@@ -1,6 +1,7 @@
-#wrapper{
+.salediv {
     margin-top: 63px;
 }
+
 .view_notice {
     height: 40px;
     width: 100%;
@@ -12,6 +13,7 @@
     box-sizing: border-box;
 }
 
+
 #add_customer {
     position: relative;
     top: -5px;
@@ -19,8 +21,23 @@
     cursor: pointer;
 }
 
-.text_amount {
+/* .text_amount {
     margin-right: 830px;
+} */
+
+.addButton {
+    background-color: #05363c;
+    color: aliceblue;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    position: relative;
+    font-style: bold;
+    bottom: 64px;
+    left: 550px;
+    line-height: 40px;
+    border-radius: 5px;
+
 }
 
 .add_btn {
@@ -29,12 +46,13 @@
     margin-top: 10px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     word-spacing: 4px;
-    font-size: 18px;
+    font-size: 15px;
     cursor: pointer;
 }
 
 .notice_text {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 13px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .count_search {
@@ -84,8 +102,6 @@ mat-form-field {
 
 .date_box {
     width: 200px;
-    float: left;
-    margin-left: 225px;
 }
 
 
@@ -99,7 +115,8 @@ ng-container a {
     height: 35px;
     background-color: #0b4648;
     float: left;
-    margin-top: 90px;
+    margin-left: 550px;
+    margin-top: 13px;
 }
 
 .submitbtn p {
@@ -112,7 +129,7 @@ ng-container a {
     margin-left: -20px;
     font-size: 18px;
     word-spacing: 4px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     background-color: #0b4648;
 }
 
@@ -127,8 +144,7 @@ ng-container a {
 #billnobtn {
     position: absolute;
     right: 10px;
-    top: 139px;
-    margin-right: -6px;
+    top: 133px;
     height: 37px;
 }
 
@@ -153,7 +169,7 @@ a {
     width: 80px;
     height: 40px;
     font-size: 18px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     cursor: pointer;
 
 }
