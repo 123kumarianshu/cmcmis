@@ -7,7 +7,7 @@
     <div class="menu">
         <div [ngClass]="'menu_item'">
             <button mat-button class="menu-button" routerLink="/dashbaord" routerLinkActive="active">
-                <mat-icon style="font-size:25px;">dashboard</mat-icon>
+                <mat-icon id="dash_board">dashboard</mat-icon>
                 <span>Dashboard</span>
             </button>
             <div>
@@ -38,14 +38,16 @@
                         <span>Weight</span>
                     </button>
 
-                    <button mat-button class="menu-button" routerLink="/category" routerLinkActive="active">
-                        <mat-icon>category</mat-icon>
-                        <span>Category</span>
-                    </button>
                     <button mat-button class="menu-button" routerLink="/size" routerLinkActive="active">
                         <mat-icon>category</mat-icon>
                         <span>Size</span>
                     </button>
+
+                    <button mat-button class="menu-button" routerLink="/category" routerLinkActive="active">
+                        <mat-icon>category</mat-icon>
+                        <span>Category</span>
+                    </button>
+
                     <button mat-button class="menu-button" routerLink="/item" routerLinkActive="active">
                         <mat-icon>group_work</mat-icon>
                         <span>Item</span>
@@ -68,10 +70,7 @@
                         <mat-icon>area_chart</mat-icon>
                         <span>Area</span>
                     </button>
-                    <button mat-button class="menu-button" routerLink="/area_allocate" routerLinkActive="active">
-                        <mat-icon>area_chart</mat-icon>
-                        <span>Area Allocate</span>
-                    </button>
+
 
                 </div>
             </div>
@@ -88,10 +87,11 @@
             <mat-icon>area_chart</mat-icon>
             <span>Production</span>
         </button>
-        <!-- <button mat-button class="menu-button" routerLink="/product" routerLinkActive="active">
-                <mat-icon>area_chart</mat-icon>
-                <span>Product</span>
-            </button>   -->
+        <button mat-button class="menu-button" routerLink="/area_allocate" routerLinkActive="active">
+            <!-- <mat-icon>area_chart</mat-icon> -->
+            <mat-icon> location_on</mat-icon>
+            <span>Area Allocate</span>
+        </button>
         <button mat-button class="menu-button" routerLink="/sale" routerLinkActive="active">
             <mat-icon>local_grocery_store</mat-icon>
             <span>Sale</span>

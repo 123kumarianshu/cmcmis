@@ -1,5 +1,7 @@
 #wrapper{
     margin-top: 63px;
+    width: 100%;
+    /* overflow: auto; */
 }
 .view_notice{
     height: 40px;
@@ -84,6 +86,43 @@ mat-icon{
       font-size: 18px;
       width: 100%;
   }
+
+  /* //////////////////////////table media q//////////////////////////// */
+
+@media (max-width:460px) {
+    .notice_text {
+        font-size: 13px;
+    }
+    .count_search .notice_text{
+        font-size: 13px;
+    }
+    table th {
+        font-size: 13px;
+    }
+
+    table td {
+        font-size: 13px;
+    }
+
+    th.mat-header-cell:first-of-type {
+        padding-left: 13px;
+    }
+
+    th.mat-header-cell:last-of-type {
+        padding-right: 0px;
+        width: 0%;
+    }
+
+    td.mat-cell:first-of-type {
+        padding-left: 20px;
+    }
+
+    td.mat-cell:last-of-type {
+        padding-right: 0px;
+        padding-left: 10px;
+    }
+    
+}
   
   
     

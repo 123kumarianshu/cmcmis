@@ -46,7 +46,7 @@
                 </mat-select>
             </mat-form-field>  
         
-        <div mat-dialog-action [align]="'end'" class="text">
+        <div mat-dialog-action [align]="'end'" id="main_button">
             <button mat-raised-button color="warn" (click)="resetexpense()" class="reset_btn">Reset</button>
             <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
                 [disabled]="!expenseForm.valid">{{actionBtn}}</button>

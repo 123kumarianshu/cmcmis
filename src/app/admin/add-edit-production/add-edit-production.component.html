@@ -2,10 +2,11 @@
     <span class="example-spacer">Production</span>
     <mat-icon mat-dialog-close>cancel</mat-icon>
 </mat-toolbar>
-<span>Select Employee</span>
+<!-- <span>Select Employee</span> -->
 <div mat-dialog-content>
     <form [formGroup]="MaterialForm">
         <div class="column">
+            <span>Select Employee</span><br>
             <input type="number" formControlName="mh_id" readonly hidden>
             <mat-form-field appearance="fill">
                 <mat-label>Employee</mat-label>
@@ -16,7 +17,9 @@
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Mobile Number</mat-label>
-                <input type="number" formControlName="emp_mobile" matInput placeholder="Mobile" onkeypress="return this.value.length < 10;" oninput="if(this.value.length>=10) {this.value = this.value.slice(0,10);}">
+                <input type="number" formControlName="emp_mobile" matInput placeholder="Mobile"
+                    onkeypress="return this.value.length < 10;" oninput="if(this.value.length>=10) 
+                {this.value = this.value.slice(0,10);}">
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Email ID</mat-label>
