@@ -28,6 +28,8 @@ export class AddEditMaterialHandoverComponent implements OnInit {
   cat_data:any
   item_single_data:any
   mh_data:any
+  currentDate = new Date();
+
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
@@ -38,6 +40,7 @@ export class AddEditMaterialHandoverComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
     this.manageService.getEmployee().subscribe(
       (emp_res: any) => {
         this.empdata = emp_res.data
@@ -73,6 +76,7 @@ export class AddEditMaterialHandoverComponent implements OnInit {
       emp_id_fk: ['', Validators.required],
       item_id_fk: ['', Validators.required],
       cat_id_fk: ['', Validators.required],
+      mh_date: ['', Validators.required],
       admin_id_fk: ['',]
 
     })
@@ -87,6 +91,7 @@ export class AddEditMaterialHandoverComponent implements OnInit {
       this.MaterialForm.controls['cat_id_fk'].setValue(this.editData.cat_id_fk);
       this.MaterialForm.controls['mh_item_id_fk'].setValue(this.editData.item_id);     
       this.MaterialForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
+      this.MaterialForm.controls['mh_date'].setValue(this.editData.mh_date);
     }
     // if (this.editData) {
     //   // this.MaterialForm = 'Update'   
@@ -167,8 +172,8 @@ this.manageService.getEmpSingle(empformdata).subscribe(
     console.log(res)
     this.emp_data = res.data
     this.MaterialForm.controls['emp_id_fk'].setValue(this.emp_data.emp_id);
-    this.MaterialForm.controls['emp_mobile'].setValue(this.emp_data.emp_mobile);
-    this.MaterialForm.controls['emp_email'].setValue(this.emp_data.emp_email);
+    this.MaterialForm.controls['emp_mobile'].setValue(this.emp_data.emp_mobile);      
+    this.MaterialForm.controls['emp_email'].setValue(this.emp_data.emp_email);    
     this.MaterialForm.controls['emp_address'].setValue(this.emp_data.emp_address);
   
   }
@@ -180,7 +185,7 @@ getcatdata(event:any){
   catformdata.append('cat_id',event)
   this.manageService.getCatSingle(catformdata).subscribe(
     (res:any)=>{
-      console.log(res)
+      // console.log(res)
       this.item_single_data = res.data
     }
   )

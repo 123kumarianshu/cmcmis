@@ -48,6 +48,7 @@
                 <input formControlName="description" matInput placeholder="Description">
             </mat-form-field>
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>             
+            <input hidden formControlName="mh_date" readonly value="{{currentDate | date:'yyyy-MM-dd'}}">             
           </div>
           <button class="addbtn" (click)="addDescription()">Add</button>            
     </form>    
