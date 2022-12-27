@@ -15,7 +15,10 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  baseUrl: string = 'http://adityaradhaya.com/api/';  
+  baseUrl: string = 'http://adityaradhaya.com/api/';
+  // baseUrl: string = 'http://localhost/cmcmisapi/';
+
+
   //************** */ for party function starting here**************
 
 
@@ -191,9 +194,9 @@ export class ManageService {
   ///////////////////// for sale customer Ending //////////////////////////
 
   /////////////////////// product view /////////////////////
-  getProduct() {
-    return this.http.get<[]>(this.baseUrl + 'product_view.php');
-  }
+  // getProduct() {
+  //   return this.http.get<[]>(this.baseUrl + 'product_view.php');
+  // }
 
   ///////////////////// for sale description /////////////////////////
   postSaledes(data: any) {
@@ -218,9 +221,9 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'final_sale_update.php', data);
   }
   // *******************************Product funcation start here**************************
-  // getProduct() {
-  //   return this.http.get<[]>(this.baseUrl + 'product_view.php');
-  // }
+  getProduct() {
+    return this.http.get<[]>(this.baseUrl + 'product_view.php');
+  }
   postProduct(data: any) {
     return this.http.post<any>(this.baseUrl + 'product_insert.php', data);
   }
@@ -241,7 +244,7 @@ export class ManageService {
 
      // *******************************MaterialHandover funcation start here**************************
   getMaterialHandover() {
-      return this.http.get<[]>(this.baseUrl + 'MaterialHandover_view.php');
+      return this.http.get<[]>(this.baseUrl + 'mh_view.php');
   }
   postMaterialHandover(data: any) {
       return this.http.post<any>(this.baseUrl + 'MaterialHandover_insert.php', data);
@@ -262,9 +265,7 @@ export class ManageService {
     return this.http.get<[]>(this.baseUrl + 'pur_view.php');
   }
 
-  // getCusto(data: any) {
-  //   return this.http.post<any>(this.baseUrl + 'cat_single_view.php',data);
-  // }
+
   get_single_item(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_view.php',data);
   }
@@ -278,16 +279,17 @@ export class ManageService {
       return this.http.get<[]>(this.baseUrl + 'des_view.php',)
   }
 
-  // for 
+  // for matrial hand over
   get_mh_view() {
-      return this.http.get<[]>(this.baseUrl + 'des_view.php',)
+      return this.http.get<[]>(this.baseUrl + 'mh_view.php',)
   }
      
   getEmpSingle(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+    return this.http.post<any>(this.baseUrl + 'get_single_emp_view.php',data);
   }
+
   getCatSingle(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+    return this.http.post<any>(this.baseUrl + 'cat_single_view.php',data);
   }
   postDes(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
@@ -296,34 +298,8 @@ export class ManageService {
   putFinal(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
   }
+
   
-
-
-
-  ////////////////////////////////////////////// Purchase Working Ending Here ///////////////////////////////////////////
-
-  // get_mh_view(){
-  //      return this.http.get<[]>(this.baseUrl + 'des_view.php',)
-  // }
-//   getEmpSingle(data:any){
-//        return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
-
-//   }
-//   getCatSingle(data:any){
-//     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
-
-//   }
-//   postDes(data:any){ 
-//     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
-//   }
-//   putFinal(data:any){
-//     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
-
-//   }
-//   get_mh_view(){
-//     return this.http.get<[]>(this.baseUrl + 'mh_view.php',)
-// }
-
 }
 
 
