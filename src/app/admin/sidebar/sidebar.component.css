@@ -87,10 +87,14 @@ button:hover {
     }
 
     .menu-button {
-        font-size: 16px;
+        font-size: 13px;
         color: whitesmoke;
-        margin-top: 10px;
     }
-
-
+    .menu-button span{
+        margin-left: 5px;
+    }
+    .menu-button mat-icon{
+        font-size: 16px;
+        margin-top: 6px;
+    }
 }

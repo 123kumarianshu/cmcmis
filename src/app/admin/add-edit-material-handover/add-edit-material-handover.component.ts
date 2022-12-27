@@ -28,6 +28,8 @@ export class AddEditMaterialHandoverComponent implements OnInit {
   cat_data:any
   item_single_data:any
   mh_data:any
+  currentDate = new Date();
+
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
@@ -38,6 +40,7 @@ export class AddEditMaterialHandoverComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
     this.manageService.getEmployee().subscribe(
       (emp_res: any) => {
         this.empdata = emp_res.data
@@ -73,37 +76,39 @@ export class AddEditMaterialHandoverComponent implements OnInit {
       emp_id_fk: ['', Validators.required],
       item_id_fk: ['', Validators.required],
       cat_id_fk: ['', Validators.required],
+      mh_date: ['', Validators.required],
       admin_id_fk: ['',]
 
     })
-    // if (this.editData) {
-    //   console.log(this.editData)
-    //   this.MaterialForm = 'Update'   
-    //   this.MaterialForm.controls['mh_id'].setValue(this.editData.mh_id);
-    //   this.MaterialForm.controls['quantity'].setValue(this.editData.mh_quantity);
-    //   this.MaterialForm.controls['date'].setValue(this.editData.mh_date);
-    //   this.MaterialForm.controls['description'].setValue(this.editData.mh_desc);
-    //   this.MaterialForm.controls['mh_emp_id_fk'].setValue(this.editData.emp_id_fk);
-    //   this.MaterialForm.controls['cat_id_fk'].setValue(this.editData.cat_id_fk);
-    //   this.MaterialForm.controls['mh_item_id_fk'].setValue(this.editData.item_id);     
-    //   this.MaterialForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
-    // }
     if (this.editData) {
-      this.MaterialForm = 'Update'   
       console.log(this.editData)
-      // this.dataSource = new MatTableDataSource(this.editData);
+      this.MaterialForm = 'Update'   
       this.MaterialForm.controls['mh_id'].setValue(this.editData.mh_id);
-      this.MaterialForm.controls['emp_id_fk'].setValue(this.editData.emp_id);
-      // this.MaterialForm.controls['emp_email'].setValue(this.editData.emp_email);
-      // this.MaterialForm.controls['emp_mobile'].setValue(this.editData.emp_mobile);
-      // this.MaterialForm.controls['emp_address'].setValue(this.editData.emp_address);
-      // this.MaterialForm.controls['item_name'].setValue(this.editData.item_name);
-      // this.MaterialForm.controls['mh_desc'].setValue(this.editData.mh_desc);
-      // this.MaterialForm.controls['emp_id_fk'].setValue(this.editData.emp_id_fk);
-      // this.MaterialForm.controls['cat_id_fk'].setValue(this.editData.cat_id_fk);
-      // this.MaterialForm.controls['item_id_fk'].setValue(this.editData.item_id);     
-      // this.MaterialForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
+      this.MaterialForm.controls['quantity'].setValue(this.editData.mh_quantity);
+      this.MaterialForm.controls['date'].setValue(this.editData.mh_date);
+      this.MaterialForm.controls['description'].setValue(this.editData.mh_desc);
+      this.MaterialForm.controls['mh_emp_id_fk'].setValue(this.editData.emp_id_fk);
+      this.MaterialForm.controls['cat_id_fk'].setValue(this.editData.cat_id_fk);
+      this.MaterialForm.controls['mh_item_id_fk'].setValue(this.editData.item_id);     
+      this.MaterialForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
+      this.MaterialForm.controls['mh_date'].setValue(this.editData.mh_date);
     }
+    // if (this.editData) {
+    //   // this.MaterialForm = 'Update'   
+    //   // console.log(this.editData)
+    //   // // this.dataSource = new MatTableDataSource(this.editData);
+    //   // this.MaterialForm.controls['mh_id'].setValue(this.editData.mh_id);
+    //   // this.MaterialForm.controls['emp_id_fk'].setValue(this.editData.emp_id);
+    //   // this.MaterialForm.controls['emp_email'].setValue(this.editData.emp_email);
+    //   // this.MaterialForm.controls['emp_mobile'].setValue(this.editData.emp_mobile);
+    //   // this.MaterialForm.controls['emp_address'].setValue(this.editData.emp_address);
+    //   // this.MaterialForm.controls['item_name'].setValue(this.editData.item_name);
+    //   // this.MaterialForm.controls['mh_desc'].setValue(this.editData.mh_desc);
+    //   // this.MaterialForm.controls['emp_id_fk'].setValue(this.editData.emp_id_fk);
+    //   // this.MaterialForm.controls['cat_id_fk'].setValue(this.editData.cat_id_fk);
+    //   // this.MaterialForm.controls['item_id_fk'].setValue(this.editData.item_id);     
+    //   // this.MaterialForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
+    // }
 
   }
   onSubmit(): void {
@@ -167,9 +172,10 @@ this.manageService.getEmpSingle(empformdata).subscribe(
     console.log(res)
     this.emp_data = res.data
     this.MaterialForm.controls['emp_id_fk'].setValue(this.emp_data.emp_id);
-    this.MaterialForm.controls['emp_mobile'].setValue(this.emp_data.emp_mobile);
-    this.MaterialForm.controls['emp_email'].setValue(this.emp_data.emp_email);
+    this.MaterialForm.controls['emp_mobile'].setValue(this.emp_data.emp_mobile);      
+    this.MaterialForm.controls['emp_email'].setValue(this.emp_data.emp_email);    
     this.MaterialForm.controls['emp_address'].setValue(this.emp_data.emp_address);
+  
   }
 )
 }
@@ -179,12 +185,11 @@ getcatdata(event:any){
   catformdata.append('cat_id',event)
   this.manageService.getCatSingle(catformdata).subscribe(
     (res:any)=>{
-      console.log(res)
+      // console.log(res)
       this.item_single_data = res.data
     }
   )
   }
-
   addDescription(){
   const descFormdata = new FormData()
   descFormdata.append('emp_id_fk',this.MaterialForm.get('emp_id_fk')?.value)

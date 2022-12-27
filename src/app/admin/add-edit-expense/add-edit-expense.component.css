@@ -1,157 +1,79 @@
 .column {
-    margin-right:5px;
-    width:200px;
-    height:300px;
-    float: left;   
-  } 
-  .example-spacer {
-    flex: 1 1 auto;
+  margin-right: 10px;
+  width: 200px;
+  height: 285px;
+  float: left;
+}
+.column mat-form-field{
+  margin-left: 5px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+  margin-bottom: 20px;
+  color: rgb(20, 89, 92);
+  font-size: 18px;
+}
+
+.material-icons {
+  color: rgb(20, 89, 92);
+  margin-bottom: 20px;
+}
+
+mat-toolbar {
+  height: 40px;
+  background: none;
+  color: whitesmoke;
+  padding: 0px;
+  position: relative;
+}
+
+
+.reset_btn {
+  float: left;
+  width: 80px;
+  height: 40px;
+  margin-left: 6px;
+}
+
+.add_btn {
+  width: 80px;
+  height: 40px;
+  float: right;
+  background-color: green;
+  color: white;
+  margin-right: -6px;
+}
+.date_box {
+  width: 200px;
+}
+
+@media (max-width:768px) {
+  .column {
+    width: 100%;
+    height: auto;
   }
+
+  .column mat-form-field {
+    width: 100%;
+  }
+
+  #main_button {
+    width: 190px;
+    margin: auto;
+  }
+
   .reset_btn {
+    float: left;
     width: 80px;
     height: 40px;
-    -moz-box-align: center;
-    float: left;
-    margin-top: 10px;    
+
   }
+
   .add_btn {
     width: 80px;
-    height: 40px;    
+    height: 40px;
+    float: right;
     background-color: green;
     color: white;
-    margin-top: 12px;
   }
-  .date_box {
-    width: 200px;
- }
-  mat-toolbar {
-    height:40px;
-    background: none;
-    color:#14595c;
-    padding: 0px;
-    position: relative;
-    top: -10px;
-  }
-  /* ==========================================****** @media******======================================== */
-  @media (max-width: 574px) {
-   .text {
-        width: 350px;
-        margin-left: 20px;
-    } 
-    .date_box{
-      width: 350px;
-      margin-left: 20px;
-    }
-    .reset_btn {
-      margin-left: 51px;
-    }
-    .add_btn {
-      margin-right:70px ;
-    }
-    
-}
-
-@media (max-width: 420px) {
-  .text {
-    width: 280px;
-
-  }
-
-  .date_box {
-    width: 280px;
-
-  }
-
-  .reset_btn {
-    margin-left: 6px;
-  }
-
-  .add_btn {
-    margin-right: 1px;
-  }
-
-}
-
-@media (max-width: 412px) {
-  .date_box {
-    width: 230px;
-
-
-  }
-
-  .text {
-    width: 230px;
-
-  }
-
-}
-
-@media (max-width: 394px) {
-  .date_box {
-    width: 230px;
-
-
-  }
-
-  .text {
-    width: 230px;
-
-  }
-
-}
-
-@media (max-width: 360px) {
-  .text {
-    width: 219px;
-    margin-left: 2px;
-
-
-  }
-
-  .date_box {
-    width: 219px;
-    margin-left: 2px;
-
-
-  }
-
-}
-
-@media (max-width: 375px) {
-  .text {
-    width: 219px;
-
-
-  }
-
-  .date_box {
-    width: 219px;
-
-
-  }
-
-  .reset_btn {
-    float: left;
-  }
-
-  .add_btn {
-    float: right;
-  }
-
-}
-
-@media (max-width: 280px) {
-  .text {
-    width: 170px;
-    margin: 4px;
-
-
-  }
-
-  .date_box {
-    width: 170px;
-    margin-top: 4px;
-
-  }
-
 }
