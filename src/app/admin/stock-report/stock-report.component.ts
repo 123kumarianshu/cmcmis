@@ -11,6 +11,24 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./stock-report.component.css']
 })
 export class StockReportComponent implements OnInit {
+  
+  minDate!: Date;
+  maxDate!: Date;
+  
+  states: string[] = [
+    'January',
+    'Febraury',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
       displayedColumns: string[] = ['slno', 'category', 'product', 'company_name', 'purchase_qty','sale_qty','available_qty'];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
