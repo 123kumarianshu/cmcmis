@@ -13,7 +13,7 @@ import { AddEditMaterialHandoverComponent } from '../add-edit-material-handover/
   styleUrls: ['./material-handover.component.css']
 })
 export class MaterialHandoverComponent implements OnInit {
-      displayedColumns: string[] = ['slno','emp_name','emp_mobile','mh_item','mh_quantity','mh_date','Action',];
+      displayedColumns: string[] = ['slno','emp_name','emp_mobile','item_name','quantity','mh_date','Action',];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
