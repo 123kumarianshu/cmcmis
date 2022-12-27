@@ -28,10 +28,13 @@ export class AppComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false
   }
   ngOnInit(): void {
-   
-    
+  if(window.innerWidth < 720){
+   this.opened = false
     }
-
+    else{
+      this.opened = true
+    }
+  }
    
   }
  

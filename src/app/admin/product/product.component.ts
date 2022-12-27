@@ -39,7 +39,7 @@ export class ProductComponent implements OnInit {
   add_product(): any {
     this.addproduct.open(AddEditProductComponent, {
       disableClose: true,
-      width:'40%'
+      // width:'40%'
     }).afterClosed().subscribe(val => {
       if (val === 'save') {
         this.ngOnInit();

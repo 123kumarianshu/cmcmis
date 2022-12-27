@@ -96,6 +96,7 @@ ng-container {
 /* //////////////////////////table media q//////////////////////////// */
 
 @media (max-width:460px) {
+    
     .notice_text {
         font-size: 13px;
     }

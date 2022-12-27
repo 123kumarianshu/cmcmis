@@ -31,7 +31,7 @@ export class AddEditPartyComponent implements OnInit {
       party_gst_no: [''],
       party_contact_person: [''],
       party_address: ['', Validators.required],
-      party_email: ['', Validators.required],
+      party_email: [''],
       party_mobile: ['', Validators.required],
       party_whatsapp: [''],
       party_account_no: [''],
