@@ -15,7 +15,8 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  baseUrl: string = 'http://adityaradhaya.com/api/';  
+  baseUrl: string = 'http://adityaradhaya.com/api/';
+  // baseUrl: string = 'http://localhost/cmcmisapi/';
 
   //************** */ for party function starting here**************
 
@@ -175,6 +176,9 @@ export class ManageService {
   getSale() {
     return this.http.get<[]>(this.baseUrl + 'sale_tbl_view.php');
   }
+  getSingleSale(data:any) {
+    return this.http.post<any>(this.baseUrl + 'sale_single_view.php',data);
+  }
 
   /////////// category data show in sale item table ////////////
   getCate(data: any) {
@@ -203,12 +207,14 @@ export class ManageService {
   getSaledes() {
     return this.http.get<[]>(this.baseUrl + 'sale_desc_view.php');
   }
-
-
+  
   postProd(data: any) {
     return this.http.post<any>(this.baseUrl + 'product_des_insert.php', data);
   }
-
+  ////////// for sale  desc delete ///////////
+  delete_desc(data:any){
+    return this.http.post<any>(this.baseUrl + 'sale_desc_delete.php', data)
+  }
   ///////////////// sale filter data in final form  in sale table//////////////////
 
   // getSalefilter(data: any) {
@@ -216,7 +222,7 @@ export class ManageService {
   // }
 
   putFinalSale(data: any) {
-    return this.http.put<any>(this.baseUrl + 'final_sale_update.php', data);
+    return this.http.post<any>(this.baseUrl + 'final_sale_update.php', data);
   }
   // *******************************Product funcation start here**************************
   // getProduct() {
@@ -240,23 +246,17 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'production_update.php', data);
   }
 
-     // *******************************MaterialHandover funcation start here**************************
-     getMaterialHandover() {
-      return this.http.get<[]>(this.baseUrl + 'MaterialHandover_view.php');
-    }
-    postMaterialHandover(data: any) {
-      return this.http.post<any>(this.baseUrl + 'MaterialHandover_insert.php', data);
-    }
-    putMaterialHandover(data: any) {
-      return this.http.put<any>(this.baseUrl + 'MaterialHandover_update.php', data);
-    }
-    
+  // *******************************MaterialHandover funcation start here**************************
+  getMaterialHandover() {
+    return this.http.get<[]>(this.baseUrl + 'MaterialHandover_view.php');
+  }
+  postMaterialHandover(data: any) {
+    return this.http.post<any>(this.baseUrl + 'MaterialHandover_insert.php', data);
+  }
+  putMaterialHandover(data: any) {
+    return this.http.put<any>(this.baseUrl + 'MaterialHandover_update.php', data);
+  }
 
-    
-
-
-
-  
   getPtr(data: any) {
     return this.http.post<any>(this.baseUrl + 'party_single_view.php', data);
   }
@@ -273,37 +273,37 @@ export class ManageService {
   //   return this.http.post<any>(this.baseUrl + 'cat_single_view.php',data);
   // }
   get_single_item(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_view.php',data);
+    return this.http.post<any>(this.baseUrl + 'get_single_view.php', data);
   }
 
   get_single_data(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
 
 
   getDescription() {
-      return this.http.get<[]>(this.baseUrl + 'des_view.php',)
+    return this.http.get<[]>(this.baseUrl + 'des_view.php',)
   }
 
   // for 
   get_mh_view() {
-      return this.http.get<[]>(this.baseUrl + 'des_view.php',)
+    return this.http.get<[]>(this.baseUrl + 'des_view.php',)
   }
-     
+
   getEmpSingle(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
   getCatSingle(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
   postDes(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
-  
+
   putFinal(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
-  
+
 
 
 
