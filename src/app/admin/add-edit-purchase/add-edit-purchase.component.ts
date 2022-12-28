@@ -332,6 +332,7 @@ export class AddEditPurchaseComponent implements OnInit {
 
   finalsubmit() {
 
+
     console.log("purch_id" + this.final_form.get('purch_id')?.value)
     console.log("purch_amount" + this.final_form.get('purch_amount')?.value)
     console.log("purch_discount" + this.final_form.get('purch_discount')?.value)
@@ -375,6 +376,10 @@ export class AddEditPurchaseComponent implements OnInit {
       }
 
     })
+
+    console.log(this.final_form.value)
+  
+
   }
 
 

@@ -41,7 +41,7 @@ export class AddEditAreaAllocateComponent implements OnInit {
           this.area_allocateForm.controls['area_id_fk'].setValue(this.editData.area_id_fk);
           this.area_allocateForm.controls['alct_area_des'].setValue(this.editData.alct_area_des);
           this.area_allocateForm.controls['alct_area_date'].setValue(this.editData.alct_area_date);
-          this.area_allocateForm.controls['alct_area_distance_id_fk'].setValue(this.editData.alct_area_distance_id_fk);         
+          this.area_allocateForm.controls['alct_area_distance_id_fk'].setValue(this.editData.area_distance);                              
           this.area_allocateForm.controls['emp_id_fk'].setValue(this.editData.emp_id_fk);          
           this.area_allocateForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
         }
@@ -50,8 +50,8 @@ export class AddEditAreaAllocateComponent implements OnInit {
     this.manageService.getEmployee().subscribe(
       (res:any)=>{
         console.log(res)
-        // this.empdata = res.data
-        alert(this.empdata)
+        this.empdata = res.data
+      
       }
     )
 

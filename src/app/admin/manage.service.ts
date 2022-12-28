@@ -176,6 +176,9 @@ export class ManageService {
   getSale() {
     return this.http.get<[]>(this.baseUrl + 'sale_tbl_view.php');
   }
+  getSingleSale(data:any) {
+    return this.http.post<any>(this.baseUrl + 'sale_single_view.php',data);
+  }
 
   /////////// category data show in sale item table ////////////
   getCate(data: any) {
@@ -193,9 +196,9 @@ export class ManageService {
   ///////////////////// for sale customer Ending //////////////////////////
 
   /////////////////////// product view /////////////////////
-  getProduct() {
-    return this.http.get<[]>(this.baseUrl + 'product_view.php');
-  }
+  // getProduct() {
+  //   return this.http.get<[]>(this.baseUrl + 'product_view.php');
+  // }
 
   ///////////////////// for sale description /////////////////////////
   postSaledes(data: any) {
@@ -204,12 +207,14 @@ export class ManageService {
   getSaledes() {
     return this.http.get<[]>(this.baseUrl + 'sale_desc_view.php');
   }
-
-
+  
   postProd(data: any) {
     return this.http.post<any>(this.baseUrl + 'product_des_insert.php', data);
   }
-
+  ////////// for sale  desc delete ///////////
+  delete_desc(data:any){
+    return this.http.post<any>(this.baseUrl + 'sale_desc_delete.php', data)
+  }
   ///////////////// sale filter data in final form  in sale table//////////////////
 
   // getSalefilter(data: any) {
@@ -217,12 +222,12 @@ export class ManageService {
   // }
 
   putFinalSale(data: any) {
-    return this.http.put<any>(this.baseUrl + 'final_sale_update.php', data);
+    return this.http.post<any>(this.baseUrl + 'final_sale_update.php', data);
   }
   // *******************************Product funcation start here**************************
-  // getProduct() {
-  //   return this.http.get<[]>(this.baseUrl + 'product_view.php');
-  // }
+  getProduct() {
+    return this.http.get<[]>(this.baseUrl + 'product_view.php');
+  }
   postProduct(data: any) {
     return this.http.post<any>(this.baseUrl + 'product_insert.php', data);
   }
@@ -280,7 +285,7 @@ export class ManageService {
     return this.http.get<[]>(this.baseUrl + 'des_view.php',)
   }
 
-  // for 
+  // for matrial hand over
   get_mh_view() {
     return this.http.get<[]>(this.baseUrl + 'des_view.php',)
   }
@@ -288,37 +293,25 @@ export class ManageService {
   getEmpSingle(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
+
   getCatSingle(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
+  
   postDes(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
   }
-
-
-  post_Item_Des(data: any) {
-    return this.http.post<any>(this.baseUrl + 'item_des_insert.php', data);
+  
+  putFinal(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
   }
-
-  put_Purchase_Final(data: any) {
-    return this.http.put<any>(this.baseUrl + 'purchase_final_update.php', data);
-
-  }
-
-  delPurchase(data: any) {
-    return this.http.post<any>(this.baseUrl + 'purchase_data_del.php', data);
-  }
-  delItem(data: any) {
-    return this.http.post<any>(this.baseUrl + 'pur_item_data_del.php', data);
-  }
+  
 
 
 
 
 
-  ////////////////////////////////////////////// Purchase Working Ending Here ///////////////////////////////////////////
 
-}
 
 
 

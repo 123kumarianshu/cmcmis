@@ -20,10 +20,10 @@
                 <input formControlName="expense" matInput placeholder="Expense">
             </mat-form-field><br>
 
-            <mat-form-field appearance="fill" id="remark">
-                <mat-label>Remarks</mat-label>
+            <!-- <mat-form-field appearance="fill" id="remark" id="descr">
+                <mat-label>Description</mat-label>
                 <input formControlName="remarks" matInput placeholder="Remarks">
-            </mat-form-field><br>
+            </mat-form-field><br> -->
         </div>
         <div class="column">
             <mat-form-field appearance="fill">
@@ -42,14 +42,18 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field><br>
-
-            <div mat-dialog-action [align]="'end'">
-                <button mat-raised-button color="warn" (click)="resetamount()" class="reset_btn">Reset</button>
-                <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
-                    [disabled]="!addAccount.valid">{{actionBtn}}</button>
-            </div>
-            <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
         </div>
-       
+        <div class="column_1">
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input formControlName="remarks" matInput placeholder="Remarks">
+            </mat-form-field>
+        </div>
+        <div mat-dialog-action [align]="'end'" id="main_button">
+            <button mat-raised-button color="warn" (click)="resetamount()" class="reset_btn">Reset</button>
+            <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+                [disabled]="!addAccount.valid">{{actionBtn}}</button>
+        </div>
+        <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
     </form>
 </div>
