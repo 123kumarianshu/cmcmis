@@ -300,18 +300,10 @@ export class ManageService {
   getCatSingle(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
   }
+  
   postDes(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
-
-  putFinal(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
-  }
-  
-
-
-
-  ////////////////////////////////////////////// Purchase Working Ending Here ///////////////////////////////////////////
 
 }
 
