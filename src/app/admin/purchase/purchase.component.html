@@ -4,7 +4,7 @@
     <mat-icon id="add_purchase" routerLink="/add_edit_purchase">add_circle</mat-icon>
   </div>
   <div class="count_search">
-    <span class="notice_text"> Total :</span>
+    <span class="notice_text"> Total :{{pur_count}}</span>
     <div class="search">
       <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
     </div>
@@ -19,19 +19,24 @@
               paginatorRef.pageSize)+(i+1)}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="purch_party">
+          <ng-container matColumnDef="party_name">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_party}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.party_name}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="purch_disc">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_disc}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="purch_amount">
+          <ng-container matColumnDef="basic_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic Amount</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.purch_amount}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_gst">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gst}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_discount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_discount}}</td>
           </ng-container>
 
           <ng-container matColumnDef="purch_net_payment">
@@ -39,19 +44,9 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.purch_net_payment}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="purch_cgst">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>CGST</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_cgst}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="purch_sgst">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SGST</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_sgst}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="purch_ro">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>R/O</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_ro}}</td>
+          <ng-container matColumnDef="total_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.total_amount}}</td>
           </ng-container>
           <ng-container matColumnDef="purch_bill_no">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
@@ -60,7 +55,7 @@
 
           <ng-container matColumnDef="Action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-            <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="editpurchase(row)">edit</mat-icon></td>
+            <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="delPurchase(row)">delete</mat-icon></td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { AddEditCategoryComponent } from '../add-edit-category/add-edit-category.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
+import { NgToastService } from 'ng-angular-popup';
+
 
 @Component({
   selector: 'app-purchase',
@@ -12,19 +14,21 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./purchase.component.css']
 })
 export class PurchaseComponent implements OnInit {
-  displayedColumns: string[] = ['slno','purch_party', 'purch_amount', 'purch_disc', 'purch_net_payment', 'purch_bill_no','purch_cgst','purch_sgst', 'purch_ro','Action',];
+  displayedColumns: string[] = ['slno','party_name', 'basic_amount', 'purch_gst','purch_discount', 'purch_net_payment', 'total_amount', 'purch_bill_no','Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   pur_count: any;
   constructor(
+    private popup: NgToastService,
     private addpurch: MatDialog,
-    private partyservice: ManageService,
+    private purchaseservice: ManageService,
   ) { }
 
   ngOnInit(): void {
-    this.partyservice.get_pur().subscribe(
+    this.purchaseservice.get_pur().subscribe(
       (partyresult: any) => {
+        console.log(partyresult)
         this.dataSource = new MatTableDataSource(partyresult.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -52,6 +56,20 @@ export class PurchaseComponent implements OnInit {
     })
   }
 
+  delPurchase(row: any) {
+    if (confirm("Are you sure to delate")) {
+      const deldata = new FormData();
+      deldata.append('purch_id', row.purch_id);
+      this.purchaseservice.delPurchase(deldata).subscribe(
+        (res: any) => {
+          this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
+        }
+      )
+    }
+    else {
+      alert('cancle')
+    }
+  }
 
 
 

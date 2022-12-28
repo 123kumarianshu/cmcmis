@@ -1,15 +1,11 @@
-
 /********************************************* party css style starting here ****************************************/
 
-.nav-tabs {
-    height: 46px;
-}
 
 .view_notice {
     background-color: #0b4648;
     color: whitesmoke;
     display: flex;
-    margin-top: 67px;
+    margin-top: 63px;
 }
 
 .notice_text {
@@ -72,12 +68,6 @@ ng-container a {
 
 /********************************************* item css style starting here ****************************************/
 
-/* 
-.text_amount {
-    margin-right: 59.2em;
-} */
-
-
 .addButton {
     background-color: #05363c;
     height: 25px;
@@ -85,10 +75,12 @@ ng-container a {
     color: aliceblue;
     font-size: 25px;
     position: relative;
-    left: 21.1em;
-    bottom: 55px;
+    right: 23.7em;
     cursor: pointer;
+}
 
+.item_amount {
+    margin-right: 42.8em;
 }
 
 /********************************************* item css style ending here ****************************************/
@@ -100,8 +92,8 @@ ng-container a {
     position: absolute;
     right: 10px;
     height: 38px;
-    top: 137px;
-    margin-right: -4px;
+    top: 133.9px;
+    margin-right: -8px;
 }
 
 a {
@@ -110,14 +102,63 @@ a {
     margin: 1px;
 }
 
+.count_search {
+    height: 40px;
+    width: auto;
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 0px 10px;
+    box-sizing: border-box;
+    color: #0d5e58;
+  
+  }
+  
+
+.search input {
+    border-bottom: 1px solid #0a4547;
+    outline: none;
+    padding: 7px 2px 6px 7px;
+    background-color: whitesmoke;
+    position: relative;
+    top: -5px;
+    left: 0px;
+  }
 
 
 .date_box {
     width: 200px;
-    float: right;
-    margin-right: 850px;
+    margin: 6px;
+    /* position: relative;
+    bottom: 32px; */
 }
 
+/* .bill_no {
+    position: relative;
+    bottom: 32px;
+}
+
+
+.bill_file {
+    height: 51.5px;
+    width: 200px;
+    background-color: #ebebeb;
+    border-bottom: 1px solid gray;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.upload_text {
+    position: relative;
+    width: 80px;
+    font-size: 13px;
+    color: gray;
+    margin-left: 0px;
+}
+
+.img_bill {
+    position: relative;
+    top: -27px;
+} */
 
 /********************************************* Final css style Ending here ****************************************/
 
