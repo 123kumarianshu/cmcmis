@@ -306,14 +306,4 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
   }
   
-
-
-
-
-
-
-
-
-
-
-
+}

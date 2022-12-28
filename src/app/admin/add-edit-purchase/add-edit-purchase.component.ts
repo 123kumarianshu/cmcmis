@@ -276,27 +276,27 @@ export class AddEditPurchaseComponent implements OnInit {
     addformdata.append('party_id_fk', this.party_single_data.party_id)
     addformdata.append('purch_bill_no', this.purch_bill_no)
     addformdata.append('admin_id_fk', this.item_form.get('admin_id_fk')?.value)
-    this.manageService.post_Item_Des(addformdata).subscribe(
-        (result: any) => {
-          console.log(result)
-          this.popup.success({ detail: 'Success', summary: 'Add Successfully...', sticky: true, position: 'tr' })
+    // this.manageService.post_Item_Des(addformdata).subscribe(
+    //     (result: any) => {
+    //       console.log(result)
+    //       this.popup.success({ detail: 'Success', summary: 'Add Successfully...', sticky: true, position: 'tr' })
 
-        },
-        (error: any) => {
-          this.popup.error({ detail: 'message', summary: 'data is not Submit', sticky: true, position: 'tr', })
-        }
-      )
+    //     },
+    //     (error: any) => {
+    //       this.popup.error({ detail: 'message', summary: 'data is not Submit', sticky: true, position: 'tr', })
+    //     }
+    //   )
     }
 
   delItem(row: any) {
       if(confirm("Are you sure to delate")) {
       const deldata = new FormData();
       deldata.append('pur_des_id', row.pur_des_id);
-      this.manageService.delItem(deldata).subscribe(
-        (res: any) => {
-          this.popup.success({ detail: 'Success', summary: 'Data Delete Successfully...', sticky: true, position: 'tr' })
-        }
-      )
+      // this.manageService.delItem(deldata).subscribe(
+      //   (res: any) => {
+      //     this.popup.success({ detail: 'Success', summary: 'Data Delete Successfully...', sticky: true, position: 'tr' })
+      //   }
+      // )
     }
     else {
       alert('cancle')
@@ -365,17 +365,17 @@ export class AddEditPurchaseComponent implements OnInit {
     finalformdata.append('purch_date', this.final_form.get('purch_date')?.value)
     finalformdata.append('admin_id_fk', this.final_form.get('admin_id_fk')?.value)
 
-    this.manageService.put_Purchase_Final(finalformdata).subscribe({
-      next: (res) => {
-        console.log(res)
-        this.popup.success({ detail: 'Success', summary: 'update Successfully...', sticky: true, position: 'tr' })
+    // this.manageService.put_Purchase_Final(finalformdata).subscribe({
+    //   next: (res) => {
+    //     console.log(res)
+    //     this.popup.success({ detail: 'Success', summary: 'update Successfully...', sticky: true, position: 'tr' })
 
-      },
-      error: () => {
-        this.popup.error({ detail: 'message', summary: 'data not update', sticky: true, position: 'tr', })
-      }
+    //   },
+    //   error: () => {
+    //     this.popup.error({ detail: 'message', summary: 'data not update', sticky: true, position: 'tr', })
+    //   }
 
-    })
+    // })
 
     console.log(this.final_form.value)
   
