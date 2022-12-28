@@ -13,6 +13,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 
+import {formatDate} from '@angular/common';
 
 ///////////////////////////////////////////////////////////////// for Component Starting Here /////////////////////////////////////////////////////
 
@@ -37,7 +38,6 @@ export class AddEditPurchaseComponent implements OnInit {
   party_form !: FormGroup
   item_form !: FormGroup
   final_form !: FormGroup
-  purch_bill_no: string = "PUR/25/12/22/01"
   actionBtn = 'Save & Next';
   actionBtn1 = 'Final Submit'
   action_Btn = 'Add'
@@ -55,10 +55,10 @@ export class AddEditPurchaseComponent implements OnInit {
   item_final_data: any;
   des_data: any;
   des_single_data: any;
+  current_date:any;
+  purch_bill_no:string = "PUR/"
   
-
-
-  ///////////////////////////////////////////////////////////////// for constructor Starting Here /////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////// for constructor Starting Here /////////////////////////////////////////////////////
 
 
   constructor(
@@ -66,11 +66,12 @@ export class AddEditPurchaseComponent implements OnInit {
     private fb: FormBuilder,
     private fb1: FormBuilder,
     private fb2: FormBuilder,
-    private router: Router,
     private manageService: ManageService,
   ) { }
 
   /////////////////////////////////////////////// for Party Get starting ///////////////////////////////////////////
+
+
 
 
   ngOnInit(): void {
@@ -160,6 +161,21 @@ export class AddEditPurchaseComponent implements OnInit {
       final_bill_date: ['', Validators.required],
       admin_id_fk: [''],
     })
+  
+
+    // for bill number genrate code 
+    this.manageService.get_pur().subscribe(
+      (res:any)=>{
+        const billno = Number(res.data.length)
+        const cur_bill = billno+1
+        this.current_date = formatDate(new Date(), 'ddMMyyyy', 'en')
+        // console.log("PUR/"+this.current_date+cur_bill)
+        this.purch_bill_no = "PUR/"+this.current_date+cur_bill
+      }
+    )
+   
+
+
 
   }
 
