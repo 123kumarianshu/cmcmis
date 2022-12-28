@@ -12,7 +12,7 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-      displayedColumns: string[] = ['slno', 'today_sale', 'today_expense', 'cash_in_hand','deposit_into_bank','closing_amount','date','remarks'];
+      displayedColumns: string[] = ['slno', 'today_sale', 'cash_in_hand','today_expense', 'deposit_into_bank','closing_amount','date','remarks'];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
@@ -26,7 +26,6 @@ export class AccountComponent implements OnInit {
   add_account(): any {
     this.addaccount.open(AddEditAccountComponent, {
       disableClose: true,
-      // height:'60%'
     }).afterClosed().subscribe(val => {
       if (val === 'save') {
         this.ngOnInit();

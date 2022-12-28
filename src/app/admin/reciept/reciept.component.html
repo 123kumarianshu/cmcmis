@@ -28,6 +28,12 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.reciept_bill_number}}</td>
           </ng-container>
 
+          <ng-container matColumnDef="reciept_Gross_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross Amount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_Gross_amount}}</td>
+          </ng-container>
+
+
           <ng-container matColumnDef="reciept_back_dues">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Back dues </th>
             <td class="data" mat-cell *matCellDef="let row">{{row.reciept_back_dues}}</td>
