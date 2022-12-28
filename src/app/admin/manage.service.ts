@@ -320,26 +320,7 @@ export class ManageService {
   }
   getCategorySingle(data: any) {
     return this.http.post<any>(this.baseUrl + 'Category_Single_view.php',data);
+  }
 
-  // putFinal(data: any) {
-  //   return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
-
-  // }
-  
-
-
-
-  ////////////////////////////////////////////// Purchase Working Ending Here ///////////////////////////////////////////
 
 }
-
-
-
-
-
-
-
-
-
-
-
