@@ -309,9 +309,11 @@ export class ManageService {
   getCatSingle(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
   }
+  
   postDes(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
+
 
 
   // for production 
@@ -321,6 +323,5 @@ export class ManageService {
   getCategorySingle(data: any) {
     return this.http.post<any>(this.baseUrl + 'Category_Single_view.php',data);
   }
-
 
 }
