@@ -295,18 +295,7 @@ export class AddEditPurchaseComponent implements OnInit {
 
   finalsubmit() {
     console.log(this.final_form.value)
-    this.manageService.putFinal(this.final_form.value).subscribe({
-      next: (result: any) => {
-        console.log(result)
-        alert("Data Update Successfully");
-
-      },
-      error: () => {
-        alert('Dta Not Update');
-      }
-
-    })
-  }
+}
 
 
 

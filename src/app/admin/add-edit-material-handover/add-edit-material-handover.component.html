@@ -1,4 +1,4 @@
-<mat-toolbar>
+ <mat-toolbar>
     <span class="example-spacer">Material Handover</span>
     <mat-icon mat-dialog-close>cancel</mat-icon>
 </mat-toolbar>
@@ -35,7 +35,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Item</mat-label>
                 <mat-select formControlName="item_id_fk">
-                    <mat-option *ngFor="let itemdata of item_single_data" [value]="itemdata.item_id">{{itemdata.item_name}}</mat-option>
+                    <mat-option *ngFor="let itemdata of itemdata" [value]="itemdata.item_id">{{itemdata.item_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
@@ -45,16 +45,16 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
-                <input formControlName="description" matInput placeholder="Description">
+                <input formControlName="mh_desc" matInput placeholder="Description">
             </mat-form-field>
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>             
             <input hidden formControlName="mh_date" readonly value="{{currentDate | date:'yyyy-MM-dd'}}">             
           </div>
           <button class="addbtn" (click)="addDescription()">Add</button>            
-    </form>    
+    </form>     
         <div class="cotainer">    
           <div class="count_search">
-            <span class="notice_text"> Total :</span>
+            <span class="notice_text"> Total :{{matcount}}</span>
             <div class="search">
               <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
             </div>
@@ -88,10 +88,12 @@
                     <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
                     <td class="data" mat-cell *matCellDef="let row">{{row.quantity}}</td>
                   </ng-container>
+                  
                   <ng-container matColumnDef="mh_date">
                     <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
                     <td class="data" mat-cell *matCellDef="let row">{{row.mh_date}}</td>
-                  </ng-container>        
+                  </ng-container>                
+
                   <ng-container matColumnDef="Action">
                     <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
                     <!-- <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="editweight(row)">edit</mat-icon></td> -->
@@ -100,10 +102,10 @@
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                   <tr class="mat-row" *matNoDataRow>
-                    <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+                    <!-- <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td> -->
                   </tr>
                 </table>
-                <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
+                <mat-paginator #paginatorRef [pageSizeOptions]="[5, 10, 100]"
                   aria-label="Select page of users"></mat-paginator>
               </div>
             </form>

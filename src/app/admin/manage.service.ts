@@ -15,7 +15,11 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  baseUrl: string = 'http://adityaradhaya.com/api/';  
+
+  baseUrl: string = 'http://adityaradhaya.com/api/';
+
+
+
 
   //************** */ for party function starting here**************
 
@@ -239,7 +243,7 @@ export class ManageService {
     return this.http.get<[]>(this.baseUrl + 'production_view.php');
   }
   postProduction(data: any) {
-    return this.http.post<any>(this.baseUrl + 'production_insert.php', data);
+    return this.http.post<any>(this.baseUrl + 'production_insert.php.', data);
   }
   putProduction(data: any) {
     return this.http.put<any>(this.baseUrl + 'production_update.php', data);
@@ -289,6 +293,11 @@ export class ManageService {
   }
 
   // for matrial hand over
+
+  getmhtableview(data:any){
+    return this.http.post<any>(this.baseUrl + 'mh_single_view.php',data)
+
+  }
   get_mh_view() {
       return this.http.get<[]>(this.baseUrl + 'des_view.php',)
   }
@@ -300,28 +309,19 @@ export class ManageService {
   getCatSingle(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
   }
+  
   postDes(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
 
-  putFinal(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
+
+
+  // for production 
+  getEmployeeSingle(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_Employee_Single_view.php',data);
   }
-  
-
-
-
-  ////////////////////////////////////////////// Purchase Working Ending Here ///////////////////////////////////////////
+  getCategorySingle(data: any) {
+    return this.http.post<any>(this.baseUrl + 'Category_Single_view.php',data);
+  }
 
 }
-
-
-
-
-
-
-
-
-
-
-

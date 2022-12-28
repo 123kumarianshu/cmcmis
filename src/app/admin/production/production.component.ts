@@ -11,7 +11,7 @@ import { AddEditProductionComponent } from '../add-edit-production/add-edit-prod
   styleUrls: ['./production.component.css']
 })
 export class ProductionComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'production_quantity', 'production_unit', 'production_total','Action'];
+  displayedColumns: string[] = ['slno','emp_name','cat_name','product_name','production_quantity', 'production_unit', 'production_total','Action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
