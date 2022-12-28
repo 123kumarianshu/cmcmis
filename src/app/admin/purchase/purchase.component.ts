@@ -60,11 +60,11 @@ export class PurchaseComponent implements OnInit {
     if (confirm("Are you sure to delate")) {
       const deldata = new FormData();
       deldata.append('purch_id', row.purch_id);
-      this.purchaseservice.delPurchase(deldata).subscribe(
-        (res: any) => {
-          this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
-        }
-      )
+      // this.purchaseservice.delPurchase(deldata).subscribe(
+      //   (res: any) => {
+      //     this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
+      //   }
+      // )
     }
     else {
       alert('cancle')

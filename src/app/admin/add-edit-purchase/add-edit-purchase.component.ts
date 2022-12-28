@@ -292,6 +292,7 @@ export class AddEditPurchaseComponent implements OnInit {
       if(confirm("Are you sure to delate")) {
       const deldata = new FormData();
       deldata.append('pur_des_id', row.pur_des_id);
+
       // this.manageService.delItem(deldata).subscribe(
       //   (res: any) => {
       //     this.popup.success({ detail: 'Success', summary: 'Data Delete Successfully...', sticky: true, position: 'tr' })
