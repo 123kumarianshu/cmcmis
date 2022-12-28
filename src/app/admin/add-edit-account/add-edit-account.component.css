@@ -27,25 +27,28 @@
     .date_box {
         width: 200px;
     }
-
-    .reset_btn {
+   .column_1 mat-form-field {
+        width: 382px;
+    }
+    #main_button{
+        width: 190px;
+        margin: auto;
+      }
+      .reset_btn {
+        float: left;
         width: 80px;
         height: 40px;
-        float: left;
-        margin-top: 12px;
-        margin-left: 1px;
-    }
-
-    .add_btn {
+      
+      }
+      
+      .add_btn {
         width: 80px;
         height: 40px;
         float: right;
         background-color: green;
         color: white;
-        margin-top: 12px;
-        margin-right: 20px;
-    }
-
+      } 
+      
     mat-toolbar {
         height: 40px;
         background: none;
@@ -68,18 +71,7 @@
         .column mat-form-field {
             width: 100%;
         }
-
-        .reset_btn {
-            width: 30%;
-            float: left;
-            margin-left: 10%;
-
+        .column_1 mat-form-field{
+            width: 100%;
         }
-
-        .add_btn {
-            width: 30%;
-            float: right;
-            margin-right: 10%;
-        }
-
     }

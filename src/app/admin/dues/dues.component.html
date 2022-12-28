@@ -13,26 +13,37 @@
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort id="table">
           <ng-container matColumnDef="slno">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
             <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
               paginatorRef.pageSize)+(i+1)}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="cust_shop_name">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Shop Name</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_name}}</td>
+          <ng-container matColumnDef="customer_name">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.customer_name}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="cust_owner_name">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Owner Name</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cust_owner_name}}</td>
+          <ng-container matColumnDef="bill_number">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.bill_number}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="cust_contact_no">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Contact Number</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
+          <ng-container matColumnDef="gross_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross Amount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.gross_amount}}</td>
           </ng-container>
-
+          <ng-container matColumnDef="paid">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Paid</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.paid}}</td>
+          </ng-container>
+          <ng-container matColumnDef="dues">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Dues</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.dues}}</td>
+          </ng-container>
+          <ng-container matColumnDef="date">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.date}}</td>
+          </ng-container>
           <ng-container matColumnDef="Action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
             <td class="data" mat-cell *matCellDef="let row">

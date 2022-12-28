@@ -5,7 +5,7 @@
 <div mat-dialog-content>
     <form [formGroup]="addparty">
         <div class="column">
-            <input type="number" formControlName="party_id" readonly hidden >
+            <input type="number" formControlName="party_id" readonly hidden>
             <mat-form-field appearance="fill">
                 <mat-label>Name</mat-label>
                 <input formControlName="party_name" matInput placeholder="Name">
@@ -18,13 +18,16 @@
             <br>
             <mat-form-field appearance="fill">
                 <mat-label>Mobile Number</mat-label>
-                <input type="number" formControlName="party_mobile" matInput placeholder="Mobile" class="mobil_number" onkeypress="return this.value.length < 10;" oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
+                <input type="number" formControlName="party_mobile" matInput placeholder="Mobile" class="mobil_number"
+                    onkeypress="return this.value.length < 10;"
+                    oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
             </mat-form-field>
         </div>
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Contact Person</mat-label>
-                <input type="text" formControlName="party_contact_person" matInput placeholder="Contact Person" class="person">
+                <input type="text" formControlName="party_contact_person" matInput placeholder="Contact Person"
+                    class="person">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -40,8 +43,8 @@
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Whatsapp</mat-label>
-                <input type="number" formControlName="party_whatsapp" matInput placeholder="Whatsapp" 
-                onkeypress="return this.value.length < 10;" oninput="if(this.value.length>=10) 
+                <input type="number" formControlName="party_whatsapp" matInput placeholder="Whatsapp"
+                    onkeypress="return this.value.length < 10;" oninput="if(this.value.length>=10) 
                 { this.value = this.value.slice(0,10); }">
             </mat-form-field>
             <mat-form-field appearance="fill">
@@ -53,15 +56,15 @@
                 <mat-label>IFSC</mat-label>
                 <input formControlName="party_ifsc" matInput placeholder="Ac IFSC Code">
             </mat-form-field>
-            <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>          
-        </div> 
+            <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
+        </div>
         <div class="column_1">
-            <mat-form-field appearance="fill" >
+            <mat-form-field appearance="fill">
                 <mat-label>Address</mat-label>
-                <textarea formControlName="party_address" matInput placeholder="Address" ></textarea>
-            </mat-form-field>           
-        </div>      
-        <div mat-dialog-action [align]="'end'" class="main_button">
+                <textarea formControlName="party_address" matInput placeholder="Address"></textarea>
+            </mat-form-field>
+        </div>
+        <div mat-dialog-action [align]="'end'" id="main_button">
             <button mat-raised-button color="warn" (click)="resetparty()" class="reset_btn">Reset</button>
             <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
                 [disabled]="!addparty.valid">{{actionBtn}}</button>

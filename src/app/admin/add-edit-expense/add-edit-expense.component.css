@@ -1,11 +1,14 @@
 .column {
-  margin-right: 10px;
   width: 200px;
-  height: 285px;
+  height: auto;
   float: left;
 }
-.column mat-form-field{
-  margin-left: 5px;
+
+.column mat-form-field {
+  width: 90%;
+}
+form {
+  padding-left: 18px;
 }
 .example-spacer {
   flex: 1 1 auto;
@@ -26,13 +29,18 @@ mat-toolbar {
   padding: 0px;
   position: relative;
 }
-
-
+.column_1 mat-form-field {
+  width: 382px;
+}
+#main_button{
+  width: 190px;
+  margin: auto;
+}
 .reset_btn {
   float: left;
   width: 80px;
   height: 40px;
-  margin-left: 6px;
+
 }
 
 .add_btn {
@@ -41,8 +49,8 @@ mat-toolbar {
   float: right;
   background-color: green;
   color: white;
-  margin-right: -6px;
-}
+} 
+
 .date_box {
   width: 200px;
 }
@@ -56,24 +64,7 @@ mat-toolbar {
   .column mat-form-field {
     width: 100%;
   }
-
-  #main_button {
-    width: 190px;
-    margin: auto;
-  }
-
-  .reset_btn {
-    float: left;
-    width: 80px;
-    height: 40px;
-
-  }
-
-  .add_btn {
-    width: 80px;
-    height: 40px;
-    float: right;
-    background-color: green;
-    color: white;
+  .column_1 mat-form-field{
+    width: 100%;
   }
 }

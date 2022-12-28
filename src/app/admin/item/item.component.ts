@@ -12,7 +12,7 @@ import { AddEditItemComponent } from '../add-edit-item/add-edit-item.component';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'cat_name','item_name', 'unit_name', 'weight_name','size_name','item_rate','Action',];
+  displayedColumns: string[] = ['slno', 'cat_name','item_name','weight_name','size_name','item_rate','unit_name','Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
