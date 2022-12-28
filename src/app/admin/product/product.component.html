@@ -48,6 +48,11 @@
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Cost Price</th>
               <td class="data" mat-cell *matCellDef="let row">{{row.product_cost_price}}</td>
             </ng-container>
+
+            <ng-container matColumnDef="product_desc">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_desc}}</td>
+            </ng-container>          
            
             <ng-container matColumnDef="product_retail_price">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Retail Price</th>

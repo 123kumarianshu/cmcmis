@@ -12,7 +12,7 @@ import { AddEditProductComponent } from '../add-edit-product/add-edit-product.co
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-      displayedColumns: string[] = ['slno','cat_name','product_name','size_name','weight_name','unit_name','product_page','product_produ_cost','product_cost_price','product_retail_price','Action',];
+      displayedColumns: string[] = ['slno','cat_name','product_name','size_name','weight_name','unit_name','product_page','product_produ_cost','product_cost_price','product_retail_price','product_desc','Action',];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
