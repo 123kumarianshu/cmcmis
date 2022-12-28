@@ -4,7 +4,7 @@
       <mat-icon id="add_product" (click)="add_product()">add_circle</mat-icon>
     </div>
     <div class="count_search">
-      <span class="notice_text"> Total :{{productcount}}</span>
+      <span class="notice_text"> Total : {{productcount}}</span>
       <div class="search">
         <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
       </div>
@@ -37,7 +37,7 @@
               <td class="data" mat-cell *matCellDef="let row">{{row.weight_name}}</td>
             </ng-container>
             <ng-container matColumnDef="product_page">
-              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product page</th>
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Page</th>
               <td class="data" mat-cell *matCellDef="let row">{{row.product_page}}</td>
             </ng-container>
             <ng-container matColumnDef="product_produ_cost">
