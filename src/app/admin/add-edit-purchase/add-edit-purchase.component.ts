@@ -11,7 +11,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { formatDate } from '@angular/common';
 
-import {formatDate} from '@angular/common';
 
 ///////////////////////////////////////////////////////////////// for Component Starting Here /////////////////////////////////////////////////////
 
@@ -58,7 +57,12 @@ export class AddEditPurchaseComponent implements OnInit {
   item_final_data: any;
   des_data: any;
   des_single_data: any;
-  
+  imageUrl: any;
+  profileI: any = null
+  current_date: any;
+  purch_id: number = 0;
+  purchbilldata: any;
+
 
 
   ///////////////////////////////////////////////////////////////// for constructor Starting Here /////////////////////////////////////////////////////
@@ -69,12 +73,11 @@ export class AddEditPurchaseComponent implements OnInit {
     private fb: FormBuilder,
     private fb1: FormBuilder,
     private fb2: FormBuilder,
+    private router: Router,
     private manageService: ManageService,
   ) { }
 
   /////////////////////////////////////////////// for Party Get starting ///////////////////////////////////////////
-
-
 
 
   ngOnInit(): void {
@@ -160,7 +163,6 @@ export class AddEditPurchaseComponent implements OnInit {
       purch_date: ['', Validators.required],
       admin_id_fk: [''],
     })
-
   }
 
   /////////////////////////////////////////////// for Party Submit starting ///////////////////////////////////////////
@@ -350,9 +352,44 @@ export class AddEditPurchaseComponent implements OnInit {
 
 
   finalsubmit() {
-    console.log(this.final_form.value)
-  
-                                                                )
+    console.log('purch amount' + this.final_form.get('purch_amount')?.value)
+    console.log('purch_discount' + this.final_form.get('purch_discount')?.value)
+    console.log('purch_gst' + this.final_form.get('purch_gst')?.value)
+    console.log('purch_gross_amount' + this.final_form.get('purch_gross_amount')?.value)
+    console.log('purch_paid' + this.final_form.get('purch_paid')?.value)
+    console.log('purch_dues' + this.final_form.get('purch_dues')?.value)
+    console.log('purch_date' + this.final_form.get('purch_date')?.value)
+    console.log('purch_memo_no' + this.final_form.get('purch_memo_no')?.value)
+    console.log('purch_bill_no' + this.purch_bill_no)
+    //  console.log('purch_bill_img' + this.final_form.get('purch_bill_img')?.value)
+
+    const finalformdata = new FormData()
+    finalformdata.append('purch_amount', this.final_form.get('purch_amount')?.value)
+    finalformdata.append('purch_discount', this.final_form.get('purch_discount')?.value)
+    finalformdata.append('purch_gst', this.final_form.get('purch_gst')?.value)
+    finalformdata.append('purch_gross_amount', this.final_form.get('purch_gross_amount')?.value)
+    finalformdata.append('purch_paid', this.final_form.get('purch_paid')?.value)
+    finalformdata.append('purch_dues', this.final_form.get('purch_dues')?.value)
+    finalformdata.append('purch_date', this.final_form.get('purch_date')?.value)
+    finalformdata.append('purch_memo_no', this.final_form.get('purch_memo_no')?.value)
+    finalformdata.append('purch_bill_no', this.purch_bill_no)
+
+
+    // finalformdata.append('purch_bill_img', this.final_form.get('purch_bill_img')?.value)
+
+
+
+    this.manageService.putFinalPurch(this.final_form.value).subscribe({
+      next: (res) => {
+        console.log(res)
+        this.popup.success({ detail: 'Success', summary: 'update Successfully...', sticky: true, position: 'tr' })
+
+      },
+      error: (error) => {
+          console.log(error)
+          this.popup.error({ detail: 'message', summary: 'data not update', sticky: true, position: 'tr', })
+      }
+    })
   }
 
 
