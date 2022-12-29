@@ -122,7 +122,8 @@ ng-container {
     }
 
     mat-paginator {
-        position: fixed;
+        position: absolute;
+        width: 100%;
     }
 
     .notice_text {
