@@ -55,7 +55,9 @@ mat-toolbar {
     width: 100%;
   }
 }
-
+.full_text_box{
+  width: 100%;
+}
 @media (max-width:521px) {
   .column {
     width: 100%;

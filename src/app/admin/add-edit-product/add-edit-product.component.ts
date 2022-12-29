@@ -69,6 +69,7 @@ export class AddEditProductComponent implements OnInit {
       product_produ_cost: ['', Validators.required],
       product_cost_price: ['', Validators.required],
       product_retail_price: ['', Validators.required],
+      product_desc: [''],
       unit_id_fk: ['', Validators.required],
       cat_id_fk: ['', Validators.required],
       admin_id_fk: ['',]
@@ -83,6 +84,7 @@ export class AddEditProductComponent implements OnInit {
       this.productForm.controls['product_page'].setValue(this.editData.product_page);
       this.productForm.controls['product_produ_cost'].setValue(this.editData.product_produ_cost);      
       this.productForm.controls['product_cost_price'].setValue(this.editData.product_cost_price);
+      this.productForm.controls['product_desc'].setValue(this.editData.product_desc);
       this.productForm.controls['product_retail_price'].setValue(this.editData.product_retail_price);
       this.productForm.controls['unit_id_fk'].setValue(this.editData.unit_id);
       this.productForm.controls['cat_id_fk'].setValue(this.editData.cat_id);

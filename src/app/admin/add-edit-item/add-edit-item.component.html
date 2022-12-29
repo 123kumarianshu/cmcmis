@@ -27,12 +27,13 @@
                 </mat-select>
             </mat-form-field> 
            
-            <mat-form-field appearance="fill" id="weight">
+            <mat-form-field appearance="fill" >
                 <mat-label>Weight</mat-label>
                 <mat-select formControlName="item_weight_id_fk">
                     <mat-option *ngFor="let weightdata of weightdata" [value]="weightdata.weight_id">{{weightdata.weight_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
+           
         </div>
         <div class="column" id="column_1">
             <mat-form-field appearance="fill">
@@ -51,6 +52,10 @@
                 <mat-select formControlName="item_unit_id_fk">
                     <mat-option *ngFor="let unitdata of unitdata" [value]="unitdata.unit_id">{{unitdata.unit_name}}</mat-option>
                 </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input formControlName="item_desc" matInput placeholder="Description">
             </mat-form-field>
         </div>       
     </form>

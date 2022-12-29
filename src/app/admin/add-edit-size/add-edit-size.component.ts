@@ -57,10 +57,13 @@ export class AddEditSizeComponent implements OnInit {
         (result: any) => {
           console.log(result)
           this.matref.close();
-          alert('Form sucessful')
+          this.router.navigate(['/size'])
+          this.popup.success({detail:'Success',summary:'Size Add Successfully...',sticky:true,position:'tr'})
+      
         },
         (error: any) => {
-          alert('Data Not Insert')
+          this.popup.error({detail:'Error',summary:'Size Not Add...',sticky:true,position:'tr'})
+
         }
 
       )
@@ -79,10 +82,12 @@ export class AddEditSizeComponent implements OnInit {
       next: (result: any) => {
         console.log(result)
         this.matref.close();
-        alert("Data Update Successfully");
+        this.router.navigate(['/size'])
+        this.popup.success({detail:'Success',summary:'Size Update Successfully...',sticky:true,position:'tr'})
       },
       error: () => {
         alert('Dta Not Update');
+        this.popup.error({detail:'Error',summary:'Size not Update...',sticky:true,position:'tr'})
       }
 
     })
@@ -93,7 +98,7 @@ export class AddEditSizeComponent implements OnInit {
   reset_Size() {
     this.addsize.reset();
     this.matref.close();
-    alert('Data All Reset');
+  
   }
 
 }

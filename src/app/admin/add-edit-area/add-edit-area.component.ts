@@ -17,6 +17,7 @@ export class AddEditAreaComponent implements OnInit {
   areaForm !: FormGroup;
 
   constructor(
+    private popup: NgToastService,
     private fb: FormBuilder,
     private router: Router,
     private manageService: ManageService,
@@ -55,13 +56,14 @@ export class AddEditAreaComponent implements OnInit {
     if (!this.editData) {
       this.manageService.postArea(this.areaForm.value).subscribe(
         (result: any) => {
-          console.log(result)
-          alert("Data Add Successfully");
           this.matref.close();
           this.router.navigate(['/area']);
+          this.popup.success({detail:'Success',summary:'Area Add Successfully...',sticky:true,position:'tr'})
+
         },
         (error: any) => {
-          alert("Data not insert ")
+          this.popup.error({detail:'Error',summary:'Area Not Add',sticky:true,position:'tr'})
+
         }
       )
     }
@@ -75,12 +77,14 @@ export class AddEditAreaComponent implements OnInit {
     this.manageService.putArea(this.areaForm.value).subscribe({
       next: (res) => {
         console.log(res)
-        alert("Student update Successfully");
         this.matref.close();
         this.router.navigate(['/area']);
+        this.popup.success({detail:'Success',summary:'Area Update Successfully...',sticky:true,position:'tr'})
       },
       error: () => {
         alert("Student not update");
+        this.popup.error({detail:'Error',summary:'Area Not Update',sticky:true,position:'tr'})
+
       }
 
     })

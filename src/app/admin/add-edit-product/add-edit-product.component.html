@@ -66,9 +66,12 @@
                 <mat-label>Retail Price</mat-label>
                 <input formControlName="product_retail_price" matInput placeholder="Retail Price" type="number">
             </mat-form-field>
-
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
         </div>
+        <mat-form-field appearance="fill" class="full_text_box">
+            <mat-label>Description</mat-label>
+            <input formControlName="product_desc" matInput placeholder="Description">              
+        </mat-form-field>
     </form>
 
     <div mat-dialog-action [align]="'end'" id="main_button">
