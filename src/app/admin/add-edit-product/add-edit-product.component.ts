@@ -69,7 +69,7 @@ export class AddEditProductComponent implements OnInit {
       product_produ_cost: ['', Validators.required],
       product_cost_price: ['', Validators.required],
       product_retail_price: ['', Validators.required],
-      product_desc: ['', Validators.required],
+      product_desc: [''],
       unit_id_fk: ['', Validators.required],
       cat_id_fk: ['', Validators.required],
       admin_id_fk: ['',]

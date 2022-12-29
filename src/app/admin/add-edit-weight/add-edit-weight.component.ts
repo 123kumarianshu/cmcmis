@@ -6,6 +6,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { ManageService } from '../manage.service';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-add-edit-weight',
@@ -17,6 +18,7 @@ export class AddEditWeightComponent implements OnInit {
   addWeight: any;
   actionBtn: string = 'Add'
   constructor(
+    private popup: NgToastService,
     private fb: FormBuilder,
     private manageService: ManageService,
     private router: Router,
@@ -59,12 +61,12 @@ export class AddEditWeightComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.addWeight.reset();
-            alert('Form Sucessfull')
-            this.router.navigate(['weight'])
-
+            this.router.navigate(['/weight'])
+            this.matref.close('save');
+            this.popup.success({detail:'Success',summary:'Weight Add Successfully...',sticky:true,position:'tr'})
           },
           (error: any) => {
-            alert('Dta Not Insert')
+            this.popup.error({detail:'Error',summary:'Weight not Add..',sticky:true,position:'tr'})
           }
         )
       }
@@ -83,12 +85,12 @@ export class AddEditWeightComponent implements OnInit {
         console.log(result)
         this.matref.close();
         this.addWeight.reset();
-        alert("Data Update Successfully");
-        this.router.navigate(['weight'])
+        this.popup.success({detail:'Success',summary:'Weight Update Successfully...',sticky:true,position:'tr'})
+        this.router.navigate(['/weight'])
 
       },
       error: () => {
-        alert('Dta Not Update');
+        this.popup.error({detail:'Error',summary:'Weight not update..',sticky:true,position:'tr'})
       }
 
     })

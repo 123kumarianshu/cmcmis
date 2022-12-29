@@ -1,11 +1,12 @@
-#wrapper{
+#wrapper {
     margin-top: 63px;
 }
+
 .view_notice {
     height: 40px;
     width: 100%;
     background-color: #0b4648;
-    color: whitesmoke; 
+    color: whitesmoke;
     display: flex;
     justify-content: space-between;
     padding: 10px;
@@ -34,9 +35,11 @@
     box-sizing: border-box;
     color: #0d5e58;
 }
-.count_search .notice_text{
+
+.count_search .notice_text {
     font-size: 16px;
 }
+
 .search input {
     border-bottom: 1px solid #0a4547;
     outline: none;
@@ -65,7 +68,8 @@ mat-icon {
     background-color: #0f575a;
     height: 40px;
     font-size: 16px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  }
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
 tr:nth-child(even) {
     background-color: whitesmoke;
@@ -81,26 +85,62 @@ tr:hover {
     color: aliceblue;
     cursor: pointer;
 }
-.mat-row:hover > .mat-cell {
-    color:  white
-  }
+
+.mat-row:hover>.mat-cell {
+    color: white
+}
+
 ng-container {
     text-align: center;
 }
+
 .mat-form-field {
     font-size: 18px;
     width: 100%;
 }
 
 /* //////////////////////////table media q//////////////////////////// */
+@media(min-width:461px) and (max-width:1180px) {
+    .notice_text {
+        font-size: 14px;
+    }
+
+    .count_search .notice_text {
+        font-size: 14px;
+    }
+
+    table th {
+        font-size: 14px;
+    }
+
+    table td {
+        font-size: 14px;
+    }
+
+}
 
 @media (max-width:460px) {
+    #wrapper {
+        overflow-x: hidden;
+    }
+
+    .cotainer {
+        overflow-x: auto;
+    }
+
+    mat-paginator {
+        position: absolute;
+        width: 100%;
+    }
+ 
     .notice_text {
         font-size: 13px;
     }
-    .count_search .notice_text{
+
+    .count_search .notice_text {
         font-size: 13px;
     }
+
     table th {
         font-size: 13px;
     }
@@ -126,5 +166,5 @@ ng-container {
         padding-right: 0px;
         padding-left: 10px;
     }
-   
+
 }
