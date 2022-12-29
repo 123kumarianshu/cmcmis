@@ -17,7 +17,7 @@ export class ManageService {
   ) { }
 
   baseUrl: string = 'http://adityaradhaya.com/api/';
-
+  
 
 
 
@@ -238,20 +238,9 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'product_update.php', data);
   }
 
-  // *******************************Production funcation start here**************************
-  getProduction() {
-    return this.http.get<[]>(this.baseUrl + 'production_view.php');
-  }
-  postProduction(data: any) {
-    return this.http.post<any>(this.baseUrl + 'production_insert.php.', data);
-  }
-  putProduction(data: any) {
-    return this.http.put<any>(this.baseUrl + 'production_update.php', data);
-  }
-
      // *******************************MaterialHandover funcation start here**************************
      getMaterialHandover() {
-      return this.http.get<[]>(this.baseUrl + 'MaterialHandover_view.php');
+      return this.http.get<[]>(this.baseUrl + 'mh_view.php');
     }
     postMaterialHandover(data: any) {
       return this.http.post<any>(this.baseUrl + 'MaterialHandover_insert.php', data);
@@ -259,12 +248,6 @@ export class ManageService {
     putMaterialHandover(data: any) {
       return this.http.put<any>(this.baseUrl + 'MaterialHandover_update.php', data);
     }
-    
-
-    
-
-
-
   
   getPtr(data: any) {
     return this.http.post<any>(this.baseUrl + 'party_single_view.php', data);
@@ -298,12 +281,13 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'mh_single_view.php',data)
 
   }
+  
   get_mh_view() {
       return this.http.get<[]>(this.baseUrl + 'des_view.php',)
   }
 
   getEmpSingle(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
+    return this.http.post<any>(this.baseUrl + 'emp_single_view.php',data);
   }
 
   getCatSingle(data: any) {
@@ -314,8 +298,6 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
 
-
-
   // for production 
   getEmployeeSingle(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_Employee_Single_view.php',data);
@@ -323,8 +305,22 @@ export class ManageService {
   getCategorySingle(data: any) {
     return this.http.post<any>(this.baseUrl + 'Category_Single_view.php',data);
   }
+
   dashboard_view() {
     return this.http.get<[]>(this.baseUrl + 'dashboard_view.php');
   }
 
+  
+  getProduction() {
+    return this.http.get<[]>(this.baseUrl + 'production_single_view.php');
+  }
+  postProduction(data: any) {
+    return this.http.post<any>(this.baseUrl + 'production_insert.php.', data);
+  }
+  putProduction(data: any) {
+    return this.http.put<any>(this.baseUrl + 'production_update.php', data);
+  }
+  getprodctiontableview(){
+    return this.http.get<[]>(this.baseUrl + 'production_single_view.php')
+  }
 }

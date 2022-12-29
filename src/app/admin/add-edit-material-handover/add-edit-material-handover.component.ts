@@ -72,6 +72,7 @@ export class AddEditMaterialHandoverComponent implements OnInit {
       admin_id_fk: ['',]
     })
 
+
    
     if(this.editData){
       // console.log(this.editData)
@@ -83,42 +84,24 @@ export class AddEditMaterialHandoverComponent implements OnInit {
       this.MaterialForm.controls['item_id_fk'].setValue(this.editData.item_id)               
       this.MaterialForm.controls['quantity'].setValue(this.editData.quantity)
       this.MaterialForm.controls['mh_desc'].setValue(this.editData.mh_desc)
-
-      const formdata = new FormData()
-      formdata.append('emp_id',this.editData.emp_id);
-      formdata.append('current_date',this.editData.mh_date);
-      
-      this.manageService.getmhtableview(formdata).subscribe(
-        (res:any)=>{
-            console.log(res)
-      this.dataSource = new MatTableDataSource(res.data);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.matcount = res.data.length
-
-
-        }
-       
-      )
+      this.getMHDesData(this.editData.emp_id)
     } 
-
-
-    
-      
-    
-
-  
-
-  
-    // if(this.editData) {
-    //   this.MaterialForm = 'Update' 
-    //   console.log(this.editData.emp_id)
-      
-
-    // }
-
   }
 
+  getMHDesData(emp_id:any){
+    const formdata = new FormData()
+    formdata.append('emp_id',emp_id);
+    formdata.append('current_date',new Date().toISOString().slice(0, 10));
+    
+    this.manageService.getmhtableview(formdata).subscribe(
+      (res:any)=>{
+          this.dataSource = new MatTableDataSource(res.data);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          this.matcount = res.data.length
+      }
+    )
+  }
   updatemh() {
     // if (this.MaterialForm.valid) {
     //   const updateData = new FormData();
@@ -140,20 +123,20 @@ export class AddEditMaterialHandoverComponent implements OnInit {
 
 
   getEmpData(event: any) {
-    console.log(event)
     const empformdata = new FormData()
     empformdata.append('emp_id', event)
     this.manageService.getEmpSingle(empformdata).subscribe(
       (res: any) => {
-        console.log(res)
         this.emp_data = res.data
         this.MaterialForm.controls['emp_id_fk'].setValue(this.emp_data.emp_id);
         this.MaterialForm.controls['emp_mobile'].setValue(this.emp_data.emp_mobile);
         this.MaterialForm.controls['emp_email'].setValue(this.emp_data.emp_email);
         this.MaterialForm.controls['emp_address'].setValue(this.emp_data.emp_address);
-
+        
+        this.getMHDesData(this.emp_data.emp_id)
       }
     )
+
   }
 
   getcatdata(event: any) {
@@ -163,7 +146,7 @@ export class AddEditMaterialHandoverComponent implements OnInit {
     this.manageService.getCatSingle(catformdata).subscribe(
       (res: any) => {
         // console.log(res)
-        this.itemdata = res.data
+        this.item_single_data = res.data
       })
   }
 
@@ -175,7 +158,7 @@ export class AddEditMaterialHandoverComponent implements OnInit {
     descFormdata.append('item_id_fk', this.MaterialForm.get('item_id_fk')?.value)
     descFormdata.append('quantity', this.MaterialForm.get('quantity')?.value)
     descFormdata.append('description', this.MaterialForm.get('description')?.value)
-    descFormdata.append('mh_date', this.MaterialForm.get('mh_date')?.value)
+    descFormdata.append('mh_date', new Date().toISOString().slice(0, 10))
     descFormdata.append('admin_id_fk', this.MaterialForm.get('admin_id_fk')?.value)
     this.manageService.postMaterialHandover(descFormdata).subscribe(
       (res: any) => {
@@ -183,6 +166,7 @@ export class AddEditMaterialHandoverComponent implements OnInit {
         alert("add sucesssully..")
       }
     )
+    this.getMHDesData(this.MaterialForm.get('emp_id_fk')?.value)
   }
   resetmh() {
     this.MaterialForm.reset();
