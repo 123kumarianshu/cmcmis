@@ -25,7 +25,9 @@ itemdata:any
 catdata:any
 productdata:any
 emp_data:any 
-product_single_data:any
+product_single_data:any;
+currentDate = new Date();
+
 constructor(
   private popup: NgToastService,
   private fb: FormBuilder,
@@ -43,7 +45,7 @@ ngOnInit(): void {
   )
   this.manageService.getProduct().subscribe(
     (product_res: any) => {
-      this.productdata = product_res.data
+      this.product_single_data = product_res.data
     }
   )  
  
@@ -55,39 +57,54 @@ ngOnInit(): void {
   this.ProductionForm = this.fb.group({
     production_id: [''],
     production_quantity: ['', Validators.required],
-    // mh_date: ['', Validators.required],
     production_desc: ['', Validators.required],
-    production_total:['',Validators.required],
-    production_date:['',Validators.required],    
-    emp_email:['',Validators.required],
-    emp_address:['',Validators.required],
-    emp_mobile:['',Validators.required] ,     
+    production_date:[''],    
+    emp_email:[''],
+    emp_address:[''],
+    emp_mobile:[''] ,     
     emp_id_fk: ['', Validators.required],
     product_id_fk: ['', Validators.required],
-    unit_id_fk:['',Validators.required],
     cat_id_fk: ['', Validators.required],
     admin_id_fk: ['',]
 
   })
   if (this.editData) {
     this.ProductionForm = 'Update'   
-    this.ProductionForm.controls['mh_id'].setValue(this.editData.mh_id);
-    this.ProductionForm.controls['mh_quantity'].setValue(this.editData.mh_quantity);
-    this.ProductionForm.controls['mh_date'].setValue(this.editData.mh_date);
-    this.ProductionForm.controls['mh_desc'].setValue(this.editData.mh_desc);
-    this.ProductionForm.controls['Handover_by'].setValue(this.editData.Handover_by);
-    this.ProductionForm.controls['mh_emp_id_fk'].setValue(this.editData.emp_id_fk);
+    this.ProductionForm.controls['production_id'].setValue(this.editData.production_id);
+    this.ProductionForm.controls['production_quantity'].setValue(this.editData.production_quantity);
+    this.ProductionForm.controls['production_desc'].setValue(this.editData.production_desc);
+    this.ProductionForm.controls['production_date'].setValue(this.editData.production_date);
+    this.ProductionForm.controls['emp_email'].setValue(this.editData.emp_email);
+    this.ProductionForm.controls['emp_address'].setValue(this.editData.emp_address);
+    this.ProductionForm.controls['emp_mobile'].setValue(this.editData.emp_mobile);
+    this.ProductionForm.controls['emp_id_fk'].setValue(this.editData.emp_id_fk);
     this.ProductionForm.controls['cat_id_fk'].setValue(this.editData.cat_id_fk);
     this.ProductionForm.controls['product_id_fk'].setValue(this.editData.product_id);     
     this.ProductionForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
   }
-}
+
+  this.manageService.getprodctiontableview().subscribe(
+    (res:any)=>{
+        console.log(res)
+        this.dataSource = new MatTableDataSource(res.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      // this.matcount = res.data.length
+    }
+  )
+  }  
+   
+  // )
+ 
+
+
 onSubmit(): void {
+  console.log(this.ProductionForm.value)
   if (!this.editData) {
     if (this.ProductionForm.valid) {
       this.manageService.postProduction(this.ProductionForm.value).subscribe({
         next: (res) => {
-          console.log(this.ProductionForm.value)          
+          console.log(res)          
           this.ProductionForm.reset();
           this.popup.success({ detail: 'Success', summary: 'Production  Submit  Successfully...', sticky: true, position: 'tr' })
           this.matref.close('save');
@@ -161,24 +178,5 @@ getEmpdata(event:any){
       }
     )
     }
-
-    addDescription(){
-      const descFormdata = new FormData()
-      descFormdata.append('emp_id_fk',this.ProductionForm.get('emp_id_fk')?.value)
-      descFormdata.append('cat_id_fk',this.ProductionForm.get('cat_id_fk')?.value)
-      descFormdata.append('item_id_fk',this.ProductionForm.get('item_id_fk')?.value)
-      descFormdata.append('quantity',this.ProductionForm.get('quantity')?.value)
-      descFormdata.append('description',this.ProductionForm.get('description')?.value)
-      descFormdata.append('mh_date',this.ProductionForm.get('mh_date')?.value)
-      descFormdata.append('admin_id_fk',this.ProductionForm.get('admin_id_fk')?.value)  
-      this.manageService.postProduction(descFormdata).subscribe(
-        (res:any)=>{
-          console.log(res)
-          alert('successfully')
-        }
-      )
-    
-     
-      }
-}
+  }
 

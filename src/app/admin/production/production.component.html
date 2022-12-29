@@ -4,7 +4,7 @@
       <mat-icon id="add_dues" (click)="add_production()">add_circle</mat-icon>
     </div>
     <div class="count_search">
-      <span class="notice_text"> Total :</span>
+      <span class="notice_text"> Total : {{production_count}}</span>
       <div class="search">
         <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
       </div>
@@ -34,18 +34,7 @@
             <ng-container matColumnDef="production_quantity">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
               <td class="data" mat-cell *matCellDef="let row">{{row.production_quantity}}</td>
-            </ng-container>
-  
-            <ng-container matColumnDef="production_unit">
-              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Unit</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.production_unit}}</td>
-            </ng-container>
-  
-            <ng-container matColumnDef="production_total">
-              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.production_total}}</td>
-            </ng-container>
-  
+            </ng-container>  
             <ng-container matColumnDef="production_date">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
               <td class="data" mat-cell *matCellDef="let row">{{row.production_date}}</td>

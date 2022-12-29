@@ -40,19 +40,11 @@ add_materialhandover(): any {
     // width:'100wh',
     // height:'200vh',
     disableClose: true
-  }).afterClosed().subscribe(val => {
-    if (val === 'save') {
-      this.ngOnInit();
-    }
   })
 }
 editmaterialhandover(row: any) {
   this.addmh.open(AddEditMaterialHandoverComponent, {
     data: row
-  }).afterClosed().subscribe(val => {
-    if (val === 'update') {
-      this.ngOnInit();
-    }
   })
 }
 

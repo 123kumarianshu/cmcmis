@@ -11,16 +11,27 @@ import { AddEditProductionComponent } from '../add-edit-production/add-edit-prod
   styleUrls: ['./production.component.css']
 })
 export class ProductionComponent implements OnInit {
-  displayedColumns: string[] = ['slno','emp_name','cat_name','product_name','production_quantity', 'production_unit', 'production_total','Action'];
+  displayedColumns: string[] = ['slno','emp_name','cat_name','product_name','production_quantity','Action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  production_count:any
   constructor(
     private addproduction: MatDialog,
     private productionservice: ManageService,
   ) { }
 
   ngOnInit(): void {
+    this.productionservice.getProduction().subscribe(
+      (pctesult:any)=>{
+        console.log(pctesult)
+      this.dataSource = new MatTableDataSource(pctesult.data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.production_count = pctesult.data.length
+  
+      }
+    )
   }
 
   add_production(){
