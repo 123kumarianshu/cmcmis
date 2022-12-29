@@ -16,8 +16,7 @@ export class ManageService {
     private http: HttpClient
   ) { }
 
-  // baseUrl: string = 'http://adityaradhaya.com/api/';
-  baseUrl: string = 'http://localhost/cmcmisapi/';
+  baseUrl: string = 'http://adityaradhaya.com/api/';
   
 
 
