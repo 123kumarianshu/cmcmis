@@ -1,6 +1,6 @@
 <div class="view_notice">
   <span class="notice_text">Purchase Report</span>
-  <mat-icon id="add_dues">add_circle</mat-icon>
+  <mat-icon id="print_sale_report" routerLink="/add_customer_details">local_printshop</mat-icon>
 </div>
 
 <div class="search_area">
@@ -37,49 +37,48 @@
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort id="table">
         <ng-container matColumnDef="slno">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
           <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
             paginatorRef.pageSize)+(i+1)}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="cust_shop_name">
+        <ng-container matColumnDef="Party">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party</th>
           <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_name}}</td>
         </ng-container>
 
-
-        <ng-container matColumnDef="ppt">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>product</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.ppt}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="cust_owner_name">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.cust_owner_name}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="cust_contact_no">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>CGST</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="cust_contact">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SGST</th>
+        <ng-container matColumnDef="Bill_no.">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
           <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="Account">
+        <ng-container matColumnDef="Item">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Item</th>
+          <td class="data" mat-cell *matCellDef="let row">{{row.ppt}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Basic_amount">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic amount</th>
+          <td class="data" mat-cell *matCellDef="let row">{{row.cust_owner_name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Discount">
           <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
+          <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Gst">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
           <td class="data" mat-cell *matCellDef="let row">{{row.Account}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="Net_amount">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
+        <ng-container matColumnDef="Gross_amount">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross amount</th>
           <td class="data" mat-cell *matCellDef="let row">{{row.Net_amount}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="Action">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic Amount</th>
+        <ng-container matColumnDef="Date">
+          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
           <td class="data" mat-cell *matCellDef="let row">
             <mat-icon (click)="edit_purchase_report(row)">edit</mat-icon>
           </td>
