@@ -5,11 +5,6 @@
 <div mat-dialog-content>
     <form [formGroup]="itemForm">
         <div class="column">
-            <input type="number" formControlName="item_id" readonly hidden>
-            <mat-form-field appearance="fill">
-                <mat-label>Name</mat-label>
-                <input formControlName="item_name" matInput placeholder="Name">
-            </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Category</mat-label>
@@ -18,19 +13,27 @@
                 </mat-select>
             </mat-form-field>
 
+            <input type="number" formControlName="item_id" readonly hidden>
             <mat-form-field appearance="fill">
-                <mat-label>Unit</mat-label>
-                <mat-select formControlName="item_unit_id_fk">
-                    <mat-option *ngFor="let unitdata of unitdata" [value]="unitdata.unit_id">{{unitdata.unit_name}}</mat-option>
-                </mat-select>
+                <mat-label>Name</mat-label>
+                <input formControlName="item_name" matInput placeholder="Name">
             </mat-form-field>
 
-            <mat-form-field appearance="fill" id="weight">
+            
+            <mat-form-field appearance="fill">
+                <mat-label>GST</mat-label>
+                <mat-select formControlName="item_gst_id_fk">
+                    <mat-option *ngFor="let gstdata of gstdata" [value]="gstdata.gst_id">{{gstdata.gst_in_percentage}}</mat-option>
+                </mat-select>
+            </mat-form-field> 
+           
+            <mat-form-field appearance="fill" >
                 <mat-label>Weight</mat-label>
                 <mat-select formControlName="item_weight_id_fk">
                     <mat-option *ngFor="let weightdata of weightdata" [value]="weightdata.weight_id">{{weightdata.weight_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
+           
         </div>
         <div class="column" id="column_1">
             <mat-form-field appearance="fill">
@@ -39,18 +42,21 @@
                     <mat-option *ngFor="let sizedata of sizedata" [value]="sizedata.size_id">{{sizedata.size_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
-
-            <mat-form-field appearance="fill">
-                <mat-label>GST</mat-label>
-                <mat-select formControlName="item_gst_id_fk">
-                    <mat-option *ngFor="let gstdata of gstdata" [value]="gstdata.gst_id">{{gstdata.gst_in_percentage}}</mat-option>
-                </mat-select>
-            </mat-form-field>           
             <mat-form-field appearance="fill">
                 <mat-label>Rate</mat-label>
                 <input formControlName="item_rate" matInput placeholder="Rate">
             </mat-form-field>
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
+            <mat-form-field appearance="fill">
+                <mat-label>Unit</mat-label>
+                <mat-select formControlName="item_unit_id_fk">
+                    <mat-option *ngFor="let unitdata of unitdata" [value]="unitdata.unit_id">{{unitdata.unit_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input formControlName="item_desc" matInput placeholder="Description">
+            </mat-form-field>
         </div>       
     </form>
     

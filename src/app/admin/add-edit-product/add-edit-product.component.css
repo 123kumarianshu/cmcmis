@@ -1,4 +1,4 @@
-.column {
+ .column {
   width: 100%;
   height: auto;
 }
@@ -42,7 +42,7 @@ mat-toolbar {
   color: whitesmoke;
   padding: 0px;
   position: relative;
-}
+} 
 
 
 @media (min-width:521px) and (max-width:767px) {
@@ -54,10 +54,10 @@ mat-toolbar {
   .column mat-form-field {
     width: 100%;
   }
-
-
 }
-
+.full_text_box{
+  width: 100%;
+}
 @media (max-width:521px) {
   .column {
     width: 100%;
@@ -67,6 +67,5 @@ mat-toolbar {
   .column mat-form-field {
     width: 100%;
   }
+} 
 
-
-}

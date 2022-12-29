@@ -65,6 +65,7 @@ export class AddEditItemComponent implements OnInit {
       item_weight_id_fk: ['', Validators.required],
       item_rate: ['', Validators.required],
       item_cat_id_fk: ['', Validators.required],
+      item_desc: [''],
       admin_id_fk: ['',]
 
     })
@@ -77,6 +78,7 @@ export class AddEditItemComponent implements OnInit {
       this.itemForm.controls['item_gst_id_fk'].setValue(this.editData.gst_id);
       this.itemForm.controls['item_weight_id_fk'].setValue(this.editData.weight_id);
       this.itemForm.controls['item_rate'].setValue(this.editData.item_rate);
+      this.itemForm.controls['item_desc'].setValue(this.editData.item_desc);
       this.itemForm.controls['item_cat_id_fk'].setValue(this.editData.cat_id);
       this.itemForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
     }

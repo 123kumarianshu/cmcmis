@@ -13,7 +13,7 @@ import { AddEditMaterialHandoverComponent } from '../add-edit-material-handover/
   styleUrls: ['./material-handover.component.css']
 })
 export class MaterialHandoverComponent implements OnInit {
-      displayedColumns: string[] = ['slno','emp_name','emp_mobile','mh_item','mh_quantity','mh_date','Action',];
+      displayedColumns: string[] = ['slno','emp_name','cat_name','item_name','quantity','mh_date','Action',];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
@@ -30,28 +30,21 @@ export class MaterialHandoverComponent implements OnInit {
     this.dataSource = new MatTableDataSource(mhesult.data);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.mhcount = mhesult.data.length   
+    this.mhcount = mhesult.data.length
+
     }
   )
 }
 add_materialhandover(): any {  
   this.addmh.open(AddEditMaterialHandoverComponent, {
     // width:'100wh',
-    // height:'90vh',
+    // height:'200vh',
     disableClose: true
-  }).afterClosed().subscribe(val => {
-    if (val === 'save') {
-      this.ngOnInit();
-    }
   })
 }
 editmaterialhandover(row: any) {
   this.addmh.open(AddEditMaterialHandoverComponent, {
     data: row
-  }).afterClosed().subscribe(val => {
-    if (val === 'update') {
-      this.ngOnInit();
-    }
   })
 }
 

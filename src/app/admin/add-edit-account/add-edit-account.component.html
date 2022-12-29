@@ -7,33 +7,28 @@
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Cash in Hand</mat-label>
-                <input formcontrolName="cash_in_hand" matInput placeholder="Cash in hand ">
+                <input formcontrolName="cash_in_hand" matInput placeholder="Cash in hand " type="number">
             </mat-form-field><br>
 
             <mat-form-field appearance="fill">
                 <mat-label>Today Sale</mat-label>
-                <input formcontrolName="today_sale" matInput placeholder="Today sale">
+                <input formcontrolName="today_sale" matInput placeholder="Today sale" type="number">
             </mat-form-field><br>
 
             <mat-form-field appearance="fill">
                 <mat-label>Expense</mat-label>
-                <input formControlName="expense" matInput placeholder="Expense">
-            </mat-form-field><br>
-
-            <mat-form-field appearance="fill" id="remark">
-                <mat-label>Remarks</mat-label>
-                <input formControlName="remarks" matInput placeholder="Remarks">
+                <input formControlName="expense" matInput placeholder="Expense" type="number">
             </mat-form-field><br>
         </div>
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Deposit into Bank</mat-label>
-                <input formControlName="deposit_into_bank" matInput placeholder="Deposit into Bank">
+                <input formControlName="deposit_into_bank" matInput placeholder="Deposit into Bank" type="number">
             </mat-form-field><br>
 
             <mat-form-field appearance="fill">
                 <mat-label>Closing Amount</mat-label>
-                <input formControlName="closing_amount" matInput placeholder="Closing Amount">
+                <input formControlName="closing_amount" matInput placeholder="Closing Amount" type="number">
             </mat-form-field><br>
 
             <mat-form-field appearance="fill" class="date_box">
@@ -42,14 +37,18 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field><br>
-
-            <div mat-dialog-action [align]="'end'">
-                <button mat-raised-button color="warn" (click)="resetamount()" class="reset_btn">Reset</button>
-                <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
-                    [disabled]="!addAccount.valid">{{actionBtn}}</button>
-            </div>
-            <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
         </div>
-       
+        <div class="column_1">
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input formControlName="remarks" matInput placeholder="Remarks">
+            </mat-form-field>
+        </div>
+        <div mat-dialog-action [align]="'end'" id="main_button">
+            <button mat-raised-button color="warn" (click)="resetamount()" class="reset_btn">Reset</button>
+            <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+                [disabled]="!addAccount.valid">{{actionBtn}}</button>
+        </div>
+        <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
     </form>
 </div>

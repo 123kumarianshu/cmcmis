@@ -14,7 +14,7 @@ import { AddEditSaleComponent } from '../add-edit-sale/add-edit-sale.component';
   styleUrls: ['./sale.component.css']
 })
 export class SaleComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'sale_total_amount', 'sale_gst', 'sale_dues', 'sale_discount','sale_bill_no', 'sale_date', 'Action',];
+  displayedColumns: string[] = ['slno','cust_name', 'sale_bill_number', 'sale_basic_amount', 'sale_discount','sale_gst','gross_amount','sale_paid','sale_dues', 'sale_date', 'Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

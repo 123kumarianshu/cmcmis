@@ -12,6 +12,20 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./add-edit-expense.component.css']
 })
 export class AddEditExpenseComponent implements OnInit {
+
+  expence_type: string[] = [
+    'Travel',
+    'Utilities',
+    'Meals',
+    'Software',
+    'Medical expenses',
+    'Licenses and permits',
+    'Employee loans',
+    'Telephone',
+    'Maintenance and repairs',
+    'Electricity bill',
+    'Verses expenses'
+  ];
   expenseForm !: FormGroup;
   actionBtn ='add'
   admin_id:any;

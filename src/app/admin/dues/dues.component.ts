@@ -11,7 +11,7 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./dues.component.css']
 })
 export class DuesComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'cust_shop_name', 'cust_owner_name', 'cust_contact_no', 'Action',];
+  displayedColumns: string[] = ['slno', 'customer_name', 'bill_number', 'gross_amount','paid','dues', 'date','Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

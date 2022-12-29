@@ -4,7 +4,7 @@
       <mat-icon id="add_product" (click)="add_product()">add_circle</mat-icon>
     </div>
     <div class="count_search">
-      <span class="notice_text"> Total :{{productcount}}</span>
+      <span class="notice_text"> Total : {{productcount}}</span>
       <div class="search">
         <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
       </div>
@@ -19,25 +19,25 @@
                 paginatorRef.pageSize)+(i+1)}}</td>
             </ng-container>
 
-            <ng-container matColumnDef="product_cat_id_fk">
+            <ng-container matColumnDef="cat_name">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.product_cat_id_fk}}</td>
+              <td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
             </ng-container>
 
             <ng-container matColumnDef="product_name">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
               <td class="data" mat-cell *matCellDef="let row">{{row.product_name}}</td>
             </ng-container>
-            <ng-container matColumnDef="product_size_id_fk">
+            <ng-container matColumnDef="size_name">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Size</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.product_size_id_fk}}</td>
+              <td class="data" mat-cell *matCellDef="let row">{{row.size_name}}</td>
             </ng-container>
-            <ng-container matColumnDef="product_weight_id_fk">
+            <ng-container matColumnDef="weight_name">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.product_weight_id_fk}}</td>
+              <td class="data" mat-cell *matCellDef="let row">{{row.weight_name}}</td>
             </ng-container>
             <ng-container matColumnDef="product_page">
-              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product page</th>
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Page</th>
               <td class="data" mat-cell *matCellDef="let row">{{row.product_page}}</td>
             </ng-container>
             <ng-container matColumnDef="product_produ_cost">
@@ -48,15 +48,20 @@
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Cost Price</th>
               <td class="data" mat-cell *matCellDef="let row">{{row.product_cost_price}}</td>
             </ng-container>
+
+            <ng-container matColumnDef="product_desc">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_desc}}</td>
+            </ng-container>          
            
             <ng-container matColumnDef="product_retail_price">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Retail Price</th>
               <td class="data" mat-cell *matCellDef="let row">{{row.product_retail_price}}</td>
             </ng-container>
 
-            <ng-container matColumnDef="product_unit_id_fk">
+            <ng-container matColumnDef="unit_name">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Unit</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.product_unit_id_fk}}</td>
+              <td class="data" mat-cell *matCellDef="let row">{{row.unit_name}}</td>
             </ng-container>
             
             <ng-container matColumnDef="Action">

@@ -71,7 +71,7 @@ import { AddEditMaterialHandoverComponent } from './admin/add-edit-material-hand
 import { AddEditProductionComponent } from './admin/add-edit-production/add-edit-production.component';
 import { ProductComponent } from './admin/product/product.component';
 import { AddEditProductComponent } from './admin/add-edit-product/add-edit-product.component';
-
+import {HashLocationStrategy,LocationStrategy}from'@angular/common';
 
 
 
@@ -170,7 +170,7 @@ import { AddEditProductComponent } from './admin/add-edit-product/add-edit-produ
    
 
   ],
-  providers: [],
+  providers: [{provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

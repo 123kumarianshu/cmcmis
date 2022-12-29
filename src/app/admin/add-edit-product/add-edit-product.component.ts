@@ -12,13 +12,14 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./add-edit-product.component.css']
 })
 export class AddEditProductComponent implements OnInit {
-      admin_id:any
+      admin_id=1;      
       productForm:any
       actionBtn='Add'
       catdata:any
       unitdata:any
       weightdata:any
       sizedata:any
+      productdata:any
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
@@ -29,8 +30,14 @@ export class AddEditProductComponent implements OnInit {
   ) { 
   }
 
-  ngOnInit(): void {
-
+  ngOnInit(): void {  
+    // this.manageService.getProduct().subscribe(
+    //   (res:any)=>{
+    //     this.productdata = res.data
+    //     console.log(res)
+    //   }
+      
+    // ) 
     this.manageService.getCat().subscribe(
       (cat_res: any) => {
         this.catdata = cat_res.data
@@ -56,14 +63,15 @@ export class AddEditProductComponent implements OnInit {
     this.productForm = this.fb.group({
       product_id: [''],
       product_name: ['', Validators.required],
-      product_size_id_fk: ['', Validators.required],
-      product_weight_id_fk: ['', Validators.required],
+      size_id_fk : ['', Validators.required],
+      weight_id_fk : ['', Validators.required],
       product_page: ['', Validators.required],
       product_produ_cost: ['', Validators.required],
       product_cost_price: ['', Validators.required],
       product_retail_price: ['', Validators.required],
-      product_unit_id_fk: ['', Validators.required],
-      product_cat_id_fk: ['', Validators.required],
+      product_desc: [''],
+      unit_id_fk: ['', Validators.required],
+      cat_id_fk: ['', Validators.required],
       admin_id_fk: ['',]
 
     })
@@ -71,18 +79,20 @@ export class AddEditProductComponent implements OnInit {
       this.actionBtn = 'Update'   
       this.productForm.controls['product_id'].setValue(this.editData.product_id);
       this.productForm.controls['product_name'].setValue(this.editData.product_name);
-      this.productForm.controls['product_size_id_fk'].setValue(this.editData.size_id);
-      this.productForm.controls['product_weight_id_fk'].setValue(this.editData.weight_id);
+      this.productForm.controls['size_id_fk'].setValue(this.editData.size_id);
+      this.productForm.controls['weight_id_fk'].setValue(this.editData.weight_id);
       this.productForm.controls['product_page'].setValue(this.editData.product_page);
       this.productForm.controls['product_produ_cost'].setValue(this.editData.product_produ_cost);      
       this.productForm.controls['product_cost_price'].setValue(this.editData.product_cost_price);
+      this.productForm.controls['product_desc'].setValue(this.editData.product_desc);
       this.productForm.controls['product_retail_price'].setValue(this.editData.product_retail_price);
-      this.productForm.controls['product_unit_id_fk'].setValue(this.editData.unit_id);
-      this.productForm.controls['product_cat_id_fk'].setValue(this.editData.cat_id);
+      this.productForm.controls['unit_id_fk'].setValue(this.editData.unit_id);
+      this.productForm.controls['cat_id_fk'].setValue(this.editData.cat_id);
       this.productForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
     }
   }
   onSubmit(): void {
+    console.log(this.productForm.value)
     if (!this.editData) {
       if (this.productForm.valid) {
         this.manageService.postProduct(this.productForm.value).subscribe({
@@ -90,7 +100,6 @@ export class AddEditProductComponent implements OnInit {
             this.productForm.reset();
             this.popup.success({ detail: 'Success', summary: 'Product  Submit  Successfully...', sticky: true, position: 'tr' })
             this.matref.close('save');
-            console.log(this.productForm.value)
           },
           error: (err) => {
             console.log(err);
@@ -109,7 +118,7 @@ export class AddEditProductComponent implements OnInit {
     this.manageService.putProduct(this.productForm.value).subscribe({
       next: (res) => {
         console.log(res);
-        this.router.navigate(['/item']);
+        this.router.navigate(['/product']);
         this.productForm.reset();
         this.popup.success({ detail: 'Success', summary: 'Product Update Successfully...', sticky: true, position: 'tr' })
         this.matref.close('save');
