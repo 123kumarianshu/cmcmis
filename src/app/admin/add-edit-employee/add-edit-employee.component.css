@@ -42,13 +42,14 @@ textarea {
   width: 80px;
   height: 40px;
   float: right;
+  background-color: green;
+  color: white;
   margin: 0px;
 } 
 
 mat-toolbar {
   height: 40px;
   background: none;
-
   color: #14595c;
   padding: 0px;
   position: relative;
