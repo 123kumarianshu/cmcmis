@@ -15,6 +15,7 @@ export class AddEditCustomerComponent implements OnInit {
   actionBtn: string = 'Add'
   custForm !: FormGroup;
   constructor(
+    private popup: NgToastService,
     private fb: FormBuilder,
     private router: Router,
     private manageService: ManageService,
@@ -31,12 +32,12 @@ export class AddEditCustomerComponent implements OnInit {
       cust_id: [''],
       cust_name: ['', Validators.required],
       cust_shop_name: ['', Validators.required],
-      cust_owner_name: ['', Validators.required],
-      cust_cont_person: ['', Validators.required],
+      cust_owner_name: [''],
+      cust_cont_person: [''],
       cust_shop_address: ['', Validators.required],
       cust_contact_no: ['', Validators.required],
-      cust_whatsapp: ['', Validators.required],
-      cust_email: ['', Validators.required],
+      cust_whatsapp: [''],
+      cust_email: [''],
       admin_id_fk: ['', Validators.required],
     })
 
@@ -64,13 +65,15 @@ export class AddEditCustomerComponent implements OnInit {
     if (!this.editData) {
       this.manageService.postCustomer(this.custForm.value).subscribe(
         (result: any) => {
-          console.log(result)
-          alert("Data Add Successfully");
+          console.log(result);
           this.matref.close();
           this.router.navigate(['/customer']);
+          this.popup.success({detail:'Success',summary:'Customer Add Successfully...',sticky:true,position:'tr'})
+
         },
         (error: any) => {
-          alert("Data not Insert ")
+
+          this.popup.error({detail:'Error',summary:'Customer Not Add...',sticky:true,position:'tr'})
         }
       )
     }
@@ -84,12 +87,16 @@ export class AddEditCustomerComponent implements OnInit {
     this.manageService.putCustomer(this.custForm.value).subscribe({
       next: (res) => {
         console.log(res)
-        alert("Customer Update Successfully");
+        this.popup.success({detail:'Success',summary:'Customer Update Successfully...',sticky:true,position:'tr'})
+
         this.matref.close();
         this.router.navigate(['/customer']);
+        
       },
       error: () => {
-        alert("Customer not Update");
+        this.popup.error({detail:'Error',summary:'Customer Not Update.',sticky:true,position:'tr'})
+
+     
       }
 
     })
