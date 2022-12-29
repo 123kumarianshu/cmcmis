@@ -24,7 +24,6 @@
     <mat-form-field appearance="fill">
       <mat-label>To</mat-label>
       <input matInput [matDatepicker]="picker1" >
-   
       <mat-datepicker-toggle class="ppt" matIconSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
@@ -40,28 +39,28 @@
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort id="table">
           <ng-container matColumnDef="slno">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
             <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
               paginatorRef.pageSize)+(i+1)}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="bill_number">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill number </th>
+          <ng-container matColumnDef="Custumber">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Custumber</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.bill_number}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="product">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product </th>
+          <ng-container matColumnDef="Bill_no">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill number</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.product}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="quantity">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Quantity</th>
+          <ng-container matColumnDef="product">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.quantity}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="cgst">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> CGST</th>
+          <ng-container matColumnDef="Basic_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic amount</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.cgst}}</td>
           </ng-container>
 
@@ -70,18 +69,28 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.discount}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="Basic_amount">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic Amount</th>
+          <ng-container matColumnDef="Gst">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.Basic_amount}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="sgst">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> SGST</th>
+          <ng-container matColumnDef="Paybale_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Paybill amount </th>
             <td class="data" mat-cell *matCellDef="let row">{{row.sgst}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="total_amount">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total amount</th>
+          <ng-container matColumnDef="Paid">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Paid</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.total_amount}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Dues">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Dues</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.total_amount}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Date">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.total_amount}}</td>
           </ng-container>
 
@@ -91,21 +100,12 @@
             <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
           </tr>
         </table>
-        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
+        <mat-paginator class="paginator" #paginatorRef [pageSizeOptions]="[10, 25, 100]"
           aria-label="Select page of users"></mat-paginator>
       </div>
     </form>
   </div>
-  <!-- <mat-form-field appearance="fill">
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" class="ppt">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field> -->
-
-
-
+ 
   <div class="footer_amount">
     <span class="total">Total GST : 0 |</span>
     <span class="total">Discount : 0 |</span>

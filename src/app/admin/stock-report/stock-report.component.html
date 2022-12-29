@@ -21,7 +21,7 @@
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort id="table">
           <ng-container matColumnDef="slno">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
             <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
               paginatorRef.pageSize)+(i+1)}}</td>
           </ng-container>
@@ -37,11 +37,11 @@
           </ng-container>
 
           <ng-container matColumnDef="company_name">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Company name </th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Available qunatity</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.company_name}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="purchase_qty">
+          <!-- <ng-container matColumnDef="purchase_qty">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Purchase Qty.</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.purchase_qty}}</td>
           </ng-container>
@@ -49,10 +49,10 @@
           <ng-container matColumnDef="sale_qty">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Sale Qty.</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.sale_qty}}</td>
-          </ng-container>
+          </ng-container> -->
 
           <ng-container matColumnDef="available_qty">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Available Qty.</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.available_qty}}</td>
           </ng-container>
 
@@ -68,7 +68,9 @@
     </form>
   </div>
   <div class="footer_amount">
-    <span>Total purchase product : 0 |</span>
-     <span>Total Sale Product : 0</span>  
+    <span>Total GST : 0 |</span>
+     <span>Discount: 0</span> 
+     <span>Basic amount: 0</span>  
+     <span>Net amount: 0</span>  
   </div>
 </div>

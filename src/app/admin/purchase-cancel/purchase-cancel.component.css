@@ -22,9 +22,13 @@
 .notice_text {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+.notice_tex {
+    padding-top: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
 .count_search {
-    height: 40px;
+    height: 50px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -39,7 +43,7 @@
     padding: 5px;
     background-color: whitesmoke;
     position: relative;
-    top: -5px;
+    top: 11px;
     left: 0px;
 }
 
@@ -61,6 +65,7 @@ mat-icon {
     background-color: #0f575a;
     height: 40px;
     font-weight: bold;
+    padding-left: 25px;
 }
 
 tr:nth-child(even) {
@@ -93,4 +98,88 @@ ng-container {
 
 .data:hover {
     color: white;
+}
+/* ----------------------------------------------------------Media Query------------------------------------------------------ */
+@media(min-width: 350px) and (max-width: 420px){
+    .search input{
+        width: 100px;
+    } 
+    #wrapper{
+        overflow-x: hidden;
+    }
+    .cotainer{
+        overflow-x: auto;
+    }
+    mat-paginator{
+        position: absolute;
+        width: 100%;
+    }
+
+}
+@media(min-width: 420px) and (max-width: 720px){
+    .search input{
+        width: 150px;
+    }
+
+    #wrapper{
+        overflow-x: hidden;
+    }
+    .cotainer{
+        overflow-x: auto;
+    }
+    mat-paginator{
+        position: absolute;
+        width: 100%;
+    }
+}
+@media (min-width: 720px) and (max-width: 840px){
+    .search input{
+        width: 150px;
+    }
+
+    #wrapper{
+        overflow-x: hidden;
+    }
+    .cotainer{
+        overflow-x: auto;
+    }
+    mat-paginator{
+        position: absolute;
+        width: 100%;
+    } 
+}
+
+@media(min-width: 840px) and (max-width: 1040px){
+    .search input{
+        width: 150px;
+        margin-left: 390px;
+    }
+
+    #wrapper{
+        overflow-x: hidden;
+    }
+    .cotainer{
+        overflow-x: auto;
+    }
+    mat-paginator{
+        position: absolute;
+        width: 100%;
+    } 
+}
+@media(min-width: 1040px) and (max-width: 1240px){
+    .search input{
+        width: 150px;
+        margin-left: 618px;
+    }
+
+    #wrapper{
+        overflow-x: hidden;
+    }
+    .cotainer{
+        overflow-x: auto;
+    }
+    mat-paginator{
+        position: absolute;
+        width: 100%;
+    } 
 }

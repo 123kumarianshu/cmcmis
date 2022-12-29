@@ -20,7 +20,7 @@
     cursor: pointer;
 }
 .text_box{
-    width: 150px;
+    width: 152px;
     float: right;
     padding: 31px 2px 1px 5px;
     border-bottom: 1px solid black;
@@ -38,22 +38,15 @@
 /* -----------------------------------------------------------------change me------------------------------------------------------- */
 
 mat-form-field {
-    margin-right: 3px;
+    margin-right: 2px;
     width: 15%;
-    height: 30px;
-    /* line-height: ; */
+    height: 50px;
    
   }
-  
-  
-  
-
   mat-datepicker-toggle{
-  
-    position: fixed;
-    /* left: 70px; */
-    right: 60%;
-    top: 15%;
+    position: absolute;
+    right: 2%;
+    margin-top: -12px;
   }
  
 .notice_text {
@@ -61,10 +54,11 @@ mat-form-field {
 }
 .search_area{
     width: 100%;
-    height: 52px;
+    height: 53px;
 }
 .ppt{
-    right: 47%
+    position: absolute;
+    right: 3%
 }
 mat-icon {
     background-color: transparent;
@@ -122,10 +116,10 @@ ng-container {
     color: white;
 }
 .footer_amount{
-    height:40px;
+    height:44px;
     width: 100%;
-    background-color: #070f17;
-    margin-top:458px ;    
+    background-color: #0f575a;
+    margin-top:454px ;    
 }
 .total{    
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -139,7 +133,275 @@ ng-container {
     
 }
 /* --------------------------------------------------------Media Query-------------------------------------------- */
-@media(max-width: 420px) {
+@media(min-width: 280px) and (max-width: 350px){
+   
+    mat-form-field{
+        width: 69px;
+      
+        
+    }
+}
+
+
+@media (min-width: 350px) and (max-width: 420px){
+    th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+        padding-left: 12px;
+       font-size: 10px;
+    }
+    #wrapper{
+        overflow-x: hidden;
+    }
+    .cotainer{
+        overflow-x: auto;
+    }
+    mat-paginator{
+        position: absolute;
+        width: 100%;
+    }
+    mat-form-field{
+        width: 86px;
+        
+    }
+    table {
+        width: 100%;
+        
+      }
+   
+    .text_box{
+        width: 70px;
+       margin-left: 5px;
+      
+    }
+    .ppt{
+        right: -25%;
+        top: -17px;
+    }
+    mat-datepicker-toggle{
+        right: -26%;
+        top: -54%;
+        position: absolute;
+    }
+    .trth{
+        padding-left: 1px;
+        font-size: 10px;
+       
+        
+    }
+    .footer_amount{
+        margin-top: 204px; 
+        position: fixed;
+    }
+    .total{
+        padding-left: 1px;
+        font-size: 11px;
+    }
+      }
+    @media(min-width: 420px) and (max-width: 520px){
+        #wrapper{
+            overflow-x: hidden;
+        }
+        .cotainer{
+            overflow-x: auto;
+        }
+        mat-paginator{
+            position: absolute;
+            width: 100%;
+        }
+        mat-form-field{
+            width: 97px;
+        }
+        .text_box{
+            width: 85px;
+           margin-left: 10px;
+        }
+        mat-datepicker-toggle{
+            position: absolute;
+            right: -15px;
+            margin-top: -27px;
+        }
+        .ppt{
+            right: -21%;
+            top: 4px;
+        }
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 19px;
+            font-size: 12px;
+        }
+        .trth{
+            font-size: 12px;
+            padding-left: 0px;
+        }
+        .footer_amount{
+            margin-top: 212px;
+        }
+        .total{
+            padding-left: 0px;
+            font-size: 12px;
+        }
+    }
+    @media (min-width: 520px) and (max-width: 720px){
+        #wrapper{
+            overflow-x: hidden;
+        }
+        .cotainer{
+            overflow-x: auto;
+        }
+        mat-paginator{
+            position: absolute;
+            width: 100%;
+        }
+        mat-form-field{
+            width: 105px;
+        }
+        mat-datepicker-toggle{
+            position: absolute;
+            right: -15px;
+            margin-top: -27px;
+        }
+        .ppt{
+            right: -21%;
+            top: 4px;
+        }
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 16px;
+            font-size: 12px;
+        }
+       
+        .trth{
+            padding-left: 0px;
+        }
+        .footer_amount{
+           margin-top: 212px; 
+        }
+        .total{
+            padding-left: 11px;
+        }
+    }
+    @media(min-width: 720px) and (max-width: 1024px){
+        #wrapper{
+            overflow-x: hidden;
+        }
+        .cotainer{
+            overflow-x: auto;
+        }
+        mat-paginator{
+            position: absolute;
+            width: 100%;
+        }
+        mat-form-field{
+            width: 100px;
+        }
+        .text_box{
+            width: 75px;
+           margin-left: 10px;
+        }
+        mat-datepicker-toggle{
+            right: -16px;
+            top: -16px;
+           
+        }
+        .ppt{
+            right: -15px;
+            top: -16px; 
+        }
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 10px;
+            font-size: 12px;
+        }
+        .trth{
+            padding-left: 15px;
+        }
+        .footer_amount{
+            margin-top: 212px;
+            position: fixed;
+        }
+        .total{
+            padding-left: 39px;
+        }
+    }
+    @media(min-width: 1024px) and (max-width: 1240px){
+        #wrapper{
+            overflow-x: hidden;
+        }
+        .cotainer{
+            overflow-x: auto;
+        }
+        mat-paginator{
+            position: absolute;
+            width: 100%;
+        }
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 15px;
+        }
+        mat-form-field{
+            width: 140px;
+        }
+        .trth{
+            padding-left: 35px;
+        }
+        .footer_amount{
+            margin-top: 212px;
+            position: fixed;
+        }
+        .total{
+            padding-left: 91px;
+        }
+    }
+    @media(min-width: 1240px) and (max-width: 1440px){
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 15px;
+        }
+        .trth{
+            padding-left: 50px;
+        } 
+        .footer_amount{
+            margin-top: 30%;
+        }
+        .total{
+            padding-left: 91px;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @media(max-width: 420px) {
+
+
+
+
+    #wrapper{
+        overflow-x: hidden;
+    }
+    .cotainer{
+        overflow-x: auto;
+    }
+    mat-paginator{
+        overflow-x: fixed;
+    }
     mat-form-field{
         width: 90px;
     }
@@ -158,7 +420,9 @@ ng-container {
     }
     .footer_amount{
         width: 100%;
-        margin-top: 194px;
+        margin-top: 137px;
+       
+ 
     }
     .total{
         padding-left: 0px;
@@ -210,9 +474,19 @@ ng-container {
         
     }                                                                            
 }
+@media(min-width: 620px) and (max-width: 840px){
+  
+    mat-form-field{
+        width: 90px;
+    }
+    .ppt{
+        padding-left: 10px;
+     
+    }
+}
     
     
- 
+  */
 
 		
 

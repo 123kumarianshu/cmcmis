@@ -10,8 +10,9 @@
     box-sizing: border-box;
 }
 
-#add_dues {
+#print_sale_report {
     position: relative;
+    top: -1px;
     left: 2px;
     cursor: pointer;
 }
@@ -31,7 +32,6 @@
     color: #0d5e58;
    
 }
-
 
 .column{
     width: 177px;
@@ -54,11 +54,8 @@
 }
 
 .text_box{
-    width: 150px;
-    margin-top: -3px;
+    width: 152px;
     float: right;
-    position: fixed;
-    margin-left: 557px;
     padding: 31px 2px 1px 5px;
     border-bottom: 1px solid black;
 }
@@ -76,39 +73,28 @@
     font-size: 13px;
 } 
 .ppt{
-    right: 47%
+    right: 3%
 }
 
-    
+mat-form-field {
+    margin-right: 2px;
+    width: 15%;
+    height: 50px;
+   
+  }
+  mat-datepicker-toggle{
+    position: absolute;
+    right: 4px;
+    margin-top: -12px;
+  }
+  
+.notice_text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 .search_area{
     width: 100%;
-    height: 47px;
-    margin-left: 1px;
-   
+    height: 50px;
 }
-
- mat-form-field{
-   width: 185px;
-   height: 51px;
-   margin-top: -2px;
-   margin-right: 2px;
-   
-  
-} 
-mat-datepicker-toggle{
-    position: fixed;
-    /* left: 70px; */
-    right: 60%;
-    top: 15%;
-  }
-
-  
-
-  .toogle{
-    background-color: red;
-    right: 30%;
-  }
-  
 
 mat-icon {
     background-color: transparent;
@@ -160,10 +146,10 @@ ng-container {
     color: white;
 }
 .footer_amount{
-    height:40px;
+    height:44px;
     width: 100%;
-    background-color: #070f17;
-    margin-top:460px ; 
+    background-color: #0f575a;
+    margin-top:454px ; 
   
 }
 .total{    
@@ -181,3 +167,435 @@ form span{
     font-size: 20px;
    
 }
+/* ====================================================Media Query============================================== */
+
+/* 
+@media (min-width: 350px) and (max-width: 420px){
+    th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+        padding-left: 12px;
+       font-size: 10px;
+    }
+    #wrapper{
+        overflow-x: hidden;
+    }
+    .cotainer{
+        overflow-x: auto;
+    }
+    mat-paginator{
+        overflow-x: auto;
+    }
+    mat-form-field{
+        width: 86px;
+        
+    }
+    table {
+        width: 100%;
+        
+      }
+   
+    .text_box{
+        width: 70px;
+       margin-left: 5px;
+      
+    }
+    .ppt{
+        right: -25%;
+        top: -17px;
+    }
+    mat-datepicker-toggle{
+        right: -26%;
+        top: -54%;
+        position: absolute;
+    }
+    .trth{
+        padding-left: 1px;
+        font-size: 10px;
+       
+        
+    }
+    .footer_amount{
+        margin-top: 214px; 
+        position: fixed;
+    }
+    .total{
+        padding-left: 1px;
+        font-size: 11px;
+    }
+    mat-paginator{
+        position: absolute;
+        width: 100%;
+    }
+      }
+    @media(min-width: 420px) and (max-width: 520px){
+        #wrapper{
+            overflow-x: hidden;
+        }
+        .cotainer{
+            overflow-x: auto;
+        }
+        mat-paginator{
+            overflow-x: auto;
+        }
+        mat-form-field{
+            width: 97px;
+        }
+        .text_box{
+            width: 85px;
+           margin-left: 10px;
+        }
+        mat-datepicker-toggle{
+            position: absolute;
+            right: -15px;
+            margin-top: -27px;
+        }
+        .ppt{
+            right: -21%;
+            top: 4px;
+        }
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 19px;
+            font-size: 12px;
+        }
+        .trth{
+            font-size: 12px;
+            padding-left: 0px;
+        }
+        .footer_amount{
+            margin-top: 156px;
+        }
+        .total{
+            padding-left: 0px;
+            font-size: 12px;
+        }
+    }
+    @media (min-width: 520px) and (max-width: 720px){
+        #wrapper{
+            overflow-x: hidden;
+        }
+        .cotainer{
+            overflow-x: auto;
+        }
+        mat-paginator{
+            overflow-x: auto;
+        }
+        mat-form-field{
+            width: 105px;
+        }
+        mat-datepicker-toggle{
+            position: absolute;
+            right: -15px;
+            margin-top: -27px;
+        }
+        .ppt{
+            right: -21%;
+            top: 4px;
+        }
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 16px;
+            font-size: 12px;
+        }
+       
+        .trth{
+            padding-left: 0px;
+        }
+        .footer_amount{
+           margin-top: 156px; 
+        }
+        .total{
+            padding-left: 11px;
+        }
+    }
+    @media(min-width: 720px) and (max-width: 1024px){
+        #wrapper{
+            overflow-x: hidden;
+        }
+        .cotainer{
+            overflow-x: auto;
+        }
+        mat-paginator{
+            overflow-x: auto;
+        }
+        mat-form-field{
+            width: 100px;
+        }
+        .text_box{
+            width: 75px;
+           margin-left: 10px;
+        }
+        mat-datepicker-toggle{
+            right: -16px;
+            top: -16px;
+           
+        }
+        .ppt{
+            right: -15px;
+            top: -16px; 
+        }
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 10px;
+            font-size: 12px;
+        }
+        .trth{
+            padding-left: 15px;
+        }
+        .footer_amount{
+            margin-top: 157px;
+            position: fixed;
+        }
+        .total{
+            padding-left: 39px;
+        }
+    }
+    @media(min-width: 1024px) and (max-width: 1240px){
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 15px;
+        }
+        mat-form-field{
+            width: 140px;
+        }
+        .trth{
+            padding-left: 35px;
+        }
+        .footer_amount{
+            margin-top: 157px;
+            position: fixed;
+        }
+        .total{
+            padding-left: 91px;
+        }
+    }
+    @media(min-width: 1240px) and (max-width: 1440px){
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 15px;
+        }
+        .trth{
+            padding-left: 50px;
+        } 
+        .footer_amount{
+            margin-top: 30%;
+        }
+        .total{
+            padding-left: 91px;
+        }
+    } */
+
+
+    @media(min-width: 280px) and (max-width: 350px){
+   
+        mat-form-field{
+            width: 69px;
+          
+            
+        }
+    }
+    
+    
+    @media (min-width: 350px) and (max-width: 420px){
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 12px;
+           font-size: 10px;
+        }
+        #wrapper{
+            overflow-x: hidden;
+        }
+        .cotainer{
+            overflow-x: auto;
+        }
+        mat-paginator{
+            position: absolute;
+            width: 100%;
+        }
+        mat-form-field{
+            width: 86px;
+            
+        }
+        table {
+            width: 100%;
+            
+          }
+       
+        .text_box{
+            width: 70px;
+           margin-left: 5px;
+          
+        }
+        .ppt{
+            right: -25%;
+            top: -17px;
+        }
+        mat-datepicker-toggle{
+            right: -26%;
+            top: -54%;
+            position: absolute;
+        }
+        .trth{
+            padding-left: 1px;
+            font-size: 10px;
+           
+            
+        }
+        .footer_amount{
+            margin-top: 215px; 
+            position: fixed;
+        }
+        .total{
+            padding-left: 1px;
+            font-size: 11px;
+        }
+          }
+        @media(min-width: 420px) and (max-width: 520px){
+            #wrapper{
+                overflow-x: hidden;
+            }
+            .cotainer{
+                overflow-x: auto;
+            }
+            mat-paginator{
+                position: absolute;
+                width: 100%;
+            }
+            mat-form-field{
+                width: 97px;
+            }
+            .text_box{
+                width: 85px;
+               margin-left: 10px;
+            }
+            mat-datepicker-toggle{
+                position: absolute;
+                right: -15px;
+                margin-top: -27px;
+            }
+            .ppt{
+                right: -21%;
+                top: 4px;
+            }
+            th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+                padding-left: 19px;
+                font-size: 12px;
+            }
+            .trth{
+                font-size: 12px;
+                padding-left: 0px;
+            }
+            .footer_amount{
+                margin-top: 212px;
+                position: fixed;
+            }
+            .total{
+                padding-left: 0px;
+                font-size: 12px;
+            }
+        }
+        @media (min-width: 520px) and (max-width: 720px){
+            #wrapper{
+                overflow-x: hidden;
+            }
+            .cotainer{
+                overflow-x: auto;
+            }
+            mat-paginator{
+                position: absolute;
+                width: 100%;
+            }
+            mat-form-field{
+                width: 105px;
+            }
+            mat-datepicker-toggle{
+                position: absolute;
+                right: -15px;
+                margin-top: -27px;
+            }
+            .ppt{
+                right: -21%;
+                top: 4px;
+            }
+            th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+                padding-left: 16px;
+                font-size: 12px;
+            }
+           
+            .trth{
+                padding-left: 0px;
+            }
+            .footer_amount{
+               margin-top: 212px; 
+            }
+            .total{
+                padding-left: 11px;
+            }
+        }
+        @media(min-width: 720px) and (max-width: 1024px){
+            #wrapper{
+                overflow-x: hidden;
+            }
+            .cotainer{
+                overflow-x: auto;
+            }
+            mat-paginator{
+                position: absolute;
+                width: 100%;
+            }
+            mat-form-field{
+                width: 100px;
+            }
+            .text_box{
+                width: 75px;
+               margin-left: 10px;
+            }
+            mat-datepicker-toggle{
+                right: -16px;
+                top: -16px;
+               
+            }
+            .ppt{
+                right: -15px;
+                top: -16px; 
+            }
+            th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+                padding-left: 10px;
+                font-size: 12px;
+            }
+            .trth{
+                padding-left: 15px;
+            }
+            .footer_amount{
+                margin-top: 212px;
+                position: fixed;
+            }
+            .total{
+                padding-left: 39px;
+            }
+        }
+        @media(min-width: 1024px) and (max-width: 1240px){
+            th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+                padding-left: 15px;
+            }
+            mat-form-field{
+                width: 140px;
+            }
+            .trth{
+                padding-left: 35px;
+            }
+            .footer_amount{
+                margin-top: 157px;
+                position: fixed;
+            }
+            .total{
+                padding-left: 91px;
+            }
+        }
+        @media(min-width: 1240px) and (max-width: 1440px){
+            th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+                padding-left: 15px;
+            }
+            .trth{
+                padding-left: 50px;
+            } 
+            .footer_amount{
+                margin-top: 30%;
+            }
+            .total{
+                padding-left: 91px;
+            }
+        }

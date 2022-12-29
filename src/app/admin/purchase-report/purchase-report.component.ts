@@ -29,7 +29,7 @@ export class PurchaseReportComponent implements OnInit {
     'November',
     'December',
   ];
-  displayedColumns: string[] = ['slno', 'cust_shop_name', 'ppt','cust_owner_name', 'cust_contact_no', 'Account', 'cust_contact', 'Net_amount', 'Action',];
+  displayedColumns: string[] = ['slno', 'Party', 'Bill_no.','Item', 'Basic_amount', 'Discount', 'Gst', 'Gross_amount', 'Date',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
