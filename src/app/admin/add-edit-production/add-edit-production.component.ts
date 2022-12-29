@@ -18,11 +18,16 @@ dataSource!: MatTableDataSource<any>;
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 @ViewChild(MatSort) sort!: MatSort;
 empdata:any
-MaterialForm:any
+ProductionForm:any
 admin_id=1
 actionBtn='Add'
 itemdata:any 
-catdata:any 
+catdata:any
+productdata:any
+emp_data:any 
+product_single_data:any;
+currentDate = new Date();
+
 constructor(
   private popup: NgToastService,
   private fb: FormBuilder,
@@ -38,48 +43,69 @@ ngOnInit(): void {
       this.empdata = emp_res.data
     }
   )
-  this.manageService.getItem().subscribe(
-    (item_res: any) => {
-      this.itemdata = item_res.data
+  this.manageService.getProduct().subscribe(
+    (product_res: any) => {
+      this.product_single_data = product_res.data
     }
-  ) 
+  )  
+ 
   this.manageService.getCat().subscribe(
     (cat_res: any) => {
       this.catdata = cat_res.data
     }
   )    
-  this.MaterialForm = this.fb.group({
-    mh_id: [''],
-    mh_quantity: ['', Validators.required],
-    mh_date: ['', Validators.required],
-    mh_desc: ['', Validators.required],
-    emp_mobile:['',Validators.required] ,     
-    mh_emp_id_fk: ['', Validators.required],
-    mh_item_id_fk: ['', Validators.required],
+  this.ProductionForm = this.fb.group({
+    production_id: [''],
+    production_quantity: ['', Validators.required],
+    production_desc: ['', Validators.required],
+    production_date:[''],    
+    emp_email:[''],
+    emp_address:[''],
+    emp_mobile:[''] ,     
+    emp_id_fk: ['', Validators.required],
+    product_id_fk: ['', Validators.required],
     cat_id_fk: ['', Validators.required],
     admin_id_fk: ['',]
 
   })
   if (this.editData) {
-    this.MaterialForm = 'Update'   
-    this.MaterialForm.controls['mh_id'].setValue(this.editData.mh_id);
-    this.MaterialForm.controls['mh_quantity'].setValue(this.editData.mh_quantity);
-    this.MaterialForm.controls['mh_date'].setValue(this.editData.mh_date);
-    this.MaterialForm.controls['mh_desc'].setValue(this.editData.mh_desc);
-    this.MaterialForm.controls['Handover_by'].setValue(this.editData.Handover_by);
-    this.MaterialForm.controls['mh_emp_id_fk'].setValue(this.editData.emp_id_fk);
-    this.MaterialForm.controls['cat_id_fk'].setValue(this.editData.cat_id_fk);
-    this.MaterialForm.controls['mh_item_id_fk'].setValue(this.editData.item_id);     
-    this.MaterialForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
+    this.ProductionForm = 'Update'   
+    this.ProductionForm.controls['production_id'].setValue(this.editData.production_id);
+    this.ProductionForm.controls['production_quantity'].setValue(this.editData.production_quantity);
+    this.ProductionForm.controls['production_desc'].setValue(this.editData.production_desc);
+    this.ProductionForm.controls['production_date'].setValue(this.editData.production_date);
+    this.ProductionForm.controls['emp_email'].setValue(this.editData.emp_email);
+    this.ProductionForm.controls['emp_address'].setValue(this.editData.emp_address);
+    this.ProductionForm.controls['emp_mobile'].setValue(this.editData.emp_mobile);
+    this.ProductionForm.controls['emp_id_fk'].setValue(this.editData.emp_id_fk);
+    this.ProductionForm.controls['cat_id_fk'].setValue(this.editData.cat_id_fk);
+    this.ProductionForm.controls['product_id_fk'].setValue(this.editData.product_id);     
+    this.ProductionForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
   }
-}
+
+  this.manageService.getprodctiontableview().subscribe(
+    (res:any)=>{
+        console.log(res)
+        this.dataSource = new MatTableDataSource(res.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      // this.matcount = res.data.length
+    }
+  )
+  }  
+   
+  // )
+ 
+
+
 onSubmit(): void {
+  console.log(this.ProductionForm.value)
   if (!this.editData) {
-    if (this.MaterialForm.valid) {
-      this.manageService.postProduction(this.MaterialForm.value).subscribe({
+    if (this.ProductionForm.valid) {
+      this.manageService.postProduction(this.ProductionForm.value).subscribe({
         next: (res) => {
-          console.log(this.MaterialForm.value)          
-          this.MaterialForm.reset();
+          console.log(res)          
+          this.ProductionForm.reset();
           this.popup.success({ detail: 'Success', summary: 'Production  Submit  Successfully...', sticky: true, position: 'tr' })
           this.matref.close('save');
         },
@@ -95,13 +121,13 @@ onSubmit(): void {
   }
 }
 updatemh() {
-if (this.MaterialForm.valid) {
+if (this.ProductionForm.valid) {
   const updateData = new FormData();
-  this.manageService.putProduction(this.MaterialForm.value).subscribe({
+  this.manageService.putProduction(this.ProductionForm.value).subscribe({
     next: (res) => {
       console.log(res);
-      this.router.navigate(['/material_handover']);
-      this.MaterialForm.reset();
+      this.router.navigate(['/production']);
+      this.ProductionForm.reset();
       this.popup.success({ detail: 'Success', summary: 'Production Update Successfully...', sticky: true, position: 'tr' })
       this.matref.close('save');
     },
@@ -114,7 +140,7 @@ if (this.MaterialForm.valid) {
 }
 
 resetmh() {
-this.MaterialForm.reset();
+this.ProductionForm.reset();
 }
 applyFilter(event: Event) {
 const filterValue = (event.target as HTMLInputElement).value;
@@ -124,5 +150,33 @@ if (this.dataSource.paginator) {
   this.dataSource.paginator.firstPage();
 }
 }
-}
+
+getEmpdata(event:any){
+  console.log(event)
+  const empformdata = new FormData()
+    empformdata.append('emp_id',event)
+  this.manageService.getEmployeeSingle(empformdata).subscribe(
+    (res:any)=>{
+      console.log(res)
+      this.emp_data = res.data
+      this.ProductionForm.controls['emp_id_fk'].setValue(this.emp_data.emp_id);
+      this.ProductionForm.controls['emp_mobile'].setValue(this.emp_data.emp_mobile);      
+      this.ProductionForm.controls['emp_email'].setValue(this.emp_data.emp_email);    
+      this.ProductionForm.controls['emp_address'].setValue(this.emp_data.emp_address);
+    
+    }
+  )
+  }
+  getCatdata(event:any){
+    console.log(event)
+    const catformdata = new FormData()
+    catformdata.append('cat_id',event)
+    this.manageService.getCategorySingle(catformdata).subscribe(
+      (res:any)=>{
+        // console.log(res)
+        this.product_single_data = res.data
+      }
+    )
+    }
+  }
 

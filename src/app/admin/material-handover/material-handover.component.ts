@@ -30,28 +30,21 @@ export class MaterialHandoverComponent implements OnInit {
     this.dataSource = new MatTableDataSource(mhesult.data);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.mhcount = mhesult.data.length   
+    this.mhcount = mhesult.data.length
+
     }
   )
 }
 add_materialhandover(): any {  
   this.addmh.open(AddEditMaterialHandoverComponent, {
     // width:'100wh',
-    // height:'90vh',
+    // height:'200vh',
     disableClose: true
-  }).afterClosed().subscribe(val => {
-    if (val === 'save') {
-      this.ngOnInit();
-    }
   })
 }
 editmaterialhandover(row: any) {
   this.addmh.open(AddEditMaterialHandoverComponent, {
     data: row
-  }).afterClosed().subscribe(val => {
-    if (val === 'update') {
-      this.ngOnInit();
-    }
   })
 }
 

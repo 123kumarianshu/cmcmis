@@ -15,8 +15,7 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  // baseUrl: string = 'http://adityaradhaya.com/api/';
-  baseUrl: string = 'http://localhost/cmcmisapi/'
+  baseUrl: string = 'http://adityaradhaya.com/api/';  
 
   //************** */ for party function starting here**************
 
@@ -235,28 +234,23 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'product_update.php', data);
   }
 
-  // *******************************Production funcation start here**************************
-  getProduction() {
-    return this.http.get<[]>(this.baseUrl + 'production_view.php');
-  }
-  postProduction(data: any) {
-    return this.http.post<any>(this.baseUrl + 'production_insert.php', data);
-  }
-  putProduction(data: any) {
-    return this.http.put<any>(this.baseUrl + 'production_update.php', data);
-  }
+     // *******************************MaterialHandover funcation start here**************************
+     getMaterialHandover() {
+      return this.http.get<[]>(this.baseUrl + 'MaterialHandover_view.php');
+    }
+    postMaterialHandover(data: any) {
+      return this.http.post<any>(this.baseUrl + 'MaterialHandover_insert.php', data);
+    }
+    putMaterialHandover(data: any) {
+      return this.http.put<any>(this.baseUrl + 'MaterialHandover_update.php', data);
+    }
+    
 
-  // *******************************MaterialHandover funcation start here**************************
-  getMaterialHandover() {
-    return this.http.get<[]>(this.baseUrl + 'MaterialHandover_view.php');
-  }
-  postMaterialHandover(data: any) {
-    return this.http.post<any>(this.baseUrl + 'MaterialHandover_insert.php', data);
-  }
-  putMaterialHandover(data: any) {
-    return this.http.put<any>(this.baseUrl + 'MaterialHandover_update.php', data);
-  }
+    
 
+
+
+  
   getPtr(data: any) {
     return this.http.post<any>(this.baseUrl + 'party_single_view.php', data);
   }
@@ -284,38 +278,33 @@ export class ManageService {
   }
 
   // for matrial hand over
+
+  getmhtableview(data:any){
+    return this.http.post<any>(this.baseUrl + 'mh_single_view.php',data)
+
+  }
+  
   get_mh_view() {
     return this.http.get<[]>(this.baseUrl + 'des_view.php',)
   }
 
   getEmpSingle(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
+    return this.http.post<any>(this.baseUrl + 'get_single_data_view.php',data);
   }
 
   getCatSingle(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
 
-  delPurchData(data: any) {
-    return this.http.post<any>(this.baseUrl + 'purchase_data_del.php', data);
-  }
-
-  delPurchItemDes(data: any) {
-    return this.http.post<any>(this.baseUrl + 'PurchItemDesDel.php', data);
-  }
-
-  postPurchItem(data: any) {
-    return this.http.post<any>(this.baseUrl + 'purchitem_insert.php', data);
-  }
-
-  putFinalPurch(data: any) {
-    return this.http.post<any>(this.baseUrl + 'purchaseFinal_update.php', data);
-  }
-
-
-  // for purchase /////////////
-  GetPurchSingleData(data:any) {
-    return this.http.post<any>(this.baseUrl + 'purch_bill_single_data.php', data);
-
-  }
 }
+
+
+
+
+
+
+
+
+
+
+

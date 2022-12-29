@@ -25,6 +25,7 @@ export class AddEditEmployeeComponent implements OnInit {
   photo: any
   roledata: any;
   constructor(
+    private popup: NgToastService,
     private fb: FormBuilder,
     private router: Router,
     private manageService: ManageService,
@@ -41,11 +42,11 @@ export class AddEditEmployeeComponent implements OnInit {
       emp_id: [''],
       emp_name: ['', Validators.required],
       emp_mobile: ['', Validators.required],
-      emp_email: ['', Validators.required],
-      emp_whatsapp: ['', Validators.required],
+      emp_email: [''],
+      emp_whatsapp: [''],
       emp_address: ['', Validators.required],
-      emp_ac_holder_name: ['', Validators.required],
-      emp_aadhar_no: ['', Validators.required],
+      emp_ac_holder_name: [''],
+      emp_aadhar_no: [''],
       emp_photo: [null],
       emp_account_no: [''],
       emp_ifsc: [''],
@@ -90,12 +91,13 @@ export class AddEditEmployeeComponent implements OnInit {
       this.manageService.postEmployee(formdata).subscribe(
         (result: any) => {
           console.log(result)
-          alert("Data Add Successfully")
           this.matref.close();
           this.router.navigate(['/employee']);
+          this.popup.success({detail:'Success',summary:'Employee Add Successfully...',sticky:true,position:'tr'})
         },
         (error: any) => {
-          alert("Data not inster")
+          this.popup.error({detail:'Error',summary:'Employee Not add ',sticky:true,position:'tr'})
+
         }
       )
     }
@@ -118,12 +120,14 @@ export class AddEditEmployeeComponent implements OnInit {
     this.manageService.putEmployee(this.empForm.value).subscribe({
       next: (res) => {
         console.log(res)
-        alert("Student update Successfully");
         this.matref.close();
         this.router.navigate(['/employee']);
+        this.popup.success({detail:'Success',summary:'Employee Update Successfully...',sticky:true,position:'tr'})
+
       },
       error: () => {
-        alert("Student not update");
+        this.popup.error({detail:'Error',summary:'Employee Not Update',sticky:true,position:'tr'})
+
       }
 
     })

@@ -54,21 +54,24 @@
         <div class="column" id="column_1">
             <mat-form-field appearance="fill">
                 <mat-label>Production Cost</mat-label>
-                <input formControlName="product_produ_cost" matInput placeholder="produ Cost">
+                <input formControlName="product_produ_cost" matInput placeholder="produ Cost" type="number">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Product Cost</mat-label>
-                <input formControlName="product_cost_price" matInput placeholder="Cost Price">
+                <input formControlName="product_cost_price" matInput placeholder="Cost Price" type="number">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Retail Price</mat-label>
-                <input formControlName="product_retail_price" matInput placeholder="Retail Price">
+                <input formControlName="product_retail_price" matInput placeholder="Retail Price" type="number">
             </mat-form-field>
-
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
         </div>
+        <mat-form-field appearance="fill" class="full_text_box">
+            <mat-label>Description</mat-label>
+            <input formControlName="product_desc" matInput placeholder="Description">              
+        </mat-form-field>
     </form>
 
     <div mat-dialog-action [align]="'end'" id="main_button">

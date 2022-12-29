@@ -4,13 +4,15 @@
 </mat-toolbar>
 <!-- <span>Select Employee</span> -->
 <div mat-dialog-content>
-    <form [formGroup]="MaterialForm">
+    <form [formGroup]="ProductionForm">
+        
         <div class="column">
-            <span>Select Employee</span><br>
-            <input type="number" formControlName="mh_id" readonly hidden>
+
+            <input type="number" formControlName="production_id" readonly hidden>
+            <input  formControlName="production_date"   value="{{currentDate | date:'yyyy-MM-dd'}}" hidden>
             <mat-form-field appearance="fill">
                 <mat-label>Employee</mat-label>
-                <mat-select formControlName="mh_emp_id_fk">
+                <mat-select formControlName="emp_id_fk" (valueChange)="getEmpdata($event)">
                     <mat-option *ngFor="let empdata of empdata"
                         [value]="empdata.emp_id">{{empdata.emp_name}}</mat-option>
                 </mat-select>
@@ -23,35 +25,36 @@
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Email ID</mat-label>
-                <input type="email" formControlName="emp_mobile" matInput placeholder="Mobile">
+                <input type="email" formControlName="emp_email" matInput placeholder="Email">
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Address</mat-label>
-                <input type="text" formControlName="emp_mobile" matInput placeholder="Mobile">
+                <input type="text" formControlName="emp_address" matInput placeholder="Address">
             </mat-form-field> <br>
             <span>Add Item</span><br>
             <mat-form-field appearance="fill">
                 <mat-label>Category</mat-label>
-                <mat-select formControlName="cat_id_fk">
+                <mat-select formControlName="cat_id_fk" (valueChange)="getCatdata($event)">
                     <mat-option *ngFor="let catdata of catdata"
                         [value]="catdata.cat_id">{{catdata.cat_name}}</mat-option>
                 </mat-select>
-            </mat-form-field>
+            </mat-form-field>        
+
             <mat-form-field appearance="fill">
                 <mat-label>Product</mat-label>
-                <mat-select formControlName="mh_item_id_fk">
-                    <mat-option *ngFor="let itemdata of itemdata"
-                        [value]="itemdata.item_id">{{itemdata.item_name}}</mat-option>
+                <mat-select formControlName="product_id_fk">
+                    <mat-option *ngFor="let productdata of product_single_data" [value]="productdata.product_id">{{productdata.product_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
+
             <mat-form-field appearance="fill">
                 <mat-label>Quantity</mat-label>
-                <input formControlName="mh_quantity" matInput placeholder="Quantity">
+                <input formControlName="production_quantity" matInput placeholder="Quantity">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
-                <input formControlName="mh_desc" matInput placeholder="Description">
+                <input formControlName="production_desc" matInput placeholder="Description">
             </mat-form-field>
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
         </div>
@@ -104,3 +107,6 @@
         </form>
         <br>
     </div>
+
+     
+     

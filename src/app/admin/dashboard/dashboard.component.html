@@ -2,7 +2,7 @@
     <a routerLink="/party">
         <div class="thumbnail">
             <mat-icon>person</mat-icon><br>
-            <span style="color:	rgb(255, 255, 255)"><b>{{total_role}}</b></span><br>
+            <span style="color:	rgb(255, 255, 255)"><b>{{total_party}}</b></span><br>
             <span style="color: #14595c;">Party</span>
         </div>
     </a>
@@ -10,7 +10,7 @@
     <a routerLink="/unit">
         <div class="thumbnail">
             <mat-icon>ac_unit</mat-icon><br>
-            <span style="color:	rgb(255, 255, 255)"><b>{{total_emp}}</b></span><br>
+            <span style="color:	rgb(255, 255, 255)"><b>{{total_unit}}</b></span><br>
             <span style="color: #14595c;">Unit</span>
         </div>
     </a>
@@ -18,75 +18,141 @@
     <a routerLink="/gst">
         <div class="thumbnail">
             <mat-icon>category</mat-icon><br>
-            <span style="color:	rgb(255, 255, 255) "><b>{{total_cat}}</b></span><br>
-            <span style="color: #14595c;">Gst</span>
+            <span style="color:	rgb(255, 255, 255) "><b>{{total_gst}}</b></span><br>
+            <span style="color: #14595c;">GST</span>
         </div>
     </a>
 
     <a routerLink="/weigth">
         <div class="thumbnail">
             <mat-icon>line_weight</mat-icon><br>
-            <span style=" color:rgb(255, 255, 255)"><b>{{total_item}}</b></span><br>
+            <span style=" color:rgb(255, 255, 255)"><b>{{total_weight}}</b></span><br>
             <span style="color: #14595c;">Weight</span>
+        </div>
+    </a>
+
+    <a routerLink="/size">
+        <div class="thumbnail">
+            <mat-icon>category</mat-icon><br>
+            <span style="color:	rgb(255, 255, 255)"><b>{{total_size}}</b></span><br>
+            <span style="color: #14595c;">Size</span>
         </div>
     </a>
 
     <a routerLink="/category">
         <div class="thumbnail">
             <mat-icon>category</mat-icon><br>
-            <span style="color:	rgb(255, 255, 255)"><b>{{total_shop}}</b></span><br>
+            <span style="color:	rgb(255, 255, 255)"><b>{{total_category}}</b></span><br>
             <span style="color: #14595c;">Category</span>
         </div>
     </a>
 
     <a routerLink="/item">
         <div class="thumbnail">
-            <mat-icon>group</mat-icon><br>
-            <span style="color:	rgb(255, 255, 255)"><b>{{total_spo}}</b></span><br>
+            <mat-icon> group_work </mat-icon><br>
+            <span style="color:	rgb(255, 255, 255)"><b>{{total_item}}</b></span><br>
             <span style="color: #14595c;">Item</span>
+        </div>
+    </a>
+    <a routerLink="/product">
+        <div class="thumbnail">
+            <mat-icon>area_chart</mat-icon><br>
+            <span style="color:	rgb(255, 255, 255)"><b>{{total_product}}</b></span><br>
+            <span style="color: #14595c;">Product</span>
+        </div>
+    </a>
+    <a routerLink="/employee">
+        <div class="thumbnail">
+            <mat-icon>people</mat-icon><br>
+            <span style="color:	rgb(255, 255, 255)"><b>{{total_employee}}</b></span><br>
+            <span style="color: #14595c;">Employee</span>
         </div>
     </a>
 
     <a routerLink="/customer">
         <div class="thumbnail">
-            <mat-icon> supervisor_account </mat-icon><br>
-            <span style="color:	rgb(255, 255, 255)"><b>{{total_slider}}</b></span><br>
+            <mat-icon>supervisor_account</mat-icon><br>
+            <span style="color:	rgb(255, 255, 255)"><b>{{total_customer}}</b></span><br>
             <span style="color: #14595c;">Customer</span>
         </div>
     </a>
-    <a routerLink="/purchase">
+    <a routerLink="/area">
         <div class="thumbnail">
-            <mat-icon>area_chart</mat-icon><br>
-            <span style="color:	rgb(255, 255, 255)"><b>{{total_offer}}</b></span><br>
-            <span style="color: #14595c;">Purchase</span>
-        </div>
-    </a>
-    <a routerLink="/sale">
-        <div class="thumbnail">
-            <mat-icon>local_grocery_store</mat-icon><br>
-            <span style="color:	rgb(255, 255, 255)"><b>{{total_noti}}</b></span><br>
-            <span style="color: #14595c;">Sale</span>
-        </div>
-    </a>
-
-    <a routerLink="/cancel_bill">
-        <div class="thumbnail">
-            <mat-icon>lock</mat-icon><br>
-            <span style="color:	rgb(255, 255, 255)"><b>{{total_slider}}</b></span><br>
-            <span style="color: #14595c;">Cancel Bill</span>
-        </div>
-    </a>
-    <a routerLink="/expense">
-        <div class="thumbnail">
-            <mat-icon>work</mat-icon><br>
-            <span style="color:	rgb(255, 255, 255)"><b>{{total_slider}}</b></span><br>
-            <span style="color:#14595c;">Expense</span>
+            <mat-icon>location_on</mat-icon><br>
+            <span style="color:	rgb(255, 255, 255)"><b>{{total_area}}</b></span><br>
+            <span style="color:#14595c;">Area</span>
         </div>
 
-        <a routerLink="/expiry">
+        <a routerLink="/purchase">
             <div class="thumbnail">
-                <mat-icon>help</mat-icon><br>
-                <span style="color:	rgb(255, 255, 255)"><b>{{total_slider}}</b></span><br>
-                <span style="color:#14595c;">Expiry</span>
+                <mat-icon>shoping</mat-icon><br>
+                <span style="color:	rgb(255, 255, 255)"><b>{{total_purchase}}</b></span><br>
+                <span style="color:#14595c;">Purchase</span>
             </div>
         </a>
+
+        <a routerLink="/material-handover">
+            <div class="thumbnail">
+                <mat-icon>gradient</mat-icon><br>
+                <span style="color:	rgb(255, 255, 255)"><b>{{total_mh}}</b></span><br>
+                <span style="color:#14595c;">Material Handover</span>
+            </div>
+        </a>
+
+        <a routerLink="/production">
+            <div class="thumbnail">
+                <mat-icon>business</mat-icon><br>
+                <span style="color:	rgb(255, 255, 255)"><b>{{total_production}}</b></span><br>
+                <span style="color:#14595c;">Production</span>
+            </div>
+        </a>
+
+        <a routerLink="/area-allocate">
+            <div class="thumbnail">
+                <mat-icon>location_on</mat-icon><br>
+                <span style="color:	rgb(255, 255, 255)"><b>{{total_area_alct}}</b></span><br>
+                <span style="color:#14595c;">Area Allocate</span>
+            </div>
+        </a>
+
+        <a routerLink="/sale">
+            <div class="thumbnail">
+                <mat-icon>local_grocery_store</mat-icon><br>
+                <span style="color:	rgb(255, 255, 255)"><b>{{total_sale}}</b></span><br>
+                <span style="color:#14595c;">Sale</span>
+            </div>
+        </a>
+
+        <a routerLink="/dues">
+            <div class="thumbnail">
+                <mat-icon>payment</mat-icon><br>
+                <span style="color:	rgb(255, 255, 255)"><b>{{defult}}</b></span><br>
+                <span style="color:#14595c;">Dues</span>
+            </div>
+        </a>
+
+        <a routerLink="/reciept">
+            <div class="thumbnail">
+                <mat-icon>receipt</mat-icon><br>
+                <span style="color:	rgb(255, 255, 255)"><b>{{defult}}</b></span><br>
+                <span style="color:#14595c;">Reciept</span>
+            </div>
+        </a>
+
+        <a routerLink="/account">
+            <div class="thumbnail">
+                <mat-icon>account_circle</mat-icon><br>
+                <span style="color:	rgb(255, 255, 255)"><b>{{defult}}</b></span><br>
+                <span style="color:#14595c;">Account</span>
+            </div>
+        </a>
+
+        <a routerLink="/expense">
+            <div class="thumbnail">
+                <mat-icon>monetization_on</mat-icon><br>
+                <span style="color:	rgb(255, 255, 255)"><b>{{defult}}</b></span><br>
+                <span style="color:#14595c;">Expense</span>
+            </div>
+        </a>
+
+       
