@@ -67,6 +67,11 @@
                 <input formControlName="product_retail_price" matInput placeholder="Retail Price" type="number">
             </mat-form-field>
 
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input formControlName="product_desc" matInput placeholder="Description">              
+            </mat-form-field>
+
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
         </div>
     </form>

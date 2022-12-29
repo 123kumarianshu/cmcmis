@@ -18,7 +18,19 @@
               <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
                 paginatorRef.pageSize)+(i+1)}}</td>
             </ng-container>
-  
+            <ng-container matColumnDef="emp_name">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Employee</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.emp_name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="cat_name">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="product_name">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_name}}</td>
+            </ng-container>  
             <ng-container matColumnDef="production_quantity">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
               <td class="data" mat-cell *matCellDef="let row">{{row.production_quantity}}</td>
