@@ -55,6 +55,17 @@
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+#formdate {
+     height: 49px;
+    width: 200px;
+    background: none;
+    border: none;
+    background: #ebebeb;
+    padding: 10px;
+    border-radius: 3px 3px 0px 0px;
+    border-bottom: 1px solid black;
+}
+
 .count_search {
     height: 40px;
     width: 100%;
@@ -73,6 +84,7 @@
     position: relative;
     top: -5px;
     left: 0px;
+    text-align: left;
 }
 
 button {
