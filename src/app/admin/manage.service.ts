@@ -323,5 +323,8 @@ export class ManageService {
   getCategorySingle(data: any) {
     return this.http.post<any>(this.baseUrl + 'Category_Single_view.php',data);
   }
+  dashboard_view() {
+    return this.http.get<[]>(this.baseUrl + 'dashboard_view.php');
+  }
 
 }

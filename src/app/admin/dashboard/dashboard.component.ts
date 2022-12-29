@@ -8,16 +8,23 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  total_role:number = 0; 
-  total_emp:number = 0;
-  total_cat:number = 0;
-  total_cust:number = 0;
+  total_party:number = 0; 
+  total_unit:number = 0;
+  total_gst:number = 0;
+  total_weight:number = 0;
   total_item:number = 0;
-  total_shop:number = 0;
-  total_offer:number = 0;
-  total_noti:number = 0;
-  total_spo:number = 0;
-  total_slider:number=0;
+  total_size:number = 0;
+  total_product:number = 0;
+  total_category:number = 0;
+  total_employee:number = 0;
+  total_customer:number=0;
+  total_area:number=0;
+  total_purchase:number=0;
+  total_mh:number=0;
+  total_production:number=0;
+  total_area_alct:number=0;
+  total_sale:number=0;
+  total_dues:number=0;
   loginuserdata: any;
 
   constructor(
@@ -33,21 +40,29 @@ export class DashboardComponent implements OnInit {
     // }
     // else {
 
-    //   this.servies.getTotalRow().subscribe(
-    //     (result:any)=>{
-    //       this.total_role = result.data[0].total_count
-    //       this.total_item = result.data[1].total_count
-    //       this.total_cat = result.data[2].total_count
-    //       this.total_cust = result.data[3].total_count
-    //       this.total_emp = result.data[4].total_count
-    //       this.total_noti = result.data[5].total_count
-    //       this.total_shop = result.data[6].total_count
-    //       this.total_spo = result.data[7].total_count
-    //       this.total_offer = result.data[8].total_count
-    //       this.total_slider= result.data[9].total_count
-    //   })    
+      this.servies.dashboard_view().subscribe(
+        (result:any)=>{
+          console.log(result)
+          this.total_party = result.data[0].total_party
+          this.total_unit = result.data[1].total_unit
+          this.total_gst = result.data[2].total_gst
+          this.total_weight = result.data[3].total_weight
+          this.total_size = result.data[4].total_size
+          this.total_category = result.data[5].total_category
+          this.total_item = result.data[6].total_item
+          this.total_product = result.data[7].total_product
+          this.total_employee = result.data[8].total_employee
+          this.total_customer= result.data[9].total_customer
+          this.total_area= result.data[10].total_area
+          this.total_purchase= result.data[11].total_purchase
+          this.total_mh= result.data[12].total_mh
+          this.total_production= result.data[13].total_production
+          this.total_area_alct= result.data[14].total_area_alct
+          this.total_sale= result.data[15].total_sale
+          this.total_dues= result.data[16].total_dues
+      })    
       
-    //     }
+        }
 
   }
-}
+
