@@ -14,7 +14,7 @@
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort id="table">
           <ng-container matColumnDef="slno">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N</th>
             <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
               paginatorRef.pageSize)+(i+1)}}</td>
           </ng-container>
@@ -24,14 +24,15 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.party_name}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="basic_amount">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_amount}}</td>
+          <ng-container matColumnDef="purch_bill_no">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_bill_no}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="purch_gst">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gst}}</td>
+
+          <ng-container matColumnDef="basic_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic Amount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.basic_amount}}</td>
           </ng-container>
 
           <ng-container matColumnDef="purch_discount">
@@ -39,29 +40,51 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.purch_discount}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="purch_net_payment">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Net Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_net_payment}}</td>
+          <ng-container matColumnDef="purch_gst">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gst}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="total_amount">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.total_amount}}</td>
-          </ng-container>
-          <ng-container matColumnDef="purch_bill_no">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_bill_no}}</td>
+
+          <ng-container matColumnDef="purch_gorss_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross Amount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gorss_amount}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="Action">
+          <ng-container matColumnDef="purch_paid">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Paid</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_paid}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_dues">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Dues</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_dues}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_memo_no">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Memo No</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_memo_no}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_memo_img">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Memo Image</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_memo_img}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_date">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_date}}</td>
+          </ng-container>
+         
+          <ng-container matColumnDef="action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-            <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="delPurchase(row)">delete</mat-icon></td>
+            <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="delPurch(row)">delete</mat-icon></td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+            <td class="mat-cell" colspan="13">No data show"{{input.value}}"</td>
           </tr>
         </table>
         <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"

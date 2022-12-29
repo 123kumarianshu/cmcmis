@@ -14,7 +14,7 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./purchase.component.css']
 })
 export class PurchaseComponent implements OnInit {
-  displayedColumns: string[] = ['slno','party_name', 'basic_amount', 'purch_gst','purch_discount', 'purch_net_payment', 'total_amount', 'purch_bill_no','Action',];
+  displayedColumns: string[] = ['slno','party_name', 'purch_bill_no', 'basic_amount','purch_discount', 'purch_gst', 'purch_gorss_amount', 'purch_paid','purch_dues', 'purch_memo_no','purch_memo_img', 'purch_date', 'action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -56,15 +56,15 @@ export class PurchaseComponent implements OnInit {
     })
   }
 
-  delPurchase(row: any) {
+  delPurch(row: any) {
     if (confirm("Are you sure to delate")) {
       const deldata = new FormData();
       deldata.append('purch_id', row.purch_id);
-      // this.purchaseservice.delPurchase(deldata).subscribe(
-      //   (res: any) => {
-      //     this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
-      //   }
-      // )
+      this.purchaseservice.delPurchData(deldata).subscribe(
+        (res: any) => {
+          this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
+        }
+      )
     }
     else {
       alert('cancle')

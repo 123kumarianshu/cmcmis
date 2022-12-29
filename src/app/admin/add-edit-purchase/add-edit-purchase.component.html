@@ -63,7 +63,7 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Party Name</mat-label>
-							<input formControlName="party_id_fk" matInput placeholder="Party Name">
+							<input formControlName="party_id_fk" matInput placeholder="Party Name" readonly>
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
@@ -92,7 +92,7 @@
 							<mat-label>Weight</mat-label>
 							<input formControlName="item_weight" matInput placeholder="Weight" readonly>
 						</mat-form-field>
-
+						
 						<mat-form-field appearance="fill">
 							<mat-label>Unit</mat-label>
 							<input formControlName="item_unit" matInput placeholder="Unit" readonly>
@@ -109,12 +109,13 @@
 								(keyup)="total_rate_cal()">
 						</mat-form-field>
 						<br>
-						<mat-form-field appearance="fill" class="item_amount">
+						
+						<mat-form-field appearance="fill" class="total_amount" >
 							<mat-label>Total Amount</mat-label>
 							<input formControlName="item_amount" matInput placeholder="Amount">
 						</mat-form-field>
-
 						<input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden type="number">
+
 
 						<mat-icon class="addButton" (click)="onAdd()">add</mat-icon>
 					</div>
@@ -169,13 +170,13 @@
 								<ng-container matColumnDef="Action">
 									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
 									<td class="data" mat-cell *matCellDef="let row"> <mat-icon
-											(click)="delItem(row)">delete</mat-icon></td>
+											(click)="PurchItemDes(row)">delete</mat-icon></td>
 								</ng-container>
 
 								<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 								<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 								<tr class="mat-row" *matNoDataRow>
-									<td class="mat-cell" colspan="4">No data show</td>
+									<td class="mat-cell" colspan="7">No data show</td>
 								</tr>
 							</table>
 							<mat-paginator #paginatorRef [pageSizeOptions]="[5]"
@@ -200,7 +201,7 @@
 					<div class="column">
 
 						<mat-form-field appearance="fill">
-							<mat-label>Total Amount</mat-label>
+							<mat-label>Basic Amount</mat-label>
 							<input formControlName="purch_amount" matInput placeholder="Total Amount">
 						</mat-form-field>
 
@@ -214,11 +215,12 @@
 							<input formControlName="purch_gst" matInput placeholder="GST">
 						</mat-form-field>
 
-						<br>
+						
 						<mat-form-field appearance="fill">
 							<mat-label>Gross Amount</mat-label>
 							<input formControlName="purch_gross_amount" matInput placeholder="Gross Amount">
 						</mat-form-field>
+						<br>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Paid</mat-label>
@@ -229,30 +231,25 @@
 							<mat-label>Dues</mat-label>
 							<input formControlName="purch_dues" matInput placeholder="Dues">
 						</mat-form-field>
-						<br>
+						
 						<mat-form-field appearance="fill" class="bill_no">
-							<mat-label>Bill Number</mat-label>
-							<input formControlName="purch_bill_no" matInput placeholder="Bill Number">
+							<mat-label>Memo Number</mat-label>
+							<input formControlName="purch_memo_no" matInput placeholder="Bill Number">
 						</mat-form-field>
-
-						<mat-form-field appearance="fill" class="bill_no">
-							<mat-label>Bill Upload</mat-label>
-							<input formControlName="purch_bill_img" matInput placeholder="Bill Upload">
-						</mat-form-field>
-
-						<!-- <label class="bill_file">
-							<p class="upload_text">Upload Bill</p><br>
-							<input class="img_bill" type="file" formControlName="purch_bill_img" (change)="onPhotoUpload($event)">
-						</label> -->
 
 						<mat-form-field appearance="fill" class="date_box">
 							<mat-label>Date</mat-label>
 							<input formControlName="purch_date" matInput [matDatepicker]="picker">
 							<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 							<mat-datepicker #picker></mat-datepicker>
-						</mat-form-field><br>
+						</mat-form-field>
+						<br>
 
-						<input formControlName="purch_id">
+
+						<!-- <div class="upload_img">
+							<label class="bill_uplaod">Upload Memo</label><br>
+							<input class="bill_img" type="file" formControlName="purch_bill_img" (change)="onPhotoUpload($event)">
+						</div> -->
 
 						<input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden type="number">
 
@@ -264,8 +261,6 @@
 						<button mat-raised-button (click)="finalsubmit()" class="add_btn" type="submit"
 							style="background-color: #0d5e58; color: white;">{{actionBtn1}}</button>
 					</div>
-
-
 				</form>
 			</div>
 		</ng-template>

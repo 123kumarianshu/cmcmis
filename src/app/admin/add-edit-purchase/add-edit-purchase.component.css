@@ -51,17 +51,13 @@ mat-form-field {
     width: 64%;
 }
 
-
 .content_area {
     text-align: center;
     margin-top: 10px;
     height: 526px;
+
 }
 
-
-ng-container a {
-    background-color: #05363c;
-}
 
 /********************************************* party css style Ending here ****************************************/
 
@@ -74,13 +70,13 @@ ng-container a {
     width: 25px;
     color: aliceblue;
     font-size: 25px;
-    position: relative;
-    right: 23.7em;
     cursor: pointer;
+    margin-left: 10px;
 }
 
-.item_amount {
-    margin-right: 42.8em;
+.total_amount {
+    margin-left: 34px;
+    width: 64%;
 }
 
 /********************************************* item css style ending here ****************************************/
@@ -96,12 +92,6 @@ ng-container a {
     margin-right: -8px;
 }
 
-a {
-    position: relative;
-    top: 3px;
-    margin: 1px;
-}
-
 .count_search {
     height: 40px;
     width: auto;
@@ -111,59 +101,28 @@ a {
     padding: 10px 10px 0px 10px;
     box-sizing: border-box;
     color: #0d5e58;
-  
-  }
-  
-
-.search input {
-    border-bottom: 1px solid #0a4547;
-    outline: none;
-    padding: 7px 2px 6px 7px;
-    background-color: whitesmoke;
-    position: relative;
-    top: -5px;
-    left: 0px;
-  }
-
+}
 
 .date_box {
     width: 200px;
     margin: 6px;
-    /* position: relative;
-    bottom: 32px; */
 }
 
-/* .bill_no {
-    position: relative;
-    bottom: 32px;
-}
-
-
-.bill_file {
-    height: 51.5px;
-    width: 200px;
+.upload_img {
+    width: 64.5%;
+    border-bottom: 1px solid black;
     background-color: #ebebeb;
-    border-bottom: 1px solid gray;
-    border-radius: 5px 5px 0px 0px;
+    margin-left: 16em;
 }
 
-.upload_text {
-    position: relative;
-    width: 80px;
-    font-size: 13px;
-    color: gray;
-    margin-left: 0px;
+.bill_uplaod {
+    font-size: 12px;
+    margin-right: 60em;
 }
 
-.img_bill {
-    position: relative;
-    top: -27px;
-} */
-
-/********************************************* Final css style Ending here ****************************************/
-
-
-
+.bill_img{
+    margin-right: 40em;
+}
 
 /* ====================================================Media Queryss===================================================== */
 

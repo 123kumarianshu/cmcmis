@@ -32,6 +32,8 @@ export class AddEditPurchaseComponent implements OnInit {
   action_text: string = 'Add party details'
   dec_count: any;
   addCategory: any
+  purch_id_no = 1
+  cat_id_fk = 1
   admin_id = 1;
   pur_id_fk = 1;
   party_form !: FormGroup
@@ -58,7 +60,8 @@ export class AddEditPurchaseComponent implements OnInit {
   imageUrl: any;
   profileI: any = null
   current_date: any;
-  party_id: number = 0;
+  purch_id: number = 0;
+  purchbilldata: any;
 
 
 
@@ -105,15 +108,15 @@ export class AddEditPurchaseComponent implements OnInit {
     /////////////////////////////////////////////// for Description Get starting ///////////////////////////////////////////
 
 
-    this.manageService.getDescription().subscribe(
-      (itemresult: any) => {
-        this.dataSource = new MatTableDataSource(itemresult.data);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.dec_count = itemresult.data.length;
+    // this.manageService.getDescription().subscribe(
+    //   (itemresult: any) => {
+    //     this.dataSource = new MatTableDataSource(itemresult.data);
+    //     this.dataSource.sort = this.sort;
+    //     this.dataSource.paginator = this.paginator;
+    //     this.dec_count = itemresult.data.length;
 
-      }
-    )
+    //   }
+    // )
 
 
     /////////////////////////////////////////////// for Party Accessing starting ///////////////////////////////////////////
@@ -149,15 +152,14 @@ export class AddEditPurchaseComponent implements OnInit {
 
 
     this.final_form = this.fb2.group({
-      purch_id: [''],
       purch_amount: ['', Validators.required],
       purch_discount: ['', Validators.required],
       purch_gst: ['', Validators.required],
       purch_gross_amount: ['', Validators.required],
       purch_paid: ['', Validators.required],
       purch_dues: ['', Validators.required],
-      purch_bill_no: ['', Validators.required],
-      purch_bill_img: ['', Validators.required],
+      purch_memo_no: ['', Validators.required],
+      // purch_bill_img: ['', Validators.required],
       purch_date: ['', Validators.required],
       admin_id_fk: [''],
     })
@@ -170,13 +172,11 @@ export class AddEditPurchaseComponent implements OnInit {
     this.manageService.get_pur().subscribe(
       (res: any) => {
         if (res.success == 1) {
-          this.party_id = Number(res.data[res.data.length - 1].party_id);
+          this.purch_id = Number(res.data[0].purch_id)
         }
-        const cur_bill = this.party_id + 1;
+        const cur_bill = this.purch_id + 1;
         this.current_date = formatDate(new Date(), 'yyyyMMdd', 'en');
         this.purch_bill_no = "PUR" + this.current_date + cur_bill;
-        const salebill = "PUR" + this.current_date + cur_bill;
-        console.log(res);
 
         const partyformdata = new FormData()
         partyformdata.append('party_id_fk', this.party_single_data.party_id)
@@ -200,72 +200,82 @@ export class AddEditPurchaseComponent implements OnInit {
 
   resetcustomer() {
 
-    }
+  }
 
   party() {
-      this.action_text = 'Add party details'
-    }
+    this.action_text = 'Add party details'
+  }
   items() {
-      this.action_text = 'Add item details'
-    }
+    this.action_text = 'Add item details'
+    const desformdata = new FormData()
+    desformdata.append('purchbillno', this.purch_bill_no)
+    this.manageService.getDescription(desformdata).subscribe(
+      (itemresult: any) => {
+        this.dataSource = new MatTableDataSource(itemresult.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.dec_count = itemresult.data.length;
+      }
+    )
+  }
 
 
   /////////////////////////////////////////////// for Party id Selection starting ///////////////////////////////////////////
 
   get_party(event: any) {
-      const formdata = new FormData();
-      formdata.append('party_id', event)
+    const formdata = new FormData();
+    formdata.append('party_id', event)
     this.manageService.getPtr(formdata).subscribe(
-        (res: any) => {
-          this.party_single_data = res.data
-          this.party_form.controls['party_id'].setValue(this.party_single_data.party_id);
-          this.party_form.controls['party_name'].setValue(this.party_single_data.party_name);
-          this.party_form.controls['party_mobile'].setValue(this.party_single_data.party_mobile);
-          this.party_form.controls['party_email'].setValue(this.party_single_data.party_email);
-          this.party_form.controls['party_address'].setValue(this.party_single_data.party_address);
-          this.item_form.controls['party_id_fk'].setValue(this.party_single_data.party_name)
+      (res: any) => {
+        this.party_single_data = res.data
+        this.party_form.controls['party_id'].setValue(this.party_single_data.party_id);
+        this.party_form.controls['party_name'].setValue(this.party_single_data.party_name);
+        this.party_form.controls['party_mobile'].setValue(this.party_single_data.party_mobile);
+        this.party_form.controls['party_email'].setValue(this.party_single_data.party_email);
+        this.party_form.controls['party_address'].setValue(this.party_single_data.party_address);
+        this.item_form.controls['party_id_fk'].setValue(this.party_single_data.party_name)
 
-        }
-      )
+      }
+    )
 
-    }
+  }
 
 
   /////////////////////////////////////////////// for Cat single data Selection starting ///////////////////////////////////////////
 
   cat_data_single(event: any) {
-      console.log(event)
+    console.log(event)
     const formdata = new FormData();
-      formdata.append('cat_id_fk', event)
+    formdata.append('cat_id_fk', event)
     this.manageService.get_single_item(formdata).subscribe(
-        (res: any) => {
-          this.single_item_data = res.data
+      (res: any) => {
+        this.single_item_data = res.data
 
 
-        }
-      )
-    }
+      }
+    )
+  }
 
   item_single_data(event: any) {
-      console.log(event)
+    console.log(event)
     const itemformdata = new FormData();
-      itemformdata.append('item_id_fk', event)
-    this.manageService.get_single_data(itemformdata).subscribe(
-        (res: any) => {
-          this.item_final_data = res.data
-          console.log(res)
-          this.item_form.controls['item_unit'].setValue(this.item_final_data.item_unit_id_fk);
-          this.item_form.controls['item_size'].setValue(this.item_final_data.item_size_id_fk);
-          this.item_form.controls['item_weight'].setValue(this.item_final_data.item_weight_id_fk);
-          this.item_form.controls['item_rate'].setValue(this.item_final_data.item_rate);
-        }
-      )
-    }
+    itemformdata.append('item_id_fk', event)
+    this.manageService.getCatSingleData(itemformdata).subscribe(
+      (res: any) => {
+        this.item_final_data = res.data
+        console.log(res)
+        this.item_form.controls['item_unit'].setValue(this.item_final_data.item_unit_id_fk);
+        this.item_form.controls['item_size'].setValue(this.item_final_data.item_size_id_fk);
+        this.item_form.controls['item_weight'].setValue(this.item_final_data.item_weight_id_fk);
+        this.item_form.controls['item_rate'].setValue(this.item_final_data.item_rate);
+      }
+    )
+  }
 
   /////////////////////////////////////////////////////////////// for Description Data Insert starting ///////////////////////////////////////////////
 
   onAdd() {
-      const addformdata = new FormData()
+    const addformdata = new FormData()
     addformdata.append('cat_id_fk', this.item_form.get('cat_id_fk')?.value)
     addformdata.append('pur_id_fk', this.item_form.get('pur_id_fk')?.value)
     addformdata.append('item_id_fk', this.item_form.get('item_id_fk')?.value)
@@ -276,28 +286,38 @@ export class AddEditPurchaseComponent implements OnInit {
     addformdata.append('party_id_fk', this.party_single_data.party_id)
     addformdata.append('purch_bill_no', this.purch_bill_no)
     addformdata.append('admin_id_fk', this.item_form.get('admin_id_fk')?.value)
-    // this.manageService.post_Item_Des(addformdata).subscribe(
-    //     (result: any) => {
-    //       console.log(result)
-    //       this.popup.success({ detail: 'Success', summary: 'Add Successfully...', sticky: true, position: 'tr' })
+    this.manageService.postPurchItem(addformdata).subscribe(
+      (result: any) => {
+        console.log(result)
+        this.popup.success({ detail: 'Success', summary: 'Add Successfully...', sticky: true, position: 'tr' })
 
-    //     },
-    //     (error: any) => {
-    //       this.popup.error({ detail: 'message', summary: 'data is not Submit', sticky: true, position: 'tr', })
-    //     }
-    //   )
-    }
+      },
+      (error: any) => {
+        this.popup.error({ detail: 'message', summary: 'data is not Submit', sticky: true, position: 'tr', })
+      }
+    )
+    const desformdata = new FormData()
+    desformdata.append('purchbillno', this.purch_bill_no)
+    this.manageService.getDescription(desformdata).subscribe(
+      (itemresult: any) => {
+        this.dataSource = new MatTableDataSource(itemresult.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.dec_count = itemresult.data.length;
+      }
+    )
+  }
 
-  delItem(row: any) {
-      if(confirm("Are you sure to delate")) {
+  PurchItemDes(row: any) {
+    if (confirm("Are you sure to delate")) {
       const deldata = new FormData();
       deldata.append('pur_des_id', row.pur_des_id);
 
-      // this.manageService.delItem(deldata).subscribe(
-      //   (res: any) => {
-      //     this.popup.success({ detail: 'Success', summary: 'Data Delete Successfully...', sticky: true, position: 'tr' })
-      //   }
-      // )
+      this.manageService.delPurchItemDes(deldata).subscribe(
+        (res: any) => {
+          this.popup.success({ detail: 'Success', summary: 'Data Delete Successfully...', sticky: true, position: 'tr' })
+        }
+      )
     }
     else {
       alert('cancle')
@@ -322,65 +342,53 @@ export class AddEditPurchaseComponent implements OnInit {
 
   }
 
-  // onPhotoUpload(e: any) {
-  //   if (e.target.files) {
-  //     const profile = e.target.files[0];
-  //     this.profileI = e.target.files[0] ?? null;
-  //     this.final_form.get('purch_bill_img')?.setValue(profile);
-  //   }
-  // }
+  onPhotoUpload(e: any) {
+    if (e.target.files) {
+      const profile = e.target.files[0];
+      this.profileI = e.target.files[0] ?? null;
+      this.final_form.get('purch_bill_img')?.setValue(profile);
+    }
+  }
 
 
   finalsubmit() {
-
-
-    console.log("purch_id" + this.final_form.get('purch_id')?.value)
-    console.log("purch_amount" + this.final_form.get('purch_amount')?.value)
-    console.log("purch_discount" + this.final_form.get('purch_discount')?.value)
-    console.log("purch_gst" + this.final_form.get('purch_gst')?.value)
-    console.log("purch_gross_amount" + this.final_form.get('purch_gross_amount')?.value)
-    console.log("purch_paid" + this.final_form.get('purch_paid')?.value)
-    console.log("purch_dues" + this.final_form.get('purch_dues')?.value)
-    console.log("purch_bill_no" + this.final_form.get('purch_bill_no')?.value)
-    // console.log("status" + this.final_form.get('status')?.value)
-    console.log("party_id_fk" + this.party_form.get('party_id')?.value)
-    console.log("cat_id_fk" + this.item_form.get('cat_id_fk')?.value)
-    console.log("purch_bill_img" + this.final_form.get('purch_bill_img')?.value)
-    console.log("purch_date" + this.final_form.get('purch_date')?.value)
-    console.log("admin_id_fk" + this.final_form.get('admin_id_fk')?.value)
+    console.log('purch amount' + this.final_form.get('purch_amount')?.value)
+    console.log('purch_discount' + this.final_form.get('purch_discount')?.value)
+    console.log('purch_gst' + this.final_form.get('purch_gst')?.value)
+    console.log('purch_gross_amount' + this.final_form.get('purch_gross_amount')?.value)
+    console.log('purch_paid' + this.final_form.get('purch_paid')?.value)
+    console.log('purch_dues' + this.final_form.get('purch_dues')?.value)
+    console.log('purch_date' + this.final_form.get('purch_date')?.value)
+    console.log('purch_memo_no' + this.final_form.get('purch_memo_no')?.value)
+    console.log('purch_bill_no' + this.purch_bill_no)
+    //  console.log('purch_bill_img' + this.final_form.get('purch_bill_img')?.value)
 
     const finalformdata = new FormData()
-    
-    finalformdata.append('purch_id', this.final_form.get('purch_id')?.value)
     finalformdata.append('purch_amount', this.final_form.get('purch_amount')?.value)
     finalformdata.append('purch_discount', this.final_form.get('purch_discount')?.value)
     finalformdata.append('purch_gst', this.final_form.get('purch_gst')?.value)
     finalformdata.append('purch_gross_amount', this.final_form.get('purch_gross_amount')?.value)
     finalformdata.append('purch_paid', this.final_form.get('purch_paid')?.value)
     finalformdata.append('purch_dues', this.final_form.get('purch_dues')?.value)
-    finalformdata.append('purch_bill_no', this.final_form.get('purch_bill_no')?.value)
-    // finalformdata.append('status', this.final_form.get('status')?.value)
-    finalformdata.append('party_id_fk', this.final_form.get('party_id_fk')?.value)
-    finalformdata.append('cat_id_fk', this.final_form.get('cat_id_fk')?.value)
-    finalformdata.append('purch_bill_img', this.final_form.get('purch_bill_img')?.value)
     finalformdata.append('purch_date', this.final_form.get('purch_date')?.value)
-    finalformdata.append('admin_id_fk', this.final_form.get('admin_id_fk')?.value)
+    finalformdata.append('purch_memo_no', this.final_form.get('purch_memo_no')?.value)
+    finalformdata.append('purch_bill_no', this.purch_bill_no)
 
-    // this.manageService.put_Purchase_Final(finalformdata).subscribe({
-    //   next: (res) => {
-    //     console.log(res)
-    //     this.popup.success({ detail: 'Success', summary: 'update Successfully...', sticky: true, position: 'tr' })
 
-    //   },
-    //   error: () => {
-    //     this.popup.error({ detail: 'message', summary: 'data not update', sticky: true, position: 'tr', })
-    //   }
+    // finalformdata.append('purch_bill_img', this.final_form.get('purch_bill_img')?.value)
 
-    // })
 
-    console.log(this.final_form.value)
-  
 
+    this.manageService.putFinalPurch(this.final_form.value).subscribe({
+      next: (res) => {
+        console.log(res)
+        this.popup.success({ detail: 'Success', summary: 'update Successfully...', sticky: true, position: 'tr' })
+      },
+      error: (error) => {
+          console.log(error)
+          this.popup.error({ detail: 'message', summary: 'data not update', sticky: true, position: 'tr', })
+      }
+    })
   }
 
 
