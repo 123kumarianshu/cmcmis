@@ -59,10 +59,13 @@ export class AddEditCategoryComponent implements OnInit {
         (result: any) => {
           console.log(result)
           this.matref.close();
-          alert('Form Sucessful')
+          this.router.navigate(['/category'])
+          this.popup.success({detail:'Success',summary:'Category Add Successfully...',sticky:true,position:'tr'})
+
         },
         (error: any) => {
-          alert('Dta Not Insert')
+          this.popup.error({detail:'Error',summary:'Category Not Add...',sticky:true,position:'tr'})
+
         }
       )
     }
@@ -80,10 +83,13 @@ export class AddEditCategoryComponent implements OnInit {
       next: (result: any) => {
         console.log(result)
         this.matref.close();
-        alert("Data Update Successfully");
+        this.router.navigate(['/category'])
+        this.popup.success({detail:'Success',summary:'Category Update Successfully...',sticky:true,position:'tr'})
+
       },
       error: () => {
-        alert('Dta Not Update');
+        this.popup.error({detail:'Error',summary:'Category Not Update...',sticky:true,position:'tr'})
+
       }
 
     })
