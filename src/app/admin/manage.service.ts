@@ -16,8 +16,10 @@ export class ManageService {
     private http: HttpClient
   ) { }
 
-  // baseUrl: string = 'http://adityaradhaya.com/api/';
-  baseUrl: string = 'http://localhost/cmcmisapi/';
+  baseUrl: string = 'http://adityaradhaya.com/api/';
+
+                  
+ 
   
 
 
@@ -311,15 +313,19 @@ export class ManageService {
     return this.http.get<[]>(this.baseUrl + 'production_single_view.php');
   }
   postProduction(data: any) {
-    return this.http.post<any>(this.baseUrl + 'production_insert.php.', data);
+    return this.http.post<any>(this.baseUrl + 'production_insert.php', data);
   }
   putProduction(data: any) {
     return this.http.put<any>(this.baseUrl + 'production_update.php', data);
   }
-  getprodctiontableview(){
-    return this.http.get<[]>(this.baseUrl + 'production_single_view.php')
+  // getprodctiontableview(){
+  //   return this.http.get<[]>(this.baseUrl + 'production_single_view.php')
 
-  }
+  // 
+  getprodctiontableview(data:any){
+    return this.http.post<any>(this.baseUrl + 'ProductionSingle_view.php',data);
+
+  } 
 
 
 }

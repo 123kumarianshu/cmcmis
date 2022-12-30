@@ -11,7 +11,7 @@ import { AddEditProductionComponent } from '../add-edit-production/add-edit-prod
   styleUrls: ['./production.component.css']
 })
 export class ProductionComponent implements OnInit {
-  displayedColumns: string[] = ['slno','emp_name','cat_name','product_name','production_quantity','Action'];
+  displayedColumns: string[] = ['slno','emp_name','cat_name','product_name','production_quantity','production_date','Action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -36,19 +36,15 @@ export class ProductionComponent implements OnInit {
 
   add_production(){
     this.addproduction.open(AddEditProductionComponent, {
-      disableClose: true,
-    }).afterClosed().subscribe(val => {
-      if (val === 'save') {
-        this.ngOnInit();
-      }
+      disableClose: true,   
     })
 
   }
   editproduction(row:any){
-
+    this.addproduction.open(AddEditProductionComponent, {
+      data: row
+    })
   }
-
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
