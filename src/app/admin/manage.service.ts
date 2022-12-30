@@ -17,9 +17,6 @@ export class ManageService {
   ) { }
 
   baseUrl: string = 'http://adityaradhaya.com/api/';
- 
-
-
 
 
   //************** */ for party function starting here**************
@@ -316,14 +313,21 @@ export class ManageService {
     return this.http.get<[]>(this.baseUrl + 'production_single_view.php');
   }
   postProduction(data: any) {
-    return this.http.post<any>(this.baseUrl + 'production_insert.php.', data);
+    return this.http.post<any>(this.baseUrl + 'production_insert.php', data);
   }
   putProduction(data: any) {
     return this.http.put<any>(this.baseUrl + 'production_update.php', data);
   }
-  getprodctiontableview() {
-    return this.http.get<[]>(this.baseUrl + 'production_single_view.php')
-  }
+
+
+  getprodctiontableview(data:any){
+    return this.http.post<any>(this.baseUrl + 'ProductionSingle_view.php',data);
+
+  } 
+
+  // getprodctiontableview() {
+  //   return this.http.get<[]>(this.baseUrl + 'production_single_view.php')
+  // }
 
   GetSaleSingleData(data: any) {
     return this.http.post<any>(this.baseUrl + 'sale_bill_single_data.php', data);
