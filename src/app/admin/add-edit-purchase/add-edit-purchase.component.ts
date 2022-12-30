@@ -82,7 +82,7 @@ export class AddEditPurchaseComponent implements OnInit {
 
       /////////////////////////////////////////////// for Categori Get starting ///////////////////////////////////////////
 
-      this.manageService.getCat().subscribe(
+      this.manageService.getCategory().subscribe(
         (cat_res: any) => {
           this.cat_data = cat_res.data
         }

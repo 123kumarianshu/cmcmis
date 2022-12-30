@@ -153,16 +153,16 @@
 									</ng-container>
 
 
-									<ng-container matColumnDef="category_id_fk">
+									<ng-container matColumnDef="cat_name">
 										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category
 										</th>
-										<td class="data" mat-cell *matCellDef="let row">{{row.cat_id_fk}}</td>
+										<td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
 									</ng-container>
 
-									<ng-container matColumnDef="product_id">
+									<ng-container matColumnDef="product_name">
 										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product Name
 										</th>
-										<td class="data" mat-cell *matCellDef="let row">{{row.product_id_fk}}</td>
+										<td class="data" mat-cell *matCellDef="let row">{{row.product_name}}</td>
 									</ng-container>
 
 									<ng-container matColumnDef="product_rate">
@@ -223,7 +223,7 @@
 							<mat-form-field appearance="fill">
 								<mat-label>Basic Amount</mat-label>
 								<input type="number" formControlName="sale_total_amount" matInput
-									placeholder="Basic Amount">
+									placeholder="Basic Amount" >
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">

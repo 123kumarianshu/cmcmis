@@ -38,7 +38,7 @@ export class AddEditProductComponent implements OnInit {
     //   }
       
     // ) 
-    this.manageService.getCat().subscribe(
+    this.manageService.getCategory().subscribe(
       (cat_res: any) => {
         this.catdata = cat_res.data
       }

@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./add-edit-production.component.css']
 })
 export class AddEditProductionComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'emp_name', 'cat_name','product_name' ,'production_quantity', 'production_date', 'Action',];
+  displayedColumns: string[] = ['slno', 'emp_name', 'cat_name', 'product_name', 'production_quantity', 'production_date', 'Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -51,7 +51,7 @@ export class AddEditProductionComponent implements OnInit {
       }
     )
 
-    this.manageService.getCat().subscribe(
+    this.manageService.getCategory().subscribe(
       (cat_res: any) => {
         this.catdata = cat_res.data
       }
@@ -90,7 +90,7 @@ export class AddEditProductionComponent implements OnInit {
     formdata.append('emp_id', emp_id);
     formdata.append('current_date', new Date().toISOString().slice(0, 10));
 
-    this.manageService.getprodctiontableview(formdata).subscribe(
+    this.manageService.get_production_by_date(formdata).subscribe(
       (res: any) => {
         this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.sort = this.sort;
@@ -99,15 +99,6 @@ export class AddEditProductionComponent implements OnInit {
       }
     )
 
-    this.manageService.getprodctiontableview(formdata).subscribe(
-      (res: any) => {
-        // console.log(res)
-        this.dataSource = new MatTableDataSource(res.data);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.productioncount = res.data.length
-      }
-    )
   }
 
   resetmh() {
@@ -123,10 +114,9 @@ export class AddEditProductionComponent implements OnInit {
   }
 
   getEmpdata(event: any) {
-    console.log(event)
     const empformdata = new FormData()
     empformdata.append('emp_id', event)
-    this.manageService.getEmployeeSingle(empformdata).subscribe(
+    this.manageService.get_emp_by_emp_id(empformdata).subscribe(
       (res: any) => {
         // console.log(res)
         this.emp_data = res.data
@@ -144,16 +134,17 @@ export class AddEditProductionComponent implements OnInit {
     // console.log(event)
     const catformdata = new FormData()
     catformdata.append('cat_id', event)
-    this.manageService.getCategorySingle(catformdata).subscribe(
+    this.manageService.get_product_by_cat_id(catformdata).subscribe(
       (res: any) => {
-        // console.log(res)
+        console.log(res)
         this.product_single_data = res.data
       }
     )
   }
 
   Add() {
-  
+    console.log(this.ProductionForm.value)
+console.log( new Date().toISOString().slice(0, 10))
     const descFormdata = new FormData()
     descFormdata.append('emp_id_fk', this.ProductionForm.get('emp_id_fk')?.value)
     descFormdata.append('cat_id_fk', this.ProductionForm.get('cat_id_fk')?.value)
@@ -166,7 +157,7 @@ export class AddEditProductionComponent implements OnInit {
       (res: any) => {
         console.log(res)
         this.popup.success({ detail: 'Success', summary: ' Production Submit Successfully...', sticky: true, position: 'tr' })
-      }    
+      }
     )
     this.getproductionDesData(this.ProductionForm.get('emp_id_fk')?.value)
   }

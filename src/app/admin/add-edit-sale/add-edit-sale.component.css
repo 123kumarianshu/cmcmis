@@ -56,14 +56,20 @@
 }
 
 #formdate {
-     height: 49px;
+    height: 54px;
     width: 200px;
     background: none;
     border: none;
     background: #ebebeb;
     padding: 10px;
+    float: left;
+    margin-left: 334px;
     border-radius: 3px 3px 0px 0px;
     border-bottom: 1px solid black;
+}
+
+#formdate:hover {
+    border-bottom: 2px solid black;
 }
 
 .count_search {
@@ -89,7 +95,7 @@
 
 button {
     height: 30px;
-    margin-left: 200px;
+    margin-left: 50px;
     margin-top: -26px;
     float: right;
     background-color: #05363c;
@@ -127,8 +133,8 @@ ng-container a {
     height: 35px;
     background-color: #0b4648;
     float: left;
-    margin-left: 550px;
-    margin-top: 13px;
+    /* margin-left: 585px; */
+    margin-top: 10px;
 }
 
 .submitbtn p {
@@ -139,7 +145,7 @@ ng-container a {
     line-height: 40px;
     cursor: pointer;
     margin-left: -20px;
-    font-size: 18px;
+    font-size: 16px;
     word-spacing: 4px;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background-color: #0b4648;
@@ -212,4 +218,8 @@ tr:hover {
     background-color: #0f575a;
     color: aliceblue;
     cursor: pointer;
+}
+
+tr.mat-row {
+    text-align: left;
 }

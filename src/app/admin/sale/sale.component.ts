@@ -18,6 +18,7 @@ export class SaleComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  sale_total:any
   constructor(
     private route: Router,  
     private saleservice: ManageService,
@@ -33,6 +34,7 @@ export class SaleComponent implements OnInit {
         this.dataSource = new MatTableDataSource(saleresult.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        this.sale_total = saleresult.data.length
 
       }
     )

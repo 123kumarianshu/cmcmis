@@ -25,7 +25,7 @@ export class CategoryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.partyservice.getCat().subscribe(
+    this.partyservice.getCategory().subscribe(
       (itemresult:any)=>{   
       this.dataSource = new MatTableDataSource(itemresult.data);
       this.dataSource.sort = this.sort;

@@ -30,7 +30,7 @@ export class AddEditItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.manageService.getCat().subscribe(
+    this.manageService.getCategory().subscribe(
       (cat_res: any) => {
         this.catdata = cat_res.data
       }

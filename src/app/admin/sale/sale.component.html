@@ -4,7 +4,7 @@
     <mat-icon id="add_sale" routerLink="/add_edit_sale">add_circle</mat-icon>
   </div>
   <div class="count_search">
-    <span class="notice_text"> Total :</span>
+    <span class="notice_text"> Total : {{sale_total}}</span>
     <div class="search">
       <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
     </div>
@@ -67,7 +67,9 @@
           <ng-container matColumnDef="Action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
             <td class="data" mat-cell *matCellDef="let row">
-              <mat-icon>edit</mat-icon>
+              <mat-icon>visibility</mat-icon>
+              <mat-icon>description</mat-icon>
+              <mat-icon>cancel</mat-icon>
             </td>
           </ng-container>
 

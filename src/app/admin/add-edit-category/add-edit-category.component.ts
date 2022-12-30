@@ -55,7 +55,7 @@ export class AddEditCategoryComponent implements OnInit {
   onSubmit() {
     console.log(this.addcategory.value)
     if (!this.edit_cat) {
-      this.manageService.postCat(this.addcategory.value).subscribe(
+      this.manageService.postCategory(this.addcategory.value).subscribe(
         (result: any) => {
           console.log(result)
           this.matref.close();
@@ -79,7 +79,7 @@ export class AddEditCategoryComponent implements OnInit {
 
   updateWeight() {
     console.log(this.addcategory.value)
-    this.manageService.putCata(this.addcategory.value).subscribe({
+    this.manageService.putCategory(this.addcategory.value).subscribe({
       next: (result: any) => {
         console.log(result)
         this.matref.close();
