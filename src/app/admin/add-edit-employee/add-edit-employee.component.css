@@ -10,7 +10,6 @@
 }
 
 form {
-  /* padding-right: 19px; */
   margin-right: 22px;
 }
 
@@ -21,14 +20,16 @@ textarea {
 .example-spacer {
   flex: 1 1 auto;
 }
+
 #adress {
   width: 97%;
   margin-left: 3%;
   margin-top: -5px;
 }
-#main_button{
+
+#main_button {
   width: 190px;
-    margin: auto;
+  margin: auto;
 }
 
 .reset_btn {
@@ -45,7 +46,7 @@ textarea {
   background-color: green;
   color: white;
   margin: 0px;
-} 
+}
 
 mat-toolbar {
   height: 40px;
@@ -71,10 +72,10 @@ mat-toolbar {
   margin: 3px;
 }
 
-.upload_box:hover {
+/* .upload_box:hover {
   border: 2px solid black;
 
-}
+} */
 
 @media (min-width:1200px) and (max-width:2000px) {
   .column {
@@ -98,8 +99,8 @@ mat-toolbar {
     margin-left: 3%;
     margin-top: -5px;
   }
-  
-} 
+
+}
 
 @media (min-width:768px) and (max-width:1200px) {
   .column {
@@ -135,15 +136,22 @@ mat-toolbar {
 
   .column mat-form-field {
     width: 100%;
+    margin: 0px;
+  }
+
+  form {
+    margin: 0px;
   }
 
   #adress {
     width: 100%;
     margin-top: -5px;
+    margin-left: 0px;
   }
 
   .upload_box {
     width: 100%;
+    margin-left: 0px;
   }
 
 }

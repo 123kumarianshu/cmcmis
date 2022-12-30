@@ -4,10 +4,11 @@
 </mat-toolbar>
 <span>Select Employee</span>
 <div mat-dialog-content>
+
     <form [formGroup]="ProductionForm">        
         <div class="column">
             <input type="number" formControlName="production_id" readonly hidden>
-            <input  formControlName="production_date"   value="{{currentDate | date:'yyyy-MM-dd'}}" hidden>
+            <input formControlName="production_date" value="{{currentDate | date:'yyyy-MM-dd'}}" hidden>
             <mat-form-field appearance="fill">
                 <mat-label>Employee</mat-label>
                 <mat-select formControlName="emp_id_fk" (valueChange)="getEmpdata($event)">
@@ -36,12 +37,13 @@
                     <mat-option *ngFor="let catdata of catdata"
                         [value]="catdata.cat_id">{{catdata.cat_name}}</mat-option>
                 </mat-select>
-            </mat-form-field>        
+            </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Product</mat-label>
                 <mat-select formControlName="product_id_fk">
-                    <mat-option *ngFor="let productdata of product_single_data" [value]="productdata.product_id">{{productdata.product_name}}</mat-option>
+                    <mat-option *ngFor="let productdata of product_single_data"
+                        [value]="productdata.product_id">{{productdata.product_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
@@ -64,6 +66,50 @@
         <div class="search">
           <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
         </div>
+        <div id="table_area">
+            <form>
+                <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource" matSort id="table">
+                        <ng-container matColumnDef="slno">
+                            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
+                        </ng-container>
+                        <ng-container matColumnDef="emp_name">
+                            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Employee</th>
+                            <td class="data" mat-cell *matCellDef="let row">{{row.emp_name}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="mh_quantity">
+                            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+                            <td class="data" mat-cell *matCellDef="let row">{{row.item_name}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="mh_date">
+                            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+                            <td class="data" mat-cell *matCellDef="let row">{{row.mh_date}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="cat_name">
+                            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+                            <td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="mh_item">
+                            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+                            <td class="data" mat-cell *matCellDef="let row">{{row.mh_item}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="Action">
+                            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                            <td class="data" mat-cell *matCellDef="let row"><mat-icon>edit</mat-icon></td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                        </tr>
+                    </table>
+                    <!-- <mat-paginator #paginatorRef [pageSizeOptions]="[5]"
+                        aria-label="Select page of users"></mat-paginator> -->
+                </div>
+            </form>
+        </div>
+        <mat-paginator #paginatorRef [pageSizeOptions]="[5]" aria-label="Select page of users"></mat-paginator>
+    </div>
+</div>
       </div>
       <div class="cotainer">
         <form>
@@ -116,7 +162,7 @@
           </div>
         </form>
       </div>      
-    </div>
+    
  
 
 
