@@ -36,7 +36,7 @@ export class SaleReportComponent implements OnInit {
   ];
 
   
-  displayedColumns: string[] = ['slno', 'bill_number', 'product', 'quantity', 'cgst','discount','Basic_amount','sgst','total_amount'];
+  displayedColumns: string[] = ['slno', 'Custumber', 'Bill_no', 'product', 'Basic_amount','discount','Gst','Paybale_amount','Paid','Dues', 'Date'];
   dataSource!: MatTableDataSource<any>;
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
