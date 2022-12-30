@@ -15,8 +15,9 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  baseUrl: string = 'http://adityaradhaya.com/api/';
-  
+  // baseUrl: string = 'http://adityaradhaya.com/api/';
+  baseUrl: string = 'http://localhost/cmcmisapi/';
+
 
 
 
@@ -206,9 +207,9 @@ export class ManageService {
   postSaledes(data: any) {
     return this.http.post<any>(this.baseUrl + 'sale_desc_insert.php', data);
   }
-  getSaledes() {
-    return this.http.get<[]>(this.baseUrl + 'sale_desc_view.php');
-  }
+  // getSaledes() {
+  //   return this.http.get<[]>(this.baseUrl + 'sale_desc_view.php');
+  // }
 
   postProd(data: any) {
     return this.http.post<any>(this.baseUrl + 'product_des_insert.php', data);
@@ -259,32 +260,6 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'MaterialHandover_update.php', data);
   }
 
-  getPtr(data: any) {
-    return this.http.post<any>(this.baseUrl + 'party_single_view.php', data);
-  }
-
-  postpur(data: any) {
-    return this.http.post<any>(this.baseUrl + 'pur_party_insert.php', data);
-  }
-
-  get_pur() {
-    return this.http.get<[]>(this.baseUrl + 'pur_view.php');
-  }
-
-
-  get_single_item(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_view.php', data);
-  }
-
-  getCatSingleData(data: any) {
-    return this.http.post<any>(this.baseUrl + 'getsingledata_view.php', data);
-  }
-
-
-  getDescription(data: any) {
-    return this.http.post<any>(this.baseUrl + 'des_view.php', data)
-  }
-
   // for matrial hand over
   get_mh_view() {
     return this.http.get<[]>(this.baseUrl + 'des_view.php',)
@@ -298,26 +273,74 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
 
-  delPurchData(data: any) {
-    return this.http.post<any>(this.baseUrl + 'purchase_data_del.php', data);
-  }
+  // for error solve only 
 
-  delPurchItemDes(data: any) {
-    return this.http.post<any>(this.baseUrl + 'PurchItemDesDel.php', data);
-  }
-
-  postPurchItem(data: any) {
+  getmhtableview(data: any) {
     return this.http.post<any>(this.baseUrl + 'purchitem_insert.php', data);
-  }
-
-  putFinalPurch(data: any) {
-    return this.http.post<any>(this.baseUrl + 'purchaseFinal_update.php', data);
-  }
-
-
-  // for purchase /////////////
-  GetPurchSingleData(data:any) {
-    return this.http.post<any>(this.baseUrl + 'purch_bill_single_data.php', data);
 
   }
+
+  getEmployeeSingle(data: any) {
+    return this.http.post<any>(this.baseUrl + 'purchitem_insert.php', data);
+
+  }
+  getCategorySingle(data: any) {
+    return this.http.post<any>(this.baseUrl + 'purchitem_insert.php', data);
+
+  }
+  getSaledes(data: any) {
+    return this.http.post<any>(this.baseUrl + 'purchitem_insert.php', data);
+
+  }
+  GetSaleSingleData(data: any) {
+    return this.http.post<any>(this.baseUrl + 'purchitem_insert.php', data);
+
+  }
+  getprodctiontableview() {
+    return this.http.get<[]>(this.baseUrl + 'pur_view.php');
+  }
+  dashboard_view() {
+    return this.http.get<[]>(this.baseUrl + 'pur_view.php');
+  }
+
+  /////////////////////////////////////////////////////////// Purchase Function Starting Here ////////////////////////////////////////////////////////
+
+  get_single_purch_item_view(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_single_purch_item_view.php', data);
+  }
+
+  get_purch_item_set_data(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_purch_item_set_data.php', data);
+  }
+
+  post_purch_desc(data: any) {
+    return this.http.post<any>(this.baseUrl + 'purch_desc_insert.php', data);
+  }
+
+  get_purch_party_data(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_purch_party_view.php', data);
+  }
+
+  post_purch_party(data: any) {
+    return this.http.post<any>(this.baseUrl + 'purch_party_insert.php', data);
+  }
+
+  get_purch_data_bill_no() {
+    return this.http.get<[]>(this.baseUrl + 'get_purch_data_bill_no.php');
+  }
+
+  purch_desc_delete(data: any) {
+    return this.http.post<any>(this.baseUrl + 'purch_desc_delete.php', data);
+  }
+
+  get_purch_desc_view(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_purch_desc_view.php', data)
+  }
+
+  purch_final_submit(data: any) {
+    return this.http.post<any>(this.baseUrl + 'purch_final_submit.php', data);
+  }
+
+  /////////////////////////////////////////////////////////// Purchase Function Ending Here ////////////////////////////////////////////////////////
+
 }

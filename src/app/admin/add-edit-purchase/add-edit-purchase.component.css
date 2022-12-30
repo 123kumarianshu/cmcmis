@@ -104,15 +104,21 @@ mat-form-field {
 }
 
 .date_box {
-    width: 200px;
-    margin: 6px;
+    width: 205px;
+    border: none;
+    color: gray;
+    border-bottom: 1px solid gray;
+    background-color: #ebebeb;
+    padding-top: 16px;
+    height: 52px;
 }
 
 .upload_img {
-    width: 64.5%;
-    border-bottom: 1px solid black;
+    width: 64%;
+    color: gray;
+    border-bottom: 1px solid gray;
     background-color: #ebebeb;
-    margin-left: 16em;
+    margin-left: 16.5em;
 }
 
 .bill_uplaod {
@@ -121,6 +127,7 @@ mat-form-field {
 }
 
 .bill_img{
+    border: none;
     margin-right: 40em;
 }
 

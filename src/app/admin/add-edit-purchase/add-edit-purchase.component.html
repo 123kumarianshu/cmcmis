@@ -92,7 +92,7 @@
 							<mat-label>Weight</mat-label>
 							<input formControlName="item_weight" matInput placeholder="Weight" readonly>
 						</mat-form-field>
-						
+
 						<mat-form-field appearance="fill">
 							<mat-label>Unit</mat-label>
 							<input formControlName="item_unit" matInput placeholder="Unit" readonly>
@@ -109,8 +109,8 @@
 								(keyup)="total_rate_cal()">
 						</mat-form-field>
 						<br>
-						
-						<mat-form-field appearance="fill" class="total_amount" >
+
+						<mat-form-field appearance="fill" class="total_amount">
 							<mat-label>Total Amount</mat-label>
 							<input formControlName="item_amount" matInput placeholder="Amount">
 						</mat-form-field>
@@ -125,7 +125,7 @@
 
 				<div class="cotainer">
 					<div class="count_search">
-						<span class="notice_text"> Total :{{dec_count}}</span>
+						<span class="notice_text"> Total :{{purch_dec_count}}</span>
 						<div class="search">
 							<input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
 						</div>
@@ -139,16 +139,16 @@
 										{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
 								</ng-container>
 
-								<ng-container matColumnDef="cat_id_fk">
+								<ng-container matColumnDef="cat_name">
 									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
-									<td class="data" mat-cell *matCellDef="let row">{{row.cat_id_fk}}
+									<td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}
 									</td>
 								</ng-container>
 
 
-								<ng-container matColumnDef="item_id_fk">
+								<ng-container matColumnDef="item_name">
 									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Item</th>
-									<td class="data" mat-cell *matCellDef="let row">{{row.item_id_fk}}
+									<td class="data" mat-cell *matCellDef="let row">{{row.item_name}}
 									</td>
 								</ng-container>
 
@@ -203,7 +203,7 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Basic Amount</mat-label>
-							<input formControlName="purch_amount" matInput placeholder="Total Amount">
+							<input formControlName="basic_amount" matInput placeholder="Basic Amount">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
@@ -216,7 +216,7 @@
 							<input formControlName="purch_gst" matInput placeholder="GST">
 						</mat-form-field>
 
-						
+
 						<mat-form-field appearance="fill">
 							<mat-label>Gross Amount</mat-label>
 							<input formControlName="purch_gross_amount" matInput placeholder="Gross Amount">
@@ -232,27 +232,28 @@
 							<mat-label>Dues</mat-label>
 							<input formControlName="purch_dues" matInput placeholder="Dues">
 						</mat-form-field>
-						
+
 						<mat-form-field appearance="fill" class="bill_no">
 							<mat-label>Memo Number</mat-label>
 							<input formControlName="purch_memo_no" matInput placeholder="Bill Number">
 						</mat-form-field>
 
-						<mat-form-field appearance="fill" class="date_box">
-							<mat-label>Date</mat-label>
-							<input formControlName="purch_date" matInput [matDatepicker]="picker">
-							<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-							<mat-datepicker #picker></mat-datepicker>
-						</mat-form-field>
+
+						<input type="date" formControlName="purch_date" class="date_box">
+
 						<br>
 
+						<!-- <input type="file" (change)="onFileSelect($event)"> -->
 
-						<!-- <div class="upload_img">
+						<div class="upload_img">
 							<label class="bill_uplaod">Upload Memo</label><br>
-							<input class="bill_img" type="file" formControlName="purch_bill_img" (change)="onPhotoUpload($event)">
-						</div> -->
+							<input class="bill_img" type="file" (change)="onFileSelect($event)">
+						</div>
 
-						<input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden type="number">
+
+
+
+						<input formControlName="admin_id_fk" ngModel={{admin_id}} hidden type="number">
 
 
 					</div>

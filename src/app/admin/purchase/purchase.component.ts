@@ -14,11 +14,15 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./purchase.component.css']
 })
 export class PurchaseComponent implements OnInit {
-  displayedColumns: string[] = ['slno','party_name', 'purch_bill_no', 'basic_amount','purch_discount', 'purch_gst', 'purch_gorss_amount', 'purch_paid','purch_dues', 'purch_memo_no','purch_memo_img', 'purch_date', 'action'];
+
+  displayedColumns: string[] = ['slno', 'party_name', 'purch_bill_no', 'basic_amount', 'purch_discount', 'purch_gst', 'purch_gross_amount', 'purch_paid', 'purch_dues', 'purch_memo_no', 'purch_memo_img', 'purch_date', 'action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  pur_count: any;
+
+  PrintActionIcon: boolean = true
+  DraftsActionIcon: boolean = false
+  pur_count: string = "0"
   constructor(
     private popup: NgToastService,
     private addpurch: MatDialog,
@@ -26,7 +30,7 @@ export class PurchaseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.purchaseservice.get_pur().subscribe(
+    this.purchaseservice.get_purch_data_bill_no().subscribe(
       (partyresult: any) => {
         console.log(partyresult)
         this.dataSource = new MatTableDataSource(partyresult.data);
@@ -56,22 +60,6 @@ export class PurchaseComponent implements OnInit {
     })
   }
 
-  delPurch(row: any) {
-    if (confirm("Are you sure to delate")) {
-      const deldata = new FormData();
-      deldata.append('purch_id', row.purch_id);
-      this.purchaseservice.delPurchData(deldata).subscribe(
-        (res: any) => {
-          this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
-        }
-      )
-    }
-    else {
-      alert('cancle')
-    }
-  }
-
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -80,6 +68,11 @@ export class PurchaseComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+
+  PrintPurchaseBill() {
+    window.print()
   }
 }
 

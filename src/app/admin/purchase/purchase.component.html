@@ -46,9 +46,9 @@
           </ng-container>
 
 
-          <ng-container matColumnDef="purch_gorss_amount">
+          <ng-container matColumnDef="purch_gross_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gorss_amount}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gross_amount}}</td>
           </ng-container>
 
           <ng-container matColumnDef="purch_paid">
@@ -75,10 +75,17 @@
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.purch_date}}</td>
           </ng-container>
-         
+
           <ng-container matColumnDef="action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-            <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="delPurch(row)">delete</mat-icon></td>
+            <td class="data" mat-cell *matCellDef="let row">
+              <mat-icon>visibility</mat-icon>
+              <button mat-icon-button [hidden]="PrintActionIcon" (click)="PrintPurchaseBill()"> <mat-icon >print</mat-icon></button>
+              <button mat-icon-button [hidden]="DraftsActionIcon"> <mat-icon>drafts</mat-icon></button>
+    
+              <mat-icon>cancel</mat-icon>
+             
+            </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
