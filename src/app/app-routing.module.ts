@@ -21,7 +21,6 @@ import { ExpenseComponent } from './admin/expense/expense.component';
 import { PurchaseReportComponent } from './admin/purchase-report/purchase-report.component';
 import { SaleReportComponent } from './admin/sale-report/sale-report.component';
 import { StockReportComponent } from './admin/stock-report/stock-report.component';
-import { ExpiryReportComponent } from './admin/expiry-report/expiry-report.component';
 import { PurchaseCancelComponent } from './admin/purchase-cancel/purchase-cancel.component';
 import { SaleCancelComponent } from './admin/sale-cancel/sale-cancel.component';
 import { AddEditAccountComponent } from './admin/add-edit-account/add-edit-account.component';
@@ -61,7 +60,6 @@ const routes: Routes = [
   {path:'purchase_report',component:PurchaseReportComponent},
   {path:'sale_report',component:SaleReportComponent},
   {path:'stock_report',component:StockReportComponent},
-  {path:'expiry_report',component:ExpiryReportComponent},
   {path:'purchase_cancel',component:PurchaseCancelComponent},
   {path:'sale_cancel',component:SaleCancelComponent},
   {path:'add_edit_sale',component:AddEditSaleComponent},

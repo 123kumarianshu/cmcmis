@@ -16,7 +16,7 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Customer Id</mat-label>
-								<input formControlName="cust_id" matInput placeholder="Customer Id">
+								<input formControlName="cust_id" matInput placeholder="Customer Id" readonly>
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
@@ -29,18 +29,19 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Mobile</mat-label>
-								<input type="number" formControlName="cust_contact_no" matInput placeholder="Mobile">
+								<input type="number" formControlName="cust_contact_no" matInput placeholder="Mobile"
+									readonly>
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Email</mat-label>
-								<input type="email" formControlName="cust_email" matInput placeholder="Email">
+								<input type="email" formControlName="cust_email" matInput placeholder="Email" readonly>
 							</mat-form-field>
 							<br>
 							<mat-form-field appearance="fill" class="textarea_box">
 								<mat-label>Address</mat-label>
-								<textarea type="text" formControlName="cust_shop_address" matInput
-									placeholder="Address"></textarea>
+								<textarea type="text" formControlName="cust_shop_address" matInput placeholder="Address"
+									readonly></textarea>
 							</mat-form-field>
 						</div>
 						<input formControlName="admin_id_fk" matInput placeholder="Name" readonly [ngModel]="admin_id"
@@ -48,7 +49,7 @@
 
 					</form>
 					<div mat-dialog-action [align]="'end'">
-						<button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+						<button mat-raised-button (click)="AddCustomer()" class="add_btn" type="submit"
 							style="background-color: #0d5e58; color: white;"
 							[disabled]="!saleformcust.valid">{{actionBtn}}</button>
 					</div>
@@ -67,11 +68,11 @@
 						<div class="column">
 							<input formControlName="admin_id_fk" matInput placeholder="Admin id" readonly
 								[ngModel]="admin_id" hidden>
-							<input type="number" formControlName="sale_id_fk">
+
 
 							<mat-form-field appearance="fill">
 								<mat-label>Customer</mat-label>
-								<input formControlName="cust_name" matInput placeholder="Name">
+								<input formControlName="cust_name" matInput placeholder="Name" readonly>
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
@@ -92,49 +93,52 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Size</mat-label>
-								<input formControlName="product_size_id" matInput placeholder="Size">
+								<input formControlName="product_size_id" matInput placeholder="Size" readonly>
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Weight</mat-label>
-								<input formControlName="product_weight_id" matInput placeholder="Weight">
+								<input formControlName="product_weight_id" matInput placeholder="Weight" readonly>
 							</mat-form-field>
 							<br>
 							<mat-form-field appearance="fill">
 								<mat-label>Unit</mat-label>
-								<input formControlName="product_unit_id" matInput placeholder="unit">
+								<input formControlName="product_unit_id" matInput placeholder="unit" readonly>
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Page</mat-label>
-								<input formControlName="product_page" matInput placeholder="Page">
+								<input formControlName="product_page" matInput placeholder="Page" readonly>
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Rate</mat-label>
-								<input formControlName="product_rate" matInput placeholder="unit" (keyup)="total_amt_cal()">
+								<input formControlName="product_rate" matInput placeholder="unit"
+									(keyup)="total_amt_cal()">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Quantity</mat-label>
-								<input formControlName="product_quantity" matInput placeholder="Quantity" (keyup)="total_amt_cal()">
+								<input formControlName="product_quantity" matInput placeholder="Quantity"
+									(keyup)="total_amt_cal()">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Total Amount</mat-label>
-								<input formControlName="product_total_amount" matInput placeholder="Total Amount" readonly>
+								<input formControlName="product_total_amount" matInput placeholder="Total Amount"
+									readonly>
 							</mat-form-field>
 							<br>
 
 
-							<mat-icon class="addButton" (click)="onAdd()">add</mat-icon>
+							<mat-icon class="addButton" (click)="AddProduct()">add</mat-icon>
 						</div>
 					</form>
 
 					<!-- /////////////// for sale description /////////////////// -->
 					<div class="cotainer">
 						<div class="count_search">
-							<span class="notice_text"> Total :</span>
+							<span class="notice_text"> Total :{{sale_desc}}</span>
 							<div class="search">
 								<input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
 							</div>
@@ -143,7 +147,7 @@
 							<div class="mat-elevation-z8">
 								<table mat-table [dataSource]="dataSource" matSort id="table">
 									<ng-container matColumnDef="slno">
-										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
 										<td class="data" mat-cell *matCellDef="let row; let i = index;">
 											{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
 									</ng-container>
@@ -163,7 +167,7 @@
 
 									<ng-container matColumnDef="product_rate">
 										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
-										<td class="data" mat-cell *matCellDef="let row">{{row.product_rate}}</td>
+										<td class="data" mat-cell *matCellDef="let row">{{row.sale_rate}}</td>
 									</ng-container>
 
 									<ng-container matColumnDef="product_quantity">
@@ -206,46 +210,55 @@
 
 		<ng-container ngbNavItem><br>
 			<a ngbNavLink (click)="final_bill()"
-				style="background-color:#05363c; border-radius: 5px;color: whitesmoke; height:37px; font-size:14px">Final bill</a>
+				style="background-color:#05363c; border-radius: 5px;color: whitesmoke; height:37px; font-size:14px">Final
+				bill</a>
 			<button id="billnobtn">Bill Ref.No:{{sale_bill_no}}</button>
 			<ng-template ngbNavContent>
 				<div class="content_area">
 					<form [formGroup]="saleformfinal">
 						<input formControlName="admin_id_fk" matInput placeholder="Name" readonly [ngModel]="admin_id"
 							hidden>
-						<input type="number" formControlName="sale_id_fk">
 						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Basic Amount</mat-label>
-								<input type="number" formControlName="sale_total_amount" matInput placeholder="Basic Amount">
+								<input type="number" formControlName="sale_total_amount" matInput
+									placeholder="Basic Amount">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Discount</mat-label>
-								<input type="number" formControlName="sale_discount" matInput placeholder="Discount">
+								<input type="number" formControlName="sale_discount" matInput placeholder="Discount" (keyup)="payable_amt_cal()">
 							</mat-form-field>
 
-							<mat-form-field appearance="fill">
+							<!-- <mat-form-field appearance="fill">
 								<mat-label>GST</mat-label>
 								<input type="number" formControlName="sale_gst" matInput placeholder="GST">
+							</mat-form-field> -->
+							<mat-form-field appearance="fill">
+								<mat-label>GST</mat-label>
+								<mat-select formControlName="sale_gst">
+									<mat-option value="18">18</mat-option>
+									<mat-option value="15">15</mat-option>
+									<mat-option value="21">21</mat-option>
+								</mat-select>
 							</mat-form-field>
 							<br>
 							<mat-form-field appearance="fill">
 								<mat-label>Payable Amount</mat-label>
-								<input type="number" formControlName="sale_gross_amount" matInput placeholder="Payable Amount">
+								<input type="number" formControlName="sale_gross_amount" matInput
+									placeholder="Payable Amount">
 							</mat-form-field>
 							<mat-form-field appearance="fill">
 								<mat-label>Paid</mat-label>
-								<input  type="number" formControlName="sale_paid" matInput placeholder="Paid Amount">
+								<input type="number" formControlName="sale_paid" matInput placeholder="Paid Amount">
 							</mat-form-field>
 							<mat-form-field appearance="fill">
 								<mat-label>Dues</mat-label>
 								<input type="number" formControlName="sale_dues" matInput placeholder="Dues">
 							</mat-form-field>
 							<br>
-							<input type="date" formControlName="sale_date">
-							
+							<input type="date" formControlName="sale_date" id="formdate">
 
 						</div>
 						<!-- ---------------------------------------------Change--------------------------------------- -->
