@@ -29,7 +29,7 @@ export class StockReportComponent implements OnInit {
     'November',
     'December',
   ];
-      displayedColumns: string[] = ['slno', 'category', 'product', 'company_name', 'purchase_qty','sale_qty','available_qty'];
+      displayedColumns: string[] = ['slno', 'category', 'product', 'company_name', 'available_qty'];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;

@@ -59,7 +59,6 @@ import { ExpenseComponent } from './admin/expense/expense.component';
 import { PurchaseReportComponent } from './admin/purchase-report/purchase-report.component';
 import { SaleReportComponent } from './admin/sale-report/sale-report.component';
 import { StockReportComponent } from './admin/stock-report/stock-report.component';
-import { ExpiryReportComponent } from './admin/expiry-report/expiry-report.component';
 import { PurchaseCancelComponent } from './admin/purchase-cancel/purchase-cancel.component';
 import { SaleCancelComponent } from './admin/sale-cancel/sale-cancel.component';
 import { AddEditAccountComponent } from './admin/add-edit-account/add-edit-account.component';
@@ -114,7 +113,6 @@ import {HashLocationStrategy,LocationStrategy}from'@angular/common';
     PurchaseReportComponent,
     SaleReportComponent,
     StockReportComponent,
-    ExpiryReportComponent,
     PurchaseCancelComponent,
     SaleCancelComponent,  
     AddEditAccountComponent,

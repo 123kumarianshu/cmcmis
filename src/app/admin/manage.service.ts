@@ -16,6 +16,9 @@ export class ManageService {
     private http: HttpClient
   ) { }
   baseUrl: string = 'http://adityaradhaya.com/api/';
+  
+
+
 
   //************** */ for party function starting here**************
 
