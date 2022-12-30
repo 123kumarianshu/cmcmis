@@ -4,7 +4,7 @@
     <mat-icon id="add_purchase" routerLink="/add_edit_purchase">add_circle</mat-icon>
   </div>
   <div class="count_search">
-    <span class="notice_text"> Total :</span>
+    <span class="notice_text"> Total :{{pur_count}}</span>
     <div class="search">
       <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
     </div>
@@ -14,59 +14,84 @@
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort id="table">
           <ng-container matColumnDef="slno">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SL NO.</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N</th>
             <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
               paginatorRef.pageSize)+(i+1)}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="purch_party">
+          <ng-container matColumnDef="party_name">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_party}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.party_name}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="purch_disc">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_disc}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="purch_amount">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_amount}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="purch_net_payment">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Net Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_net_payment}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="purch_cgst">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>CGST</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_cgst}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="purch_sgst">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>SGST</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_sgst}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="purch_ro">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>R/O</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_ro}}</td>
-          </ng-container>
           <ng-container matColumnDef="purch_bill_no">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.purch_bill_no}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="Action">
+
+          <ng-container matColumnDef="basic_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic Amount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.basic_amount}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_discount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_discount}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_gst">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gst}}</td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="purch_gross_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross Amount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gross_amount}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_paid">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Paid</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_paid}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_dues">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Dues</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_dues}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_memo_no">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Memo No</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_memo_no}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_memo_img">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Memo Image</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_memo_img}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="purch_date">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_date}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-            <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="editpurchase(row)">edit</mat-icon></td>
+            <td class="data" mat-cell *matCellDef="let row">
+              <mat-icon>visibility</mat-icon>
+              <button mat-icon-button [hidden]="PrintActionIcon" (click)="PrintPurchaseBill()"> <mat-icon >print</mat-icon></button>
+              <button mat-icon-button [hidden]="DraftsActionIcon"> <mat-icon>drafts</mat-icon></button>
+    
+              <mat-icon>cancel</mat-icon>
+             
+            </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+            <td class="mat-cell" colspan="13">No data show"{{input.value}}"</td>
           </tr>
         </table>
         <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"

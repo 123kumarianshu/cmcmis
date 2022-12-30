@@ -1,15 +1,11 @@
-
 /********************************************* party css style starting here ****************************************/
 
-.nav-tabs {
-    height: 46px;
-}
 
 .view_notice {
     background-color: #0b4648;
     color: whitesmoke;
     display: flex;
-    margin-top: 67px;
+    margin-top: 63px;
 }
 
 .notice_text {
@@ -55,28 +51,18 @@ mat-form-field {
     width: 64%;
 }
 
-
 .content_area {
     text-align: center;
     margin-top: 10px;
     height: 526px;
+
 }
 
-
-ng-container a {
-    background-color: #05363c;
-}
 
 /********************************************* party css style Ending here ****************************************/
 
 
 /********************************************* item css style starting here ****************************************/
-
-/* 
-.text_amount {
-    margin-right: 59.2em;
-} */
-
 
 .addButton {
     background-color: #05363c;
@@ -84,11 +70,13 @@ ng-container a {
     width: 25px;
     color: aliceblue;
     font-size: 25px;
-    position: relative;
-    left: 21.1em;
-    bottom: 55px;
     cursor: pointer;
+    margin-left: 10px;
+}
 
+.total_amount {
+    margin-left: 34px;
+    width: 64%;
 }
 
 /********************************************* item css style ending here ****************************************/
@@ -100,29 +88,48 @@ ng-container a {
     position: absolute;
     right: 10px;
     height: 38px;
-    top: 137px;
-    margin-right: -4px;
+    top: 133.9px;
+    margin-right: -8px;
 }
 
-a {
-    position: relative;
-    top: 3px;
-    margin: 1px;
+.count_search {
+    height: 40px;
+    width: auto;
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 0px 10px;
+    box-sizing: border-box;
+    color: #0d5e58;
 }
-
-
 
 .date_box {
-    width: 200px;
-    float: right;
-    margin-right: 850px;
+    width: 205px;
+    border: none;
+    color: gray;
+    border-bottom: 1px solid gray;
+    background-color: #ebebeb;
+    padding-top: 16px;
+    height: 52px;
 }
 
+.upload_img {
+    width: 64%;
+    color: gray;
+    border-bottom: 1px solid gray;
+    background-color: #ebebeb;
+    margin-left: 16.5em;
+}
 
-/********************************************* Final css style Ending here ****************************************/
+.bill_uplaod {
+    font-size: 12px;
+    margin-right: 60em;
+}
 
-
-
+.bill_img{
+    border: none;
+    margin-right: 40em;
+}
 
 /* ====================================================Media Queryss===================================================== */
 

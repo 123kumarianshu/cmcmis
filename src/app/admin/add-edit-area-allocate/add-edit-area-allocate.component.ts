@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from '../manage.service';
 import { Router } from '@angular/router';
-import { DialogConfig } from '@angular/cdk/dialog';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgToastService } from 'ng-angular-popup';
 

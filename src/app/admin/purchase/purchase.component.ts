@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { AddEditCategoryComponent } from '../add-edit-category/add-edit-category.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
+import { NgToastService } from 'ng-angular-popup';
+
 
 @Component({
   selector: 'app-purchase',
@@ -12,19 +14,25 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./purchase.component.css']
 })
 export class PurchaseComponent implements OnInit {
-  displayedColumns: string[] = ['slno','purch_party', 'purch_amount', 'purch_disc', 'purch_net_payment', 'purch_bill_no','purch_cgst','purch_sgst', 'purch_ro','Action',];
+
+  displayedColumns: string[] = ['slno', 'party_name', 'purch_bill_no', 'basic_amount', 'purch_discount', 'purch_gst', 'purch_gross_amount', 'purch_paid', 'purch_dues', 'purch_memo_no', 'purch_memo_img', 'purch_date', 'action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  pur_count: any;
+
+  PrintActionIcon: boolean = true
+  DraftsActionIcon: boolean = false
+  pur_count: string = "0"
   constructor(
+    private popup: NgToastService,
     private addpurch: MatDialog,
-    private partyservice: ManageService,
+    private purchaseservice: ManageService,
   ) { }
 
   ngOnInit(): void {
-    this.partyservice.get_pur().subscribe(
+    this.purchaseservice.get_purch_data_bill_no().subscribe(
       (partyresult: any) => {
+        console.log(partyresult)
         this.dataSource = new MatTableDataSource(partyresult.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -53,8 +61,6 @@ export class PurchaseComponent implements OnInit {
   }
 
 
-
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -62,6 +68,11 @@ export class PurchaseComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+
+  PrintPurchaseBill() {
+    window.print()
   }
 }
 
