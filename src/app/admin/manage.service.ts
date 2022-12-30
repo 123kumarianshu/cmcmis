@@ -320,9 +320,12 @@ export class ManageService {
   post_purch_party(data: any) {
     return this.http.post<any>(this.baseUrl + 'purch_party_insert.php', data);
   }
-
+  
   get_purch_data_bill_no() {
     return this.http.get<[]>(this.baseUrl + 'get_purch_data_bill_no.php');
+
+  postProduction(data: any) {
+    return this.http.post<any>(this.baseUrl + 'production_insert.php', data);
   }
 
   purch_desc_delete(data: any) {
@@ -332,6 +335,14 @@ export class ManageService {
   get_purch_desc_view(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_purch_desc_view.php', data)
   }
+
+  getprodctiontableview(data:any){
+    return this.http.post<any>(this.baseUrl + 'ProductionSingle_view.php',data);
+  } 
+
+  // getprodctiontableview() {
+  //   return this.http.get<[]>(this.baseUrl + 'production_single_view.php')
+  // }
 
   purch_final_submit(data: any) {
     return this.http.post<any>(this.baseUrl + 'purch_final_submit.php', data);

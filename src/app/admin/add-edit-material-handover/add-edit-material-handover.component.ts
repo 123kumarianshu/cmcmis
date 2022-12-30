@@ -5,6 +5,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { NgToastService } from 'ng-angular-popup';
+
 
 @Component({
   selector: 'app-add-edit-material-handover',
@@ -30,6 +32,7 @@ export class AddEditMaterialHandoverComponent implements OnInit {
   mh_single_data:any
   matcount:any
   constructor(
+    private popup: NgToastService,
     private fb: FormBuilder,
     private manageService: ManageService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
@@ -163,8 +166,11 @@ export class AddEditMaterialHandoverComponent implements OnInit {
     this.manageService.postMaterialHandover(descFormdata).subscribe(
       (res: any) => {
         console.log(res)
-        alert("add sucesssully..")
+        this.popup.success({detail:'Success',summary:'Material Handover Submit Successfully...',sticky:true,position:'tr'})       
       }
+       // (error: any) => {
+        //   console.log(['message']);
+        //   this.popup.error({detail:'message',summary:'Party data is not Submit' , sticky:true,position:'tr',})
     )
     this.getMHDesData(this.MaterialForm.get('emp_id_fk')?.value)
   }

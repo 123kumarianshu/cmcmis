@@ -52,7 +52,11 @@ a button{
   color: whitesmoke;
   text-align: center;
 }
-
+@media(min-width:769px) and (max-width:1180px){
+  .main{
+    padding: 0px;
+  }
+}
 
 @media(min-width:420px)and (max-width:768px) {
   .loginas{
@@ -69,5 +73,8 @@ a button{
   
   .loginas{
     display: none;
- }    
+ }  
+ .main{
+  padding: 0px;
+}  
 }

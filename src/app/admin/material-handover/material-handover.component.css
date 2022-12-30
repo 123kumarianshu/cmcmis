@@ -109,6 +109,18 @@ ng-container {
 
 /* //////////////////////////table media q//////////////////////////// */
 @media(min-width:461px) and (max-width:1180px) {
+    #wrapper {
+        overflow-x: hidden;
+    }
+
+    .cotainer {
+        overflow-x: auto;
+    }
+
+    mat-paginator {
+        position: absolute;
+        width: 100%;
+    }
     .notice_text {
         font-size: 14px;
     }
@@ -133,7 +145,7 @@ ng-container {
     }
 
     .cotainer {
-        overflow-x: auto;
+        overflow-x: auto;   
     }
 
     mat-paginator {

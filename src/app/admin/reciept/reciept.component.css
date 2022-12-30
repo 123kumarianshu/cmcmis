@@ -85,8 +85,49 @@ ng-container {
     width: 100%;
 }
 /* //////////////////////////table media q//////////////////////////// */
+@media(min-width:461px) and (max-width:1180px) {
+    #wrapper {
+        overflow-x: hidden;
+    }
 
+    .cotainer {
+        overflow-x: auto;
+    }
+
+    mat-paginator {
+        position: absolute;
+        width: 100%;
+    }
+    .notice_text {
+        font-size: 14px;
+    }
+
+    .count_search .notice_text {
+        font-size: 14px;
+    }
+
+    table th {
+        font-size: 14px;
+    }
+
+    table td {
+        font-size: 14px;
+    }
+
+}
 @media (max-width:460px) {
+    #wrapper {
+        overflow-x: hidden;
+    }
+
+    .cotainer {
+        overflow-x: auto;
+    }
+
+    mat-paginator {
+        position: absolute;
+        width: 100%;
+    }
     .notice_text {
         font-size: 13px;
     }
