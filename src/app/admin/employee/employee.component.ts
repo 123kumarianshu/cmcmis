@@ -61,6 +61,10 @@ export class EmployeeComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  PrintThisPage(){
+    AddEditEmployeeComponent
+  }
 }
 
 

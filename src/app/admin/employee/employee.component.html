@@ -2,6 +2,7 @@
   <div class="view_notice">
     <span class="notice_text">Employee Details</span>
     <mat-icon id="add_item" (click)="add_Employee()">add_circle</mat-icon>
+   
   </div>
   <div class="count_search">
     <span class="notice_text"> Total :</span>
@@ -9,7 +10,7 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
     </div>
   </div>
-  <div class="cotainer">
+  <div class="cotainer" id="print">
     <form>
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort id="table">
