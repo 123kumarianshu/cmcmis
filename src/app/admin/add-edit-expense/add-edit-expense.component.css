@@ -67,4 +67,8 @@ mat-toolbar {
   .column_1 mat-form-field{
     width: 100%;
   }
+  form {
+    padding: 0px;
+    margin: 0px;
+  }
 }
