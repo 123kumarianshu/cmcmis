@@ -12,16 +12,26 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-      displayedColumns: string[] = ['slno', 'today_sale', 'cash_in_hand','today_expense', 'deposit_into_bank','closing_amount','date','remarks'];
+      displayedColumns: string[] = ['slno', 'today_sale', 'cash_in_hand','expense', 'deposit_into_bank','closing_amount','account_date','remarks'];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
+
+      accountcount:any
   constructor(
     private addaccount: MatDialog,
-    private partyservice: ManageService,
+    private accountservice: ManageService,
   ) { }
 
   ngOnInit(): void {
+    this.accountservice.getAccount().subscribe(
+      (accountresult: any) => {
+        this.dataSource = new MatTableDataSource(accountresult.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.accountcount = accountresult.data.length
+      }
+    )
   }
   add_account(): any {
     this.addaccount.open(AddEditAccountComponent, {
@@ -41,9 +51,6 @@ export class AccountComponent implements OnInit {
       }
     })
   }
-
-
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
