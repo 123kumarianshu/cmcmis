@@ -270,11 +270,10 @@ export class ManageService {
 
   // for account funcation starting here
   getAccount() {
-    return this.http.get<[]>('http://localhost/cmcmisapi/account_view.php');
-    }
-
-  postAccount(data: any) {
-    return this.http.post<any>('http://localhost/cmcmisapi/account_insert.php', data);
+    return this.http.get<[]>(this.baseUrl + 'account_view.php');
   }
-  
+  postAccount(data: any) {
+    return this.http.post<any>(this.baseUrl + 'account_insert.php', data);
+  }
+
 }
