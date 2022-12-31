@@ -13,8 +13,9 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class AddEditAccountComponent implements OnInit {
   actionBtn = 'add'
-  admin_id: any
+  admin_id =1
   addAccount: any
+  accountdata:any
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
@@ -25,20 +26,49 @@ export class AddEditAccountComponent implements OnInit {
   ) {
     this.addAccount = this.fb.group({
       account_id: [''],
-      cash_in_hand: ['', Validators.required],
-      today_sale: ['', Validators.required],
-      expense: ['', Validators.required],
-      remarks: ['', Validators.required],
-      deposit_into_bank: ['', Validators.required],
-      closing_amount: ['', Validators.required],
-      date: ['', Validators.required],
-      admin_id_fk: ['', Validators.required],
+      today_sale: [''],
+      deposit_into_bank: ['', ],
+      closing_amount: ['', ],
+      expense: ['', ],
+      account_date: [''],
+      remarks: [''],
+      account_desc: ['' ],
+      cash_in_hand:[''],
+      admin_id_fk: [''],
     })
   }
 
   ngOnInit(): void {
+    this.manageService.getAccount().subscribe(
+      (res:any)=>{
+        this.accountdata = res.data
+        console.log(res)
+      }
+      
+    )
   }
   onSubmit() {
+    console.log(this.addAccount.value);
+    if (!this.editData) {
+      if (this.addAccount.valid) {
+        this.manageService.postAccount(this.addAccount.value).subscribe(
+          (data: any) => {
+            console.log(this.addAccount)
+            this.router.navigate(['/account']);           
+            this.addAccount.reset();
+            this.matref.close('save');
+            this.popup.success({detail:'Success',summary:'Account  Submit Successfully...',sticky:true,position:'tr'})
+          },
+          (error: any) => {
+            console.log(['message']);
+            this.popup.error({detail:'message',summary:'Account  data is not Submit' , sticky:true,position:'tr',})
+          }
+        );
+      }
+    }
+    // else {
+    //   this.updateParty()
+    // }
 
   }
   resetamount() {

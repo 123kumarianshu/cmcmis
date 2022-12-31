@@ -6,24 +6,28 @@
     <form [formGroup]="addAccount">
         <div class="column">
             <mat-form-field appearance="fill">
-                <mat-label>Cash in Hand</mat-label>
-                <input formcontrolName="cash_in_hand" matInput placeholder="Cash in hand " type="number">
-            </mat-form-field><br>
-
+                <mat-label>Cash In Hand </mat-label>
+                <input formControlName="cash_in_hand" matInput placeholder="Cash in Hand" type="number">
+            </mat-form-field>
             <mat-form-field appearance="fill">
-                <mat-label>Today Sale</mat-label>
-                <input formcontrolName="today_sale" matInput placeholder="Today sale" type="number">
-            </mat-form-field><br>
+                <mat-label>Remarks</mat-label>
+                <input formControlName="remarks" matInput placeholder="remarks">
+            </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Expense</mat-label>
                 <input formControlName="expense" matInput placeholder="Expense" type="number">
             </mat-form-field><br>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Today sale</mat-label>
+                <input formControlName="today_sale" matInput placeholder="Today Sale"  type="number">
+            </mat-form-field>
         </div>
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Deposit into Bank</mat-label>
-                <input formControlName="deposit_into_bank" matInput placeholder="Deposit into Bank" type="number">
+                <input formControlName="deposit_into_bank" matInput placeholder="Deposit into Bank" type="  ">
             </mat-form-field><br>
 
             <mat-form-field appearance="fill">
@@ -31,24 +35,20 @@
                 <input formControlName="closing_amount" matInput placeholder="Closing Amount" type="number">
             </mat-form-field><br>
 
-            <mat-form-field appearance="fill" class="date_box">
+            <mat-form-field appearance="fill">
                 <mat-label>Date</mat-label>
-                <input formControlName="Date" matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field><br>
-        </div>
-        <div class="column_1">
+                <input formControlName="account_date" matInput placeholder="Date" type="date">
+            </mat-form-field><br>                  
             <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
-                <input formControlName="remarks" matInput placeholder="Remarks">
+                <input formControlName="account_desc" matInput placeholder="Description">
             </mat-form-field>
-        </div>
+        </div>      
         <div mat-dialog-action [align]="'end'" id="main_button">
             <button mat-raised-button color="warn" (click)="resetamount()" class="reset_btn">Reset</button>
             <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
                 [disabled]="!addAccount.valid">{{actionBtn}}</button>
         </div>
-        <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
+        <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly>
     </form>
 </div>

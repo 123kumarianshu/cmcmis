@@ -268,4 +268,13 @@ export class ManageService {
 
   // for Dues  function starting here
 
+  // for account funcation starting here
+  getAccount() {
+    return this.http.get<[]>('http://localhost/cmcmisapi/account_view.php');
+    }
+
+  postAccount(data: any) {
+    return this.http.post<any>('http://localhost/cmcmisapi/account_insert.php', data);
+  }
+  
 }

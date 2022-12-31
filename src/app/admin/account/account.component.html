@@ -4,7 +4,7 @@
     <mat-icon id="add_account" (click)="add_account()">add_circle</mat-icon>
   </div>
   <div class="count_search">
-    <span class="notice_text"> Total :</span>
+    <span class="notice_text"> Total :{{accountcount}}</span>
     <div class="search">
       <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
     </div>
@@ -24,9 +24,9 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.today_sale}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="today_expense">
+          <ng-container matColumnDef="expense">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Today Expense</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.today_expense}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense}}</td>
           </ng-container>
 
           <ng-container matColumnDef="cash_in_hand">
@@ -44,9 +44,9 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.closing_amount}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="date">
+          <ng-container matColumnDef="account_date">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.date}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.account_date}}</td>
           </ng-container>
 
           <ng-container matColumnDef="remarks">
