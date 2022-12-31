@@ -14,11 +14,15 @@
 
 .puechase_link {
     background-color: #05363c;
-    border-radius: 5px;
+    border-radius: 3px;
     height: 37px;
     font-size: 12px;
     color: whitesmoke;
-    margin: 2px 5px 0px 0px;
+    margin: 5px 5px 0px 0px;
+}
+
+.puechase_link:focus{
+    background-color:#174b50;
 }
 
 .add_btn {
@@ -104,12 +108,13 @@ mat-form-field {
 }
 
 .date_box {
-    width: 205px;
+    width: 198px;
     border: none;
+    border-radius: 3px 3px 0px 0px;
     color: gray;
     border-bottom: 1px solid gray;
     background-color: #ebebeb;
-    padding-top: 16px;
+    padding: 16px 0px 0px 20px;
     height: 52px;
 }
 

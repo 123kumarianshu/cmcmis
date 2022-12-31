@@ -154,24 +154,31 @@ export class ManageService {
   get_purch_item_set_data(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_purch_item_set_data.php', data);
   }
+
   post_purch_desc(data: any) {
     return this.http.post<any>(this.baseUrl + 'purch_desc_insert.php', data);
   }
+
   get_purch_party_data(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_purch_party_view.php', data);
   }
+
   post_purch_party(data: any) {
     return this.http.post<any>(this.baseUrl + 'purch_party_insert.php', data);
   }
+
   get_purch_data_bill_no() {
     return this.http.get<[]>(this.baseUrl + 'get_purch_data_bill_no.php');
   }
+
   purch_desc_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'purch_desc_delete.php', data);
   }
+
   get_purch_desc_view(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_purch_desc_view.php', data)
   }
+
   purch_final_submit(data: any) {
     return this.http.post<any>(this.baseUrl + 'purch_final_submit.php', data);
   }

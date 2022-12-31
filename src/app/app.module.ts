@@ -72,6 +72,7 @@ import { AddEditProductionComponent } from './admin/add-edit-production/add-edit
 import { ProductComponent } from './admin/product/product.component';
 import { AddEditProductComponent } from './admin/add-edit-product/add-edit-product.component';
 import {HashLocationStrategy,LocationStrategy}from'@angular/common';
+import { LoginpageComponent } from './loginpage/loginpage.component';
 
 
 
@@ -124,6 +125,7 @@ import {HashLocationStrategy,LocationStrategy}from'@angular/common';
     AddEditProductionComponent,
     ProductComponent,
     AddEditProductComponent,
+    LoginpageComponent,
     
     
     

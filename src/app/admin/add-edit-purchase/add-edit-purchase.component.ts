@@ -11,7 +11,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { formatDate } from '@angular/common';
 
+
 ///////////////////////////////////////////////////////////////// for Component Starting Here /////////////////////////////////////////////////////
+
 
 @Component({
   selector: 'app-add-edit-purchase',
@@ -20,6 +22,7 @@ import { formatDate } from '@angular/common';
 })
 
 ///////////////////////////////////////////////////////////////// for Export Starting Here /////////////////////////////////////////////////////
+
 
 export class AddEditPurchaseComponent implements OnInit {
   displayedColumns: string[] = ['slno', 'cat_name', 'item_name', 'item_rate', 'item_quantity', 'item_amount', 'Action',];
@@ -60,7 +63,10 @@ export class AddEditPurchaseComponent implements OnInit {
   purch_id: number = 0;
   purchbilldata: any;
 
+
+
   ///////////////////////////////////////////////////////////////// for constructor Starting Here /////////////////////////////////////////////////////
+
 
   constructor(
     private popup: NgToastService,
@@ -73,11 +79,13 @@ export class AddEditPurchaseComponent implements OnInit {
 
   /////////////////////////////////////////////// for Party Get starting ///////////////////////////////////////////
 
+
   ngOnInit(): void {
     this.manageService.getParty().subscribe(
       (party_res: any) => {
         this.party_data = party_res.data
       }
+
     ),
 
       /////////////////////////////////////////////// for Categori Get starting ///////////////////////////////////////////
@@ -85,18 +93,21 @@ export class AddEditPurchaseComponent implements OnInit {
       this.manageService.getCategory().subscribe(
         (cat_res: any) => {
           this.cat_data = cat_res.data
+
         }
       )
-
     /////////////////////////////////////////////// for Categori Get starting ///////////////////////////////////////////
 
     this.manageService.getItem().subscribe(
       (item_res: any) => {
         this.item_data = item_res.data
+
       }
     )
 
+
     /////////////////////////////////////////////// for Party Accessing starting ///////////////////////////////////////////
+
 
     this.party_form = this.fb.group({
       party_id: [''],
@@ -107,6 +118,7 @@ export class AddEditPurchaseComponent implements OnInit {
     })
 
     /////////////////////////////////////////////// for Item Accessing starting ///////////////////////////////////////////
+
 
     this.item_form = this.fb1.group({
       party_id_fk: [''],
@@ -122,7 +134,9 @@ export class AddEditPurchaseComponent implements OnInit {
       admin_id_fk: [''],
     })
 
+
     /////////////////////////////////////////////// for Final Accessing starting ///////////////////////////////////////////
+
 
     this.final_form = this.fb2.group({
       basic_amount: ['', Validators.required],
@@ -142,6 +156,7 @@ export class AddEditPurchaseComponent implements OnInit {
 
   save_next() {
 
+
     this.manageService.get_purch_data_bill_no().subscribe(
       (res: any) => {
         if (res.success == 1) {
@@ -158,6 +173,7 @@ export class AddEditPurchaseComponent implements OnInit {
           (res: any) => {
             console.log(res)
             this.popup.success({ detail: 'Success', summary: 'Party Submit Successfully...', sticky: true, position: 'tr' })
+
           },
           (error: any) => {
             console.log(error)
@@ -166,16 +182,18 @@ export class AddEditPurchaseComponent implements OnInit {
         )
       }
     )
+
   }
 
   /////////////////////////////////////////////// for reset data starting ///////////////////////////////////////////
 
-  resetcustomer() { }
+  resetcustomer() {
+
+  }
 
   party() {
     this.action_text = 'Add party details'
   }
-
   items() {
     this.action_text = 'Add item details'
     const desformdata = new FormData()
@@ -192,7 +210,9 @@ export class AddEditPurchaseComponent implements OnInit {
 
   final_bill() {
     this.action_text = 'Final Submission'
+
   }
+
 
   /////////////////////////////////////////////// for Party id Selection starting ///////////////////////////////////////////
 
@@ -208,9 +228,12 @@ export class AddEditPurchaseComponent implements OnInit {
         this.party_form.controls['party_email'].setValue(this.party_single_data.party_email);
         this.party_form.controls['party_address'].setValue(this.party_single_data.party_address);
         this.item_form.controls['party_id_fk'].setValue(this.party_single_data.party_name)
+
       }
     )
+
   }
+
 
   /////////////////////////////////////////////// for Cat single data Selection starting ///////////////////////////////////////////
 
@@ -275,6 +298,7 @@ export class AddEditPurchaseComponent implements OnInit {
       }
     )
   }
+
   PurchItemDes(row: any) {
     if (confirm("Are you sure to delate")) {
       const deldata = new FormData();
@@ -300,7 +324,16 @@ export class AddEditPurchaseComponent implements OnInit {
   ///////////////////////////////////////////////////// For calculation work end code here /////////////////////////////////////////////////////////
 
 
+
   ///////////////////////////////////////////////////////////////// for Finall Data starting /////////////////////////////////////////////////////
+
+  onFileSelect(event: any) {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      this.final_form.get('purch_bill_img')?.setValue(file);
+      console.log(file)
+    }
+  }
 
   finalsubmit() {
     console.log(this.party_form.get('party_id')?.value)
@@ -322,24 +355,17 @@ export class AddEditPurchaseComponent implements OnInit {
 
     this.manageService.purch_final_submit(finalformdata).subscribe({
       next: (res) => {
-
         console.log(res)
-        this.popup.success({ detail: 'Success', summary: 'update Successfully...', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Final Update Successfully...', sticky: true, position: 'tr' })
       },
-      error: (error) => {
-        console.log(error)
-        this.popup.error({ detail: 'message', summary: 'data not update', sticky: true, position: 'tr', })
+      error: ( error: any) => {
+        this.popup.error({ detail: 'message', summary: 'Final Purchase not update', sticky: true, position: 'tr', })
       }
     })
   }
 
-  onFileSelect(event: any) {
-    if (event.target.files) {
-      const file = event.target.files[0];
-      this.final_form.get('purch_bill_img')?.setValue(file);
-      console.log(file)
-    }
-  }
+
+
 
   ///////////////////////////////////////////////////////////////// for applyFilter starting /////////////////////////////////////////////////////
 
@@ -351,6 +377,8 @@ export class AddEditPurchaseComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+
 }
 
   ///////////////////////////////////////////////////////////////// for TypeScript Ending Data /////////////////////////////////////////////////////

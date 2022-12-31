@@ -29,6 +29,7 @@ import { AddEditPurchaseComponent } from './admin/add-edit-purchase/add-edit-pur
 import { ProductionComponent } from './admin/production/production.component';
 import { MaterialHandoverComponent } from './admin/material-handover/material-handover.component';
 import { ProductComponent } from './admin/product/product.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
 
 
 
@@ -38,7 +39,8 @@ import { ProductComponent } from './admin/product/product.component';
 
 const routes: Routes = [
   
-  {path:'', component:DashboardComponent},
+  {path:'',component:LoginpageComponent},
+  // {path:'', component:DashboardComponent},
   {path:'dashbaord', component:DashboardComponent},
   {path:'party',component:PartyComponent},
   {path:'unit',component:UnitComponent},
