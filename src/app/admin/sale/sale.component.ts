@@ -31,8 +31,10 @@ export class SaleComponent implements OnInit {
 
     this.saleservice.getSale().subscribe(
       (saleresult: any) => {
+        console.log(saleresult.data[0].status)
         this.dataSource = new MatTableDataSource(saleresult.data);
         this.dataSource.sort = this.sort;
+
         this.dataSource.paginator = this.paginator;
         this.sale_total = saleresult.data.length
 
@@ -70,6 +72,16 @@ export class SaleComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  on_draf_bill(data:any){
+   this.route.navigate(['/add_edit_sale'],data);
+
+  }
+
+
+  onPrint(){
+    window.print()
   }
 }
 

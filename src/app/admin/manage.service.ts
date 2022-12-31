@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Party, Unit, gst } from './add_edit_manage';
-import { AreaAllocateComponent } from './area-allocate/area-allocate.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -254,7 +253,7 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_sale_by_bill_no.php', data);
   }
   get_sale_basic_amt(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_sale_by_bill_no.php', data);
+    return this.http.post<any>(this.baseUrl + 'get_sale_amount.php', data);
   }
   get_customer_by_cust_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_customer_by_cust_id.php', data);

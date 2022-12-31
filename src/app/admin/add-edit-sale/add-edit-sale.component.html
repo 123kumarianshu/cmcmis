@@ -114,13 +114,13 @@
 							<mat-form-field appearance="fill">
 								<mat-label>Rate</mat-label>
 								<input formControlName="product_rate" matInput placeholder="unit"
-									(keyup)="total_amt_cal()">
+									(keyup)="desc_amt_cal()">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Quantity</mat-label>
 								<input formControlName="product_quantity" matInput placeholder="Quantity"
-									(keyup)="total_amt_cal()">
+									(keyup)="desc_amt_cal()">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
@@ -227,20 +227,16 @@
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
-								<mat-label>Discount</mat-label>
-								<input type="number" formControlName="sale_discount" matInput placeholder="Discount" (keyup)="payable_amt_cal()">
+								<mat-label>Discount(%)</mat-label>
+								<input type="number" formControlName="sale_discount" matInput placeholder="Discount(%)" (keyup)="disc_amt_cal()">
 							</mat-form-field>
 
-							<!-- <mat-form-field appearance="fill">
-								<mat-label>GST</mat-label>
-								<input type="number" formControlName="sale_gst" matInput placeholder="GST">
-							</mat-form-field> -->
+		
 							<mat-form-field appearance="fill">
-								<mat-label>GST</mat-label>
-								<mat-select formControlName="sale_gst">
-									<mat-option value="18">18</mat-option>
-									<mat-option value="15">15</mat-option>
-									<mat-option value="21">21</mat-option>
+								<mat-label>GST(%)</mat-label>
+								<mat-select formControlName="sale_gst" (valueChange)="gst_amt_cal($event)">
+									<mat-option *ngFor="let gst of gst_data" [value]="gst.gst_in_percentage">{{gst.gst_in_percentage}}</mat-option>
+									
 								</mat-select>
 							</mat-form-field>
 							<br>
@@ -251,7 +247,7 @@
 							</mat-form-field>
 							<mat-form-field appearance="fill">
 								<mat-label>Paid</mat-label>
-								<input type="number" formControlName="sale_paid" matInput placeholder="Paid Amount">
+								<input type="number" formControlName="sale_paid" matInput placeholder="Paid Amount" (keyup)="paid_amt_cal()">
 							</mat-form-field>
 							<mat-form-field appearance="fill">
 								<mat-label>Dues</mat-label>
