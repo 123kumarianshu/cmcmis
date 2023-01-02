@@ -16,17 +16,22 @@ export class BillpageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // console.log(this.saledata)
+    console.log(this.saledata)
     const saledesc = new FormData()
     saledesc.append('salebillno',this.saledata.sale_bill_no)
     this.servies.get_sale_desc(saledesc).subscribe(
       (res:any)=>{
-        console.log(res)
+        // console.log(res)
         this.des_data = res.data
         console.log(res)
       }
     )
     
   }
+
+  onprint(){
+    window.print()
+  }
+
 
 }

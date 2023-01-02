@@ -89,6 +89,8 @@ export class SaleComponent implements OnInit {
 
     this.addsale.open(BillpageComponent, {
       disableClose: true,
+      width:'100%',
+      maxWidth:'100vw',
       data:data,
     }).afterClosed().subscribe(val => {
       if (val === 'save') {
