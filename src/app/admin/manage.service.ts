@@ -16,6 +16,7 @@ export class ManageService {
   ) { }
 
   baseUrl: string = 'http://adityaradhaya.com/api/';
+  // baseUrl: string = 'http://localhost/api/';
 
   // for Dashboard function starting here 
   dashboard_view() {
@@ -248,6 +249,9 @@ export class ManageService {
   }
   put_final_sale(data: any) {
     return this.http.post<any>(this.baseUrl + 'final_sale_update.php', data);
+  }
+  sale_cust_update(data: any) {
+    return this.http.post<any>(this.baseUrl + 'sale_cust_update.php', data);
   }
   get_sale_by_bill_no(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_sale_by_bill_no.php', data);

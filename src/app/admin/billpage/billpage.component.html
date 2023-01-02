@@ -1,0 +1,82 @@
+<div id="wrapper">
+    <span>
+    <table style="width:100%;" class="tbl">
+        <tr>
+          <td><button mat-dialog-close >Back</button></td>
+          <td></td>
+          <td style="text-align: right;">Print</td>
+        </tr>
+        <tr>
+          
+          <td></td>
+          <td class="name_area">ADITYA ARDHIYA</td>
+          <td >Mob:- 6589785421<br>
+             <span style="opacity:0 ;">..........</span> 6532542165  </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="text-align: center;"><b>Address:</b> Deghi Kala , Hajipur , Vaishali (Bihar-844101)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>Bill No: </b> {{ saledata.sale_bill_no}}</td>
+          
+          <td><b>Date:</b> {{saledata.sale_date}}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>Name: </b> {{ saledata.cust_name}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>Address:</b> {{saledata.cust_shop_address}} </td>
+          <td></td>
+        </tr>
+      </table>
+      </span>
+      <br><br>
+      <div class="middel_area">
+      <table class="tbl_calc">
+        <tr>
+            <th>Sl. No.</th>
+            <th>PARTICULARS</th>
+            <th>Qty</th>
+            <th>Amount</th>
+        </tr>
+        <tr *ngFor="let sale of des_data ; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{sale.product_name
+            }}</td>
+            <td>{{sale.sale_dec_quantity}}</td>
+            <td>{{sale.sale_dec_total_amount}}</td>
+        </tr>
+      </table>
+
+      <table class="final_amount">
+        <tr >
+           <th><span style="opacity:0 ;">..............</span></th>
+           <th><span style="opacity:0 ;">...............</span></th>
+            <th>Total:</th>
+            <th >75200</th>
+        </tr>
+      </table>
+      </div><br><br>
+      <table class="tbl_button">
+        <tr><td>1. Good once sold shall not be returned.</td></tr>
+        <tr><td>2. Good once sold shall not be returned.</td></tr>
+        <tr><td>3. Good once sold shall not be returned Good once sold shall .</td></tr>
+        <tr><td>4. Good once sold shall not be returned.</td></tr>
+        <tr><td>5. Good once sold shall not be returned.</td></tr>
+        <tr><td>5. Good once sold shall not be returned.</td></tr>
+        <tr style="text-align: right;width: 100%;"><td>Authorised Signatory </td></tr>
+      </table>
+</div>
+
+<table id="row_tbl">
+    <td><span style="opacity:0 ;">..............</span></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</table>

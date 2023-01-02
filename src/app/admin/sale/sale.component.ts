@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { Router } from '@angular/router';
 import { AddEditSaleComponent } from '../add-edit-sale/add-edit-sale.component';
+import { BillpageComponent } from '../billpage/billpage.component';
 
 
 @Component({
@@ -25,7 +26,9 @@ export class SaleComponent implements OnInit {
     private addsale:MatDialog
 
 
-  ) { }
+  ) {
+    // this.onPrint()
+   }
 
   ngOnInit(): void {
 
@@ -78,10 +81,21 @@ export class SaleComponent implements OnInit {
    this.route.navigate(['/add_edit_sale'],data);
 
   }
+  on_cancel_bill(){
+    alert("do you reallye ")
+  }
 
+  onPrint(data:any){
 
-  onPrint(){
-    window.print()
+    this.addsale.open(BillpageComponent, {
+      disableClose: true,
+      data:data,
+    }).afterClosed().subscribe(val => {
+      if (val === 'save') {
+        this.ngOnInit();
+      }
+    })
+    
   }
 }
 
