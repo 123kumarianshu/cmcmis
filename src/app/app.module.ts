@@ -75,6 +75,7 @@ import {HashLocationStrategy,LocationStrategy}from'@angular/common';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { BillpageComponent } from './admin/billpage/billpage.component';
 import {MatCardModule} from '@angular/material/card';
+import { CancelBillComponent } from './admin/cancel-bill/cancel-bill.component';
 
 
 
@@ -130,6 +131,7 @@ import {MatCardModule} from '@angular/material/card';
     AddEditProductComponent,
     LoginpageComponent,
     BillpageComponent,
+    CancelBillComponent,
     
     
     

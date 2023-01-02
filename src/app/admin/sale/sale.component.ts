@@ -7,6 +7,7 @@ import { ManageService } from '../manage.service';
 import { Router } from '@angular/router';
 import { AddEditSaleComponent } from '../add-edit-sale/add-edit-sale.component';
 import { BillpageComponent } from '../billpage/billpage.component';
+import { CancelBillComponent } from '../cancel-bill/cancel-bill.component';
 
 
 @Component({
@@ -15,20 +16,20 @@ import { BillpageComponent } from '../billpage/billpage.component';
   styleUrls: ['./sale.component.css']
 })
 export class SaleComponent implements OnInit {
-  displayedColumns: string[] = ['slno','cust_name', 'sale_bill_number', 'sale_basic_amount', 'sale_discount','sale_gst','gross_amount','sale_paid','sale_dues', 'sale_date', 'Action',];
+  displayedColumns: string[] = ['slno', 'cust_name', 'sale_bill_number', 'sale_basic_amount', 'sale_discount', 'sale_gst', 'gross_amount', 'sale_paid', 'sale_dues', 'sale_date', 'Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  sale_total:any
+  sale_total: any
   constructor(
-    private route: Router,  
+    private route: Router,
     private saleservice: ManageService,
-    private addsale:MatDialog
+    private addsale: MatDialog
 
 
   ) {
     // this.onPrint()
-   }
+  }
 
   ngOnInit(): void {
 
@@ -59,7 +60,7 @@ export class SaleComponent implements OnInit {
   //   })
   // }
 
-  addSale(){
+  addSale() {
     this.addsale.open(AddEditSaleComponent, {
       disableClose: true
     }).afterClosed().subscribe(val => {
@@ -77,27 +78,36 @@ export class SaleComponent implements OnInit {
     }
   }
 
-  on_draf_bill(data:any){
-   this.route.navigate(['/add_edit_sale'],data);
+  on_draf_bill(data: any) {
+    this.route.navigate(['/add_edit_sale'], data);
 
   }
-  on_cancel_bill(){
-    alert("do you reallye ")
-  }
-
-  onPrint(data:any){
-
-    this.addsale.open(BillpageComponent, {
+  on_cancel_bill(data:any) {
+    this.addsale.open(CancelBillComponent,{
       disableClose: true,
-      width:'100%',
-      maxWidth:'100vw',
-      data:data,
+      data: data,
     }).afterClosed().subscribe(val => {
       if (val === 'save') {
         this.ngOnInit();
       }
     })
     
+
+
+  }
+
+  onPrint(data: any) {
+    this.addsale.open(BillpageComponent, {
+      disableClose: true,
+      width: '100%',
+      maxWidth: '100vw',
+      data: data,
+    }).afterClosed().subscribe(val => {
+      if (val === 'save') {
+        this.ngOnInit();
+      }
+    })
+
   }
 }
 

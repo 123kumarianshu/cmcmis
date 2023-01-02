@@ -16,12 +16,22 @@ export class SaleCancelComponent implements OnInit {
 
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
+      sale_total:any
       constructor(
-        private addcustomer: MatDialog,
-        private customerservice: ManageService,
+        private servies: ManageService,
       ) { }
 
   ngOnInit(): void {
+    this.servies.get_sale_cancel_view().subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.dataSource = new MatTableDataSource(res.data);
+        this.dataSource.sort = this.sort;
+
+        this.dataSource.paginator = this.paginator;
+        this.sale_total = res.data.length
+      }
+    )
   }
 
   

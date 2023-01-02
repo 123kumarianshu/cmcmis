@@ -238,6 +238,9 @@ export class ManageService {
   getSale() {
     return this.http.get<[]>(this.baseUrl + 'sale_view.php');
   }
+  get_sale_cancel_view() {
+    return this.http.get<[]>(this.baseUrl + 'sale_cancel_view.php');
+  }
   postSale(data: any) {
     return this.http.post<any>(this.baseUrl + 'sale_insert.php', data);
   }
@@ -252,6 +255,9 @@ export class ManageService {
   }
   sale_cust_update(data: any) {
     return this.http.post<any>(this.baseUrl + 'sale_cust_update.php', data);
+  }
+  cancel_sale_bill(data: any) {
+    return this.http.post<any>(this.baseUrl + 'sale_bill_cancel.php', data);
   }
   get_sale_by_bill_no(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_sale_by_bill_no.php', data);

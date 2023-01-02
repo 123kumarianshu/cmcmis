@@ -1,0 +1,19 @@
+<mat-toolbar>
+    <span class="example-spacer">are you sure want to cancel</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div mat-dialog-content>
+    <form [formGroup]="msgform" novalidate>
+       
+        <h1> Bill No: {{editData.sale_bill_no}}</h1>
+        <mat-form-field appearance="fill" class="textarea"  >
+            <mat-label>Cancel Reason</mat-label>
+            <textarea formControlName="msg" matInput
+                placeholder=" cancel reason"></textarea>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+        [disabled]="!msgform.valid">Submit</button>
+</div>
