@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { formatDate } from '@angular/common';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit-sale',
@@ -41,7 +42,10 @@ export class AddEditSaleComponent implements OnInit {
   salebillformdata: any;
   salebilldata: any;
   gst_data: any;
+  draft_data:any;
+  sale_edit_data:any
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private fb1: FormBuilder,
     private fb2: FormBuilder,
@@ -49,7 +53,11 @@ export class AddEditSaleComponent implements OnInit {
     private manageService: ManageService,
     // @Inject(MAT_DIALOG_DATA) public editData: any,
     // private matref: MatDialogRef<AddEditSaleComponent>
-  ) { }
+  ) { 
+    const navigation = this.router.getCurrentNavigation();
+    this.draft_data = navigation?.extras
+    console.log(this.draft_data)
+  }
 
   ngOnInit(): void {
 
@@ -64,12 +72,12 @@ export class AddEditSaleComponent implements OnInit {
         this.cat_data = cat_res.data
       }
     )
-
-    this.manageService.getProduct().subscribe(
-      (prod_res: any) => {
-        this.prod_data = prod_res.data
+    this.manageService.getGst().subscribe(
+      (gst_res: any) => {
+        this.gst_data = gst_res.data
       }
     )
+
 
 
     //////////// for customer table /////////////
@@ -77,9 +85,9 @@ export class AddEditSaleComponent implements OnInit {
       cust_id: [''],
       cust_name: ['', Validators.required],
       cust_contact_no: ['', Validators.required],
-      cust_email: ['', Validators.required],
+      cust_email: [''],
       cust_shop_address: ['', Validators.required],
-      admin_id_fk: ['', Validators.required],
+      admin_id_fk: [''],
     })
     /////////////////// for product table ////////////////////////
     this.saleformprod = this.fb1.group({
@@ -108,8 +116,31 @@ export class AddEditSaleComponent implements OnInit {
       admin_id_fk: [''],
       cust_name: [''],
     })
+
+
+    if(this.draft_data){
+      this.actionBtn = 'Update'
+      const drapformdata = new FormData()
+      drapformdata.append('sale_bill_no',this.draft_data.sale_bill_no)
+      this.manageService.get_sale_by_bill_no(drapformdata).subscribe(
+        (res:any)=>{
+          console.log(res)
+          this.sale_edit_data = res.data
+          this.sale_bill_no = this.sale_edit_data[0].sale_bill_no
+          this.saleformcust.controls['cust_id'].setValue(this.sale_edit_data[0].cust_id);
+          this.saleformcust.controls['cust_name'].setValue(this.sale_edit_data[0].cust_name);
+          this.saleformcust.controls['cust_contact_no'].setValue(this.sale_edit_data[0].cust_contact_no);
+          this.saleformcust.controls['cust_email'].setValue(this.sale_edit_data[0].cust_email);
+          this.saleformcust.controls['cust_shop_address'].setValue(this.sale_edit_data[0].cust_shop_address);
+          this.saleformprod.controls['cust_name'].setValue(this.sale_edit_data[0].cust_name);
+        }
+      )
+
+      
+    }
   }
   AddCustomer() {
+    if(!this.draft_data){
     this.manageService.getSale().subscribe(
       (res: any) => {
         if (res.success == 1) {
@@ -141,6 +172,7 @@ export class AddEditSaleComponent implements OnInit {
 
 
   }
+}
 
   /////// function for add product in sale desc tbl ////////////
   AddProduct() {
@@ -256,18 +288,16 @@ export class AddEditSaleComponent implements OnInit {
     )
   }
   final_bill() {
+
+    this.saleformfinal.controls['sale_date'].setValue( new Date().toISOString().slice(0, 10))
     this.action_text = 'Final Submission'
 
     const salebillformdata = new FormData()
     salebillformdata.append('salebillno', this.salebilldata['0'].sale_bill_no)
 
-    // salebillformdata.append('sale_bill_no', String(this.sale_bill_no))
-
     this.manageService.get_sale_by_bill_no(salebillformdata).subscribe(
       (res: any) => {
         this.salebilldata = res.data
-        this.saleformfinal.controls['sale_id_fk'].setValue(this.salebilldata['0'].sale_id);
-        // console.log(this.salebilldata['0'].sale_id)
 
       }
     )
@@ -280,9 +310,11 @@ export class AddEditSaleComponent implements OnInit {
       (amount: any) => {
         console.log(amount.data[0].basic_amount)
         this.saleformfinal.controls['sale_total_amount'].setValue(amount.data[0].basic_amount)
+        this.saleformfinal.controls['sale_gross_amount'].setValue(amount.data[0].basic_amount)
 
       }
     )
+   
   }
 
   ////////////////////// for customer id Selection starting //////////////////////
@@ -311,6 +343,7 @@ export class AddEditSaleComponent implements OnInit {
     catformdata.append('cat_id', event)
     this.manageService.get_product_by_cat_id(catformdata).subscribe(
       (res: any) => {
+        console.log(res)
         this.prod_data = res.data
       }
     )
@@ -323,14 +356,15 @@ export class AddEditSaleComponent implements OnInit {
     prodformdata.append('product_id', event)
     this.manageService.get_product_by_product_id(prodformdata).subscribe(
       (res: any) => {
+        console.log(res)
         this.prod_single_data = res.data
-        this.saleformprod.controls['cat_id'].setValue(this.prod_single_data.product_cat_id_fk);
+        this.saleformprod.controls['cat_id'].setValue(this.prod_single_data.cat_id_fk);
         this.saleformprod.controls['product_id'].setValue(this.prod_single_data.product_id);
         this.saleformprod.controls['product_size_id'].setValue(this.prod_single_data.size_name);
         this.saleformprod.controls['product_weight_id'].setValue(this.prod_single_data.weight_name);
         this.saleformprod.controls['product_page'].setValue(this.prod_single_data.product_page);
         this.saleformprod.controls['product_unit_id'].setValue(this.prod_single_data.unit_name);
-        this.saleformprod.controls['product_rate'].setValue(this.prod_single_data.product_rate_price);
+        this.saleformprod.controls['product_rate'].setValue(this.prod_single_data.product_retail_price);
 
       }
     )
@@ -378,14 +412,19 @@ export class AddEditSaleComponent implements OnInit {
   }
 
   //For calculation work start code here
-  total_amt_cal() {
+  desc_amt_cal() {
     this.saleformprod.controls['product_total_amount'].setValue(this.saleformprod.get('product_rate')?.value * this.saleformprod.get('product_quantity')?.value)
   }
-  //For calculation work end code here
+ 
 
-  //For calculation work start code here
-  payable_amt_cal() {
-    this.saleformfinal.controls['sale_gross_amount'].setValue(this.saleformfinal.get('sale_total_amount')?.value - this.saleformfinal.get('sale_discount')?.value)
+  disc_amt_cal() {
+    this.saleformfinal.controls['sale_gross_amount'].setValue((this.saleformfinal.get('sale_total_amount')?.value) - (this.saleformfinal.get('sale_total_amount')?.value * this.saleformfinal.get('sale_discount')?.value)/100)
+  }
+  gst_amt_cal(event:any){
+    this.saleformfinal.controls['sale_gross_amount'].setValue((this.saleformfinal.get('sale_gross_amount')?.value) + (this.saleformfinal.get('sale_gross_amount')?.value * event)/100)
+  }
+  paid_amt_cal(){
+    this.saleformfinal.controls['sale_dues'].setValue((this.saleformfinal.get('sale_gross_amount')?.value) - (this.saleformfinal.get('sale_paid')?.value ))
   }
   //For calculation work end code here
 }

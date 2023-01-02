@@ -67,8 +67,9 @@
           <ng-container matColumnDef="Action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
             <td class="data" mat-cell *matCellDef="let row">
-              <mat-icon>visibility</mat-icon>
-              <mat-icon>description</mat-icon>
+              <mat-icon [hidden]="row.status !=1" (click)="onPrint()">print</mat-icon>
+              <mat-icon [hidden]="row.status !=1">visibility</mat-icon>
+              <mat-icon [hidden]="row.status !=0" (click)="on_draf_bill(row)">description</mat-icon>
               <mat-icon>cancel</mat-icon>
             </td>
           </ng-container>
