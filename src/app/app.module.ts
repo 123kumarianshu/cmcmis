@@ -74,6 +74,8 @@ import { AddEditProductComponent } from './admin/add-edit-product/add-edit-produ
 import {HashLocationStrategy,LocationStrategy}from'@angular/common';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { BillpageComponent } from './admin/billpage/billpage.component';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 
@@ -166,6 +168,7 @@ import { BillpageComponent } from './admin/billpage/billpage.component';
     NgToastModule ,
     MatMenuModule,
     NgxUiLoaderModule,
+    MatCardModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true,
     }),
