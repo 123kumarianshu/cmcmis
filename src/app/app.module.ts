@@ -73,6 +73,7 @@ import { ProductComponent } from './admin/product/product.component';
 import { AddEditProductComponent } from './admin/add-edit-product/add-edit-product.component';
 import {HashLocationStrategy,LocationStrategy}from'@angular/common';
 import { LoginpageComponent } from './loginpage/loginpage.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -164,6 +165,7 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
     NgToastModule ,
     MatMenuModule,
     NgxUiLoaderModule,
+    MatCardModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true,
     }),
