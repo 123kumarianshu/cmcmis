@@ -37,6 +37,7 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
 
 
 
+
 const routes: Routes = [
   
   {path:'',component:LoginpageComponent},

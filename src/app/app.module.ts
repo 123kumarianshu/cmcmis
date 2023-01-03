@@ -73,6 +73,10 @@ import { ProductComponent } from './admin/product/product.component';
 import { AddEditProductComponent } from './admin/add-edit-product/add-edit-product.component';
 import {HashLocationStrategy,LocationStrategy}from'@angular/common';
 import { LoginpageComponent } from './loginpage/loginpage.component';
+import { BillpageComponent } from './admin/billpage/billpage.component';
+import {MatCardModule} from '@angular/material/card';
+import { CancelBillComponent } from './admin/cancel-bill/cancel-bill.component';
+
 
 
 
@@ -126,6 +130,8 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
     ProductComponent,
     AddEditProductComponent,
     LoginpageComponent,
+    BillpageComponent,
+    CancelBillComponent,
     
     
     
@@ -164,6 +170,7 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
     NgToastModule ,
     MatMenuModule,
     NgxUiLoaderModule,
+    MatCardModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true,
     }),

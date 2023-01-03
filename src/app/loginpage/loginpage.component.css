@@ -1,0 +1,95 @@
+#wrapper {
+    width: 100%;
+    height: 100vh;
+    background-image: url(/assets/login3.jpg );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    float: left;
+}
+.example-card{
+    max-width: 350px;
+    height: 400px;
+    /* position: fixed; */
+    /* top: 200px; */
+    /* left: 44%; */
+    margin: 200px auto;
+    box-sizing: border-box;
+    background-color: #14595c;
+    opacity: 0.8;
+}
+mat-card-header {
+    color:  #02c2cd;
+    font-size: 25px;
+    padding:20px 0px 0px 50px;
+    margin-bottom: 35px;
+}
+mat-card-content{
+    color: white;
+}
+mat-form-field {
+    width: 92%;
+    float: right;
+    margin-top: 10px;
+}
+::placeholder {
+    color: whitesmoke;
+}
+
+mat-form-field mat-label {
+    color: rgb(243, 239, 239);
+}
+.icon_1{
+    position: relative;
+    top:25px;
+    right: 4px;
+
+}
+.icon_2{
+    position: relative;
+    top: 70px;
+    right: 4px;
+}
+
+mat-card-actions{
+    width: 100%;
+    height: auto;
+    margin-left:110px;
+}
+mat-card-actions button{
+    width: 80px;
+    color: white;
+    background-color: #5ad2d8;
+    margin-top: 20px;
+}
+p{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+.footer{
+    width: 100%;
+    height: 40px;
+    background-color:#14595c;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    position: fixed;
+    bottom: 0px;
+}
+@media (max-width:460px){
+    .example-card{
+        width: 310px;
+        height: 400px;
+       
+    }
+    mat-form-field{
+        width: 90%;
+    }
+    mat-card-header{
+        font-size: 20px;
+    }
+    p{
+        font-size: 18px;
+    }
+}

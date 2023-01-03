@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Party, Unit, gst } from './add_edit_manage';
-import { AreaAllocateComponent } from './area-allocate/area-allocate.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +16,7 @@ export class ManageService {
   ) { }
 
   baseUrl: string = 'http://adityaradhaya.com/api/';
+  // baseUrl: string = 'http://localhost/api/';
 
   // for Dashboard function starting here 
   dashboard_view() {
@@ -238,6 +238,9 @@ export class ManageService {
   getSale() {
     return this.http.get<[]>(this.baseUrl + 'sale_view.php');
   }
+  get_sale_cancel_view() {
+    return this.http.get<[]>(this.baseUrl + 'sale_cancel_view.php');
+  }
   postSale(data: any) {
     return this.http.post<any>(this.baseUrl + 'sale_insert.php', data);
   }
@@ -250,11 +253,17 @@ export class ManageService {
   put_final_sale(data: any) {
     return this.http.post<any>(this.baseUrl + 'final_sale_update.php', data);
   }
+  sale_cust_update(data: any) {
+    return this.http.post<any>(this.baseUrl + 'sale_cust_update.php', data);
+  }
+  cancel_sale_bill(data: any) {
+    return this.http.post<any>(this.baseUrl + 'sale_bill_cancel.php', data);
+  }
   get_sale_by_bill_no(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_sale_by_bill_no.php', data);
   }
   get_sale_basic_amt(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_sale_by_bill_no.php', data);
+    return this.http.post<any>(this.baseUrl + 'get_sale_amount.php', data);
   }
   get_customer_by_cust_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_customer_by_cust_id.php', data);
