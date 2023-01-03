@@ -54,6 +54,11 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.remarks}}</td>
           </ng-container>
 
+          <ng-container matColumnDef="Action">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+            <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="editaccount(row)">edit</mat-icon></td>
+          </ng-container>
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr class="mat-row" *matNoDataRow>

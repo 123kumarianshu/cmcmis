@@ -280,9 +280,12 @@ export class ManageService {
   // for account funcation starting here
   getAccount() {
     return this.http.get<[]>(this.baseUrl + 'account_view.php');
-  }
+  } 
   postAccount(data: any) {
     return this.http.post<any>(this.baseUrl + 'account_insert.php', data);
+  } 
+   putAccount(data: any) {
+    return this.http.put<any>( this.baseUrl +'account_update.php', data);
   }
 
   // for expense function stating...
@@ -296,5 +299,4 @@ export class ManageService {
   put_expense(data: any,) {
     return this.http.put<any>(this.baseUrl + 'expense_update.php', data);
   }
-
 }
