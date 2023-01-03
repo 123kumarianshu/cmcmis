@@ -12,7 +12,7 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-      displayedColumns: string[] = ['slno', 'today_sale', 'cash_in_hand','expense', 'deposit_into_bank','closing_amount','account_date','remarks'];
+      displayedColumns: string[] = ['slno', 'today_sale', 'cash_in_hand','expense', 'deposit_into_bank','closing_amount','account_date','remarks','Action',];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;

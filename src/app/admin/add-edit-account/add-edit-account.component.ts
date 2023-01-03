@@ -26,14 +26,14 @@ export class AddEditAccountComponent implements OnInit {
   ) {
     this.addAccount = this.fb.group({
       account_id: [''],
-      today_sale: [''],
-      deposit_into_bank: ['', ],
-      closing_amount: ['', ],
-      expense: ['', ],
-      account_date: [''],
-      remarks: [''],
-      account_desc: ['' ],
-      cash_in_hand:[''],
+      today_sale: ['',Validators.required],
+      deposit_into_bank: ['',Validators.required],
+      closing_amount: ['',Validators.required],
+      expense: ['',Validators.required],
+      account_date: ['',Validators.required],
+      remarks: ['',Validators.required],
+      account_desc: ['',Validators.required],
+      cash_in_hand:['',Validators.required],
       admin_id_fk: [''],
     })
   }
@@ -46,6 +46,21 @@ export class AddEditAccountComponent implements OnInit {
       }
       
     )
+    console.log(this.editData)
+    if (this.editData) {
+      console.log(this.editData)
+      this.actionBtn = 'Update'
+      this.addAccount.controls['account_id'].setValue(this.editData.account_id);
+      this.addAccount.controls['today_sale'].setValue(this.editData.today_sale);
+      this.addAccount.controls['deposit_into_bank'].setValue(this.editData.deposit_into_bank);
+      this.addAccount.controls['closing_amount'].setValue(this.editData.closing_amount);
+      this.addAccount.controls['expense'].setValue(this.editData.expense);
+      this.addAccount.controls['account_date'].setValue(this.editData.account_date);
+      this.addAccount.controls['remarks'].setValue(this.editData.remarks);
+      this.addAccount.controls['account_desc'].setValue(this.editData.account_desc);
+      this.addAccount.controls['cash_in_hand'].setValue(this.editData.cash_in_hand);
+      this.addAccount.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
+    }
   }
   onSubmit() {
     console.log(this.addAccount.value);
@@ -66,12 +81,31 @@ export class AddEditAccountComponent implements OnInit {
         );
       }
     }
-    // else {
-    //   this.updateParty()
-    // }
-
-  }
-  resetamount() {
+    else {
+      this.updateaccount()
+    } 
+  } 
+  updateaccount() {
+    if (this.addAccount.valid) {
+        this.manageService.putAccount(this.addAccount.value).subscribe(
+         (res: any) => {  
+           console.log(res)
+           this.router.navigate(['/account']);           
+           this.addAccount.reset();
+          this.matref.close('save');
+          this.popup.success({detail:'Success',summary:'Account  Update Successfully...',sticky:true,position:'tr'})
+        },
+        (error: any) => {
+          console.log(['message']);
+            this.popup.error({detail:'message',summary:'Account data is not  Update', sticky:true,position:'tr'})        
+ 
+         }
+       );
+     }
+ 
+   }
+   resetaccount() {
+    this.addAccount.reset();
 
   }
 

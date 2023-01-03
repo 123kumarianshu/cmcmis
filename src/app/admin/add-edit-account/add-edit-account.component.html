@@ -5,24 +5,23 @@
 <div>
     <form [formGroup]="addAccount">
         <div class="column">
+            <input type="number" formControlName="account_id" readonly hidden>
             <mat-form-field appearance="fill">
                 <mat-label>Cash In Hand </mat-label>
                 <input formControlName="cash_in_hand" matInput placeholder="Cash in Hand" type="number">
             </mat-form-field>
             <mat-form-field appearance="fill">
-                <mat-label>Remarks</mat-label>
-                <input formControlName="remarks" matInput placeholder="remarks">
+                <mat-label>Today sale</mat-label>
+                <input formControlName="today_sale" matInput placeholder="Today Sale"  type="number">
             </mat-form-field>
-
             <mat-form-field appearance="fill">
                 <mat-label>Expense</mat-label>
                 <input formControlName="expense" matInput placeholder="Expense" type="number">
             </mat-form-field><br>
-
             <mat-form-field appearance="fill">
-                <mat-label>Today sale</mat-label>
-                <input formControlName="today_sale" matInput placeholder="Today Sale"  type="number">
-            </mat-form-field>
+                <mat-label>Remarks</mat-label>
+                <input formControlName="remarks" matInput placeholder="remarks">
+            </mat-form-field>         
         </div>
         <div class="column">
             <mat-form-field appearance="fill">
@@ -45,10 +44,10 @@
             </mat-form-field>
         </div>      
         <div mat-dialog-action [align]="'end'" id="main_button">
-            <button mat-raised-button color="warn" (click)="resetamount()" class="reset_btn">Reset</button>
+            <button mat-raised-button color="warn" (click)="resetaccount()" class="reset_btn">Reset</button>
             <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
                 [disabled]="!addAccount.valid">{{actionBtn}}</button>
         </div>
-        <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly>
+        <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
     </form>
 </div>
