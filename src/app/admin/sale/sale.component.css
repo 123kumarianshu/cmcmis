@@ -21,22 +21,27 @@
 
 .notice_text {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+    font-style: italic;
+    font-size: 16px;}
 
 .count_search {
     height: 40px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
     box-sizing: border-box;
     color: #0d5e58;
+}
+
+.count_search .notice_text {
+    font-size: 16px;
 }
 
 .search input {
     border-bottom: 1px solid #0a4547;
     outline: none;
-    padding: 5px;
+    padding: 7px 2px 6px 7px;
     background-color: whitesmoke;
     position: relative;
     top: -5px;
@@ -51,7 +56,7 @@ mat-icon {
 }
 
 #table {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -60,7 +65,8 @@ mat-icon {
     color: white;
     background-color: #0f575a;
     height: 40px;
-    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 tr:nth-child(even) {
@@ -77,14 +83,12 @@ tr:hover {
     color: aliceblue;
     cursor: pointer;
 }
-
+.mat-row:hover>.mat-cell {
+    color: white
+}
 ng-container {
     text-align: center;
    
-}
-
-.cotainer {
-    margin-top: 5px;
 }
 
 .mat-form-field {
@@ -92,9 +96,91 @@ ng-container {
     width: 100%;
 }
 
-.data:hover {
-    color: white;
-}
 td.mat-cell, th.mat-header-cell {
     justify-content:center;
+}
+
+/* //////////////////////////table media q//////////////////////////// */
+@media(min-width:461px) and (max-width:1180px) {
+    #wrapper {
+        overflow-x: hidden;
+    }
+
+    .cotainer {
+        overflow-x: auto;
+    }
+
+    mat-paginator {
+        position: absolute;
+        width: 100%;
+    }
+    .notice_text {
+        font-size: 14px;
+    }
+
+    .count_search .notice_text {
+        font-size: 14px;
+    }
+
+    table th {
+        font-size: 14px;
+    }
+
+    table td {
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width:460px) {
+    #wrapper {
+        overflow-x: hidden;
+    }
+
+    .cotainer {
+        overflow-x: auto;
+    }
+
+    mat-paginator {
+        position: absolute;
+        width: 100%;
+    }
+
+
+    .notice_text {
+        font-size: 13px;
+    }
+
+    .count_search .notice_text {
+        font-size: 13px;
+    }
+    /* table mat-icon{
+        font-size: 18px;
+    } */
+    table th {
+        font-size: 13px;
+    }
+
+    table td {
+        font-size: 13px;
+    }
+
+    th.mat-header-cell:first-of-type {
+        padding-left: 13px;
+    }
+
+    th.mat-header-cell:last-of-type {
+        padding-right: 0px;
+        width: 0%;
+    }
+
+    td.mat-cell:first-of-type {
+        padding-left: 20px;
+    }
+
+    td.mat-cell:last-of-type {
+        padding-right: 0px;
+        padding-left: 10px;
+    }
+
 }
