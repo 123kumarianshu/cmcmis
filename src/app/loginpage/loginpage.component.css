@@ -11,9 +11,6 @@
 .example-card{
     max-width: 350px;
     height: 400px;
-    /* position: fixed; */
-    /* top: 200px; */
-    /* left: 44%; */
     margin: 200px auto;
     box-sizing: border-box;
     background-color: #14595c;
@@ -44,8 +41,8 @@ mat-form-field mat-label {
     position: relative;
     top:25px;
     right: 4px;
-
 }
+
 .icon_2{
     position: relative;
     top: 70px;
