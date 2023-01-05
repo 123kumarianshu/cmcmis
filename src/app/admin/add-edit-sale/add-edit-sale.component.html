@@ -16,16 +16,19 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Customer Id</mat-label>
-								<input formControlName="cust_id" matInput placeholder="Customer Id" >
+								<input formControlName="cust_id" matInput placeholder="Customer Id">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Customer</mat-label>
-								<mat-select formControlName="cust_id" (valueChange)="getCust($event)" [disabled]="this.draft_data.status == 1" >
+								<mat-select formControlName="cust_id" (valueChange)="getCust($event)"
+									[disabled]="this.draft_data.status == 1">
 									<mat-option *ngFor="let cust of cust_data"
 										[value]="cust.cust_id">{{cust.cust_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
+						</div>
+						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Mobile</mat-label>
@@ -38,6 +41,9 @@
 								<input type="email" formControlName="cust_email" matInput placeholder="Email" readonly>
 							</mat-form-field>
 							<br>
+						</div>
+						<div class="column_1">
+
 							<mat-form-field appearance="fill" class="textarea_box">
 								<mat-label>Address</mat-label>
 								<textarea type="text" formControlName="cust_shop_address" matInput placeholder="Address"
@@ -48,9 +54,9 @@
 							hidden>
 
 					</form>
-					<div mat-dialog-action [align]="'end'">
-						<button [hidden]="sale_action_btn" mat-raised-button (click)="AddCustomer()" class="add_btn" type="submit"
-							style="background-color: #0d5e58; color: white;"
+					<div mat-dialog-action [align]="'end'" id="main_button">
+						<button [hidden]="sale_action_btn" mat-raised-button (click)="AddCustomer()" class="add_btn"
+							type="submit" style="background-color: #0d5e58; color: white;"
 							[disabled]="!saleformcust.valid">{{actionBtn}}</button>
 					</div>
 				</div>
@@ -77,15 +83,19 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Category</mat-label>
-								<mat-select formControlName="cat_id" (valueChange)="getCat($event)" [disabled]="this.draft_data.status == 1">
+								<mat-select formControlName="cat_id" (valueChange)="getCat($event)"
+									[disabled]="this.draft_data.status == 1">
 									<mat-option *ngFor="let cat of cat_data"
 										[value]="cat.cat_id">{{cat.cat_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
+						</div>
+						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Product</mat-label>
-								<mat-select formControlName="product_id" (valueChange)="getProd($event)" [disabled]="this.draft_data.status == 1">
+								<mat-select formControlName="product_id" (valueChange)="getProd($event)"
+									[disabled]="this.draft_data.status == 1">
 									<mat-option *ngFor="let prod of prod_data"
 										[value]="prod.product_id">{{prod.product_name}}</mat-option>
 								</mat-select>
@@ -95,16 +105,20 @@
 								<mat-label>Size</mat-label>
 								<input formControlName="product_size_id" matInput placeholder="Size" readonly>
 							</mat-form-field>
+						</div>
+						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Weight</mat-label>
 								<input formControlName="product_weight_id" matInput placeholder="Weight" readonly>
 							</mat-form-field>
-							<br>
+							<!-- <br> -->
 							<mat-form-field appearance="fill">
 								<mat-label>Unit</mat-label>
 								<input formControlName="product_unit_id" matInput placeholder="unit" readonly>
 							</mat-form-field>
+						</div>
+						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Page</mat-label>
@@ -116,6 +130,8 @@
 								<input formControlName="product_rate" matInput placeholder="unit"
 									(keyup)="desc_amt_cal()">
 							</mat-form-field>
+						</div>
+						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Quantity</mat-label>
@@ -143,63 +159,72 @@
 								<input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
 							</div>
 						</div>
-						<form>
-							<div class="mat-elevation-z8">
-								<table mat-table [dataSource]="dataSource" matSort id="table">
-									<ng-container matColumnDef="slno">
-										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
-										<td class="data" mat-cell *matCellDef="let row; let i = index;">
-											{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
-									</ng-container>
+						<div id="table_area">
+							<form>
+								<div class="mat-elevation-z8">
+									<table mat-table [dataSource]="dataSource" matSort id="table">
+										<ng-container matColumnDef="slno">
+											<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
+											<td class="data" mat-cell *matCellDef="let row; let i = index;">
+												{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
+										</ng-container>
 
 
-									<ng-container matColumnDef="cat_name">
-										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category
-										</th>
-										<td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
-									</ng-container>
+										<ng-container matColumnDef="cat_name">
+											<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category
+											</th>
+											<td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
+										</ng-container>
 
-									<ng-container matColumnDef="product_name">
-										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product Name
-										</th>
-										<td class="data" mat-cell *matCellDef="let row">{{row.product_name}}</td>
-									</ng-container>
+										<ng-container matColumnDef="product_name">
+											<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product
+												Name
+											</th>
+											<td class="data" mat-cell *matCellDef="let row">{{row.product_name}}</td>
+										</ng-container>
 
-									<ng-container matColumnDef="product_rate">
-										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
-										<td class="data" mat-cell *matCellDef="let row">{{row.sale_rate}}</td>
-									</ng-container>
+										<ng-container matColumnDef="product_rate">
+											<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
+											<td class="data" mat-cell *matCellDef="let row">{{row.sale_rate}}</td>
+										</ng-container>
 
-									<ng-container matColumnDef="product_quantity">
-										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity
-										</th>
-										<td class="data" mat-cell *matCellDef="let row">{{row.sale_dec_quantity}}</td>
-									</ng-container>
+										<ng-container matColumnDef="product_quantity">
+											<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity
+											</th>
+											<td class="data" mat-cell *matCellDef="let row">{{row.sale_dec_quantity}}
+											</td>
+										</ng-container>
 
-									<ng-container matColumnDef="product_amount">
-										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Amount
-										</th>
-										<td class="data" mat-cell *matCellDef="let row">{{row.sale_dec_total_amount}}
-										</td>
-									</ng-container>
+										<ng-container matColumnDef="product_amount">
+											<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Amount
+											</th>
+											<td class="data" mat-cell *matCellDef="let row">
+												{{row.sale_dec_total_amount}}
+											</td>
+										</ng-container>
 
-									<ng-container matColumnDef="Action">
-										<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-										<td class="data" mat-cell *matCellDef="let row"> <mat-icon
-												(click)="deleteDesc(row)" [hidden]="this.draft_data.status == 1">delete</mat-icon>
-										</td>
-									</ng-container>
+										<ng-container matColumnDef="Action">
+											<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action
+											</th>
+											<td class="data" mat-cell *matCellDef="let row"> <mat-icon
+													(click)="deleteDesc(row)"
+													[hidden]="this.draft_data.status == 1">delete</mat-icon>
+											</td>
+										</ng-container>
 
-									<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-									<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-									<tr class="mat-row" *matNoDataRow>
-										<td class="mat-cell" colspan="7">No data show</td>
-									</tr>
-								</table>
-								<mat-paginator #paginatorRef [pageSizeOptions]="[5]"
-									aria-label="Select page of users"></mat-paginator>
-							</div>
-						</form>
+										<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+										<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+										<tr class="mat-row" *matNoDataRow>
+											<td class="mat-cell" colspan="7">No data show</td>
+										</tr>
+									</table>
+									<!-- <mat-paginator #paginatorRef [pageSizeOptions]="[5]"
+									aria-label="Select page of users"></mat-paginator> -->
+								</div>
+							</form>
+						</div>
+						<mat-paginator #paginatorRef [pageSizeOptions]="[5]"
+							aria-label="Select page of users"></mat-paginator>
 					</div>
 				</div>
 
@@ -228,39 +253,53 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Discount(%)</mat-label>
-								<input type="number" formControlName="sale_discount" matInput placeholder="Discount(%)" (keyup)="disc_amt_cal()" [readonly]="this.draft_data.status == 1">
+								<input type="number" formControlName="sale_discount" matInput placeholder="Discount(%)"
+									(keyup)="disc_amt_cal()" [readonly]="this.draft_data.status == 1">
 							</mat-form-field>
+						</div>
+						<div class="column">
 
-		
 							<mat-form-field appearance="fill">
 								<mat-label>GST(%)</mat-label>
-								<mat-select formControlName="sale_gst" (valueChange)="gst_amt_cal($event)" [disabled]="this.draft_data.status == 1">
-									<mat-option *ngFor="let gst of gst_data" [value]="gst.gst_in_percentage" >{{gst.gst_in_percentage}}</mat-option>
-									
+								<mat-select formControlName="sale_gst" (valueChange)="gst_amt_cal($event)"
+									[disabled]="this.draft_data.status == 1">
+									<mat-option *ngFor="let gst of gst_data"
+										[value]="gst.gst_in_percentage">{{gst.gst_in_percentage}}</mat-option>
+
 								</mat-select>
 							</mat-form-field>
-							<br>
+							<!-- <br> -->
 							<mat-form-field appearance="fill">
 								<mat-label>Payable Amount</mat-label>
 								<input type="number" formControlName="sale_gross_amount" matInput
 									placeholder="Payable Amount" [readonly]="this.draft_data.status == 1">
 							</mat-form-field>
+						</div>
+						<div class="column">
+
 							<mat-form-field appearance="fill">
 								<mat-label>Paid</mat-label>
-								<input type="number" formControlName="sale_paid" matInput placeholder="Paid Amount" (keyup)="paid_amt_cal()" [readonly]="this.draft_data.status == 1">
+								<input type="number" formControlName="sale_paid" matInput placeholder="Paid Amount"
+									(keyup)="paid_amt_cal()" [readonly]="this.draft_data.status == 1">
 							</mat-form-field>
 							<mat-form-field appearance="fill">
 								<mat-label>Dues</mat-label>
 								<input type="number" formControlName="sale_dues" matInput placeholder="Dues">
 							</mat-form-field>
-							<br>
-							<input type="date" formControlName="sale_date" id="formdate" [readOnly]="this.draft_data.status == 1">
-
 						</div>
-						<!-- ---------------------------------------------Change--------------------------------------- -->
-						<div mat-dialog-action [align]="'end'">
-							<button [hidden]="sale_action_btn" mat-raised-button (click)="finalsubmit()" class="submitbtn" type="submit"
-								[disabled]="!saleformfinal.valid">{{actionBTN}}<p>Final Submit</p></button>
+						<div class="column_first">
+
+							<!-- <br> -->
+							<input type="date" formControlName="sale_date" id="formdate"
+								[readOnly]="this.draft_data.status == 1">
+
+							<!-- ---------------------------------------------Change--------------------------------------- -->
+							<div mat-dialog-action [align]="'end'" class="btn_div">
+								<button [hidden]="sale_action_btn" mat-raised-button (click)="finalsubmit()"
+									class="submitbtn" type="submit" [disabled]="!saleformfinal.valid">{{actionBTN}}<p>
+										Final
+										Submit</p></button>
+							</div>
 						</div>
 					</form>
 				</div>

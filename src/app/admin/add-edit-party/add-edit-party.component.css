@@ -26,11 +26,13 @@ textarea {
   color: rgb(20, 89, 92);
   margin-bottom: 20px;
 }
-#main_button{
+
+#main_button {
   width: 190px;
   margin: auto;
 
 }
+
 .reset_btn {
   float: left;
   width: 80px;
@@ -44,7 +46,7 @@ textarea {
   float: right;
   background-color: green;
   color: white;
-} 
+}
 
 mat-toolbar {
   height: 40px;
@@ -58,30 +60,31 @@ mat-icon {
   float: right;
 }
 
-  @media (min-width:1200px) and (max-width:2000px) {
+@media (min-width:1200px) and (max-width:2000px) {
   .column_1 mat-form-field {
     width: 99.1%;
   }
-}   
+}
 
 @media (min-width:768px) and (max-width:1200px) {
-.column{
-  width: 33.1%;
-  height: auto;
-}
-.column mat-form-field{
-  width: 98%;
-  margin-left: 4px;
-}
+  .column {
+    width: 33.1%;
+    height: auto;
+  }
 
-.column_1 mat-form-field{
-  width: 100%;
-  margin-top: -1px;
-}
+  .column mat-form-field {
+    width: 98%;
+    margin-left: 4px;
+  }
 
-form{
-  width: 562px;
-}
+  .column_1 mat-form-field {
+    width: 100%;
+    margin-top: -1px;
+  }
+
+  form {
+    width: 562px;
+  }
 
 }
 
@@ -90,6 +93,7 @@ form{
   .column {
     width: 100%;
     height: auto;
+
   }
 
   .column mat-form-field {

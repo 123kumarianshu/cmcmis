@@ -11,7 +11,7 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./sale-cancel.component.css']
 })
 export class SaleCancelComponent implements OnInit {
-      displayedColumns: string[] = ['slno','cust_name','sale_bill_no','sale_total_amount','sale_dues','sale_gst','sale_discount','sale_Cancel_reason','sale_date','Action','Date'];
+      displayedColumns: string[] = ['slno','cust_name','sale_bill_no','sale_dues','sale_cancel_reason','Date'];
       dataSource!: MatTableDataSource<any>;
 
       @ViewChild(MatPaginator) paginator!: MatPaginator;

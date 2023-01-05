@@ -37,6 +37,48 @@
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Cancel Reasion</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.cancel_reason}}</td>
           </ng-container>
+
+          <!-- <ng-container matColumnDef="Action">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
+            <td class="data" mat-cell *matCellDef="let row">
+              <mat-icon (click)="edit_Purchase_cancel(row)">edit</mat-icon>
+            </td>
+          </ng-container>
+
+          
+          <ng-container matColumnDef="Gst">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
+            <td class="data" mat-cell *matCellDef="let row">
+              <mat-icon (click)="edit_Purchase_cancel(row)">edit</mat-icon>
+            </td>
+          </ng-container> -->
+          <ng-container matColumnDef="Cancel_reasion">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Cancel reasion</th>
+            <td class="data" mat-cell *matCellDef="let row">
+              <mat-icon (click)="edit_Purchase_cancel(row)">edit</mat-icon>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Date">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+            <td class="data" mat-cell *matCellDef="let row">
+              <mat-icon (click)="edit_Purchase_cancel(row)">edit</mat-icon>
+            </td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="Gross amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross amount</th>
+            <td class="data" mat-cell *matCellDef="let row">
+              <mat-icon (click)="edit_Purchase_cancel(row)">edit</mat-icon>
+            </td>
+          </ng-container> -->
+
+
+          <!-- <ng-container matColumnDef="View_notice">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>View</th>
+            <td class="data" mat-cell *matCellDef="let row">
+              <mat-icon (click)="edit_Purchase_cancel(row)">View</mat-icon>
+            </td>
+          </ng-container> -->
           <ng-container matColumnDef="purch_memo_no">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Memo No</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.purch_memo_no}}</td>
@@ -47,16 +89,13 @@
             <td class="data" mat-cell *matCellDef="let row">
               <mat-icon >{{row.purch_date}}</mat-icon>
             </td>
-          </ng-container>       
+          </ng-container>      
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
           </tr>
-
-       
-
         </table>
         <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
           aria-label="Select page of users"></mat-paginator>
