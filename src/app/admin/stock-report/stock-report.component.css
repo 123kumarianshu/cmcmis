@@ -11,6 +11,7 @@
     padding: 10px;
     box-sizing: border-box;
 }
+
 .search_area{
     height: 50px;
 }
@@ -25,7 +26,7 @@
     border-bottom: 1px solid black;
 }
 
-#add_dues {
+#print_stock_report {
     position: relative;
     top: -5px;
     left: 2px;
@@ -38,7 +39,7 @@
     font-size: 16px;   
 }
 
-.count_search {
+/* .count_search {
     height: 40px;
     width: 100%;
     display: flex;
@@ -46,11 +47,11 @@
     padding: 10px 10px 0px 10px;
     box-sizing: border-box;
     color: #0d5e58;
-}
+} */
 
-.count_search .notice_text {
+/* .count_search .notice_text {
     font-size: 16px;
-}
+} */
 .search input {
     border-bottom: 1px solid #0a4547;
     outline: none;
@@ -65,8 +66,7 @@ mat-icon {
     background-color: transparent;
     border: none;
     font-size: 20px;
-    line-height: 21px;
-    padding-left: 2px;
+    line-height: 30px;
 }
 
 #table {
@@ -113,7 +113,9 @@ ng-container {
 .footer_amount {
     width: 100%;
     height:44px;
-    margin-top: 452px;
+    position: fixed;
+    bottom: 0px;
+    /* margin-top: 452px; */
     background-color: #0a4547;
 }
 .footer_amount span {  
@@ -124,7 +126,7 @@ ng-container {
 }
 
 /* //////////////////////////table media q//////////////////////////// */
-/* @media(min-width:461px) and (max-width:1180px) {
+ @media(min-width:461px) and (max-width:1180px) {
     #wrapper {
         overflow-x: hidden;
     }
@@ -204,4 +206,4 @@ ng-container {
         padding-left: 10px;
     }
 
-} */
+} 
