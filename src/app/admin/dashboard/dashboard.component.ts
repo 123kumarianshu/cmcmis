@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
           this.total_gst = result.data[0].total_gst
           this.total_weight = result.data[0].total_weight
           this.total_size = result.data[0].total_size
-          this.total_category = result.data[0].total_category
+          this.total_category = result.data[0].total_catgory
           this.total_item = result.data[0].total_item
           this.total_product = result.data[0].total_product
           this.total_employee = result.data[0].total_employee

@@ -229,6 +229,7 @@ export class AddEditSaleComponent implements OnInit {
       (res: any) => {
         this.popup.success({ detail: "Success", summary: 'Product Added Successfully...' })
 
+        this.saleformprod.controls['product_id'].reset();
         this.saleformprod.controls['product_rate'].setValue('');
         this.saleformprod.controls['product_quantity'].setValue('');
         this.saleformprod.controls['product_total_amount'].setValue('');
@@ -436,10 +437,13 @@ export class AddEditSaleComponent implements OnInit {
 
 
   disc_amt_cal() {
+    this.saleformfinal.controls['sale_paid'].reset()
+    this.saleformfinal.controls['sale_gst'].reset()
     this.saleformfinal.controls['sale_gross_amount'].setValue((this.saleformfinal.get('sale_total_amount')?.value) - (this.saleformfinal.get('sale_total_amount')?.value * this.saleformfinal.get('sale_discount')?.value) / 100)
   }
   gst_amt_cal(event: any) {
-    this.saleformfinal.controls['sale_gross_amount'].setValue((this.saleformfinal.get('sale_gross_amount')?.value) + (this.saleformfinal.get('sale_gross_amount')?.value * event) / 100)
+    this.saleformfinal.controls['sale_paid'].reset()
+    this.saleformfinal.controls['sale_gross_amount'].setValue(((this.saleformfinal.get('sale_total_amount')?.value) - (this.saleformfinal.get('sale_total_amount')?.value * this.saleformfinal.get('sale_discount')?.value) / 100) + ( ((this.saleformfinal.get('sale_total_amount')?.value) - (this.saleformfinal.get('sale_total_amount')?.value * this.saleformfinal.get('sale_discount')?.value) / 100) * event) / 100)
   }
   paid_amt_cal() {
     this.saleformfinal.controls['sale_dues'].setValue((this.saleformfinal.get('sale_gross_amount')?.value) - (this.saleformfinal.get('sale_paid')?.value))

@@ -16,9 +16,11 @@ export class ManageService {
   ) { }
 
   baseUrl: string = 'http://adityaradhaya.com/api/';
-  // baseUrl: string = 'http://localhost/api/';
 
   // for Dashboard function starting here 
+  Login(data:any) {
+    return this.http.post<any>(this.baseUrl + 'login.php',data);
+  }
   dashboard_view() {
     return this.http.get<[]>(this.baseUrl + 'dashboard_view.php');
   }
@@ -147,40 +149,52 @@ export class ManageService {
   // ********************master entery end **************************
 
   // for Purchase function starting here 
-
-  get_single_purch_item_view(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_single_purch_item_view.php', data);
-  }
-  get_purch_item_set_data(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_purch_item_set_data.php', data);
+  get_party_by_party_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_party_by_party_id.php', data);
   }
 
-  post_purch_desc(data: any) {
-    return this.http.post<any>(this.baseUrl + 'purch_desc_insert.php', data);
+  
+  get_purch() {
+    return this.http.get<[]>(this.baseUrl + 'get_purch_view.php');
   }
 
-  get_purch_party_data(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_purch_party_view.php', data);
+  get_purch_bill_no(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_purch_bill_no.php', data);
   }
-
+  get_purch_basic_amt(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_purch_basic_amt.php', data);
+  }
   post_purch_party(data: any) {
     return this.http.post<any>(this.baseUrl + 'purch_party_insert.php', data);
   }
-
-  get_purch_data_bill_no() {
-    return this.http.get<[]>(this.baseUrl + 'get_purch_data_bill_no.php');
+  get_item_by_cat_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_item_by_cat_id.php', data);
   }
-
+  get_item_by_item_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_item_by_item_id.php', data);
+  }
+  post_purch_desc(data: any) {
+    return this.http.post<any>(this.baseUrl + 'purch_desc_insert.php', data);
+  }
   purch_desc_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'purch_desc_delete.php', data);
   }
-
+  purch_final_submit(data: any) {
+    return this.http.post<any>(this.baseUrl + 'purch_final_submit.php', data);
+  }
+  
   get_purch_desc_view(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_purch_desc_view.php', data)
   }
+  purch_party_update(data:any){
+    return this.http.post<any>(this.baseUrl + 'purch_party_update.php', data);
+  }
+  cancel_purch_bill(data:any){
+    return this.http.post<any>(this.baseUrl + 'cancel_purch_bill.php', data);
+  }
 
-  purch_final_submit(data: any) {
-    return this.http.post<any>(this.baseUrl + 'purch_final_submit.php', data);
+  get_purch_cancel_view() {
+    return this.http.get<[]>(this.baseUrl + 'purch_cancel_view.php');
   }
 
   // for Matrial Handover function starting here 
