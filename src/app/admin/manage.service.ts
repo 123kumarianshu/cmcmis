@@ -287,9 +287,8 @@ export class ManageService {
    putAccount(data: any) {
     return this.http.put<any>( this.baseUrl +'account_update.php', data);
   }
-
+  
   // for expense function stating...
-
   get_expense() {
     return this.http.get<[]>(this.baseUrl + 'expense_view.php');
   }
