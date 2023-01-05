@@ -288,5 +288,15 @@ export class ManageService {
     return this.http.put<any>( this.baseUrl +'account_update.php', data);
   }
 
+  // for expense function stating...
 
+  get_expense() {
+    return this.http.get<[]>(this.baseUrl + 'expense_view.php');
+  }
+  post_expense(data: any) {
+    return this.http.post<any>(this.baseUrl + 'expense_insert.php', data);
+  }
+  put_expense(data: any,) {
+    return this.http.put<any>(this.baseUrl + 'expense_update.php', data);
+  }
 }
