@@ -6,6 +6,8 @@ import { AddEditCategoryComponent } from '../add-edit-category/add-edit-category
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
+import { CancelBillComponent } from '../cancel-bill/cancel-bill.component';
 
 
 @Component({
@@ -27,12 +29,13 @@ export class PurchaseComponent implements OnInit {
     private popup: NgToastService,
     private addpurch: MatDialog,
     private purchaseservice: ManageService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
-    this.purchaseservice.get_purch_data_bill_no().subscribe(
+    this.purchaseservice.get_purch().subscribe(
       (partyresult: any) => {
-        console.log(partyresult)
+        // console.log(partyresult)
         this.dataSource = new MatTableDataSource(partyresult.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -71,8 +74,20 @@ export class PurchaseComponent implements OnInit {
   }
 
 
-  PrintPurchaseBill() {
-    window.print()
+
+  on_draf_bill(data:any){
+  this.router.navigate(['/add_edit_purchase'], data)
+  }
+  on_cancel_bill(data:any){
+      this.addpurch.open(CancelBillComponent,{
+        disableClose: true,
+        data: data,
+      }).afterClosed().subscribe(val => {
+        if (val === 'save') {
+          this.ngOnInit();
+        }
+      })
+      
   }
 }
 

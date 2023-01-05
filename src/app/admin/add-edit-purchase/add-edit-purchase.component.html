@@ -17,7 +17,7 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Party Name</mat-label>
-							<mat-select formControlName="party_id" (valueChange)="get_party($event)">
+							<mat-select formControlName="party_id" (valueChange)="get_party($event)" [disabled]="this.draft_data.status == 1">
 								<mat-option *ngFor="let party of party_data"
 									[value]="party.party_id">{{party.party_name}}</mat-option>
 							</mat-select>
@@ -42,7 +42,7 @@
 					</div>
 				</form>
 				<div mat-dialog-action [align]="'end'">
-					<button mat-raised-button (click)="save_next()" class="add_btn" type="submit"
+					<button [hidden]="action_btn" mat-raised-button (click)="save_next()" class="add_btn" type="submit"
 						style="background-color: #0d5e58; color: white;"
 						[disabled]="!party_form.valid">{{actionBtn}}</button>
 				</div>
@@ -68,7 +68,7 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Category</mat-label>
-							<mat-select formControlName="cat_id_fk" (valueChange)="cat_data_single($event)">
+							<mat-select formControlName="cat_id_fk" (valueChange)="get_item_by_cat_id($event)" [disabled]="this.draft_data.status == 1">
 								<mat-option *ngFor="let cat of cat_data"
 									[value]="cat.cat_id">{{cat.cat_name}}</mat-option>
 							</mat-select>
@@ -76,7 +76,7 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Item</mat-label>
-							<mat-select formControlName="item_id_fk" (valueChange)="item_single_data($event)">
+							<mat-select formControlName="item_id_fk" (valueChange)="get_item_by_item_id($event)" [disabled]="this.draft_data.status == 1">
 								<mat-option *ngFor="let item of single_item_data"
 									[value]="item.item_id">{{item.item_name}}</mat-option>
 							</mat-select>
@@ -117,7 +117,7 @@
 						<input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden type="number">
 
 
-						<mat-icon class="addButton" (click)="onAdd()">add</mat-icon>
+						<mat-icon [hidden]="action_btn" class="addButton" (click)="onAdd()">add</mat-icon>
 					</div>
 				</form>
 
@@ -170,7 +170,7 @@
 								<ng-container matColumnDef="Action">
 									<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
 									<td class="data" mat-cell *matCellDef="let row"> <mat-icon
-											(click)="PurchItemDes(row)">delete</mat-icon></td>
+											(click)="PurchItemDes(row)" [hidden]="action_btn">delete</mat-icon></td>
 								</ng-container>
 
 								<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -203,39 +203,43 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Basic Amount</mat-label>
-							<input formControlName="basic_amount" matInput placeholder="Basic Amount">
+							<input formControlName="basic_amount" matInput placeholder="Basic Amount" type="number">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
-							<mat-label>Discount</mat-label>
-							<input formControlName="purch_discount" matInput placeholder="Discount">
+							<mat-label>Discount(%)</mat-label>
+							<input (keyup)="disc_amt_cal()" formControlName="purch_discount" matInput placeholder="Discount" [readonly]="this.draft_data.status == 1">
 						</mat-form-field>
 
+
 						<mat-form-field appearance="fill">
-							<mat-label>GST</mat-label>
-							<input formControlName="purch_gst" matInput placeholder="GST">
+							<mat-label>GST(%)</mat-label>
+							<mat-select formControlName="purch_gst" (valueChange)="gst_amt_cal($event)" [disabled]="this.draft_data.status == 1">
+								<mat-option *ngFor="let gst of gst_data" [value]="gst.gst_in_percentage" >{{gst.gst_in_percentage}}</mat-option>
+								
+							</mat-select>
 						</mat-form-field>
 
 
 						<mat-form-field appearance="fill">
 							<mat-label>Gross Amount</mat-label>
-							<input formControlName="purch_gross_amount" matInput placeholder="Gross Amount">
+							<input formControlName="purch_gross_amount" matInput placeholder="Gross Amount" type="number">
 						</mat-form-field>
 						<br>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Paid</mat-label>
-							<input formControlName="purch_paid" matInput placeholder="Paid">
+							<input formControlName="purch_paid" matInput placeholder="Paid" type="number" (keyup)="paid_amt_cal()">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Dues</mat-label>
-							<input formControlName="purch_dues" matInput placeholder="Dues">
+							<input formControlName="purch_dues" matInput placeholder="Dues" type="number">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill" class="bill_no">
 							<mat-label>Memo Number</mat-label>
-							<input formControlName="purch_memo_no" matInput placeholder="Bill Number">
+							<input formControlName="purch_memo_no" matInput placeholder="Bill Number"  >
 						</mat-form-field>
 
 
@@ -247,14 +251,13 @@
 							<label class="bill_uplaod">Upload Memo</label><br>
 							<input class="bill_img" type="file" (change)="onFileSelect($event)">
 						</div>
-
 						<input formControlName="admin_id_fk" ngModel={{admin_id}} hidden type="number">
 
 					</div>
 					<!-- ---------------------------------------------Change--------------------------------------- -->
 
 					<div mat-dialog-action [align]="'end'">
-						<button mat-raised-button (click)="finalsubmit()" class="add_btn" type="submit"
+						<button [hidden]="action_btn" mat-raised-button (click)="finalsubmit()" class="add_btn" type="submit"
 							style="background-color: #0d5e58; color: white;">{{actionBtn1}}</button>
 					</div>
 				</form>

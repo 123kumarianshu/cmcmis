@@ -79,11 +79,9 @@
           <ng-container matColumnDef="action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
             <td class="data" mat-cell *matCellDef="let row">
-              <mat-icon>visibility</mat-icon>
-              <button mat-icon-button [hidden]="PrintActionIcon" (click)="PrintPurchaseBill()"> <mat-icon >print</mat-icon></button>
-              <button mat-icon-button [hidden]="DraftsActionIcon"> <mat-icon>drafts</mat-icon></button>
-    
-              <mat-icon>cancel</mat-icon>
+              <mat-icon [hidden]="row.status !=1" (click)="on_draf_bill(row)">visibility</mat-icon>
+              <mat-icon [hidden]="row.status !=0" (click)="on_draf_bill(row)">description</mat-icon>
+              <mat-icon (click)="on_cancel_bill(row)">cancel</mat-icon>
              
             </td>
           </ng-container>

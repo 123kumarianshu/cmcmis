@@ -62,9 +62,10 @@ export class AddEditPurchaseComponent implements OnInit {
   current_date: any;
   purch_id: number = 0;
   purchbilldata: any;
-
-
-
+  draft_data:any
+  action_btn:boolean=false
+  gst_data:any
+  purch_edit_data:any
   ///////////////////////////////////////////////////////////////// for constructor Starting Here /////////////////////////////////////////////////////
 
 
@@ -75,7 +76,12 @@ export class AddEditPurchaseComponent implements OnInit {
     private fb2: FormBuilder,
     private router: Router,
     private manageService: ManageService,
-  ) { }
+  ) { 
+    const navigation = this.router.getCurrentNavigation();
+    this.draft_data = navigation?.extras
+
+
+  }
 
   /////////////////////////////////////////////// for Party Get starting ///////////////////////////////////////////
 
@@ -85,7 +91,6 @@ export class AddEditPurchaseComponent implements OnInit {
       (party_res: any) => {
         this.party_data = party_res.data
       }
-
     ),
 
       /////////////////////////////////////////////// for Categori Get starting ///////////////////////////////////////////
@@ -101,6 +106,12 @@ export class AddEditPurchaseComponent implements OnInit {
     this.manageService.getItem().subscribe(
       (item_res: any) => {
         this.item_data = item_res.data
+
+      }
+    )
+    this.manageService.getGst().subscribe(
+      (item_res: any) => {
+        this.gst_data = item_res.data
 
       }
     )
@@ -139,25 +150,71 @@ export class AddEditPurchaseComponent implements OnInit {
 
 
     this.final_form = this.fb2.group({
-      basic_amount: ['', Validators.required],
-      purch_discount: [''],
-      purch_gst: [''],
-      purch_gross_amount: ['', Validators.required],
-      purch_paid: ['', Validators.required],
-      purch_dues: [''],
+      basic_amount: ['0', Validators.required],
+      purch_discount: ['0'],
+      purch_gst: ['0'],
+      purch_gross_amount: ['0', Validators.required],
+      purch_paid: ['0', Validators.required],
+      purch_dues: ['0'],
       purch_memo_no: [''],
       purch_bill_img: [null],
       purch_date: ['', Validators.required],
       admin_id_fk: [''],
     })
+
+
+    if(this.draft_data.purch_bill_no){
+        this.actionBtn = 'Update'
+        if(this.draft_data.status == 1){
+          this.action_btn = true
+        }  
+        const drapformdata = new FormData()
+        drapformdata.append('purch_bill_no', this.draft_data.purch_bill_no)
+        this.manageService.get_purch_bill_no(drapformdata).subscribe(
+          (res: any) => {
+            console.log(res) 
+
+
+            this.purch_edit_data = res.data
+            this.purch_bill_no = this.purch_edit_data[0].purch_bill_no
+            this.party_form.controls['party_id'].setValue(this.purch_edit_data[0].party_id);
+            this.party_form.controls['party_name'].setValue(this.purch_edit_data[0].party_name);
+            this.party_form.controls['party_address'].setValue(this.purch_edit_data[0].party_address);
+            this.party_form.controls['party_email'].setValue(this.purch_edit_data[0].party_email);
+            this.party_form.controls['party_mobile'].setValue(this.purch_edit_data[0].party_mobile);
+            this.item_form.controls['party_id_fk'].setValue(this.purch_edit_data[0].party_name);
+            this.final_form.controls['basic_amount'].setValue(this.purch_edit_data[0].basic_amount);
+            this.final_form.controls['purch_discount'].setValue(this.purch_edit_data[0].purch_discount);
+            this.final_form.controls['purch_gst'].setValue(this.purch_edit_data[0].purch_gst);
+            this.final_form.controls['purch_gross_amount'].setValue(this.purch_edit_data[0].purch_gross_amount);
+            this.final_form.controls['purch_paid'].setValue(this.purch_edit_data[0].purch_paid);
+            this.final_form.controls['purch_memo_no'].setValue(this.purch_edit_data[0].purch_memo_no);
+            this.final_form.controls['purch_bill_img'].setValue(this.purch_edit_data[0].purch_bill_img);
+            this.final_form.controls['purch_date'].setValue(this.purch_edit_data[0].purch_date);
+            this.final_form.controls['admin_id_fk'].setValue(this.purch_edit_data[0].admin_id_fk);
+            this.final_form.controls['purch_dues'].setValue(this.purch_edit_data[0].purch_dues);
+          })
+
+          this.manageService.get_purch_desc_view(drapformdata).subscribe(
+            (res:any)=>{
+              this.dataSource = new MatTableDataSource(res.data);
+              this.dataSource.sort = this.sort;
+              this.dataSource.paginator = this.paginator;
+              this.purch_dec_count = res.data.length
+
+            }
+          )
+
+
+
+    }
   }
 
   /////////////////////////////////////////////// for Party Submit starting ///////////////////////////////////////////
 
   save_next() {
-
-
-    this.manageService.get_purch_data_bill_no().subscribe(
+if(!(this.draft_data.purch_bill_no)){
+    this.manageService.get_purch().subscribe(
       (res: any) => {
         if (res.success == 1) {
           this.purch_id = Number(res.data[0].purch_id)
@@ -182,6 +239,19 @@ export class AddEditPurchaseComponent implements OnInit {
         )
       }
     )
+  }
+  else{
+ 
+    const purch_cust_update = new FormData()
+    purch_cust_update.append('party_id', this.party_form.get('party_id')?.value)
+    purch_cust_update.append('purch_bill_no', this.draft_data.purch_bill_no)
+
+    this.manageService.purch_party_update(purch_cust_update).subscribe(
+      (res:any)=>{
+        console.log(res)
+      }
+    )
+  }
 
   }
 
@@ -197,7 +267,7 @@ export class AddEditPurchaseComponent implements OnInit {
   items() {
     this.action_text = 'Add item details'
     const desformdata = new FormData()
-    desformdata.append('purchbillno', this.purch_bill_no)
+    desformdata.append('purch_bill_no', this.purch_bill_no)
     this.manageService.get_purch_desc_view(desformdata).subscribe(
       (itemresult: any) => {
         this.dataSource = new MatTableDataSource(itemresult.data);
@@ -210,16 +280,27 @@ export class AddEditPurchaseComponent implements OnInit {
 
   final_bill() {
     this.action_text = 'Final Submission'
-
+    if(!(this.draft_data.status == 1)){
+    const billformdata = new FormData()
+    billformdata.append('purch_bill_no',this.purch_bill_no)
+    this.manageService.get_purch_basic_amt(billformdata).subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.final_form.controls['basic_amount'].setValue(res.data[0].basic_amount)
+        this.final_form.controls['purch_gross_amount'].setValue(res.data[0].basic_amount)
+      }
+    )
+    this.final_form.controls['purch_date'].setValue(new Date().toISOString().slice(0, 10))
+    }
   }
 
 
   /////////////////////////////////////////////// for Party id Selection starting ///////////////////////////////////////////
 
   get_party(event: any) {
-    const formdata = new FormData();
-    formdata.append('party_id', event)
-    this.manageService.get_purch_party_data(formdata).subscribe(
+    const partydata = new FormData();
+    partydata.append('party_id', event)
+    this.manageService.get_party_by_party_id(partydata).subscribe(
       (res: any) => {
         this.party_single_data = res.data
         this.party_form.controls['party_id'].setValue(this.party_single_data.party_id);
@@ -237,28 +318,27 @@ export class AddEditPurchaseComponent implements OnInit {
 
   /////////////////////////////////////////////// for Cat single data Selection starting ///////////////////////////////////////////
 
-  cat_data_single(event: any) {
-    console.log(event)
+  get_item_by_cat_id(event: any) {
+    // console.log(event)
     const formdata = new FormData();
-    formdata.append('cat_id_fk', event)
-    this.manageService.get_single_purch_item_view(formdata).subscribe(
+    formdata.append('cat_id', event)
+    this.manageService.get_item_by_cat_id(formdata).subscribe(
       (res: any) => {
         this.single_item_data = res.data
       }
     )
   }
 
-  item_single_data(event: any) {
+  get_item_by_item_id(event: any) {
     console.log(event)
     const itemformdata = new FormData();
     itemformdata.append('item_id_fk', event)
-    this.manageService.get_purch_item_set_data(itemformdata).subscribe(
+    this.manageService.get_item_by_item_id(itemformdata).subscribe(
       (res: any) => {
         this.item_final_data = res.data
-        console.log(res)
-        this.item_form.controls['item_unit'].setValue(this.item_final_data.item_unit_id_fk);
-        this.item_form.controls['item_size'].setValue(this.item_final_data.item_size_id_fk);
-        this.item_form.controls['item_weight'].setValue(this.item_final_data.item_weight_id_fk);
+        this.item_form.controls['item_unit'].setValue(this.item_final_data.unit_name);
+        this.item_form.controls['item_size'].setValue(this.item_final_data.size_name);
+        this.item_form.controls['item_weight'].setValue(this.item_final_data.weight_name);
         this.item_form.controls['item_rate'].setValue(this.item_final_data.item_rate);
       }
     )
@@ -280,15 +360,24 @@ export class AddEditPurchaseComponent implements OnInit {
     addformdata.append('admin_id_fk', this.item_form.get('admin_id_fk')?.value)
     this.manageService.post_purch_desc(addformdata).subscribe(
       (result: any) => {
-        console.log(result)
         this.popup.success({ detail: 'Success', summary: 'Add Successfully...', sticky: true, position: 'tr' })
+        this.item_form.controls['item_id_fk'].reset()
+        this.item_form.controls['item_weight'].reset()
+        this.item_form.controls['item_size'].reset()
+        this.item_form.controls['item_unit'].reset()
+        this.item_form.controls['item_quantity'].reset()
+        this.item_form.controls['item_rate'].reset()
+        this.item_form.controls['item_amount'].reset()
+
+
       },
       (error: any) => {
         this.popup.error({ detail: 'message', summary: 'data is not Submit', sticky: true, position: 'tr', })
       }
     )
+    
     const desformdata = new FormData()
-    desformdata.append('purchbillno', this.purch_bill_no)
+    desformdata.append('purch_bill_no', this.purch_bill_no)
     this.manageService.get_purch_desc_view(desformdata).subscribe(
       (itemresult: any) => {
         this.dataSource = new MatTableDataSource(itemresult.data);
@@ -336,8 +425,7 @@ export class AddEditPurchaseComponent implements OnInit {
   }
 
   finalsubmit() {
-    console.log(this.party_form.get('party_id')?.value)
-    console.log(this.final_form.get('purch_bill_img')?.value)
+
     const finalformdata = new FormData()
     finalformdata.append('basic_amount', this.final_form.get('basic_amount')?.value)
     finalformdata.append('purch_discount', this.final_form.get('purch_discount')?.value)
@@ -377,6 +465,30 @@ export class AddEditPurchaseComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+
+  desc_amt_cal() {
+    this.final_form.controls['product_total_amount'].setValue(this.final_form.get('product_rate')?.value * this.final_form.get('product_quantity')?.value)
+  }
+
+
+  disc_amt_cal() {
+    this.final_form.controls['purch_paid'].reset()
+    this.final_form.controls['purch_gst'].reset()
+
+    this.final_form.controls['purch_gross_amount'].setValue((this.final_form.get('basic_amount')?.value) - (this.final_form.get('basic_amount')?.value * this.final_form.get('purch_discount')?.value) / 100)
+    this.final_form.controls['purch_dues'].setValue((this.final_form.get('basic_amount')?.value) - (this.final_form.get('basic_amount')?.value * this.final_form.get('purch_discount')?.value) / 100)
+  }
+  gst_amt_cal(event: any) {
+    this.final_form.controls['purch_paid'].reset()
+    this.final_form.controls['purch_gross_amount'].setValue(((this.final_form.get('basic_amount')?.value) - (this.final_form.get('basic_amount')?.value * this.final_form.get('purch_discount')?.value) / 100) + (((this.final_form.get('basic_amount')?.value) - (this.final_form.get('basic_amount')?.value * this.final_form.get('purch_discount')?.value) / 100) *event) / 100)
+    this.final_form.controls['purch_dues'].setValue(((this.final_form.get('basic_amount')?.value) - (this.final_form.get('basic_amount')?.value * this.final_form.get('purch_discount')?.value) / 100) + (((this.final_form.get('basic_amount')?.value) - (this.final_form.get('basic_amount')?.value * this.final_form.get('purch_discount')?.value) / 100) *event) / 100)
+  }
+  paid_amt_cal() {
+    this.final_form.controls['purch_dues'].setValue((this.final_form.get('purch_gross_amount')?.value) - (this.final_form.get('purch_paid')?.value))
+  }
+  //For calculation work end code here
+
 
 
 }

@@ -14,6 +14,7 @@ import { NgToastService } from 'ng-angular-popup';
 export class CancelBillComponent implements OnInit {
   msgform:any
   actionBtn: string = 'Add'
+  bill_no:any
 constructor(
 private popup: NgToastService,
 private fb: FormBuilder,
@@ -29,28 +30,59 @@ msg: ['', Validators.required],
 }
 
 ngOnInit(): void {
-
+ console.log(this.editData)
+  if(this.editData.sale_bill_no){
+      this.bill_no = this.editData.sale_bill_no
+  }
+  if(this.editData.purch_bill_no){
+    this.bill_no = this.editData.purch_bill_no
+  }
 }
 
 
 onSubmit() {
 
-  const cancel_bill = new FormData()
-  cancel_bill.append('cancel reason',this.msgform.get('msg')?.value)
-  cancel_bill.append('sale_bill_no',this.editData.sale_bill_no)
-  cancel_bill.append('status','2')
+    if(this.editData.sale_bill_no){
+      const cancel_bill = new FormData()
+      cancel_bill.append('cancel reason',this.msgform.get('msg')?.value)
+      cancel_bill.append('sale_bill_no',this.editData.sale_bill_no)
+      cancel_bill.append('status','2')
+    
+    if (this.msgform.valid) {
+         this.manageService.cancel_sale_bill(cancel_bill).subscribe(
+        (data: any) => {
+          this.router.navigate(['/sale']);           
+          this.matref.close('save');
+          this.popup.success({detail:'Success',summary:'Bill Cancell Sucess...',sticky:true,position:'tr'})
+        },
+        (error: any) => {
+          console.log(['message']);
+          this.popup.error({detail:'message',summary:' Bill not cancellt' , sticky:true,position:'tr',})
+    })
+    }
+    }
 
-if (this.msgform.valid) {
-  this.manageService.cancel_sale_bill(cancel_bill).subscribe(
-    (data: any) => {
-      this.router.navigate(['/sale']);           
-      this.matref.close('save');
-      this.popup.success({detail:'Success',summary:'Bill Cancell Sucess...',sticky:true,position:'tr'})
-    },
-    (error: any) => {
-      console.log(['message']);
-      this.popup.error({detail:'message',summary:' Bill not cancellt' , sticky:true,position:'tr',})
-})
-}
+    // for purchase cancel bill 
+
+    if(this.editData.purch_bill_no){
+      const cancel_bill = new FormData()
+      cancel_bill.append('cancel reason',this.msgform.get('msg')?.value)
+      cancel_bill.append('purch_bill_no',this.editData.purch_bill_no)
+      cancel_bill.append('status','2')
+    
+    if (this.msgform.valid) {
+         this.manageService.cancel_purch_bill(cancel_bill).subscribe(
+        (data: any) => {
+          this.router.navigate(['/purchase']);           
+          this.matref.close('save');
+          this.popup.success({detail:'Success',summary:'Bill Cancell Sucess...',sticky:true,position:'tr'})
+        },
+        (error: any) => {
+          console.log(['message']);
+          this.popup.error({detail:'message',summary:' Bill not cancellt' , sticky:true,position:'tr',})
+    })
+    }
+    }
+    
 }
 }

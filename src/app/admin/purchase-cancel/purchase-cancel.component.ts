@@ -11,12 +11,27 @@ import { ManageService } from '../manage.service';
 })
 export class PurchaseCancelComponent implements OnInit {
   displayedColumns: string[] = ['slno','cust_shop_name', 'Item_name', 'cust_owner_name', 'cust_contact_no', 'Cancel_reasion','Date',];
+
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor() { }
+
+  purch_total:any
+  constructor(
+    private servies:ManageService
+  ) { }
 
   ngOnInit(): void {
+    this.servies.get_purch_cancel_view().subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.dataSource = new MatTableDataSource(res.data);
+        this.dataSource.sort = this.sort;
+
+        this.dataSource.paginator = this.paginator;
+        this.purch_total = res.data.length
+      }
+    )
   }
   add_purchase_cancel():any{
 
