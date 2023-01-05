@@ -5,7 +5,7 @@
     background-image: url(http://adityaradhaya.com/assets/login3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    /* background-position: center; */
     float: left;
 }
 .example-card{
