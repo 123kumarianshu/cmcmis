@@ -87,7 +87,7 @@ export class AddEditProductComponent implements OnInit {
       this.productForm.controls['product_desc'].setValue(this.editData.product_desc);
       this.productForm.controls['product_retail_price'].setValue(this.editData.product_retail_price);
       this.productForm.controls['unit_id_fk'].setValue(this.editData.unit_id);
-      this.productForm.controls['cat_id_fk'].setValue(this.editData.cat_id);
+      this.productForm.controls['cat_id_fk'].setValue(this.editData.cat_id_fk);
       this.productForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
     }
   }
