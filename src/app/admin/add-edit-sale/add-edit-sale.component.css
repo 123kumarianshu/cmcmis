@@ -84,11 +84,11 @@
     border-radius: 3px 3px 0px 0px;
     border-bottom: 1px solid black;
 } */
-.column_first {
+/* .column_first {
     width: 410px;
     height: auto;
     margin: auto;
-}
+} */
 
 #formdate {
     width: 200px;
@@ -97,7 +97,6 @@
     background: #ebebeb;
     border: none;
     padding: 10px;
-    margin-left: -210px;
     border-radius: 3px 3px 0px 0px;
     border-bottom: 1px solid black;
 }
@@ -192,7 +191,7 @@ ng-container a {
     height: 35px;
     background-color: #0b4648;
     float: right;
-    margin: -45px 45px 0px 0px;
+    margin: 11px 40px 0px 0px;
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
@@ -201,11 +200,11 @@ ng-container a {
 }
 
 /* =========================================================================================================================== */
-.customer_btn {
+/* .customer_btn {
     background-color: #05363c;
     border-radius: 5px;
     color: whitesmoke;
-}
+} */
 
 #billnobtn {
     position: absolute;
@@ -281,7 +280,7 @@ tr.mat-row {
     text-align: left;
 }
 
-@media (min-width:1200px) and (max-width:2000px) {
+@media (min-width:1081px) and (max-width:2000px) {
     .column {
         width: 100%;
         height: auto;
@@ -293,15 +292,31 @@ tr.mat-row {
     }
 
     .column_1 mat-form-field {
-        width: 406px;
+        width: 815px;
         margin: 0px;
         margin-right: 5px;
     }
+    .content_area {
+        margin-top: 10px;
+    }
+    
+    .column_first{
+        width: 820px;
+        height: auto;
+        margin: auto;
+    }
+    .column_first mat-form-field{
+        float: left;
+    }
+    .column_first input{
+        float: left;
+    }
 }
 
-@media (min-width:768px) and (max-width:1200px) {
+@media (min-width:769px) and (max-width:1080px) {
+
     .column {
-        width: 100%;
+        width:500px;
         height: auto;
         margin: auto;
     }
@@ -309,15 +324,20 @@ tr.mat-row {
     .column mat-form-field {
         width: 200px;
     }
-
     .column_1 mat-form-field {
-        width: 406px;
-        margin: 0px;
-        margin-right: 5px;
+        width: 410px;
+    }
+    .column_first{
+        width: 420px;
+        height: auto;
+        margin: auto;
+    }
+    .column_first input{
+        float: left;
     }
 }
 
-@media(min-width:421px) and (max-width:767px) {
+@media(min-width:481px) and (max-width:768px) {
     .content_area {
         margin-top: 15px;
     }
@@ -336,7 +356,6 @@ tr.mat-row {
         width: 100%;
         margin: 0px;
     }
-
 
     .cotainer {
         margin-top: 10px;
@@ -363,21 +382,11 @@ tr.mat-row {
         font-size: 14px;
     }
 
-    .column_first {
-        width: 100%;
-        height: auto;
-    }
-
-    #formdate {
-        width: 100%;
-        margin: 0px;
-    }
-
     .btn_div .submitbtn {
         width: 130px;
         height: 35px;
         position: relative;
-        bottom: -65px;
+        bottom: -10px;
         left: 33px;
     }
 
@@ -386,9 +395,21 @@ tr.mat-row {
         height: 35px;
         margin: auto;
     }
+    .column_first{  
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+    .column_first  mat-form-field{
+        width: 100%;
+        margin: 0px;
+    }
+    #formdate{
+        width: 100%;
+    }
 }
 
-@media(max-width:420px) {
+@media(max-width:480px) {
     .content_area {
         margin-top: 15px;
     }
@@ -451,21 +472,11 @@ tr.mat-row {
         padding-left: 10px;
     }
 
-    .column_first {
-        width: 100%;
-        height: auto;
-    }
-
-    #formdate {
-        width: 100%;
-        margin: 0px;
-    }
-
     .btn_div .submitbtn {
         width: 130px;
         height: 35px;
         position: relative;
-        bottom: -65px;
+        bottom: -10px;
         left: 33px;
     }
 
@@ -473,5 +484,17 @@ tr.mat-row {
         width: 150px;
         height: 35px;
         margin: auto;
+    }
+    .column_first{
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+    .column_first  mat-form-field{
+        width: 100%;
+        margin: 0px;
+    }
+    #formdate{
+        width: 100%;
     }
 }

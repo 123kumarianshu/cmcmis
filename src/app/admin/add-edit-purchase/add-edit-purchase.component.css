@@ -155,7 +155,8 @@ mat-form-field {
     height: 52px;
 }
 .upload_img_div{
-    width: 410px;
+    width: 815px;
+    margin-right: 10px;
     height: auto;
     margin: auto;
 }
@@ -164,20 +165,20 @@ mat-form-field {
     color: gray;
     border-bottom: 1px solid gray;
     background-color: #ebebeb;
-    margin-bottom: 18px;
+    margin-bottom: 18px; 
     /* margin-left: 16.5em; */
-}
+} 
 
 .bill_uplaod {
     float: left;
-    font-size: 12px;
+    font-size: 12px; 
     /* margin-right: 60em; */
 }
 
 .bill_img{
     width: auto;
     border: none;
-    margin-left: -142px;
+    margin-left: -545px;
     /* margin-right: 40em; */
 }
 
@@ -401,7 +402,10 @@ ng-container {
 
 
 
-@media (min-width:1200px) and (max-width:2000px) {
+@media (min-width:1081px) and (max-width:2000px) {
+    .content_area{
+        margin-top: 10px;
+    }
     .column {
         width: 100%;
         height: auto;
@@ -413,19 +417,25 @@ ng-container {
     }
 
     .column_1 mat-form-field {
-        width: 406px;
-        margin: 0px;
+        width: 815px;
+        margin: auto;
         margin-right: 5px;
     }
+
     .column_first {
-        width: 410px;
+        width: 818px;
+        margin-right: 10px;
         height: auto;
         margin: auto;
     }
+    .column_first mat-form-field{
+        width: 100%;
+    }
+   
 }
-@media (min-width:768px) and (max-width:1200px) {
+@media (min-width:769px) and (max-width:1080px) {
     .column {
-        width: 100%;
+        width:500px;
         height: auto;
         margin: auto;
     }
@@ -444,9 +454,21 @@ ng-container {
         height: auto;
         margin: auto;
     }
+    .upload_img_div{
+        width: 410px;
+    }
+    .upload_img {
+        width: 100%;
+        margin-bottom: 18px;
+    }
+    
+    .bill_img{
+        margin-left: -142px;
+    }
+    
    }
 
-@media(min-width:421px) and (max-width:767px) {
+@media(min-width:481px) and (max-width:768px) {
     .content_area {
         margin-top: 15px;
     }
@@ -487,28 +509,19 @@ ng-container {
     }
     .upload_img_div{
         width: 100%;
-        height: auto;
         margin: 18px 0px 0px 0px;
     }
      .upload_img {
         width: 100%;
-        color: gray;
-        border-bottom: 1px solid gray;
-        background-color: #ebebeb;
         margin-bottom: 18px;
     }
     
-    .bill_uplaod {
-        float: left;
-        font-size: 12px;
-    }
-    
     .bill_img{
-        width: auto;
-        border: none;
+       
+        background-color: lime;
     }
 }
-@media(max-width:420px) {
+@media(max-width:480px) {
     .content_area {
         margin-top: 15px;
     }
@@ -583,25 +596,14 @@ ng-container {
     }
     .upload_img_div{
         width: 100%;
-        height: auto;
         margin: 18px 0px 0px 0px;
     }
      .upload_img {
         width: 100%;
-        color: gray;
-        border-bottom: 1px solid gray;
-        background-color: #ebebeb;
         margin-bottom: 18px;
     }
     
-    .bill_uplaod {
-        float: left;
-        font-size: 12px;
-    }
-    
     .bill_img{
-        width: auto;
-        border: none;
         margin-left: -142px;
     } 
 

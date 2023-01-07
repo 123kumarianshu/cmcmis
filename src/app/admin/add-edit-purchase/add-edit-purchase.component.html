@@ -24,8 +24,6 @@
 										[value]="party.party_id">{{party.party_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
-						</div>
-						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Party Mobile</mat-label>
@@ -37,7 +35,6 @@
 								<mat-label>Party Email</mat-label>
 								<input type="email" formControlName="party_email" matInput placeholder="Email" readonly>
 							</mat-form-field>
-							<!-- <br> -->
 						</div>
 						<div class="column_1">
 
@@ -81,8 +78,6 @@
 										[value]="cat.cat_id">{{cat.cat_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
-						</div>
-						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Item</mat-label>
@@ -97,7 +92,6 @@
 								<mat-label>Size</mat-label>
 								<input formControlName="item_size" matInput placeholder="Size" readonly>
 							</mat-form-field>
-							<!-- <br> -->
 						</div>
 						<div class="column">
 
@@ -110,8 +104,6 @@
 								<mat-label>Unit</mat-label>
 								<input formControlName="item_unit" matInput placeholder="Unit" readonly>
 							</mat-form-field>
-						</div>
-						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Rate</mat-label>
@@ -124,7 +116,6 @@
 								<input formControlName="item_quantity" matInput placeholder="Quantity"
 									(keyup)="total_rate_cal()">
 							</mat-form-field>
-							<!-- <br> -->
 						</div>
 						<div class="column_first">
 
@@ -237,8 +228,6 @@
 								<input (keyup)="disc_amt_cal()" formControlName="purch_discount" matInput
 									placeholder="Discount" [readonly]="this.draft_data.status == 1">
 							</mat-form-field>
-						</div>
-						<div class="column">
 							<mat-form-field appearance="fill">
 								<mat-label>GST(%)</mat-label>
 								<mat-select formControlName="purch_gst" (valueChange)="gst_amt_cal($event)"
@@ -254,7 +243,6 @@
 								<input formControlName="purch_gross_amount" matInput placeholder="Gross Amount"
 									type="number">
 							</mat-form-field>
-							<!-- <br> -->
 						</div>
 						<div class="column">
 							<mat-form-field appearance="fill">
@@ -267,8 +255,6 @@
 								<mat-label>Dues</mat-label>
 								<input formControlName="purch_dues" matInput placeholder="Dues" type="number">
 							</mat-form-field>
-						</div>
-						<div class="column">
 							<mat-form-field appearance="fill" class="bill_no">
 								<mat-label>Memo Number</mat-label>
 								<input formControlName="purch_memo_no" matInput placeholder="Bill Number">
@@ -278,7 +264,6 @@
 							<input type="date" formControlName="purch_date" class="date_box">
 						</div>
 						<div class="upload_img_div">
-							<!-- <br> -->
 
 							<div class="upload_img">
 								<label class="bill_uplaod">Upload Memo</label><br>
@@ -293,7 +278,6 @@
 							<button [hidden]="action_btn" mat-raised-button (click)="finalsubmit()" class="add_btn"
 								type="submit" style="background-color: #0d5e58; color: white;">{{actionBtn1}}</button>
 						</div>
-						<!-- </div> -->
 					</form>
 				</div>
 			</ng-template>
