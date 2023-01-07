@@ -1,0 +1,38 @@
+<mat-toolbar>
+    <span class="example-spacer">Received</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div mat-dialog-content>
+    <form [formGroup]="addDues" novalidate>
+        <input formControlName="unit_id" hidden>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Customer Name</mat-label>
+            <input formControlName="cust_name" matInput placeholder="Customer Name" readonly>
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Bill No</mat-label>
+            <input formControlName="sale_bill_no" matInput placeholder="Bill No" readonly>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Dues</mat-label>
+            <input formControlName="sale_dues" matInput placeholder="Dues" readonly>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Received</mat-label>
+            <input formControlName="recived" matInput placeholder="recived" 	(keyup)="recived()">
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Current Dues</mat-label>
+            <input formControlName="current_dues" matInput placeholder="Current Dues" readonly>
+        </mat-form-field><br>
+
+        
+        <input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden >
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"
+        [disabled]="!addDues.valid">Recive</button>
+</div>

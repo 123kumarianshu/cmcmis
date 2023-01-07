@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
+import { ReceivedComponent } from '../received/received.component';
 
 @Component({
   selector: 'app-dues',
@@ -11,7 +12,7 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./dues.component.css']
 })
 export class DuesComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'cust_name', 'sale_bill_no', 'sale_gross_amount','sale_paid','sale_dues', 'sale_date','Action',];
+  displayedColumns: string[] = ['slno', 'cust_name','cust_mobile', 'sale_bill_no', 'sale_gross_amount','sale_paid','sale_dues', 'sale_date','Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -46,6 +47,12 @@ export class DuesComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  open_recive(data:any){
+    this.adddues.open(ReceivedComponent,{
+      data:data
+    })
   }
 }
 

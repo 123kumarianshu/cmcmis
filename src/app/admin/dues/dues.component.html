@@ -23,6 +23,11 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.cust_name}}</td>
           </ng-container>
 
+          <ng-container matColumnDef="cust_mobile">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
+          </ng-container>
+
           <ng-container matColumnDef="sale_bill_no">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.sale_bill_no}}</td>
@@ -47,7 +52,7 @@
           <ng-container matColumnDef="Action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
             <td class="data" mat-cell *matCellDef="let row">
-             <button mat-button>Recive</button>
+             <button mat-button (click)="open_recive(row)">Recive</button>
             </td>
           </ng-container>
 

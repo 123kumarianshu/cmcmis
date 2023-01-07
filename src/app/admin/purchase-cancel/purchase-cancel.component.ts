@@ -10,7 +10,7 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./purchase-cancel.component.css']
 })
 export class PurchaseCancelComponent implements OnInit {
-  displayedColumns: string[] = ['slno','party_name',  'cust_contact_no','purch_memo_no', 'basic_amount', 'Cancel_reasion','purch_date',];
+  displayedColumns: string[] = ['slno','party_name',  'purch_bill_no','purch_memo_no', 'basic_amount', 'Cancel_reasion','purch_date',];
 
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;

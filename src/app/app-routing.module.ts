@@ -30,6 +30,7 @@ import { ProductionComponent } from './admin/production/production.component';
 import { MaterialHandoverComponent } from './admin/material-handover/material-handover.component';
 import { ProductComponent } from './admin/product/product.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 
@@ -39,46 +40,41 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
 
 
 const routes: Routes = [
-  
+
   // {path:'',component:LoginpageComponent},
-  {path:'', component:DashboardComponent},
-  {path:'dashbaord', component:DashboardComponent},
-  {path:'party',component:PartyComponent},
-  {path:'unit',component:UnitComponent},
-  {path:'gst',component:GstComponent},
-  {path:'weigth',component:WeightComponent},
-  {path:'category',component:CategoryComponent},
-  {path:'size',component:SizeComponent},
-  {path:'item',component:ItemComponent},
-  {path:'employee',component:EmployeeComponent},
-  {path:'customer',component:CustomerComponent},
-  {path:'area',component:AreaComponent},
-  {path:'area_allocate',component:AreaAllocateComponent},
-  {path:'purchase',component:PurchaseComponent},
-  {path:'sale',component:SaleComponent},
-  {path:'dues',component:DuesComponent},
-  {path:'reciept',component:RecieptComponent},
-  {path:'account',component:AccountComponent},
-  {path:'expense',component:ExpenseComponent},
-  {path:'purchase_report',component:PurchaseReportComponent},
-  {path:'sale_report',component:SaleReportComponent},
-  {path:'stock_report',component:StockReportComponent},
-  {path:'purchase_cancel',component:PurchaseCancelComponent},
-  {path:'sale_cancel',component:SaleCancelComponent},
-  {path:'add_edit_sale',component:AddEditSaleComponent},
-  {path:'add_edit_purchase',component:AddEditPurchaseComponent},
-  {path:'production',component:ProductionComponent},
-  {path:'material_handover',component:MaterialHandoverComponent},
-  {path:'product',component:ProductComponent}
+  // {path:'login',component:LoginpageComponent},
+    // { path:'', component:HomepageComponent},
+      {path:'', component:DashboardComponent},
+      {path:'dashbaord', component:DashboardComponent},
+      {path:'party',component:PartyComponent},
+      {path:'unit',component:UnitComponent},
+      {path:'gst',component:GstComponent},
+      {path:'weigth',component:WeightComponent},
+      {path:'category',component:CategoryComponent},
+      {path:'size',component:SizeComponent},
+      {path:'item',component:ItemComponent},
+      {path:'employee',component:EmployeeComponent},
+      {path:'customer',component:CustomerComponent},
+      {path:'area',component:AreaComponent},
+      {path:'area_allocate',component:AreaAllocateComponent},
+      {path:'purchase',component:PurchaseComponent},
+      {path:'add_edit_purchase',component:AddEditPurchaseComponent},
+      {path:'sale',component:SaleComponent},
+      {path:'dues',component:DuesComponent},
+      {path:'reciept',component:RecieptComponent},
+      {path:'account',component:AccountComponent},
+      {path:'expense',component:ExpenseComponent},
+      {path:'purchase_report',component:PurchaseReportComponent},
+      {path:'sale_report',component:SaleReportComponent},
+      {path:'stock_report',component:StockReportComponent},
+      {path:'purchase_cancel',component:PurchaseCancelComponent},
+      {path:'sale_cancel',component:SaleCancelComponent},
+      {path:'add_edit_sale',component:AddEditSaleComponent},
+      {path:'production',component:ProductionComponent},
+      {path:'material_handover',component:MaterialHandoverComponent},
+      {path:'product',component:ProductComponent},
+]
   
-  
-  
-  
-  
-
-  
-];  
-
 @NgModule({
   imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}), RouterModule.forRoot(routes ,{useHash: true})] ,
 
