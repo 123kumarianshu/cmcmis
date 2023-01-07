@@ -110,6 +110,8 @@ mat-form-field {
     font-style: bold;
     line-height: 40px;
     border-radius: 5px;
+    float: left;
+    margin: 10px 0px 0px 80px;
 }
 .column_first {
     width: 410px;
@@ -151,7 +153,7 @@ mat-form-field {
     color: gray;
     border-bottom: 1px solid gray;
     background-color: #ebebeb;
-    padding: 16px 0px 0px 20px;
+    padding: 16px 10px 0px 11px;
     height: 52px;
 }
 .upload_img_div{
@@ -429,7 +431,8 @@ ng-container {
         margin: auto;
     }
     .column_first mat-form-field{
-        width: 100%;
+        width: 200px;
+        float: left;
     }
    
 }
@@ -454,6 +457,11 @@ ng-container {
         height: auto;
         margin: auto;
     }
+    .column_first mat-form-field{
+        width: 200px;
+        float: left;
+    }
+    
     .upload_img_div{
         width: 410px;
     }
@@ -499,6 +507,10 @@ ng-container {
         width: 100%;
         height: auto;
 
+    }
+    .addButton{
+        float: none;
+        margin: 0px;
     }
     .total_amount {
         width: 100%;
@@ -597,6 +609,10 @@ ng-container {
         width: 100%;
         height: auto;
     } 
+    .addButton{
+        float: none;
+        margin: 0px;
+    }
     .date_box {
         width: 100%;
     }
