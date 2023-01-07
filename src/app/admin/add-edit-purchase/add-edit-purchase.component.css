@@ -510,6 +510,7 @@ ng-container {
    
     .upload_img_div{
         margin: 0px;
+        margin-top: 20px;
         width: 100%;
         float: left;
     }
@@ -602,6 +603,7 @@ ng-container {
    
     .upload_img_div{
         margin: 0px;
+        margin-top: 20px;
         width: 100%;
         float: left;
     }
