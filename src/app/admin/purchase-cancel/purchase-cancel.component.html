@@ -19,12 +19,12 @@
           </ng-container>
 
           <ng-container matColumnDef="party_name">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Customer</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.party_name}}</td>
           </ng-container>
-          <ng-container matColumnDef="cust_contact_no">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Customer Number</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
+          <ng-container matColumnDef="purch_bill_no">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill No</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_bill_no}}</td>
           </ng-container>
           <ng-container matColumnDef="purch_memo_no">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Memo No.</th>
@@ -39,16 +39,12 @@
 
           <ng-container matColumnDef="Cancel_reasion">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Cancel reasion</th>
-            <td class="data" mat-cell *matCellDef="let row">
-              <mat-icon (click)="edit_Purchase_cancel(row)">edit</mat-icon>
-            </td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cancel_reason}}</td>
           </ng-container>
 
           <ng-container matColumnDef="purch_date">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-            <td class="data" mat-cell *matCellDef="let row">
-              <mat-icon>{{row.purch_date}}</mat-icon>
-            </td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_date}}</td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

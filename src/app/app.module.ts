@@ -9,7 +9,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { SidebarComponent } from './admin/sidebar/sidebar.component';
-import { ViewportComponent } from './admin/viewport/viewport.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -76,6 +75,8 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
 import { BillpageComponent } from './admin/billpage/billpage.component';
 import {MatCardModule} from '@angular/material/card';
 import { CancelBillComponent } from './admin/cancel-bill/cancel-bill.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { ReceivedComponent } from './admin/received/received.component';
 
 
 
@@ -85,7 +86,6 @@ import { CancelBillComponent } from './admin/cancel-bill/cancel-bill.component';
     AppComponent,
     DashboardComponent,
     SidebarComponent, 
-    ViewportComponent, 
     PartyComponent,
     UnitComponent,
     GstComponent,
@@ -132,6 +132,9 @@ import { CancelBillComponent } from './admin/cancel-bill/cancel-bill.component';
     LoginpageComponent,
     BillpageComponent,
     CancelBillComponent,
+    HomepageComponent,
+    ReceivedComponent,
+    
     
     
     

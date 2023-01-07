@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from '../admin/manage.service';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { MatDialogRef } from '@angular/material/dialog';
 
 
@@ -20,6 +18,8 @@ export class LoginpageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private servies:ManageService,
+    private router:Router,
+    private popup: NgToastService,
     private matref: MatDialogRef<LoginpageComponent>
   ) { }
 
@@ -36,16 +36,23 @@ export class LoginpageComponent implements OnInit {
         (result: any) => {
           console.log(result)
           if (result.success) {
+            this.router.navigate(['/home']);
             this.LoginForm.reset();
             localStorage.setItem('Token', JSON.stringify(result.uid[0]));
-            // this.popup.success({ detail: 'Success', summary: 'Login Successfully....', sticky: true, position: 'tr' })
-            this.matref.close();
+            this.popup.success({detail:'Success',summary:'Login Successfully...',sticky:true,position:'tr'})    
+            this.matref.close();        
           }
           else {
-            // this.popup.error({ detail: 'message', summary: 'Login Failed....', sticky: true, position: 'tr' })
-          }
+            this.popup.error({detail:'Error',summary:'Login Fail...',sticky:true,position:'tr'})            
+
+            }
         }
       )
+
+    }
+    else{
+      this.popup.success({detail:'Success',summary:'Size Update Successfully...',sticky:true,position:'tr'})
+      this.popup.warning({detail:'Warning',summary:'Plz Fill all the required...',sticky:true,position:'tr'})            
 
     }
    }

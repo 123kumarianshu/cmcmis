@@ -1,0 +1,30 @@
+
+.add_btn {
+    margin-right: 60px;
+    background-color: green;
+    color: whitesmoke;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    color: rgb(20, 89, 92);
+    font-size: 18px;
+}
+
+.material-icons {
+    color: rgb(20, 89, 92);
+    margin-bottom: 20px;
+}
+
+textarea {
+    height: 18px;
+
+}
+
+mat-toolbar {
+    height: 40px;
+    background: none;
+    padding: 0px;
+    position: relative;
+}

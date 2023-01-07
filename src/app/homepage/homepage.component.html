@@ -1,0 +1,27 @@
+<mat-sidenav-container class="wrapper">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content">
+            <div class="toolbar">
+                <mat-toolbar>
+                    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+                    <div class="user">
+                        <span class="loginas">Login As : {{name}}</span>
+                        <mat-icon class="user-icon" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+                        <mat-menu #menu="matMenu" class="myMenu">
+                         <button mat-menu-item  (click)="Logout()">logout</button>                                 
+                        </mat-menu>
+                    </div>
+                </mat-toolbar>
+            </div>
+            <div class="main">
+                <!-- <app-viewport></app-viewport>   -->
+                <router-outlet></router-outlet>  
+                <lib-ng-toast></lib-ng-toast>
+                                     
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

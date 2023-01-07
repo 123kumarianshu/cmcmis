@@ -290,7 +290,12 @@ export class ManageService {
   }
 
   // for Dues  function starting here
-
+  getDues() {
+    return this.http.get<[]>(this.baseUrl + 'get_dues_view.php');
+  } 
+  postDues(data:any){
+    return this.http.post<any>(this.baseUrl + 'dues_insert.php', data)
+  }
   // for account funcation starting here
   getAccount() {
     return this.http.get<[]>(this.baseUrl + 'account_view.php');

@@ -8,7 +8,7 @@ import { ManageService } from '../manage.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
 import { CancelBillComponent } from '../cancel-bill/cancel-bill.component';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-purchase',
@@ -29,7 +29,8 @@ export class PurchaseComponent implements OnInit {
     private popup: NgToastService,
     private addpurch: MatDialog,
     private purchaseservice: ManageService,
-    private router:Router
+    private router:Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -76,7 +77,8 @@ export class PurchaseComponent implements OnInit {
 
 
   on_draf_bill(data:any){
-  this.router.navigate(['/add_edit_purchase'], data)
+    this.router.navigate(['/home/purchase/add_edit_purchase'], {relativeTo: this.route});
+  // this.router.navigate(['../add_edit_purchase'], data)
   }
   on_cancel_bill(data:any){
       this.addpurch.open(CancelBillComponent,{
