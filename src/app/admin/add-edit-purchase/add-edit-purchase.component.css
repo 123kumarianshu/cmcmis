@@ -507,18 +507,23 @@ ng-container {
     .date_box {
         width: 100%;
     }
+   
     .upload_img_div{
+        margin: 0px;
         width: 100%;
-        margin: 18px 0px 0px 0px;
+        float: left;
     }
      .upload_img {
         width: 100%;
         margin-bottom: 18px;
+        float: left;
     }
     
     .bill_img{
-       
-        background-color: lime;
+        width: 100%;
+        height: auto;
+        float: left;
+        margin: 0px;
     }
 }
 @media(max-width:480px) {
@@ -594,17 +599,23 @@ ng-container {
     .date_box {
         width: 100%;
     }
+   
     .upload_img_div{
+        margin: 0px;
         width: 100%;
-        margin: 18px 0px 0px 0px;
+        float: left;
     }
      .upload_img {
         width: 100%;
         margin-bottom: 18px;
+        float: left;
     }
     
     .bill_img{
-        margin-left: -142px;
-    } 
+        width: 100%;
+        height: auto;
+        float: left;
+        margin: 0px;
+    }
 
 }
