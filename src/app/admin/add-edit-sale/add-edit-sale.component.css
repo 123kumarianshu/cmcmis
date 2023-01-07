@@ -299,7 +299,10 @@ tr.mat-row {
     .content_area {
         margin-top: 10px;
     }
-    
+    .addButton{
+        float: left;
+        margin: -10px 0px 0px 80px;
+    }
     .column_first{
         width: 820px;
         height: auto;
