@@ -27,8 +27,6 @@
 										[value]="cust.cust_id">{{cust.cust_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
-						</div>
-						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Mobile</mat-label>
@@ -89,8 +87,6 @@
 										[value]="cat.cat_id">{{cat.cat_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
-						</div>
-						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Product</mat-label>
@@ -117,8 +113,6 @@
 								<mat-label>Unit</mat-label>
 								<input formControlName="product_unit_id" matInput placeholder="unit" readonly>
 							</mat-form-field>
-						</div>
-						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Page</mat-label>
@@ -254,8 +248,6 @@
 								<input type="number" formControlName="sale_discount" matInput placeholder="Discount(%)"
 									(keyup)="disc_amt_cal()" [readonly]="this.draft_data.status == 1">
 							</mat-form-field>
-						</div>
-						<div class="column">
 
 							<mat-form-field appearance="fill">
 								<mat-label>GST(%)</mat-label>
@@ -263,7 +255,6 @@
 									[disabled]="this.draft_data.status == 1">
 									<mat-option *ngFor="let gst of gst_data"
 										[value]="gst.gst_in_percentage">{{gst.gst_in_percentage}}</mat-option>
-
 								</mat-select>
 							</mat-form-field>
 							<!-- <br> -->
@@ -273,7 +264,7 @@
 									placeholder="Payable Amount" [readonly]="this.draft_data.status == 1">
 							</mat-form-field>
 						</div>
-						<div class="column">
+						<div class="column_first">
 
 							<mat-form-field appearance="fill">
 								<mat-label>Paid</mat-label>
@@ -284,9 +275,6 @@
 								<mat-label>Dues</mat-label>
 								<input type="number" formControlName="sale_dues" matInput placeholder="Dues">
 							</mat-form-field>
-						</div>
-						<div class="column_first">
-
 							<!-- <br> -->
 							<input type="date" formControlName="sale_date" id="formdate"
 								[readOnly]="this.draft_data.status == 1">
