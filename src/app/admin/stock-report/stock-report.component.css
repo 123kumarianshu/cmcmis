@@ -11,6 +11,35 @@
     padding: 10px;
     box-sizing: border-box;
 }
+#print_stock_report {
+    position: relative;
+    top: -5px;
+    left: 2px;
+    cursor: pointer;
+}
+.notice_text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    font-size: 16px;   
+}
+/* .search_area{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    background-color: lime;
+} */
+/* .search_area mat-form-field{
+    background-color: red;
+} */
+/* .search_area input{
+    width: 260px;
+    background-color: pink;
+    border-bottom: 1px solid black;
+
+} */
+
+
 
 .search_area{
     height: 50px;
@@ -26,20 +55,11 @@
     border-bottom: 1px solid black;
 }
 
-#print_stock_report {
-    position: relative;
-    top: -5px;
-    left: 2px;
-    cursor: pointer;
-}
 
-.notice_text {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-style: italic;
-    font-size: 16px;   
-}
 
-/* .count_search {
+
+
+.count_search {
     height: 40px;
     width: 100%;
     display: flex;
@@ -47,11 +67,11 @@
     padding: 10px 10px 0px 10px;
     box-sizing: border-box;
     color: #0d5e58;
-} */
+}
 
-/* .count_search .notice_text {
+.count_search .notice_text {
     font-size: 16px;
-} */
+}
 .search input {
     border-bottom: 1px solid #0a4547;
     outline: none;
