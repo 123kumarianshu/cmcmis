@@ -31,15 +31,16 @@ export class HomepageComponent implements OnInit {
 
    
     const userdata = localStorage.getItem('Token');
-    if (!userdata) {
+    if (userdata) {
       
      }
     else {
       this.matdilog.open(LoginpageComponent,{
-        maxWidth:'100vw',
-        width:'100%',
-        height:'100%',
-        maxHeight:'100vh',
+        width: '100%',
+      maxWidth: '100vw',
+      height:'100%',
+      maxHeight:'100vh',
+      panelClass:'loginclass'
       })
       this.admin_data = localStorage.getItem('Token');
       this.admin_data_check = JSON.parse(this.admin_data);

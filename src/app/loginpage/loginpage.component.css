@@ -1,17 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 #wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
-    /* background-image: url(/assets/login3.jpg ); */
     background-image: url(http://adityaradhaya.com/assets/login3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-position: center; */
-    float: left;
+    background-position: center;
 }
 .example-card{
     max-width: 350px;
     height: 400px;
-    margin: 200px auto;
+    margin: 140px auto;
     box-sizing: border-box;
     background-color: #14595c;
     opacity: 0.8;
@@ -30,6 +36,7 @@ mat-form-field {
     float: right;
     margin-top: 10px;
 }
+
 ::placeholder {
     color: whitesmoke;
 }
@@ -37,6 +44,7 @@ mat-form-field {
 mat-form-field mat-label {
     color: rgb(243, 239, 239);
 }
+
 .icon_1{
     position: relative;
     top:25px;
@@ -74,6 +82,7 @@ p{
     line-height: 40px;
     position: fixed;
     bottom: 0px;
+    left: 0;
 }
 .footer a{
     text-decoration: none;

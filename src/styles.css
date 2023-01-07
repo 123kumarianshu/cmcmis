@@ -6,6 +6,12 @@ button{
     border: none;
     background-color:transparent;
 }
+.loginclass{
+    /* background-image: url(http://adityaradhaya.com/assets/login3.jpg);
+     background-repeat: no-repeat; 
+    background-size: cover; */
+  background-color: rgb(255, 255, 255);
+}
 .openLogin .mat-dialog-container{
   /* background-image:url(https://greensoft.net.in/addbox/assets/upload/login_img1.jpg) ; */
   background-image:url(https://addbox.in/assets/upload/login_img1.jpg) ;

@@ -39,11 +39,12 @@ export class LoginpageComponent implements OnInit {
             this.router.navigate(['/home']);
             this.LoginForm.reset();
             localStorage.setItem('Token', JSON.stringify(result.uid[0]));
-            this.popup.success({detail:'Success',summary:'Login Successfully...',sticky:true,position:'tr'})    
+            this.popup.success({detail:'Success',summary:'Login Successfully...',sticky:true,position:'tr'})
+
             this.matref.close();        
           }
           else {
-            this.popup.error({detail:'Error',summary:'Login Fail...',sticky:true,position:'tr'})            
+            this.popup.error({detail:'Error',summary:'Login Fail...',sticky:true,position:'tr'})        
 
             }
         }
@@ -51,8 +52,7 @@ export class LoginpageComponent implements OnInit {
 
     }
     else{
-      this.popup.success({detail:'Success',summary:'Size Update Successfully...',sticky:true,position:'tr'})
-      this.popup.warning({detail:'Warning',summary:'Plz Fill all the required...',sticky:true,position:'tr'})            
+      this.popup.warning({detail:'Warning',summary:'Plz Fill Correct Detalis...',sticky:true,position:'tr'})
 
     }
    }
