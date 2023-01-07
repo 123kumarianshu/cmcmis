@@ -25,7 +25,10 @@ export class DashboardComponent implements OnInit {
   total_area_alct:number=0;
   total_sale:number=0;
   total_dues:number=0;
+  total_account:number = 0;
+  total_expense:number = 0;
   defult:number=0
+
   loginuserdata: any;
 
   constructor(
@@ -61,8 +64,16 @@ export class DashboardComponent implements OnInit {
           this.total_area_alct= result.data[0].total_area_alct
           this.total_sale= result.data[0].total_sale
           this.total_dues= result.data[0].total_dues
+          this.total_account= result.data[0].total_account
+          this.total_expense= result.data[0].total_expense
       })    
       
+
+      this.servies.getDues().subscribe(
+        (res:any)=>{
+          this.total_dues = res.data.length
+        }
+      )
         }
 
   }

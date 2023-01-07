@@ -11,16 +11,27 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./dues.component.css']
 })
 export class DuesComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'customer_name', 'bill_number', 'gross_amount','paid','dues', 'date','Action',];
+  displayedColumns: string[] = ['slno', 'cust_name', 'sale_bill_no', 'sale_gross_amount','sale_paid','sale_dues', 'sale_date','Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  dues_count:any;
   constructor(
     private adddues: MatDialog,
     private customerservice: ManageService,
   ) { }
 
   ngOnInit(): void {
+
+    this.customerservice.getDues().subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.dataSource = new MatTableDataSource(res.data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.dues_count = res.data.length;
+      }
+    )
   }
   add_dues():any{
 

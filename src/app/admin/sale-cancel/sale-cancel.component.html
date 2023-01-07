@@ -32,13 +32,12 @@
                     </ng-container>
                     <ng-container matColumnDef="sale_cancel_reason">
                         <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Cancel Reason</th>
-                        <td class="data" mat-cell *matCellDef="let row">{{row.sale_cancel_reason}}</td>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.cancel_reason}}</td>
                     </ng-container>
             
                     <ng-container matColumnDef="Date">
                         <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-                        <td class="data" mat-cell *matCellDef="let row">
-                        </td>
+                        <td class="data" mat-cell *matCellDef="let row">{{row.sale_date}}</td>
                     </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
