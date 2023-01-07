@@ -27,7 +27,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.productservice. getProduct().subscribe(
       (productresult:any)=>{
-        // console.log(itemresult)   
+        console.log(productresult)   
       this.dataSource = new MatTableDataSource(productresult.data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;

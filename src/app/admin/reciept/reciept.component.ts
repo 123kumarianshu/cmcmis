@@ -12,25 +12,33 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./reciept.component.css']
 })
 export class RecieptComponent implements OnInit {
-      displayedColumns: string[] = ['slno','reciept_customer','reciept_bill_number','reciept_Gross_amount','reciept_back_dues', 'reciept_paid','reciept_current_dues','reciept_date'];
+      displayedColumns: string[] = ['slno','reciept_customer','reciept_bill_number','reciept_Gross_amount','reciept_back_dues', 'reciept_paid','reciept_current_dues',];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
-
+      recived_total:any
   constructor(
     private addreciept: MatDialog,
-    private customerservice: ManageService,
+    private service: ManageService,
   ) { }
 
   
   ngOnInit(): void {
-  }
-  add_reciept():any{
+    this.service.get_recive().subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.dataSource = new MatTableDataSource(res.data);
+        this.dataSource.sort = this.sort;
 
-  }
-  editreciept(row:any){
+        this.dataSource.paginator = this.paginator;
+        this.recived_total = res.data.length
 
+
+      }
+    )
   }
+  
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

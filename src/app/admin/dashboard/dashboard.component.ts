@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   total_dues:number=0;
   total_account:number = 0;
   total_expense:number = 0;
+  total_recive:number = 0;
   defult:number=0
 
   loginuserdata: any;
@@ -63,9 +64,9 @@ export class DashboardComponent implements OnInit {
           this.total_production= result.data[0].total_production
           this.total_area_alct= result.data[0].total_area_alct
           this.total_sale= result.data[0].total_sale
-          this.total_dues= result.data[0].total_dues
-          this.total_account= result.data[0].total_account
-          this.total_expense= result.data[0].total_expense
+          this.total_dues = result.data[0].total_dues
+          this.total_account = result.data[0].total_account
+          this.total_expense = result.data[0].total_expense
       })    
       
 
@@ -74,7 +75,13 @@ export class DashboardComponent implements OnInit {
           this.total_dues = res.data.length
         }
       )
+      this.servies.get_recive().subscribe(
+        (res:any)=>{
+          this.total_recive = res.data.length
         }
+      )
+    
+    }
 
   }
 

@@ -50,9 +50,9 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.sale_date}}</td>
           </ng-container>
           <ng-container matColumnDef="Action">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Recive</th>
             <td class="data" mat-cell *matCellDef="let row">
-             <button mat-button (click)="open_recive(row)">Recive</button>
+             <button mat-button (click)="open_recive(row)"><mat-icon>payment</mat-icon></button>
             </td>
           </ng-container>
 

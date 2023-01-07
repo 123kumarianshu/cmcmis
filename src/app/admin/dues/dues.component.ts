@@ -34,12 +34,7 @@ export class DuesComponent implements OnInit {
       }
     )
   }
-  add_dues():any{
 
-  }
-  editdues(row:any){
-
-  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

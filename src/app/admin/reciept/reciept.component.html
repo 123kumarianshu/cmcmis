@@ -20,39 +20,35 @@
 
           <ng-container matColumnDef="reciept_customer">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Customer</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_customer}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cust_name}}</td>
           </ng-container>
 
           <ng-container matColumnDef="reciept_bill_number">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number </th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_bill_number}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.sale_bill_no}}</td>
           </ng-container>
 
           <ng-container matColumnDef="reciept_Gross_amount">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_Gross_amount}}</td>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Back Dues</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.sale_dues}}</td>
           </ng-container>
 
 
           <ng-container matColumnDef="reciept_back_dues">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Back dues </th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_back_dues}}</td>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Recived </th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.recived}}</td>
           </ng-container>
 
           <ng-container matColumnDef="reciept_paid">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Paid </th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_back_dues}}</td>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Current Dues</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.current_dues}}</td>
           </ng-container>
 
           <ng-container matColumnDef="reciept_current_dues">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Current dues</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_current_dues}}</td>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Current Date</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.dues_date}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="reciept_date">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date </th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.reciept_date}}</td>
-          </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

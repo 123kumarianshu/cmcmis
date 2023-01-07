@@ -317,4 +317,8 @@ export class ManageService {
   put_expense(data: any,) {
     return this.http.put<any>(this.baseUrl + 'expense_update.php', data);
   }
+
+  get_recive() {
+    return this.http.get<[]>(this.baseUrl + 'get_recived.php');
+  } 
 }
