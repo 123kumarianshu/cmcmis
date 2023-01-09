@@ -13,7 +13,8 @@ import { ManageService } from '../manage.service';
 export class PurchaseReportComponent implements OnInit {
   minDate!: Date;
   maxDate!: Date;
-  
+  PurchData:any;
+  total_purch:any
     
   states: string[] = [
     'January',
@@ -29,20 +30,29 @@ export class PurchaseReportComponent implements OnInit {
     'November',
     'December',
   ];
-  displayedColumns: string[] = ['slno', 'Party', 'Bill_no.','Item', 'Basic_amount', 'Discount', 'Gst', 'Gross_amount', 'Date',];
+  displayedColumns: string[] = ['slno', 'Party', 'Bill_no.', 'Basic_amount', 'Discount', 'Gst', 'Gross_amount', 'Date',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor() { }
+  constructor(
+    private servies:ManageService
+
+  ) { }
 
   ngOnInit(): void {
+      this.servies.get_purch().subscribe(
+        (res:any)=>{
+          console.log(res)
+          
+          this.PurchData = res.data
+          this.dataSource = new MatTableDataSource(res.data);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          this.total_purch = res.data.length
+        }
+      )
   }
-  add_purchase_report() {
 
-  }
-  edit_purchase_report(row: any) {
-
-  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
