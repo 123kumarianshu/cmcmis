@@ -19,13 +19,20 @@
     left: 2px;
     cursor: pointer;
 }
-.text_box{
+.notice_text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.text_box {
     width: 152px;
     float: right;
     padding: 31px 2px 1px 5px;
     border-bottom: 1px solid black;
 }
-.text_boxe{
+
+/* .text_boxe{
     width: 200px;
     float: left;
     position: absolute;
@@ -33,7 +40,7 @@
     padding: 35px 1px 2px 5px;
     border-bottom: 1px solid black;
     
-}
+} */
 
 /* -----------------------------------------------------------------change me------------------------------------------------------- */
 
@@ -45,22 +52,35 @@ mat-form-field {
   }
   mat-datepicker-toggle{
     position: absolute;
-    right: 2%;
+    /* right: 2%; */
+    right: 4px;
     margin-top: -12px;
   }
  
-.notice_text {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-style: italic;
-    font-size: 16px;}
-.search_area{
+  .date_picar {
+    width: auto;
+    height: 50px;
+    float: left;
+}
+
+.date_picar mat-form-field {
+    width: 200px;
+}
+
+.search_area {
+    width: 100%;
+    height: 50px;
+    color: #0d5e58;
+
+}
+/* .search_area{
     width: 100%;
     height: 53px;
-}
-.ppt{
+} */
+/* .ppt{
     position: absolute;
     right: 3%
-}
+} */
 mat-icon {
     background-color: transparent;
     border: none;
@@ -110,14 +130,32 @@ tr:hover {
 ng-container {
     text-align: center;
 }
+.cotainer {
+    margin-top: 4px;
+}
 .footer_amount{
-    height:44px;
+    /* height:44px;
     width: 100%;
     background-color: #0f575a;
     position: fixed;
+    bottom: 0px; */
+    width:99.9%;
+    height:44px;
+    position: absolute;
+    /* position: fixed; */
     bottom: 0px;
+    /* margin-top: 452px; */
+    background-color: #0a4547;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    color: whitesmoke;
+    letter-spacing: 1px;   
+    line-height:47px; 
+    padding: 0px 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.total{    
+/* .total{    
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color:whitesmoke; 
     padding-left:136px;   
@@ -127,9 +165,193 @@ ng-container {
     margin-left:5%;
   
     
+} */
+
+
+/* //////////////////////////table media q//////////////////////////// */
+@media(min-width:800px) and (max-width:1180px) {
+    #wrapper {
+        overflow-x: hidden;
+    }
+
+    .cotainer {
+        overflow-x: auto;
+    }
+
+    mat-paginator {
+        position: absolute;
+        width: 100%;
+    }
+
+    .notice_text {
+        font-size: 14px;
+    }
+
+    .date_picar {
+        width: auto;
+        height: 50px;
+        float: left;
+    }
+
+    .date_picar mat-form-field {
+        width: 125px;
+    }
+
+    table th {
+        font-size: 14px;
+    }
+
+    table td {
+        font-size: 14px;
+    }
+
+    .footer_amount {
+        padding: 0px 15px;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+
+    }
+
 }
+
+@media(min-width:461px) and (max-width:799px) {
+    #wrapper {
+        overflow-x: hidden;
+    }
+
+    .cotainer {
+        overflow-x: auto;
+    }
+
+    mat-paginator {
+        position: absolute;
+        width: 100%;
+    }
+
+    .notice_text {
+        font-size: 14px;
+    }
+
+    .search input {
+        width: 99%;
+        height: auto;
+        padding: 10px 0px 10px 10px;
+    }
+
+    .search_area {
+        width: 100%;
+        height: 90px;
+
+    }
+
+    .date_picar {
+        width: 100%;
+        height: 52px;
+        float: left;
+
+    }
+
+    .date_picar mat-form-field {
+        width: 32.9%;
+    }
+
+    table th {
+        font-size: 14px;
+    }
+
+    table td {
+        font-size: 14px;
+    }
+
+    .footer_amount {
+        padding: 0px 15px;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+
+    }
+
+}
+
+@media (max-width:460px) {
+    #wrapper {
+        overflow-x: hidden;
+    }
+
+    .cotainer {
+        overflow-x: auto;
+    }
+
+    mat-paginator {
+        position: absolute;
+        width: 100%;
+    }
+
+    .notice_text {
+        font-size: 13px;
+    }
+
+    .search input {
+        width: 99%;
+        height: auto;
+        padding: 10px 0px 10px 10px;
+    }
+
+    .search_area {
+        width: 100%;
+        height: 90px;
+
+    }
+
+    .date_picar {
+        width: auto;
+        height: 52px;
+        float: left;
+    }
+
+    .date_picar mat-form-field {
+        width: 32.7%;
+    }
+
+    table th {
+        font-size: 13px;
+    }
+
+    table td {
+        font-size: 13px;
+    }
+
+    th.mat-header-cell:first-of-type {
+        padding-left: 13px;
+    }
+
+    th.mat-header-cell:last-of-type {
+        padding-right: 0px;
+        width: 0%;
+    }
+
+    td.mat-cell:first-of-type {
+        padding-left: 20px;
+    }
+
+    td.mat-cell:last-of-type {
+        padding-right: 0px;
+        padding-left: 10px;
+    }
+
+    .footer_amount {
+        padding: 0px 10px;
+        font-size: 13px;
+        letter-spacing: 0px;
+
+    }
+
+}
+
+
+
+
 /* --------------------------------------------------------Media Query-------------------------------------------- */
-@media(min-width: 280px) and (max-width: 350px){
+/* @media(min-width: 280px) and (max-width: 350px){
    
     mat-form-field{
         width: 69px;
@@ -356,7 +578,7 @@ ng-container {
         .total{
             padding-left: 91px;
         }
-    }
+    } */
 
 
 

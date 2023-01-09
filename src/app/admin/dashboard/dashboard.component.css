@@ -166,7 +166,7 @@ mat-icon {
 
 @media(max-width:420px) {
   .main_thumbnail {
-    padding-right: 4px;
+    padding-right: 20px;
   }
 
   .thumbnail {
@@ -174,7 +174,7 @@ mat-icon {
     height: 100px;
     margin-top: 10px;
     /* float: left; */
-    margin-left: 2px;
+    margin-left: 10px;
 
   }
 

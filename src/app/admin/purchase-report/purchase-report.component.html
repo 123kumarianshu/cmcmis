@@ -1,115 +1,104 @@
-<div class="view_notice">
-  <span class="notice_text">Purchase Report</span>
-  <mat-icon id="print_sale_report" routerLink="/add_customer_details">local_printshop</mat-icon>
-</div>
+<div id="wrapper">
+  <div class="view_notice">
+    <span class="notice_text">Purchase Report</span>
+    <mat-icon id="print_sale_report" routerLink="/add_customer_details">local_printshop</mat-icon>
+  </div>
 
-<div class="search_area">
- 
-  <mat-form-field appearance="fill">
-    <mat-label>Month</mat-label>
-    <mat-select>
-      <mat-option>Month</mat-option>
-      <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="search_area">
+    <div class="date_picar">
+      <mat-form-field appearance="fill">
+        <mat-label>Month</mat-label>
+        <mat-select>
+          <mat-option>Month</mat-option>
+          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>From</mat-label>
-    <input matInput [matDatepicker]="picker">
-    <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>From</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <!-- <mat-hint>MM/DD/YYYY</mat-hint > -->
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>To</mat-label>
-    <input matInput [matDatepicker]="picker1" >
- 
-    <mat-datepicker-toggle class="ppt" matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-    <mat-datepicker #picker1></mat-datepicker>
-  </mat-form-field>
-  
-  <input matInput type="Search" placeholder="Search" #input class="text_box">
-</div>
+      <mat-form-field appearance="fill">
+        <mat-label>To</mat-label>
+        <input matInput [matDatepicker]="picker1">
 
-<div class="cotainer">
-  <form>
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource" matSort id="table">
-        <ng-container matColumnDef="slno">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
-          <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
-            paginatorRef.pageSize)+(i+1)}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Party">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_name}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Bill_no.">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Item">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Item</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.ppt}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Basic_amount">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic amount</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.cust_owner_name}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Discount">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Gst">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.Account}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Gross_amount">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross amount</th>
-          <td class="data" mat-cell *matCellDef="let row">{{row.Net_amount}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Date">
-          <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-          <td class="data" mat-cell *matCellDef="let row">
-            <mat-icon (click)="edit_purchase_report(row)">edit</mat-icon>
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
-        </tr>
-      </table>
-      <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        <mat-datepicker-toggle class="ppt" matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
     </div>
-  </form>
-  <div class="footer_amount">
-    <span class="total">Total GST : 1 |</span>
-    <span class="total">Discount : 0 |</span>
-    <span class="total">Basic amount : 0 |</span>
-    <span class="total">Net amount : 0 </span>
+    <div class="search"><input matInput type="Search" placeholder="Search" #input class="text_box"></div>
+  </div>
+
+  <div class="cotainer">
+    <form>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort id="table">
+          <ng-container matColumnDef="slno">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
+            <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
+              paginatorRef.pageSize)+(i+1)}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Party">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Bill_no.">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Item">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Item</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.ppt}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Basic_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic amount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cust_owner_name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Discount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Gst">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.Account}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Gross_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross amount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.Net_amount}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Date">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+            <td class="data" mat-cell *matCellDef="let row">
+              <mat-icon (click)="edit_purchase_report(row)">edit</mat-icon>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+          </tr>
+        </table>
+        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
+          aria-label="Select page of users"></mat-paginator>
+      </div>
+    </form>
+    <div class="footer_amount">
+      <span>Total GST : 1 |</span>
+      <span>Discount : 0 |</span>
+      <span>Basic amount : 0 |</span>
+      <span>Net amount : 0 </span>
+    </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
