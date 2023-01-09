@@ -102,6 +102,9 @@ p{
     mat-card-header{
         font-size: 20px;
     }
+    mat-card-actions{
+        margin-left:95px;
+    }
     p{
         font-size: 14px;
     }

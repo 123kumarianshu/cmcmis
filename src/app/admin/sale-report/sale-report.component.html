@@ -5,6 +5,7 @@
   </div>
 
   <div class="search_area">
+    <div class="date_picar">
     <mat-form-field appearance="fill">
       <mat-label>Month</mat-label>
       <mat-select>
@@ -27,9 +28,9 @@
       <mat-datepicker-toggle class="ppt" matIconSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
-
+    </div>
     <!-- <input matInput type="date" placeholder="Search" #input class="text_boxe"> -->
-    <input matInput type="Search" placeholder="Search" #input class="text_box">
+    <div class="search"> <input matInput type="Search" placeholder="Search" #input class="text_box"></div>
     
   </div>
 

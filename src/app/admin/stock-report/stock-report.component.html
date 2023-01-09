@@ -3,17 +3,17 @@
     <span class="notice_text">Stock Report</span>
     <mat-icon id="print_stock_report" (click)="print_stock_report()">local_printshop</mat-icon>
   </div>
-
-  <div class="search_area">
-
+  <div class="count_search">
     <mat-form-field appearance="fill">
       <mat-label>Month</mat-label>
       <mat-select>
         <mat-option>Month</mat-option>
         <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
       </mat-select>
-    </mat-form-field>
-    <input matInput type="Search" placeholder="Search" #input class="text_box">
+    </mat-form-field>    
+    <div class="search">
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+    </div>
   </div>
   <div class="cotainer">
     <form>
@@ -65,8 +65,10 @@
           aria-label="Select page of users"></mat-paginator>
       </div>
     </form>
+    
   </div>
   <div class="footer_amount">
+   
     <span>Total GST : 0 |</span>
     <span>Discount: 0</span>
     <span>Basic amount: 0</span>
