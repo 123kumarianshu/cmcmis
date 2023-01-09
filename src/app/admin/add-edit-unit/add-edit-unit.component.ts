@@ -25,6 +25,9 @@ export class AddEditUnitComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editData:any,
     private matref: MatDialogRef<AddEditUnitComponent>
   ) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+      return false;
+  };
 
     this.addUnit = this.fb.group({
       unit_id: [''],
@@ -74,39 +77,27 @@ export class AddEditUnitComponent implements OnInit {
       }
     }
     else {
-      this.updateUnit()
-    }
-  }
-  updateUnit() {
-    this.manageService.putUnit(this.addUnit.value)
-       .subscribe({
-        next: (res) => {
-          this.addUnit.reset();
-          this.matref.close('update')
-          console.log(res)
-       },
-        error: () => {
-          
-        }
-     })
+        if (this.addUnit.valid) {
+            this.manageService.putUnit(this.addUnit.value).subscribe(
+             (data: any) => {
+              this.router.navigate(['/unit']);           
+              this.addUnit.reset();
+              this.matref.close('save');
+              this.popup.success({detail:'Success',summary:'Unit  Update Successfully...',sticky:true,position:'tr'})
+            },
+            (error: any) => {
+              console.log(['message']);
+                this.popup.error({detail:'message',summary:'Unit data is not  Update', sticky:true,position:'tr'})        
+     
+             }
+           );
+         }
+     
+       }
 
-   if (this.addUnit.valid) {
-       this.manageService.putUnit(this.addUnit.value).subscribe(
-        (data: any) => {
-          this.router.navigate(['/unit']);
-         this.addUnit.reset();
-         this.matref.close('save');
-         this.popup.success({detail:'Success',summary:'Unit  Update Successfully...',sticky:true,position:'tr'})
-       },
-       (error: any) => {
-         console.log(['message']);
-           this.popup.error({detail:'message',summary:'Unit data is not  Update', sticky:true,position:'tr'})        
-
-        }
-      );
-    }
 
   }
+ 
 }
 
 

@@ -114,7 +114,6 @@ export class AddEditProductComponent implements OnInit {
   }
   updateProduct() {
   if (this.productForm.valid) {
-    const updateData = new FormData();
     this.manageService.putProduct(this.productForm.value).subscribe({
       next: (res) => {
         console.log(res);

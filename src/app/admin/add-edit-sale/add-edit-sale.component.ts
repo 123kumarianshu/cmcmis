@@ -45,12 +45,13 @@ export class AddEditSaleComponent implements OnInit {
   sale_edit_data: any;
   sale_action_btn: boolean = false
   constructor(
+    private manageService: ManageService,
     private router: Router,
     private fb: FormBuilder,
     private fb1: FormBuilder,
     private fb2: FormBuilder,
     private popup: NgToastService,
-    private manageService: ManageService,
+   
     // @Inject(MAT_DIALOG_DATA) public editData: any,
     // private matref: MatDialogRef<AddEditSaleComponent>
   ) {
