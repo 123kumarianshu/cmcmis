@@ -4,9 +4,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sale-report',
@@ -17,9 +14,10 @@ import { FormControl } from '@angular/forms';
 })
 export class SaleReportComponent implements OnInit {
   
-    minDate!: Date;
+  minDate!: Date;
   maxDate!: Date;
-  
+  saleData:any;
+  report_data:any
   states: string[] = [
     'January',
     'Febraury',
@@ -36,7 +34,7 @@ export class SaleReportComponent implements OnInit {
   ];
 
   
-  displayedColumns: string[] = ['slno', 'Custumber', 'Bill_no', 'product', 'Basic_amount','discount','Gst','Paybale_amount','Paid','Dues', 'Date'];
+  displayedColumns: string[] = ['slno', 'Custumber', 'Bill_no', 'Basic_amount','discount','Gst','Paybale_amount','Paid','Dues', 'Date'];
   dataSource!: MatTableDataSource<any>;
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -44,12 +42,22 @@ export class SaleReportComponent implements OnInit {
 
   constructor(
     private add: MatDialog,
-    private customerservice: ManageService,
+    private salereport: ManageService,
     
   ) { }
   
 
   ngOnInit(): void {
+    this.salereport.getSale().subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.saleData = res.data
+        this.dataSource = new MatTableDataSource(res.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.report_data = res.data.length
+      }
+    )
     
   }
   print_sale_report(){

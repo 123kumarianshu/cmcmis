@@ -293,8 +293,8 @@ export class ManageService {
   getDues() {
     return this.http.get<[]>(this.baseUrl + 'get_dues_view.php');
   } 
-  postDues(data:any){
-    return this.http.post<any>(this.baseUrl + 'dues_insert.php', data)
+  post_dues(data:any){
+    return this.http.post<any>(this.baseUrl + 'dues_update.php', data)
   }
   // for account funcation starting here
   getAccount() {

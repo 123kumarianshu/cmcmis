@@ -45,22 +45,17 @@
 
           <ng-container matColumnDef="Party">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Party</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_name}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.party_name}}</td>
           </ng-container>
 
           <ng-container matColumnDef="Bill_no.">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="Item">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Item</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.ppt}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_bill_no}}</td>
           </ng-container>
 
           <ng-container matColumnDef="Basic_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cust_owner_name}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_basic_amount}}</td>
           </ng-container>
 
           <ng-container matColumnDef="Discount">
@@ -81,7 +76,7 @@
           <ng-container matColumnDef="Date">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
             <td class="data" mat-cell *matCellDef="let row">
-              <mat-icon (click)="edit_purchase_report(row)">edit</mat-icon>
+              <mat-icon>edit</mat-icon>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

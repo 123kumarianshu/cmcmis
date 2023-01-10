@@ -1,6 +1,6 @@
 
 .add_btn {
-    margin-right: 60px;
+    margin-right: 40%;
     background-color: green;
     color: whitesmoke;
 }
@@ -27,4 +27,7 @@ mat-toolbar {
     background: none;
     padding: 0px;
     position: relative;
+}
+mat-form-field{
+    margin: 0px 10px;
 }

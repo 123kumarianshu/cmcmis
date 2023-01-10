@@ -32,7 +32,6 @@ export class SaleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.saleservice.getSale().subscribe(
       (saleresult: any) => {
         console.log(saleresult.data[0].status)

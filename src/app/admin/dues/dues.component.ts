@@ -12,7 +12,7 @@ import { ReceivedComponent } from '../received/received.component';
   styleUrls: ['./dues.component.css']
 })
 export class DuesComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'cust_name','cust_mobile', 'sale_bill_no', 'sale_gross_amount','sale_paid','sale_dues', 'sale_date','Action',];
+  displayedColumns: string[] = ['slno', 'cust_name','cust_mobile','cust_adr', 'sale_bill_no', 'sale_gross_amount','sale_paid','sale_dues', 'sale_date','Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

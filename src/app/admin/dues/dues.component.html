@@ -28,6 +28,11 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
           </ng-container>
 
+          <ng-container matColumnDef="cust_adr">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_address}}</td>
+          </ng-container>
+
           <ng-container matColumnDef="sale_bill_no">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill Number</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.sale_bill_no}}</td>
@@ -35,19 +40,19 @@
 
           <ng-container matColumnDef="sale_gross_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.sale_gross_amount}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.sale_amount}}</td>
           </ng-container>
           <ng-container matColumnDef="sale_paid">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Paid</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.sale_paid}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.paid}}</td>
           </ng-container>
           <ng-container matColumnDef="sale_dues">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Dues</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.sale_dues}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.current_dues}}</td>
           </ng-container>
           <ng-container matColumnDef="sale_date">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.sale_date}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.date}}</td>
           </ng-container>
           <ng-container matColumnDef="Action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Recive</th>
