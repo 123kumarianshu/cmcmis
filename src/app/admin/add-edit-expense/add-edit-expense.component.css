@@ -11,7 +11,9 @@
 form {
   padding-left: 18px;
 }
-
+.mat-dialog-content {
+  max-height: 69vh;
+}
 .example-spacer {
   flex: 1 1 auto;
   margin-bottom: 20px;
@@ -86,6 +88,12 @@ mat-toolbar {
   .column_1 mat-form-field {
     width: 100%;
   }
+  .date_box {
+    width: 100%;
+    height: 52px;
+  
+  }
+  
 
   form {
     padding: 0px;
