@@ -14,7 +14,7 @@ export class StockReportComponent implements OnInit {
   
   minDate!: Date;
   maxDate!: Date;
-  
+  stock_data:any
   states: string[] = [
     'January',
     'Febraury',
@@ -29,20 +29,30 @@ export class StockReportComponent implements OnInit {
     'November',
     'December',
   ];
-      displayedColumns: string[] = ['slno', 'category', 'product', 'company_name', 'available_qty'];
+      displayedColumns: string[] = ['slno', 'category','price', 'product', 'qty'];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
-  constructor() { }
+  constructor(
+    private servies:ManageService
+  ) { }
 
   ngOnInit(): void {
+    this.servies.get_stock().subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.stock_data = res.data
+        this.dataSource = new MatTableDataSource(res.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.stock_data = res.data.length;
+      }
+    )
   }
   print_stock_report(){
 
   }
-  edit_stock_report(row:any){
-
-  }
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

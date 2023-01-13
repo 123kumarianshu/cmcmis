@@ -44,6 +44,7 @@ export class AddEditSaleComponent implements OnInit {
   draft_data: any;
   sale_edit_data: any;
   sale_action_btn: boolean = false
+  stock_data:any
   constructor(
     private manageService: ManageService,
     private router: Router,
@@ -80,6 +81,9 @@ export class AddEditSaleComponent implements OnInit {
       }
     )
 
+ 
+    
+
 
 
     //////////// for customer table /////////////
@@ -102,6 +106,7 @@ export class AddEditSaleComponent implements OnInit {
       product_page: [''],
       product_rate: [''],
       product_quantity: ['0', Validators.required],
+      available_quantity: ['0'],
       product_total_amount: ['0', Validators.required],
       admin_id_fk: ['', Validators.required],
 
@@ -120,6 +125,8 @@ export class AddEditSaleComponent implements OnInit {
     })
 
 
+
+   
     if (this.draft_data.sale_bill_no) {
       this.actionBtn = 'Update'
       if (this.draft_data.status == 1) {
@@ -395,6 +402,17 @@ export class AddEditSaleComponent implements OnInit {
 
       }
     )
+      this.get_stock(prodformdata);
+   
+  }
+
+  get_stock(prodformdata:any){
+    this.manageService.get_stock_by_product_id(prodformdata).subscribe(
+      (res:any)=>{
+        this.stock_data = res.data[0].quantity
+        this.saleformprod.controls['available_quantity'].setValue(res.data[0].quantity);
+      }
+    )
   }
 
 
@@ -434,6 +452,13 @@ export class AddEditSaleComponent implements OnInit {
   //For calculation work start code here
   desc_amt_cal() {
     this.saleformprod.controls['product_total_amount'].setValue(this.saleformprod.get('product_rate')?.value * this.saleformprod.get('product_quantity')?.value)
+    this.saleformprod.controls['available_quantity'].setValue(this.stock_data - this.saleformprod.get('product_quantity')?.value)
+
+    if((this.saleformprod.get('product_quantity')?.value) > this.stock_data){
+      this.popup.warning({ detail: 'Warning', summary: 'Stock  Not Available...', })
+      
+    }
+    
   }
 
 

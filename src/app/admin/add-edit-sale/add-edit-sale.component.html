@@ -126,12 +126,18 @@
 							</mat-form-field>
 						</div>
 						<div class="column_first">
+							
+							<mat-form-field appearance="fill">
+								<mat-label>Available Quantity</mat-label>
+								<input formControlName="available_quantity" matInput placeholder="available quantity" readonly>
+							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Quantity</mat-label>
 								<input formControlName="product_quantity" matInput placeholder="Quantity"
 									(keyup)="desc_amt_cal()">
 							</mat-form-field>
+							
 
 							<mat-form-field appearance="fill">
 								<mat-label>Total Amount</mat-label>

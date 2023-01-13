@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditGstComponent } from '../add-edit-gst/add-edit-gst.component';
+import { NgToastService } from 'ng-angular-popup';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class GstComponent implements OnInit {
   constructor(
     private addgst: MatDialog,
     private gstservice: ManageService,
+    private popup: NgToastService,
+
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +57,27 @@ export class GstComponent implements OnInit {
       }
     })
   }  
+
+  del_gst(data:any){ 
+    if(confirm("Are you sure to delete")){
+    const deldata = new FormData();
+    deldata.append('gst_id',data.gst_id)
+    this.gstservice.del_gst(deldata).subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.popup.success({detail:'Success',summary:'Gst Delete Successfully...',sticky:true,position:'tr'})
+      },
+      (error: any) => {
+        console.log(['message']);
+        this.popup.error({detail:'message',summary:'Gst data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+      }
+    )
+    
+  } 
+  else{
+    this.popup.error({detail:'Error',summary:'Gst Delete Not...',sticky:true,position:'tr'})
+  }
+}
 
   applyFilter(event: Event) {
        const filterValue = (event.target as HTMLInputElement).value;

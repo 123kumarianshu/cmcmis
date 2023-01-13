@@ -30,7 +30,7 @@
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
     </div>
-    <div class="search"><input matInput type="Search" placeholder="Search" #input class="text_box"></div>
+    <div class="search"><input matInput (keyup)="applyFilter($event)" type="Search" placeholder="Search" #input class="text_box"></div>
   </div>
 
   <div class="cotainer">
@@ -55,28 +55,29 @@
 
           <ng-container matColumnDef="Basic_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Basic amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_basic_amount}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.basic_amount}}</td>
           </ng-container>
 
           <ng-container matColumnDef="Discount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cust_contact_no}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_discount}}</td>
           </ng-container>
 
           <ng-container matColumnDef="Gst">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.Account}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gst}}</td>
           </ng-container>
 
           <ng-container matColumnDef="Gross_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.Net_amount}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gross_amount}}</td>
           </ng-container>
 
           <ng-container matColumnDef="Date">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
             <td class="data" mat-cell *matCellDef="let row">
-              <mat-icon>edit</mat-icon>
+              {{row.purch_date}}
+             
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

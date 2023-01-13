@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditCustomerComponent } from '../add-edit-customer/add-edit-customer.component';
+import { NgToastService } from 'ng-angular-popup';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class CustomerComponent implements OnInit {
   constructor(
     private addcustomer: MatDialog,
     private customerservice: ManageService,
+    private popup: NgToastService,
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +53,28 @@ export class CustomerComponent implements OnInit {
     })
   }
 
+
+  
+  del_cust(data:any){
+    if(confirm("Are you sure to delete")){
+    const deldata = new FormData();
+    deldata.append('cust_id',data.cust_id)
+    this.customerservice.del_cust(deldata).subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.popup.success({detail:'Success',summary:'Customer Delete Successfully...',sticky:true,position:'tr'})
+      },
+      (error: any) => {
+        console.log(['message']);
+        this.popup.error({detail:'message',summary:'Customer data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+      }
+    )
+    
+  } 
+  else{
+    this.popup.error({detail:'Error',summary:'Customer Delete Not...',sticky:true,position:'tr'})
+  }
+}
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

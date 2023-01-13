@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditAreaComponent } from '../add-edit-area/add-edit-area.component';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-area',
@@ -19,6 +20,7 @@ export class AreaComponent implements OnInit {
   constructor(
     private addarea: MatDialog,
     private areaservice: ManageService,
+    private popup: NgToastService,
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,26 @@ export class AreaComponent implements OnInit {
   }
 
 
+  del_area(data:any){
+    if(confirm("Are you sure to delete")){
+    const deldata = new FormData();
+    deldata.append('area_id',data.area_id)
+    this.areaservice.del_area(deldata).subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.popup.success({detail:'Success',summary:'Area Delete Successfully...',sticky:true,position:'tr'})
+      },
+      (error: any) => {
+        console.log(['message']);
+        this.popup.error({detail:'message',summary:'Area data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+      }
+    )
+    
+  } 
+  else{
+    this.popup.error({detail:'Error',summary:'Area Delete Not...',sticky:true,position:'tr'})
+  }
+}
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

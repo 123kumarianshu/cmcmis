@@ -42,7 +42,9 @@
           <ng-container matColumnDef="Action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
             <td class="data" mat-cell *matCellDef="let row">
+
               <mat-icon (click)="editCustomer(row)">edit</mat-icon>
+              <mat-icon (click)="del_cust(row)">delete</mat-icon>
             </td>
           </ng-container>
 

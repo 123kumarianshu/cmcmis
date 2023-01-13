@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { NgToastService } from 'ng-angular-popup';
 import { AddEditUnitComponent } from '../add-edit-unit/add-edit-unit.component';
 import { ManageService } from '../manage.service';
 
@@ -22,6 +23,8 @@ export class UnitComponent implements OnInit {
   constructor(
     private addunit: MatDialog,
     private unitservice: ManageService,
+    private popup: NgToastService,
+
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +57,27 @@ export class UnitComponent implements OnInit {
     })
   }
 
+
+  del_unit(data:any){
+    if(confirm("Are you sure to delete")){
+    const deldata = new FormData();
+    deldata.append('unit_id',data.unit_id)
+    this.unitservice.del_unit(deldata).subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.popup.success({detail:'Success',summary:'Unit Delete Successfully...',sticky:true,position:'tr'})
+      },
+      (error: any) => {
+        console.log(['message']);
+        this.popup.error({detail:'message',summary:'Unit data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+      }
+    )
+    
+  } 
+  else{
+    this.popup.error({detail:'Error',summary:'Unit Delete Not...',sticky:true,position:'tr'})
+  }
+}
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

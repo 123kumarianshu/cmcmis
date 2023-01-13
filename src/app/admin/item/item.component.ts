@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditItemComponent } from '../add-edit-item/add-edit-item.component';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-item',
@@ -20,6 +21,7 @@ export class ItemComponent implements OnInit {
   constructor(
     private additem: MatDialog,
     private itemservice: ManageService,
+    private popup: NgToastService,
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +53,28 @@ export class ItemComponent implements OnInit {
       }
     })
   }
+
+  
+  del_item(data:any){
+    if(confirm("Are you sure to delete")){
+    const deldata = new FormData();
+    deldata.append('item_id',data.item_id)
+    this.itemservice.del_item(deldata).subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.popup.success({detail:'Success',summary:'Item Delete Successfully...',sticky:true,position:'tr'})
+      },
+      (error: any) => {
+        console.log(['message']);
+        this.popup.error({detail:'message',summary:'Item data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+      }
+    )
+    
+  } 
+  else{
+    this.popup.error({detail:'Error',summary:'Item Delete Not...',sticky:true,position:'tr'})
+  }
+}
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

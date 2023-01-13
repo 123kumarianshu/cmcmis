@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditSizeComponent } from '../add-edit-size/add-edit-size.component';
+import { NgToastService } from 'ng-angular-popup';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class SizeComponent implements OnInit {
   constructor(
     private addsize: MatDialog,
     private partyservice: ManageService,
+    private popup: NgToastService,
 
   ) { }
 
@@ -55,6 +57,27 @@ export class SizeComponent implements OnInit {
     })
   }
  
+
+  del_size(data:any){
+    if(confirm("Are you sure to delete")){
+    const deldata = new FormData();
+    deldata.append('size_id',data.size_id)
+    this.partyservice.del_size(deldata).subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.popup.success({detail:'Success',summary:'Weight Delete Successfully...',sticky:true,position:'tr'})
+      },
+      (error: any) => {
+        console.log(['message']);
+        this.popup.error({detail:'message',summary:'Weight data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+      }
+    )
+    
+  } 
+  else{
+    this.popup.error({detail:'Error',summary:'Weight Delete Not...',sticky:true,position:'tr'})
+  }
+}
 
 
   applyFilter(event: Event) {

@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditEmployeeComponent } from '../add-edit-employee/add-edit-employee.component';
+import { NgToastService } from 'ng-angular-popup';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class EmployeeComponent implements OnInit {
   constructor(
     private addemp: MatDialog,
     private empservice: ManageService,
+    private popup: NgToastService,
+
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +55,30 @@ export class EmployeeComponent implements OnInit {
       }
     })
   }
+
+
+  
+  del_emp(data:any){
+    if(confirm("Are you sure to delete")){
+    const deldata = new FormData();
+    deldata.append('emp_id',data.emp_id)
+    this.empservice.del_emp(deldata).subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.popup.success({detail:'Success',summary:'Category Delete Successfully...',sticky:true,position:'tr'})
+      },
+      (error: any) => {
+        console.log(['message']);
+        this.popup.error({detail:'message',summary:'Category data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+      }
+    )
+    
+  } 
+  else{
+    this.popup.error({detail:'Error',summary:'Category Delete Not...',sticky:true,position:'tr'})
+  }
+}
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

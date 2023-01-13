@@ -157,6 +157,7 @@ console.log( new Date().toISOString().slice(0, 10))
       (res: any) => {
         console.log(res)
         this.popup.success({ detail: 'Success', summary: ' Production Submit Successfully...', sticky: true, position: 'tr' })
+         this.getproductionDesData(this.ProductionForm.get('emp_id_fk')?.value)
       }
     )
     this.getproductionDesData(this.ProductionForm.get('emp_id_fk')?.value)

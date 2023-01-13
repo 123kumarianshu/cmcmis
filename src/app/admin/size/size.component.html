@@ -28,7 +28,7 @@
           </ng-container>
           <ng-container matColumnDef="Action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-            <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="editsize(row)">edit</mat-icon></td>
+            <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="editsize(row)">edit</mat-icon> <mat-icon (click)="del_size(row)">delete</mat-icon></td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

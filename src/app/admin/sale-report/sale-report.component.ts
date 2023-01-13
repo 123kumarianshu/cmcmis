@@ -13,11 +13,15 @@ import { ManageService } from '../manage.service';
   
 })
 export class SaleReportComponent implements OnInit {
-  
+  gst:Number = 0
+  total_basic_amt:Number = 0
+  total_disc:Number = 0
+  total_amt:Number = 0
   minDate!: Date;
   maxDate!: Date;
   saleData:any;
-  report_data:any
+  report_data:any;
+  
   states: string[] = [
     'January',
     'Febraury',

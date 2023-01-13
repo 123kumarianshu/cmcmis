@@ -27,38 +27,27 @@
 
           <ng-container matColumnDef="category">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category </th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.category}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.product_name}}</td>
           </ng-container>
 
           <ng-container matColumnDef="product">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.product}}</td>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product Reatail Price</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.product_retail_price}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="company_name">
+          <ng-container matColumnDef="qty">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Available qunatity</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.company_name}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.quantity}}</td>
           </ng-container>
-
-          <!-- <ng-container matColumnDef="purchase_qty">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Purchase Qty.</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purchase_qty}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="sale_qty">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Sale Qty.</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.sale_qty}}</td>
-          </ng-container> -->
-
-          <ng-container matColumnDef="available_qty">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.available_qty}}</td>
-          </ng-container>
-
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No data show"{{input.value}}"</td>
+            <td class="mat-cell" colspan="5">No data show"{{input.value}}"</td>
           </tr>
         </table>
         <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"

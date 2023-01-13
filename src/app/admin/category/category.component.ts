@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { AddEditCategoryComponent } from '../add-edit-category/add-edit-category.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
+import { NgToastService } from 'ng-angular-popup';
 
 
 @Component({
@@ -22,6 +23,8 @@ export class CategoryComponent implements OnInit {
   constructor(
     private addcat: MatDialog,
     private partyservice: ManageService,
+    private popup: NgToastService,
+
   ) { }
 
   ngOnInit(): void {
@@ -55,7 +58,27 @@ export class CategoryComponent implements OnInit {
   }
 
 
-
+  del_category(data:any){
+      if(confirm("Are you sure to delete")){
+      const deldata = new FormData();
+      deldata.append('cat_id',data.cat_id)
+      this.partyservice.del_category(deldata).subscribe(
+        (res:any)=>{
+          console.log(res)
+          this.popup.success({detail:'Success',summary:'Category Delete Successfully...',sticky:true,position:'tr'})
+        },
+        (error: any) => {
+          console.log(['message']);
+          this.popup.error({detail:'message',summary:'Category data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+        }
+      )
+      
+    } 
+    else{
+      this.popup.error({detail:'Error',summary:'Category Delete Not...',sticky:true,position:'tr'})
+    }
+  }
+  
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

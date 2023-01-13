@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditWeightComponent } from '../add-edit-weight/add-edit-weight.component';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-weight',
@@ -20,6 +21,8 @@ export class WeightComponent implements OnInit {
   constructor(
     private addweight: MatDialog,
     private weightservice: ManageService,
+    private popup: NgToastService,
+
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +55,27 @@ export class WeightComponent implements OnInit {
     })
   }
 
+
+  del_weight(data:any){
+    if(confirm("Are you sure to delete")){
+    const deldata = new FormData();
+    deldata.append('weight_id',data.weight_id)
+    this.weightservice.del_weight(deldata).subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.popup.success({detail:'Success',summary:'Weight Delete Successfully...',sticky:true,position:'tr'})
+      },
+      (error: any) => {
+        console.log(['message']);
+        this.popup.error({detail:'message',summary:'Weight data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+      }
+    )
+    
+  } 
+  else{
+    this.popup.error({detail:'Error',summary:'Weight Delete Not...',sticky:true,position:'tr'})
+  }
+}
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

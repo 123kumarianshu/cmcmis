@@ -19,6 +19,7 @@ export class ManageService {
 
   // for Dashboard function starting here 
   Login(data:any) {
+    
     return this.http.post<any>(this.baseUrl + 'login.php',data);
   }
   dashboard_view() {
@@ -35,6 +36,9 @@ export class ManageService {
   putParty(data: any,) {
     return this.http.put<any>(this.baseUrl + 'party_update.php', data)
   }
+  del_party(data: any,) {
+    return this.http.post(this.baseUrl + 'del_party.php', data)
+  }
 
   // for Unit Function Starting here
   getUnit() {
@@ -46,6 +50,10 @@ export class ManageService {
   putUnit(data: any,) {
     return this.http.put<any>(this.baseUrl + 'unit_update.php', data)
   }
+  del_unit(data: any,) {
+    return this.http.post(this.baseUrl + 'del_unit.php', data)
+  }
+
 
   // for GST Function Starting here 
   getGst() {
@@ -54,8 +62,11 @@ export class ManageService {
   postGst(data: any) {
     return this.http.post(this.baseUrl + 'gst_insert.php', data);
   }
-  putGst(data: any,) {
+  putGst(data: any) {
     return this.http.put<any>(this.baseUrl + 'gst_update.php', data)
+  }
+  del_gst(data: any) {
+    return this.http.post(this.baseUrl + 'del_gst.php', data)
   }
 
   // for weight function starting here 
@@ -69,6 +80,10 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'weight_update.php', data);
   }
 
+  del_weight(data: any,) {
+    return this.http.post(this.baseUrl + 'del_weight.php', data)
+  }
+
   // for Size function starting here 
   postSize(data: any) {
     return this.http.post<any>(this.baseUrl + 'size_insert.php', data);
@@ -78,6 +93,10 @@ export class ManageService {
   }
   putSize(data: any) {
     return this.http.put<any>(this.baseUrl + 'size_update.php', data);
+  }
+  
+  del_size(data: any,) {
+    return this.http.post(this.baseUrl + 'del_size.php', data)
   }
 
   // for Category function starting here 
@@ -90,6 +109,10 @@ export class ManageService {
   putCategory(data: any) {
     return this.http.put<any>(this.baseUrl + 'cat_update.php', data);
   }
+  
+  del_category(data: any,) {
+    return this.http.post(this.baseUrl + 'del_cat.php', data)
+  }
 
   // for Item function starting here 
   getItem() {
@@ -101,6 +124,10 @@ export class ManageService {
   putItem(data: any) {
     return this.http.put<any>(this.baseUrl + 'item_update.php', data);
   }
+  del_item(data: any,) {
+    return this.http.post(this.baseUrl + 'del_item.php', data)
+  }
+
 
   // for Product function starting here 
   getProduct() {
@@ -112,6 +139,10 @@ export class ManageService {
   putProduct(data: any) {
     return this.http.put<any>(this.baseUrl + 'product_update.php', data);
   }
+  del_product(data: any,) {
+    return this.http.post(this.baseUrl + 'del_product.php', data)
+  }
+
 
   // for Employee function starting here 
   postEmployee(data: any) {
@@ -122,6 +153,9 @@ export class ManageService {
   }
   putEmployee(data: any) {
     return this.http.put<any>(this.baseUrl + 'employee_update.php', data);
+  }
+  del_emp(data: any,) {
+    return this.http.post(this.baseUrl + 'del_emp.php', data)
   }
 
   // for Customer function starting here 
@@ -134,6 +168,10 @@ export class ManageService {
   putCustomer(data: any) {
     return this.http.put<any>(this.baseUrl + 'customer_update.php', data);
   }
+  del_cust(data: any,) {
+    return this.http.post(this.baseUrl + 'del_cust.php', data)
+  }
+  
 
   // for Area function starting here 
   postArea(data: any) {
@@ -145,7 +183,10 @@ export class ManageService {
   putArea(data: any) {
     return this.http.put<any>(this.baseUrl + 'area_update.php', data);
   }
-
+  del_area(data: any,) {
+    return this.http.post(this.baseUrl + 'del_area.php', data)
+  }
+  
   // ********************master entery end **************************
 
   // for Purchase function starting here 
@@ -288,6 +329,9 @@ export class ManageService {
   delete_sale_desc(data: any) {
     return this.http.post<any>(this.baseUrl + 'sale_desc_delete.php', data)
   }
+  get_stock_by_product_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_stock_by_product_id.php', data);
+  }
 
   // for Dues  function starting here
   getDues() {
@@ -320,5 +364,9 @@ export class ManageService {
 
   get_recive() {
     return this.http.get<[]>(this.baseUrl + 'get_recived.php');
+  } 
+
+  get_stock() {
+    return this.http.get<[]>(this.baseUrl + 'get_stock.php');
   } 
 }

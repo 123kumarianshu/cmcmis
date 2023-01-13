@@ -30,7 +30,7 @@
     </mat-form-field>
     </div>
     <!-- <input matInput type="date" placeholder="Search" #input class="text_boxe"> -->
-    <div class="search"> <input matInput type="Search" placeholder="Search" #input class="text_box"></div>
+    <div class="search"> <input (keyup)="applyFilter($event)" matInput type="Search" placeholder="Search" #input class="text_box"></div>
     
   </div>
 
@@ -103,8 +103,8 @@
   </div>
  
   <div class="footer_amount">
-    <span class="total">Total GST : 0 |</span>
-    <span class="total">Discount : 0 |</span>
-    <span class="total">Basic amount : 0 |</span>
-    <span class="total">Total amount : 0 </span>
+    <span class="total">Basic amount : {{total_basic_amt}} |</span>
+    <span class="total">Discount : {{total_disc}} |</span>
+    <span class="total">Total GST : {{gst}} |</span>
+    <span class="total">Total amount : {{total_amt}} </span>
   </div>
