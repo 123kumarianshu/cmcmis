@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class SizeComponent implements OnInit {
   displayedColumns: string[] = ['size_id', 'size_name', 'size_description', 'Action',];
   dataSource!: MatTableDataSource<any>;
-  size_count: any;
+  size_count:Number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(

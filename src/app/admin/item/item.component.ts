@@ -18,7 +18,7 @@ export class ItemComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-   itemcount:any
+   itemcount:Number = 0
   constructor(
     private additem: MatDialog,
     private itemservice: ManageService,

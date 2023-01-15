@@ -15,7 +15,7 @@ export class ProductionComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  production_count:any
+  production_count:Number = 0
   constructor(
     private addproduction: MatDialog,
     private productionservice: ManageService,

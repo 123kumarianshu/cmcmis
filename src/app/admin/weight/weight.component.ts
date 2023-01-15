@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 export class WeightComponent implements OnInit {
   displayedColumns: string[] = ['slno', 'weight_name', 'weight_description', 'Action',];
   dataSource!: MatTableDataSource<any>;
-  weight_count: any;
+  weight_count:Number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(

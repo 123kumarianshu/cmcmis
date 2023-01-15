@@ -19,7 +19,7 @@ export class GstComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-     gstcount:any
+     gstcount:Number = 0
   constructor(
     private addgst: MatDialog,
     private gstservice: ManageService,

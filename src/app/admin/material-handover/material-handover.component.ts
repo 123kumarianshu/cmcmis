@@ -17,7 +17,7 @@ export class MaterialHandoverComponent implements OnInit {
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
-      mhcount:any
+      mhcount:Number = 0
   constructor(
     private addmh: MatDialog,
     private mhservice: ManageService,

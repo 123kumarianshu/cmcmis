@@ -16,7 +16,7 @@ export class DuesComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  dues_count:any;
+  dues_count:Number = 1;
   constructor(
     private adddues: MatDialog,
     private customerservice: ManageService,

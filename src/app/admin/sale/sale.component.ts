@@ -20,7 +20,7 @@ export class SaleComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  sale_total: any
+  sale_total: Number = 0
   constructor(
     private route: Router,
     private saleservice: ManageService,

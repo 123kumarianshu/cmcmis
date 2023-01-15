@@ -16,7 +16,7 @@ export class PurchaseCancelComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  purch_total:any
+  purch_total:Number = 0
   constructor(
     private servies:ManageService
   ) { }

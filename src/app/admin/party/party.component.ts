@@ -18,7 +18,7 @@ export class PartyComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  partycount:any;
+  partycount:Number = 0;
   
 
   constructor(

@@ -20,6 +20,7 @@ export class EmployeeComponent implements OnInit {
         dataSource!: MatTableDataSource<any>;
          @ViewChild(MatPaginator) paginator!: MatPaginator;
          @ViewChild(MatSort) sort!: MatSort;
+         total_emp:Number = 0
   constructor(
     private addemp: MatDialog,
     private empservice: ManageService,
@@ -31,7 +32,7 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.empservice.getEmployee().subscribe(
       (itemresult: any) => {
-        console.log(itemresult)
+        this.total_emp = itemresult.data.length
         this.dataSource = new MatTableDataSource(itemresult.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

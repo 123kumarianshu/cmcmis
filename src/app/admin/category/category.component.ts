@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class CategoryComponent implements OnInit {
   displayedColumns: string[] = ['cat_id', 'cat_name', 'cat_desc', 'Action',];
   dataSource!: MatTableDataSource<any>;
-  cat_count: any;
+  cat_count: Number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 

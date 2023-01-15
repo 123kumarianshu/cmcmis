@@ -20,7 +20,7 @@ export class UnitComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;  
 
-  unitcount:any
+  unitcount:Number = 0
   constructor(
     private addunit: MatDialog,
     private unitservice: ManageService,

@@ -16,7 +16,7 @@ export class RecieptComponent implements OnInit {
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
-      recived_total:any
+      recived_total:Number = 0
   constructor(
     private addreciept: MatDialog,
     private service: ManageService,

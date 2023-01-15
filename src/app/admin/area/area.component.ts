@@ -18,6 +18,7 @@ export class AreaComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  total_area:Number = 0
   constructor(
     private addarea: MatDialog,
     private areaservice: ManageService,
@@ -30,6 +31,7 @@ export class AreaComponent implements OnInit {
 
     this.areaservice.getArea().subscribe(
       (itemresult: any) => {
+        this.total_area = itemresult.data.length
         this.dataSource = new MatTableDataSource(itemresult.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

@@ -16,7 +16,7 @@ export class SaleCancelComponent implements OnInit {
 
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
-      sale_total:any
+      sale_total:Number = 0
       constructor(
         private servies: ManageService,
       ) { }

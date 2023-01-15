@@ -19,6 +19,7 @@ export class CustomerComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  total_cust:Number = 0
 
   constructor(
     private addcustomer: MatDialog,
@@ -30,6 +31,7 @@ export class CustomerComponent implements OnInit {
   ngOnInit(): void {
     this.customerservice.getCustomer().subscribe(
       (itemresult: any) => {
+        this.total_cust = itemresult.data.length
         this.dataSource = new MatTableDataSource(itemresult.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

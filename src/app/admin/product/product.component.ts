@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;
 
-      productcount:any 
+      productcount:Number = 0 
 
       constructor(
         private addproduct: MatDialog,

@@ -17,7 +17,7 @@ export class AreaAllocateComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-    areallocatecount:any
+    areallocatecount:Number = 0;
   constructor( 
     private addareaallocate: MatDialog,
     private areaallocateservice: ManageService,
