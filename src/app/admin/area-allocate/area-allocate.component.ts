@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditAreaAllocateComponent } from '../add-edit-area-allocate/add-edit-area-allocate.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-area-allocate',
@@ -20,6 +21,7 @@ export class AreaAllocateComponent implements OnInit {
   constructor( 
     private addareaallocate: MatDialog,
     private areaallocateservice: ManageService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {

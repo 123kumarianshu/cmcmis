@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PartyComponent } from './admin/party/party.component';
@@ -23,14 +23,12 @@ import { SaleReportComponent } from './admin/sale-report/sale-report.component';
 import { StockReportComponent } from './admin/stock-report/stock-report.component';
 import { PurchaseCancelComponent } from './admin/purchase-cancel/purchase-cancel.component';
 import { SaleCancelComponent } from './admin/sale-cancel/sale-cancel.component';
-import { AddEditAccountComponent } from './admin/add-edit-account/add-edit-account.component';
 import { AddEditSaleComponent } from './admin/add-edit-sale/add-edit-sale.component';
 import { AddEditPurchaseComponent } from './admin/add-edit-purchase/add-edit-purchase.component';
 import { ProductionComponent } from './admin/production/production.component';
 import { MaterialHandoverComponent } from './admin/material-handover/material-handover.component';
 import { ProductComponent } from './admin/product/product.component';
-import { LoginpageComponent } from './loginpage/loginpage.component';
-import { HomepageComponent } from './homepage/homepage.component';
+
 
 
 
@@ -76,7 +74,7 @@ const routes: Routes = [
 ]
   
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}), RouterModule.forRoot(routes ,{useHash: true})] ,
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})] ,
 
   exports: [RouterModule]
 })

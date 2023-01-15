@@ -33,7 +33,7 @@ export class ExpenseComponent implements OnInit {
         this.expense_count = expenseresult.data.length;
       }
     )
-
+    
   }
   add_expense(): any {
     this.addexpense.open(AddEditExpenseComponent, {

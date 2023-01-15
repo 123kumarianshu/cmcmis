@@ -9,12 +9,10 @@
             <mat-form-field appearance="fill">
                 <mat-label>Expense Type</mat-label>
                 <mat-select formControlName="expense_type">
-                    <mat-option value="Travel">Travel</mat-option>
-                    <mat-option value="Meals">Meals</mat-option>
-                    <mat-option value="Utilities">Utilities</mat-option>
-                    <mat-option value="Software">Software</mat-option>
-                    <mat-option value="Software Engineer">Software Engineer</mat-option>
-                    <mat-option value="Telephone">Telephone</mat-option>
+                    <mat-option value="Electricity Bill">Electricity Bill</mat-option>
+                    <mat-option value="Mobile Recharge">Mobile Recharge</mat-option>
+                    <mat-option value="Rent">Rent</mat-option>
+                    <mat-option value="Other">Other</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
@@ -24,7 +22,7 @@
 
             <mat-form-field appearance="fill">
                 <mat-label> Pay To</mat-label>
-                <input formControlName="expense_pay_to" matInput placeholder="Pay To" type="number">
+                <input formControlName="expense_pay_to" matInput placeholder="Pay To">
             </mat-form-field>
 
         </div>

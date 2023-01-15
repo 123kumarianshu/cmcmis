@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditGstComponent } from '../add-edit-gst/add-edit-gst.component';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class GstComponent implements OnInit {
     private addgst: MatDialog,
     private gstservice: ManageService,
     private popup: NgToastService,
+    private router: Router,
 
   ) { }
 
@@ -64,7 +66,7 @@ export class GstComponent implements OnInit {
     deldata.append('gst_id',data.gst_id)
     this.gstservice.del_gst(deldata).subscribe(
       (res:any)=>{
-        console.log(res)
+        this.router.navigate(['/gst'])
         this.popup.success({detail:'Success',summary:'Gst Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

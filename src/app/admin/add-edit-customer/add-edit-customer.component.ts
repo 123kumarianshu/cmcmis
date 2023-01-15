@@ -86,11 +86,10 @@ export class AddEditCustomerComponent implements OnInit {
     console.log(this.custForm.value)
     this.manageService.putCustomer(this.custForm.value).subscribe({
       next: (res) => {
-        console.log(res)
+        this.router.navigate(['/customer']);
         this.popup.success({detail:'Success',summary:'Customer Update Successfully...',sticky:true,position:'tr'})
 
         this.matref.close();
-        this.router.navigate(['/customer']);
         
       },
       error: () => {

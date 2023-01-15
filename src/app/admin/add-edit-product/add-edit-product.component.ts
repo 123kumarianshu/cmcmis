@@ -96,7 +96,8 @@ export class AddEditProductComponent implements OnInit {
     if (!this.editData) {
       if (this.productForm.valid) {
         this.manageService.postProduct(this.productForm.value).subscribe({
-          next: (res) => {          
+          next: (res) => {    
+            this.router.navigate(['/product']);
             this.productForm.reset();
             this.popup.success({ detail: 'Success', summary: 'Product  Submit  Successfully...', sticky: true, position: 'tr' })
             this.matref.close('save');

@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditEmployeeComponent } from '../add-edit-employee/add-edit-employee.component';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class EmployeeComponent implements OnInit {
     private addemp: MatDialog,
     private empservice: ManageService,
     private popup: NgToastService,
+    private router: Router,
 
   ) { }
 
@@ -64,7 +66,7 @@ export class EmployeeComponent implements OnInit {
     deldata.append('emp_id',data.emp_id)
     this.empservice.del_emp(deldata).subscribe(
       (res:any)=>{
-        console.log(res)
+        this.router.navigate(['/employee'])
         this.popup.success({detail:'Success',summary:'Category Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

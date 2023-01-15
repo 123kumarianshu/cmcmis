@@ -70,15 +70,19 @@ import { AddEditMaterialHandoverComponent } from './admin/add-edit-material-hand
 import { AddEditProductionComponent } from './admin/add-edit-production/add-edit-production.component';
 import { ProductComponent } from './admin/product/product.component';
 import { AddEditProductComponent } from './admin/add-edit-product/add-edit-product.component';
-import {HashLocationStrategy,LocationStrategy}from'@angular/common';
+
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { BillpageComponent } from './admin/billpage/billpage.component';
 import {MatCardModule} from '@angular/material/card';
 import { CancelBillComponent } from './admin/cancel-bill/cancel-bill.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ReceivedComponent } from './admin/received/received.component';
-
-
+import {
+  ConfirmBoxConfigModule,
+  DialogConfigModule,
+  NgxAwesomePopupModule,
+  ToastNotificationConfigModule,
+} from '@costlydeveloper/ngx-awesome-popup';
 
 
 @NgModule({
@@ -177,11 +181,25 @@ import { ReceivedComponent } from './admin/received/received.component';
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true,
     }),
+    NgxAwesomePopupModule.forRoot({
+      colorList: {
+        success: '#3caea3', // optional
+        info: '#2f8ee5', // optional
+        warning: '#ffc107', // optional
+        danger: '#e46464', // optional
+        customOne: '#3ebb1a', // optional
+        customTwo: '#bd47fa', // optional (up to custom five)
+      },
+    }),
+    ConfirmBoxConfigModule.forRoot(),
+
+    DialogConfigModule.forRoot(), // optional
+    ToastNotificationConfigModule.forRoot(), // optional
 
    
 
   ],
-  providers: [{provide:LocationStrategy,useClass:HashLocationStrategy}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

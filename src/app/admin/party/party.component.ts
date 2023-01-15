@@ -7,7 +7,7 @@ import { ManageService } from '../manage.service';
 import { AddEditPartyComponent } from '../add-edit-party/add-edit-party.component';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
-
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-party',
   templateUrl: './party.component.html',
@@ -20,12 +20,19 @@ export class PartyComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   partycount:any;
   
+
   constructor(
     private addparty: MatDialog,
     private partyservice: ManageService,
     private popup: NgToastService,
+    config: NgbModalConfig, 
+    private modalService: NgbModal,
+    private router: Router,
 
-  ) { }
+  ) {
+    config.backdrop = 'static';
+		config.keyboard = false;
+   }
 
   ngOnInit(): void {
     this.partyservice.getParty().subscribe(
@@ -61,8 +68,8 @@ export class PartyComponent implements OnInit {
     deldata.append('party_id',data.party_id)
     this.partyservice.del_party(deldata).subscribe(
       (res:any)=>{
-        console.log(res)
-        this.popup.success({detail:'Success',summary:'party Delete Successfully...',sticky:true,position:'tr'})
+        this.router.navigate(['/party'])
+          this.popup.success({detail:'Success',summary:'party Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {
         console.log(['message']);
@@ -84,6 +91,10 @@ export class PartyComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  open(content:any) {
+		this.modalService.open(content);
+	}
 }
 
 

@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditAreaComponent } from '../add-edit-area/add-edit-area.component';
 import { NgToastService } from 'ng-angular-popup';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-area',
@@ -21,7 +22,9 @@ export class AreaComponent implements OnInit {
     private addarea: MatDialog,
     private areaservice: ManageService,
     private popup: NgToastService,
+    private rout: Router,
   ) { }
+
 
   ngOnInit(): void {
 
@@ -57,8 +60,8 @@ export class AreaComponent implements OnInit {
     deldata.append('area_id',data.area_id)
     this.areaservice.del_area(deldata).subscribe(
       (res:any)=>{
-        console.log(res)
-        this.popup.success({detail:'Success',summary:'Area Delete Successfully...',sticky:true,position:'tr'})
+          this.rout.navigate(['/area'])
+          this.popup.success({detail:'Success',summary:'Area Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {
         console.log(['message']);

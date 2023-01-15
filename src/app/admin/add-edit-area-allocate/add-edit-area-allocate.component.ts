@@ -66,11 +66,11 @@ export class AddEditAreaAllocateComponent implements OnInit {
         if (!this.editData) {
           if (this.area_allocateForm.valid) {
             this.manageService.postAllocatearea(this.area_allocateForm.value).subscribe({
-              next: (res) => {          
+              next: (res) => {       
+                this.router.navigate(['/area_allocate'])  ; 
                 this.area_allocateForm.reset();
                 this.popup.success({ detail: 'Success', summary: 'Area Allocate  Submit  Successfully...', sticky: true, position: 'tr' })
                 this.matref.close('save');
-                console.log(this.area_allocateForm.value)
               },
               error: (err) => {
                 console.log(err);
@@ -89,7 +89,7 @@ export class AddEditAreaAllocateComponent implements OnInit {
         this.manageService.putAllocatearea(this.area_allocateForm.value).subscribe({
           next: (res) => {
             // console.log(res);
-            this.router.navigate(['/area_allocate']);
+            this.router.navigate(['/area_allocate'])  ; 
             this.area_allocateForm.reset();
             this.popup.success({ detail: 'Success', summary: 'Area Allocate Update Successfully...', sticky: true, position: 'tr' })
             this.matref.close('save');

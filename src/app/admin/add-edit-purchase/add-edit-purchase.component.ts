@@ -443,7 +443,8 @@ if(!(this.draft_data.purch_bill_no)){
 
     this.manageService.purch_final_submit(finalformdata).subscribe({
       next: (res) => {
-        console.log(res)
+        this.router.navigate(['/purchase'])
+        // console.log(res)
         this.popup.success({ detail: 'Success', summary: 'Final Update Successfully...', sticky: true, position: 'tr' })
       },
       error: ( error: any) => {

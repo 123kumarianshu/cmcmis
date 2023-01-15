@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditSizeComponent } from '../add-edit-size/add-edit-size.component';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class SizeComponent implements OnInit {
     private addsize: MatDialog,
     private partyservice: ManageService,
     private popup: NgToastService,
+    private router: Router,
 
   ) { }
 
@@ -64,7 +66,7 @@ export class SizeComponent implements OnInit {
     deldata.append('size_id',data.size_id)
     this.partyservice.del_size(deldata).subscribe(
       (res:any)=>{
-        console.log(res)
+        this.router.navigate(['/size'])
         this.popup.success({detail:'Success',summary:'Weight Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

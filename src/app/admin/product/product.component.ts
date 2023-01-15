@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditProductComponent } from '../add-edit-product/add-edit-product.component';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -24,6 +25,7 @@ export class ProductComponent implements OnInit {
         private addproduct: MatDialog,
         private productservice: ManageService,
         private popup: NgToastService,
+        private router: Router,
 
       ) { }
 
@@ -65,7 +67,7 @@ export class ProductComponent implements OnInit {
     deldata.append('product_id',data.product_id)
     this.productservice.del_product(deldata).subscribe(
       (res:any)=>{
-        console.log(res)
+          this.router.navigate(['/product'])      
         this.popup.success({detail:'Success',summary:'Product Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

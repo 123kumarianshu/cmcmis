@@ -66,6 +66,9 @@ export class AddEditExpenseComponent implements OnInit {
       this.expenseForm.controls['expense_desc'].setValue(this.edit_expense.expense_desc);
       this.expenseForm.controls['admin_id_fk'].setValue(this.edit_expense.admin_id_fk);
     }
+
+    this.expenseForm.controls['expense_date'].setValue( new Date().toISOString().slice(0, 10))
+
   }
 
   /////////////////////////////////////////////// For The Post Expense Data ///////////////////////////////////////////////
@@ -75,9 +78,8 @@ export class AddEditExpenseComponent implements OnInit {
     if (!this.edit_expense) {
       this.manageService.post_expense(this.expenseForm.value).subscribe(
         (result: any) => {
-          console.log(result)
+          this.router.navigate(['/expense'])
           this.matref.close();
-          this.router.navigate(['//expense'])
           this.popup.success({detail:'Success',summary:'Expense Add Successfully...',sticky:true,position:'tr'})
       
         },
@@ -100,9 +102,8 @@ export class AddEditExpenseComponent implements OnInit {
     console.log(this.expenseForm.value)
     this.manageService.put_expense(this.expenseForm.value).subscribe({
       next: (result: any) => {
-        console.log(result)
+        this.router.navigate(['/expense'])
         this.matref.close();
-        this.router.navigate(['//expense'])
         this.popup.success({detail:'Success',summary:'Expense Update Successfully...',sticky:true,position:'tr'})
       },
       error: (error) => {

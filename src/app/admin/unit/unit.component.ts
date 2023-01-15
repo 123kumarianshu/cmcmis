@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { AddEditUnitComponent } from '../add-edit-unit/add-edit-unit.component';
 import { ManageService } from '../manage.service';
@@ -24,6 +25,7 @@ export class UnitComponent implements OnInit {
     private addunit: MatDialog,
     private unitservice: ManageService,
     private popup: NgToastService,
+    private router: Router,
 
   ) { }
 
@@ -64,8 +66,8 @@ export class UnitComponent implements OnInit {
     deldata.append('unit_id',data.unit_id)
     this.unitservice.del_unit(deldata).subscribe(
       (res:any)=>{
-        console.log(res)
-        this.popup.success({detail:'Success',summary:'Unit Delete Successfully...',sticky:true,position:'tr'})
+        this.router.navigate(['/unit'])
+          this.popup.success({detail:'Success',summary:'Unit Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {
         console.log(['message']);

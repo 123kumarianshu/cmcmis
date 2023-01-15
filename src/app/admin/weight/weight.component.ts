@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditWeightComponent } from '../add-edit-weight/add-edit-weight.component';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-weight',
@@ -22,6 +23,7 @@ export class WeightComponent implements OnInit {
     private addweight: MatDialog,
     private weightservice: ManageService,
     private popup: NgToastService,
+    private router: Router,
 
   ) { }
 
@@ -62,7 +64,7 @@ export class WeightComponent implements OnInit {
     deldata.append('weight_id',data.weight_id)
     this.weightservice.del_weight(deldata).subscribe(
       (res:any)=>{
-        console.log(res)
+        this.router.navigate(['/weight'])
         this.popup.success({detail:'Success',summary:'Weight Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

@@ -56,8 +56,8 @@ export class AddEditAreaComponent implements OnInit {
     if (!this.editData) {
       this.manageService.postArea(this.areaForm.value).subscribe(
         (result: any) => {
-          this.matref.close();
           this.router.navigate(['/area']);
+          this.matref.close();
           this.popup.success({detail:'Success',summary:'Area Add Successfully...',sticky:true,position:'tr'})
 
         },
@@ -76,9 +76,9 @@ export class AddEditAreaComponent implements OnInit {
     console.log(this.areaForm.value)
     this.manageService.putArea(this.areaForm.value).subscribe({
       next: (res) => {
+        this.router.navigate(['/area']);
         console.log(res)
         this.matref.close();
-        this.router.navigate(['/area']);
         this.popup.success({detail:'Success',summary:'Area Update Successfully...',sticky:true,position:'tr'})
       },
       error: () => {

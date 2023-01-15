@@ -83,6 +83,10 @@ export class AddEditProductionComponent implements OnInit {
       this.getproductionDesData(this.editData.emp_id)
 
     }
+
+
+   
+
   }
 
   getproductionDesData(emp_id: any) {

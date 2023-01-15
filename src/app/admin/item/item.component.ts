@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditItemComponent } from '../add-edit-item/add-edit-item.component';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item',
@@ -22,6 +23,7 @@ export class ItemComponent implements OnInit {
     private additem: MatDialog,
     private itemservice: ManageService,
     private popup: NgToastService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -61,7 +63,7 @@ export class ItemComponent implements OnInit {
     deldata.append('item_id',data.item_id)
     this.itemservice.del_item(deldata).subscribe(
       (res:any)=>{
-        console.log(res)
+        this.router.navigate(['/item'])
         this.popup.success({detail:'Success',summary:'Item Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

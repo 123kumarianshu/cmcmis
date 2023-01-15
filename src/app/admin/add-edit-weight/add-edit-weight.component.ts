@@ -58,10 +58,9 @@ export class AddEditWeightComponent implements OnInit {
       if (this.addWeight.valid) {
         this.manageService.postWeight(this.addWeight.value).subscribe(
           (result: any) => {
-            console.log(result)
+            this.router.navigate(['/weight'])
             this.matref.close();
             this.addWeight.reset();
-            this.router.navigate(['/weight'])
             this.matref.close('save');
             this.popup.success({detail:'Success',summary:'Weight Add Successfully...',sticky:true,position:'tr'})
           },
@@ -82,7 +81,6 @@ export class AddEditWeightComponent implements OnInit {
     console.log(this.addWeight.value)
     this.manageService.putWeight(this.addWeight.value).subscribe({
       next: (result: any) => {
-        console.log(result)
         this.router.navigate(['/weigth'])
         this.matref.close();
         this.addWeight.reset();

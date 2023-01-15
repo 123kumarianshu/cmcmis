@@ -87,7 +87,8 @@ export class AddEditItemComponent implements OnInit {
     if (!this.editData) {
       if (this.itemForm.valid) {
         this.manageService.postItem(this.itemForm.value).subscribe({
-          next: (res) => {          
+          next: (res) => {       
+            this.router.navigate(['/item']);   
             this.itemForm.reset();
             this.popup.success({ detail: 'Success', summary: 'Item  Submit  Successfully...', sticky: true, position: 'tr' })
             this.matref.close('save');
@@ -108,7 +109,6 @@ export class AddEditItemComponent implements OnInit {
     const updateData = new FormData();
     this.manageService.putItem(this.itemForm.value).subscribe({
       next: (res) => {
-        console.log(res);
         this.router.navigate(['/item']);
         this.itemForm.reset();
         this.popup.success({ detail: 'Success', summary: 'Item Update Successfully...', sticky: true, position: 'tr' })

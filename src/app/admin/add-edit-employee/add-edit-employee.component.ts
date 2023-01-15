@@ -90,9 +90,8 @@ export class AddEditEmployeeComponent implements OnInit {
     if (!this.editData) {
       this.manageService.postEmployee(formdata).subscribe(
         (result: any) => {
-          console.log(result)
-          this.matref.close();
           this.router.navigate(['/employee']);
+          this.matref.close();
           this.popup.success({detail:'Success',summary:'Employee Add Successfully...',sticky:true,position:'tr'})
         },
         (error: any) => {
@@ -119,9 +118,8 @@ export class AddEditEmployeeComponent implements OnInit {
     console.log(this.empForm.value)
     this.manageService.putEmployee(this.empForm.value).subscribe({
       next: (res) => {
-        console.log(res)
-        this.matref.close();
         this.router.navigate(['/employee']);
+        this.matref.close();
         this.popup.success({detail:'Success',summary:'Employee Update Successfully...',sticky:true,position:'tr'})
 
       },

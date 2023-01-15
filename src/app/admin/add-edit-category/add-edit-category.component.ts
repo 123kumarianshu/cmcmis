@@ -81,9 +81,8 @@ export class AddEditCategoryComponent implements OnInit {
     console.log(this.addcategory.value)
     this.manageService.putCategory(this.addcategory.value).subscribe({
       next: (result: any) => {
-        console.log(result)
-        this.matref.close();
         this.router.navigate(['/category'])
+        this.matref.close();
         this.popup.success({detail:'Success',summary:'Category Update Successfully...',sticky:true,position:'tr'})
 
       },

@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditCustomerComponent } from '../add-edit-customer/add-edit-customer.component';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class CustomerComponent implements OnInit {
     private addcustomer: MatDialog,
     private customerservice: ManageService,
     private popup: NgToastService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -61,7 +63,7 @@ export class CustomerComponent implements OnInit {
     deldata.append('cust_id',data.cust_id)
     this.customerservice.del_cust(deldata).subscribe(
       (res:any)=>{
-        console.log(res)
+        this.router.navigate(['/customer'])
         this.popup.success({detail:'Success',summary:'Customer Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

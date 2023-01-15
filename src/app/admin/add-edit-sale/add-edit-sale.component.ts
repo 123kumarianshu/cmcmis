@@ -288,6 +288,7 @@ export class AddEditSaleComponent implements OnInit {
     this.manageService.put_final_sale(finalformdata).subscribe({
       next: (res) => {
         // console.log(res)
+        this.router.navigate(['/sale'])
         this.popup.success({ detail: "Success", summary: 'Final Update Successfully...' })
       },
       error: () => {

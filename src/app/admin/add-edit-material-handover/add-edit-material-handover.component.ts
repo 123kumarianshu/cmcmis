@@ -105,24 +105,7 @@ export class AddEditMaterialHandoverComponent implements OnInit {
       }
     )
   }
-  updatemh() {
-    // if (this.MaterialForm.valid) {
-    //   const updateData = new FormData();
-    //   this.manageService.putMaterialHandover(this.MaterialForm.value).subscribe({
-    //     next: (res) => {
-    //       console.log(res);
-    //       this.router.navigate(['/material_handover']);
-    //       this.MaterialForm.reset();
-    //       this.popup.success({ detail: 'Success', summary: 'MaterialHandover Update Successfully...', sticky: true, position: 'tr' })
-    //       this.matref.close('save');
-    //     },
-    //     error: (err) => {
-    //       console.log(err);
-    //       this.popup.error({ detail: 'message', summary: 'MaterialHandover data is Not Update', sticky: true, position: 'tr' })
-    //     }
-    //   });
-    // }
-  }
+ 
 
 
   getEmpData(event: any) {
@@ -166,13 +149,16 @@ export class AddEditMaterialHandoverComponent implements OnInit {
     this.manageService.postMaterialHandover(descFormdata).subscribe(
       (res: any) => {
         console.log(res)
-        this.popup.success({detail:'Success',summary:'Material Handover Submit Successfully...',sticky:true,position:'tr'})       
+        this.popup.success({detail:'Success',summary:'Material Handover Submit Successfully...',sticky:true,position:'tr'})  
+        this.getMHDesData(this.MaterialForm.get('emp_id_fk')?.value)
+     
       }
        // (error: any) => {
         //   console.log(['message']);
         //   this.popup.error({detail:'message',summary:'Party data is not Submit' , sticky:true,position:'tr',})
     )
     this.getMHDesData(this.MaterialForm.get('emp_id_fk')?.value)
+
   }
   resetmh() {
     this.MaterialForm.reset();

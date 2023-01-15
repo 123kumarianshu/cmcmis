@@ -42,6 +42,7 @@
             <td class="data" mat-cell *matCellDef="let row"> 
               <mat-icon (click)="editparty(row)">edit</mat-icon>
               <mat-icon (click)="delparty(row)">delete</mat-icon>
+              <!-- <mat-icon (click)="open(content)">delete</mat-icon> -->
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -55,3 +56,14 @@
     </form>
   </div>
   </div>
+
+
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Are you sure to delete </h4>
+    </div> 
+    <div class="modal-footer">
+<button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Conform</button> <span style="opacity: 0;">......................................................</span><button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
+    </div>
+  </ng-template>
+  

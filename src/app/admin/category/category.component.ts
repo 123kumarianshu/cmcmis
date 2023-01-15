@@ -6,6 +6,7 @@ import { AddEditCategoryComponent } from '../add-edit-category/add-edit-category
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class CategoryComponent implements OnInit {
     private addcat: MatDialog,
     private partyservice: ManageService,
     private popup: NgToastService,
+    private router: Router,
 
   ) { }
 
@@ -64,7 +66,7 @@ export class CategoryComponent implements OnInit {
       deldata.append('cat_id',data.cat_id)
       this.partyservice.del_category(deldata).subscribe(
         (res:any)=>{
-          console.log(res)
+          this.router.navigate(['/category'])
           this.popup.success({detail:'Success',summary:'Category Delete Successfully...',sticky:true,position:'tr'})
         },
         (error: any) => {
