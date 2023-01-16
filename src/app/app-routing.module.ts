@@ -31,6 +31,7 @@ import { ProductComponent } from './admin/product/product.component';
 import { ExpencetypeComponent } from './admin/expencetype/expencetype.component';
 import { ProfitComponent } from './admin/profit/profit.component';
 import { LossComponent } from './admin/loss/loss.component';
+import { EmpHomeComponent } from './employee/emp-home/emp-home.component';
 
 
 
@@ -75,6 +76,7 @@ const routes: Routes = [
       {path:'expencetype',component:ExpencetypeComponent},
       {path:'profit',component:ProfitComponent},
       {path:'loss',component:LossComponent},
+      {path:'emphome',component:EmpHomeComponent},
 
 ]
   

@@ -87,6 +87,8 @@ import { ExpencetypeComponent } from './admin/expencetype/expencetype.component'
 import { AddExpencetypeComponent } from './admin/add-expencetype/add-expencetype.component';
 import { ProfitComponent } from './admin/profit/profit.component';
 import { LossComponent } from './admin/loss/loss.component';
+import { EmpLoginComponent } from './employee/emp-login/emp-login.component';
+import { EmpHomeComponent } from './employee/emp-home/emp-home.component';
 
 
 @NgModule({
@@ -146,6 +148,8 @@ import { LossComponent } from './admin/loss/loss.component';
     AddExpencetypeComponent,
     ProfitComponent,
     LossComponent,
+    EmpLoginComponent,
+    EmpHomeComponent,
     
     
     

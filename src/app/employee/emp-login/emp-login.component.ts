@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ManageService } from '../admin/manage.service';
+
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { EmpLoginComponent } from '../employee/emp-login/emp-login.component';
-
+import { ManageService } from 'src/app/admin/manage.service';
+import { LoginpageComponent } from 'src/app/loginpage/loginpage.component';
 
 @Component({
-  selector: 'app-loginpage',
-  templateUrl: './loginpage.component.html',
-  styleUrls: ['./loginpage.component.css']
+  selector: 'app-emp-login',
+  templateUrl: './emp-login.component.html',
+  styleUrls: ['./emp-login.component.css']
 })
-export class LoginpageComponent implements OnInit {
+export class EmpLoginComponent implements OnInit {
+
   hide = true;
   LoginForm!: FormGroup
 
@@ -21,8 +22,8 @@ export class LoginpageComponent implements OnInit {
     private servies:ManageService,
     private router:Router,
     private popup: NgToastService,
-    private matref: MatDialogRef<LoginpageComponent>,
-    private dialog:MatDialog
+    private matref: MatDialogRef<EmpLoginComponent>,
+    private matdialog:MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class LoginpageComponent implements OnInit {
         (result: any) => {
           console.log(result)
           if (result.success) {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/emphome']);
             this.LoginForm.reset();
             localStorage.setItem('Token', JSON.stringify(result.uid[0]));
             this.popup.success({detail:'Success',summary:'Login Successfully...',sticky:true,position:'tr'})
@@ -58,8 +59,8 @@ export class LoginpageComponent implements OnInit {
 
     }
    }
-   emp_login(){
-    this.dialog.open(EmpLoginComponent,{
+   admin_login(){
+    this.matdialog.open(LoginpageComponent,{
       width: '100%',
       maxWidth: '100vw',
       height:'100%',
