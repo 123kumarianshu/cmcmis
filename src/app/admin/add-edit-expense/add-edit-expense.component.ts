@@ -16,7 +16,7 @@ export class AddEditExpenseComponent implements OnInit {
   actionBtn = 'add'
   admin_id = 1
   expense_emp_id: any
-
+  expence_type:any
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
@@ -39,6 +39,11 @@ export class AddEditExpenseComponent implements OnInit {
         this.emp_data = emp_res.data
       }
     ),
+    this.manageService.get_expence_type().subscribe(
+      (res:any)=>{
+        this.expence_type = res.data
+      }
+    )
 
     this.expenseForm = this.fb.group({
       expense_id: [''],

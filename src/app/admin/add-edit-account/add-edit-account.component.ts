@@ -82,31 +82,31 @@ export class AddEditAccountComponent implements OnInit {
       }
     }
     else {
-      this.updateaccount()
     } 
   } 
-  updateaccount() {
-    if (this.addAccount.valid) {
-        this.manageService.putAccount(this.addAccount.value).subscribe(
-         (res: any) => {  
-           console.log(res)
-           this.router.navigate(['/account']);           
-           this.addAccount.reset();
-          this.matref.close('save');
-          this.popup.success({detail:'Success',summary:'Account  Update Successfully...',sticky:true,position:'tr'})
-        },
-        (error: any) => {
-          console.log(['message']);
-            this.popup.error({detail:'message',summary:'Account data is not  Update', sticky:true,position:'tr'})        
  
-         }
-       );
-     }
- 
-   }
    resetaccount() {
     this.addAccount.reset();
 
+  }
+
+  getSale(date:any){
+    const saleformdata = new FormData()
+    saleformdata.append('date',date)
+    this.manageService.get_sale_by_date(saleformdata).subscribe(
+      (res:any)=>{
+        console.log(res)
+      }
+    )
+  }
+  getExpence(date:any){
+    const expenceformdata = new FormData()
+    expenceformdata.append('date',date)
+    this.manageService.get_sale_by_date(expenceformdata).subscribe(
+      (res:any)=>{
+        console.log(res)
+      }
+    )
   }
 
 }

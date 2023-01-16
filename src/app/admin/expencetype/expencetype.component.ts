@@ -34,6 +34,7 @@ export class ExpencetypeComponent implements OnInit {
   ngOnInit(): void {
     this.empservice.get_expence_type().subscribe(
       (res: any) => {
+        // console.log(res)
         this.total = res.data.length
         this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.sort = this.sort;
@@ -66,7 +67,7 @@ export class ExpencetypeComponent implements OnInit {
   DelExpenceType(data:any){
     if(confirm("Are you sure to delete")){
     const deldata = new FormData();
-    deldata.append('emp_id',data.emp_id)
+    deldata.append('id',data.id)
     this.empservice.del_expence_type(deldata).subscribe(
       (res:any)=>{
         this.router.navigate(['/expencetype'])

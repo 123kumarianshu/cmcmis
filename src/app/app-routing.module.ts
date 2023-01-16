@@ -42,10 +42,8 @@ import { LossComponent } from './admin/loss/loss.component';
 
 const routes: Routes = [
 
-  // {path:'',component:LoginpageComponent},
-  // {path:'login',component:LoginpageComponent},
-    // { path:'', component:HomepageComponent},
-      {path:'', component:DashboardComponent},
+  
+      {path:'', component:DashboardComponent, redirectTo: '', pathMatch: 'full'},
       {path:'dashbaord', component:DashboardComponent},
       {path:'party',component:PartyComponent},
       {path:'unit',component:UnitComponent},

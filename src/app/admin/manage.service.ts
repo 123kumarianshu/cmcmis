@@ -188,15 +188,15 @@ export class ManageService {
   }
   
 
-  // for Area function starting here 
-  post_expence_type(data: any) {
-    return this.http.post<any>(this.baseUrl + 'expence_type_insert.php', data);
+  // for Expence type function starting here 
+  Post_expence_typ(data: any) {
+    return this.http.post<any>(this.baseUrl + 'expence_type_ins.php', data);
   }
   get_expence_type() {
-    return this.http.get<[]>(this.baseUrl + '_expence_type_view.php');
+    return this.http.get<[]>(this.baseUrl + 'get_expence_type.php');
   }
   put_expence_type(data: any) {
-    return this.http.put<any>(this.baseUrl + '_expence_type_update.php', data);
+    return this.http.put<any>(this.baseUrl + 'expence_type_update.php', data);
   }
   del_expence_type(data: any,) {
     return this.http.post(this.baseUrl + 'del_expence_type.php', data)
@@ -365,6 +365,9 @@ export class ManageService {
    putAccount(data: any) {
     return this.http.put<any>( this.baseUrl +'account_update.php', data);
   }
+  get_sale_by_date(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_sale_by_date.php', data);
+  } 
   
   // for expense function stating...
   get_expense() {

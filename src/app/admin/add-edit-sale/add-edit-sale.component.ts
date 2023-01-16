@@ -44,7 +44,7 @@ export class AddEditSaleComponent implements OnInit {
   draft_data: any;
   sale_edit_data: any;
   sale_action_btn: boolean = false
-  stock_data:any
+  stock_data:any = 0
   constructor(
     private manageService: ManageService,
     private router: Router,
@@ -236,17 +236,15 @@ export class AddEditSaleComponent implements OnInit {
     this.manageService.post_sale_desc(prodformdata).subscribe(
       (res: any) => {
         this.popup.success({ detail: "Success", summary: 'Product Added Successfully...' })
-
+        this.GetDescData(this.sale_bill_no)
         this.saleformprod.controls['product_id'].reset();
-        this.saleformprod.controls['product_rate'].setValue('');
-        this.saleformprod.controls['product_quantity'].setValue('');
-        this.saleformprod.controls['product_total_amount'].setValue('');
-        this.saleformprod.controls['product_size_id'].setValue('');
-        this.saleformprod.controls['product_weight_id'].setValue('');
-        this.saleformprod.controls['product_page'].setValue('');
-        this.saleformprod.controls['product_unit_id'].setValue('');
-
-
+        this.saleformprod.controls['product_rate'].reset();
+        this.saleformprod.controls['product_quantity'].reset();
+        this.saleformprod.controls['product_total_amount'].reset();
+        this.saleformprod.controls['product_size_id'].reset();
+        this.saleformprod.controls['product_weight_id'].reset();
+        this.saleformprod.controls['product_page'].reset();
+        this.saleformprod.controls['product_unit_id'].reset();
       },
       (error: any) => {
         // console.log(error)
@@ -256,17 +254,7 @@ export class AddEditSaleComponent implements OnInit {
     )
 
     ////////////////////// for sale product view ////////////////////
-    const profromdata = new FormData()
-    profromdata.append('salebillno', this.sale_bill_no)
-    this.manageService.get_sale_desc(profromdata).subscribe(
-      (prodresult: any) => {
-        console.log(prodresult)
-        this.dataSource = new MatTableDataSource(prodresult.data);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.sale_desc = prodresult.data.length
-      }
-    )
+  
   }
 
   ///////////////// for final sale update  starting/////////////
@@ -319,24 +307,12 @@ export class AddEditSaleComponent implements OnInit {
 
       }
     )
-
-    ////////////////////// for sale product view ////////////////////
-    const desfromdata = new FormData()
-    desfromdata.append('salebillno', this.sale_bill_no)
-    this.manageService.get_sale_desc(desfromdata).subscribe(
-      (prodresult: any) => {
-        // console.log(prodresult)
-        this.dataSource = new MatTableDataSource(prodresult.data);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.sale_desc = prodresult.data.length
-      }
-    )
+      this.GetDescData(this.sale_bill_no)
   }
   final_bill() {
     
     this.action_text = 'Final Submission'
- 
+    this.saleformfinal.controls['sale_date'].setValue(new Date().toISOString().slice(0, 10))
     // for get basic amount 
     const getbasicamtform = new FormData()
     getbasicamtform.append('salebillno', this.sale_bill_no)
@@ -351,8 +327,18 @@ export class AddEditSaleComponent implements OnInit {
 
   }
   
-
-
+GetDescData(salebillno:any){
+  const profromdata = new FormData()
+  profromdata.append('salebillno', salebillno)
+  this.manageService.get_sale_desc(profromdata).subscribe(
+    (prodresult: any) => {
+      console.log(prodresult)
+      this.dataSource = new MatTableDataSource(prodresult.data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.sale_desc = prodresult.data.length
+    }
+  )}
   ////////////////////// for customer id Selection starting //////////////////////
   getCust(event: any) {
     const custformdata = new FormData();
@@ -429,7 +415,7 @@ export class AddEditSaleComponent implements OnInit {
       this.manageService.delete_sale_desc(deletedata).subscribe(
         (res: any) => {
           this.popup.success({ detail: 'Success', summary: 'Data Delete Successfully...' })
-          this.router.navigate(['/add_edit_sale'])
+          this.GetDescData(this.sale_bill_no)
         }
 
       )
@@ -452,13 +438,15 @@ export class AddEditSaleComponent implements OnInit {
 
   //For calculation work start code here
   desc_amt_cal() {
-    this.saleformprod.controls['product_total_amount'].setValue(this.saleformprod.get('product_rate')?.value * this.saleformprod.get('product_quantity')?.value)
-    this.saleformprod.controls['available_quantity'].setValue(this.stock_data - this.saleformprod.get('product_quantity')?.value)
-
-    if((this.saleformprod.get('product_quantity')?.value) > this.stock_data){
+    if(this.saleformprod.get('product_quantity')?.value > this.stock_data){
       this.popup.warning({ detail: 'Warning', summary: 'Stock  Not Available...', })
+      this.saleformprod.controls['product_quantity'].setValue(0)
       
     }
+    this.saleformprod.controls['product_total_amount'].setValue(this.saleformprod.get('product_rate')?.value * this.saleformprod.get('product_quantity')?.value)
+    this.saleformprod.controls['available_quantity'].setValue((this.stock_data) - this.saleformprod.get('product_quantity')?.value)
+
+  
     
   }
 

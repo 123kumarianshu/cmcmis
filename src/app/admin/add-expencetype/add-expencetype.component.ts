@@ -11,7 +11,6 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./add-expencetype.component.css']
 })
 export class AddExpencetypeComponent implements OnInit {
-  admin_id: number = 1;
   expencetypeform: any;
   actionBtn: string = 'Add'
   constructor(
@@ -33,7 +32,6 @@ export class AddExpencetypeComponent implements OnInit {
       id: [''],
       name: ['', Validators.required],
       desc: [''],
-      admin_id_fk: ['', Validators.required],
     })
 
     ////////////////////////////////////////////// For The Edit Weight Data ////////////////////////////////////////////////////
@@ -42,41 +40,44 @@ export class AddExpencetypeComponent implements OnInit {
       this.actionBtn = "Update";
       this.expencetypeform.controls['id'].setValue(this.edit_data.id);
       this.expencetypeform.controls['name'].setValue(this.edit_data.name);
-      this.expencetypeform.controls['desc'].setValue(this.edit_data.desc);
-      this.expencetypeform.controls['admin_id_fk'].setValue(this.edit_data.admin_id_fk);
+      this.expencetypeform.controls['desc'].setValue(this.edit_data.description);
     }
   }
 
   ///////////////////////////////////////////////// For The Post Weight Data ///////////////////////////////////////////////////
 
   onSubmit() {
-    console.log(this.expencetypeform.value)
     if (!this.edit_data) {
-      if (this.expencetypeform.valid) {
-        this.manageService.post_expence_type(this.expencetypeform.value).subscribe(
+      const formdata = new FormData();
+      formdata.append('name',this.expencetypeform.get('name')?.value)
+      formdata.append('desc',this.expencetypeform.get('desc')?.value)
+      
+        this.manageService.Post_expence_typ(formdata).subscribe(
           (result: any) => {
-            this.router.navigate(['/expencetype'])
-            this.matref.close();
+            console.log(result)
+            this.router.navigate(['/expencetype']);
             this.expencetypeform.reset();
             this.matref.close('save');
             this.popup.success({detail:'Success',summary:'Expence Type Add Successfully...',sticky:true,position:'tr'})
           },
           (error: any) => {
+            console.log(error)
             this.popup.error({detail:'Error',summary:'Expence Type not Add..',sticky:true,position:'tr'})
           }
         )
       }
-    }
+    
 
     else {
-      this.update_Weight()
+      this.update_expence()
     }
   }
 
-  update_Weight() {
+  update_expence() {
     console.log(this.expencetypeform.value)
     this.manageService.put_expence_type(this.expencetypeform.value).subscribe({
       next: (result: any) => {
+        console.log(result)
         this.router.navigate(['/expencetype'])
         this.matref.close();
         this.expencetypeform.reset();

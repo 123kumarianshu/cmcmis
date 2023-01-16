@@ -8,12 +8,8 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Expense Type</mat-label>
-                <mat-select formControlName="expense_type">
-                    <mat-option value="Electricity Bill">Electricity Bill</mat-option>
-                    <mat-option value="Mobile Recharge">Mobile Recharge</mat-option>
-                    <mat-option value="Rent">Rent</mat-option>
-                    <mat-option value="breakfast">breakfast</mat-option>
-                    <mat-option value="Other">Other</mat-option>
+                <mat-select formControlName="expense_type" >
+                    <mat-option *ngFor="let expence of expence_type" [value]="expence.name" >{{expence.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
