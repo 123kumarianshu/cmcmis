@@ -12,23 +12,19 @@ export class SidebarComponent implements OnInit {
   // imgUrl:string='https://addbox.in/assets/upload/'
   report:any
   master:any
+  account:any
   action_icon1 :boolean = true
   action_icon2:boolean = false
   action_icon3:boolean = false
   action_icon4:boolean = true
+  action_icon5:boolean = false
+  action_icon6:boolean = true
   constructor(
     private router:Router
   ) { }
 
   ngOnInit(): void {
-  //   const userdata = localStorage.getItem('Token');
-  //   if (!userdata) {
-  //     this.router.navigate(['/'])
-  //     return
-  //   }
-  //   else {
-  // }
-  // }
+ 
 }
 
 report_dropdown(){
@@ -44,6 +40,7 @@ report_dropdown(){
     this.action_icon4 = true
   }
 }
+
 masterDropdown(){
   this.master =  document.getElementById("dropdown_item")
   // this.report.style.display = "block";
@@ -56,6 +53,20 @@ masterDropdown(){
     this.master.style.display = "none";
     this.action_icon1 = true
     this.action_icon2 = false
+  }
+
+}
+AccountDropdown(){
+  this.account =  document.getElementById("dropdown_item2")
+  if(this.account.style.display != "block"){
+    this.account.style.display = "block";
+    this.action_icon5 = true
+    this.action_icon6 = false
+
+  }else{
+    this.account.style.display = "none";
+    this.action_icon5 = false
+    this.action_icon6 = true
   }
 
 }

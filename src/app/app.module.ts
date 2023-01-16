@@ -83,6 +83,10 @@ import {
   NgxAwesomePopupModule,
   ToastNotificationConfigModule,
 } from '@costlydeveloper/ngx-awesome-popup';
+import { ExpencetypeComponent } from './admin/expencetype/expencetype.component';
+import { AddExpencetypeComponent } from './admin/add-expencetype/add-expencetype.component';
+import { ProfitComponent } from './admin/profit/profit.component';
+import { LossComponent } from './admin/loss/loss.component';
 
 
 @NgModule({
@@ -138,6 +142,10 @@ import {
     CancelBillComponent,
     HomepageComponent,
     ReceivedComponent,
+    ExpencetypeComponent,
+    AddExpencetypeComponent,
+    ProfitComponent,
+    LossComponent,
     
     
     

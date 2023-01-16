@@ -1,0 +1,61 @@
+<div id="wrapper">
+    <div class="view_notice">
+      <span class="notice_text">Profit</span>
+    </div>
+      <div class="count_search">
+        <span class="notice_text"> Total : {{count}}</span>       
+        <div class="search">
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+        </div>
+      </div>
+      <div class="cotainer">
+        <form>
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort id="table">    
+              <ng-container matColumnDef="slno">
+                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
+                <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
+              </ng-container>    
+              <ng-container matColumnDef="product">
+                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+                <td  class="data"mat-cell *matCellDef="let row">{{row.party_name}}</td>
+              </ng-container> 
+    
+              <ng-container matColumnDef="product_price">
+                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product Price</th>
+                <td  class="data"mat-cell *matCellDef="let row">{{row.party_mobile}}</td>
+              </ng-container>
+    
+              <ng-container matColumnDef="production_cost">
+                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Production Cost</th>
+                <td class="data" mat-cell *matCellDef="let row">{{row.party_address}}</td>
+              </ng-container>
+    
+              <ng-container matColumnDef="profit">
+                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Profit</th>
+                <td class="data" mat-cell *matCellDef="let row">{{row.party_contact_person}}</td>
+              </ng-container>
+             
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>     
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="6">No data show"{{input.value}}"</td>
+              </tr>
+            </table>    
+            <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+          </div>    
+        </form>
+      </div>
+      </div>
+    
+    
+      <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Are you sure to delete </h4>
+        </div> 
+        <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Conform</button> <span style="opacity: 0;">......................................................</span><button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
+        </div>
+      </ng-template>
+      

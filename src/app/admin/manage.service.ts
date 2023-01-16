@@ -187,6 +187,21 @@ export class ManageService {
     return this.http.post(this.baseUrl + 'del_area.php', data)
   }
   
+
+  // for Area function starting here 
+  post_expence_type(data: any) {
+    return this.http.post<any>(this.baseUrl + 'expence_type_insert.php', data);
+  }
+  get_expence_type() {
+    return this.http.get<[]>(this.baseUrl + '_expence_type_view.php');
+  }
+  put_expence_type(data: any) {
+    return this.http.put<any>(this.baseUrl + '_expence_type_update.php', data);
+  }
+  del_expence_type(data: any,) {
+    return this.http.post(this.baseUrl + 'del_expence_type.php', data)
+  }
+  
   // ********************master entery end **************************
 
   // for Purchase function starting here 

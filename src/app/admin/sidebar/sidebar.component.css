@@ -17,12 +17,6 @@
     margin-left: 20px;
 }
 
-/* .menu{
-    width: 100%;
-    height: auto;
-    margin-top: 69px;
-    position: relative;
-} */
 .menu-button {
     width: 100%;
     font-size: 16px;
@@ -48,7 +42,7 @@
 
 .menu-button:focus {
     background-color: rgb(15, 108, 108);
-    box-shadow: 8px 8px 5px rgb(0 0 0 / 50%) inset;
+    box-shadow: 5px 5px 5px rgb(0 0 0 / 50%) inset;
 }
 
 #report_dropdown_item {
@@ -56,6 +50,9 @@
 }
 
 #dropdown_item {
+    display: none;
+}
+#dropdown_item2 {
     display: none;
 }
 
@@ -72,6 +69,29 @@ button {
 button:hover {
     padding-left: 25px;
 }
+#dropdown_item button{
+    padding-left: 35px;
+}
+#dropdown_item button:hover{
+    padding-left: 45px;
+    
+}
+#dropdown_item2 button{
+    padding-left: 35px;
+}
+#dropdown_item2 button:hover{
+    padding-left: 45px;
+    
+}
+#report_dropdown_item button{
+    padding-left: 35px;
+}
+#report_dropdown_item button:hover{
+    padding-left: 45px;
+    
+}
+
+
 
 /* ===========================================media Query================================================== */
 

@@ -48,6 +48,10 @@
         background-color: green;
         color: white;
       } 
+      .full_txtbox mat-form-field {
+        width: 100vw;
+        margin-top: 22px;
+      }
       
     mat-toolbar {
         height: 40px;

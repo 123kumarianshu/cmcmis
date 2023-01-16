@@ -1,6 +1,3 @@
-
-/////////////////////////////////////////////// For The Import Weight Data ///////////////////////////////////////////////////
-
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from '../manage.service';

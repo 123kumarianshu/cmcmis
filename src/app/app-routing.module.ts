@@ -28,6 +28,9 @@ import { AddEditPurchaseComponent } from './admin/add-edit-purchase/add-edit-pur
 import { ProductionComponent } from './admin/production/production.component';
 import { MaterialHandoverComponent } from './admin/material-handover/material-handover.component';
 import { ProductComponent } from './admin/product/product.component';
+import { ExpencetypeComponent } from './admin/expencetype/expencetype.component';
+import { ProfitComponent } from './admin/profit/profit.component';
+import { LossComponent } from './admin/loss/loss.component';
 
 
 
@@ -71,6 +74,10 @@ const routes: Routes = [
       {path:'production',component:ProductionComponent},
       {path:'material_handover',component:MaterialHandoverComponent},
       {path:'product',component:ProductComponent},
+      {path:'expencetype',component:ExpencetypeComponent},
+      {path:'profit',component:ProfitComponent},
+      {path:'loss',component:LossComponent},
+
 ]
   
 @NgModule({
