@@ -59,9 +59,9 @@ export class AddEditProductionComponent implements OnInit {
     this.ProductionForm = this.fb.group({
       production_id: [''],
       production_quantity: [''],
+      production_cost: [''],
       production_desc: [''],
       production_date: [''],
-      emp_email: [''],
       emp_address: [''],
       emp_mobile: [''],
       emp_id_fk: ['', Validators.required],
@@ -74,19 +74,14 @@ export class AddEditProductionComponent implements OnInit {
       console.log(this.editData)
       this.ProductionForm.controls['emp_mobile'].setValue(this.editData.emp_mobile)
       this.ProductionForm.controls['emp_id_fk'].setValue(this.editData.emp_id)
-      this.ProductionForm.controls['emp_email'].setValue(this.editData.emp_email)
       this.ProductionForm.controls['emp_address'].setValue(this.editData.emp_address)
       this.ProductionForm.controls['cat_id_fk'].setValue(this.editData.cat_id)
       this.ProductionForm.controls['product_id_fk'].setValue(this.editData.product_id)
       this.ProductionForm.controls['production_quantity'].setValue(this.editData.production_quantity)
+      this.ProductionForm.controls['production_cost'].setValue(this.editData.production_cost)
       this.ProductionForm.controls['production_desc'].setValue(this.editData.production_desc)
       this.getproductionDesData(this.editData.emp_id)
-
     }
-
-
-   
-
   }
 
   getproductionDesData(emp_id: any) {
@@ -126,11 +121,8 @@ export class AddEditProductionComponent implements OnInit {
         this.emp_data = res.data
         this.ProductionForm.controls['emp_id_fk'].setValue(this.emp_data.emp_id);
         this.ProductionForm.controls['emp_mobile'].setValue(this.emp_data.emp_mobile);
-        this.ProductionForm.controls['emp_email'].setValue(this.emp_data.emp_email);
         this.ProductionForm.controls['emp_address'].setValue(this.emp_data.emp_address);
         this.getproductionDesData(this.emp_data.emp_id)
-
-
       }
     )
   }
@@ -165,6 +157,17 @@ console.log( new Date().toISOString().slice(0, 10))
       }
     )
     this.getproductionDesData(this.ProductionForm.get('emp_id_fk')?.value)
+  }
+
+  getProduct(event:any){
+    const formdata =  new FormData();
+    formdata.append('product_id',event)
+    this.manageService.get_product_by_product_id(formdata).subscribe(
+      (res:any)=>{
+        // console.log(res.data.product_produ_cost)
+        this.ProductionForm.controls['production_cost'].setValue(res.data.product_produ_cost)
+      }
+    )
   }
 }
 

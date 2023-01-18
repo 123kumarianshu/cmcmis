@@ -1,38 +1,51 @@
-  .reset_btn{
-    margin-right: 30px; 
-}
-.add_btn{
-    margin-right:20px;
-    background-color: green;
-    color: whitesmoke;
-}
-.example-spacer {
-    flex: 1 5 auto;
-    margin-bottom: 20px;
-    color: rgb(20, 89, 92);
-    font-size: 18px;
-    
-}
-.material-icons {
-    color: rgb(20, 89, 92);
-    margin-bottom: 20px;
-}
+  .reset_btn {
+      margin-right: 30px;
+  }
 
-textarea{
-    height: 18px;
-      
- }
- .date{
-    width: 200px;
-}
+  .column {
+      margin-right: 1px;
+      width: 205px;
+      float: left;
 
-mat-toolbar{
-    height:40px;
-    padding: 0px;
-    background: none;
-    position: relative;
-    color:whitesmoke;
-}
+  }
 
+  .column_1 mat-form-field {
+      width: 99.1%;
+      margin-top: 22px;
+  }
 
- 
+  .add_btn {
+      margin-right: 20px;
+      background-color: green;
+      color: whitesmoke;
+  }
+
+  .example-spacer {
+      flex: 1 5 auto;
+      margin-bottom: 20px;
+      color: rgb(20, 89, 92);
+      font-size: 18px;
+
+  }
+
+  .material-icons {
+      color: rgb(20, 89, 92);
+      margin-bottom: 20px;
+  }
+
+  textarea {
+      height: 18px;
+
+  }
+
+  .date {
+      width: 200px;
+  }
+
+  mat-toolbar {
+      height: 40px;
+      padding: 0px;
+      background: none;
+      position: relative;
+      color: whitesmoke;
+  }

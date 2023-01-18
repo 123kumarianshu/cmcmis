@@ -22,14 +22,12 @@
                     onkeypress="return this.value.length < 10;" oninput="if(this.value.length>=10) 
                 {this.value = this.value.slice(0,10);}">
             </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Email ID</mat-label>
-                <input type="email" formControlName="emp_email" matInput placeholder="Email">
-            </mat-form-field>
+    
             <mat-form-field appearance="fill">
                 <mat-label>Address</mat-label>
                 <input type="text" formControlName="emp_address" matInput placeholder="Address">
-            </mat-form-field> <br>
+            </mat-form-field>
+        <br>
             <span>Add Item</span><br>
             <mat-form-field appearance="fill">
                 <mat-label>Category</mat-label>
@@ -41,16 +39,28 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Product</mat-label>
-                <mat-select formControlName="product_id_fk">
+                <mat-select formControlName="product_id_fk" (valueChange)="getProduct($event)" >
                     <mat-option *ngFor="let productdata of product_single_data"
                         [value]="productdata.product_id">{{productdata.product_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
+            <mat-form-field appearance="fill" >
+              <mat-label>Production Cost</mat-label>
+              <input formControlName="production_cost" matInput placeholder="Production cost">
+          </mat-form-field>
+          <br>
+
             <mat-form-field appearance="fill">
                 <mat-label>Quantity</mat-label>
                 <input formControlName="production_quantity" matInput placeholder="Quantity">
             </mat-form-field>
+            
+            <mat-form-field appearance="fill">
+                <mat-label>Quantity</mat-label>
+                <input formControlName="production_quantity" matInput placeholder="Quantity">
+            </mat-form-field>
+
 
             <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>

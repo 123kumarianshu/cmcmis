@@ -67,11 +67,11 @@ export class AddEditUnitComponent implements OnInit {
             this.router.navigate(['/unit']);           
             this.addUnit.reset();
             this.matref.close('save');
-            this.popup.success({detail:'Success',summary:'Unit Submit Successfully...',sticky:true,position:'tr'})
+            this.popup.success({detail:'Success',summary:'Unit Add Successfully...',sticky:true,position:'tr'})
           },
           (error: any) => {
             console.log(['message']);
-            this.popup.error({detail:'message',summary:' Unit  data is not Submit' , sticky:true,position:'tr',})
+            this.popup.error({detail:'message',summary:' Unit  data is not Add' , sticky:true,position:'tr',})
           }
         );
       }

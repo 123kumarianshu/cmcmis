@@ -77,7 +77,7 @@ export class PurchaseComponent implements OnInit {
 
 
   on_draf_bill(data:any){
-    this.router.navigate(['/home/purchase/add_edit_purchase'], {relativeTo: this.route});
+    this.router.navigate(['/add_edit_purchase'], {relativeTo: this.route});
   // this.router.navigate(['../add_edit_purchase'], data)
   }
   on_cancel_bill(data:any){

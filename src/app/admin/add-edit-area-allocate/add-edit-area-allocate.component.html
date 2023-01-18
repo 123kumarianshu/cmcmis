@@ -1,4 +1,4 @@
-  <mat-toolbar >
+<mat-toolbar>
     <span class="example-spacer">Add Area Allocate</span>
     <mat-icon mat-dialog-close>cancel</mat-icon>
 
@@ -6,37 +6,41 @@
 <div mat-dialog-content>
     <form [formGroup]="area_allocateForm">
         <div class="column">
-            <input type="number" formControlName="alct_area_id" readonly hidden>           
+            <input type="number" formControlName="alct_area_id" readonly hidden>
             <mat-form-field appearance="fill">
                 <mat-label>Employee Name</mat-label>
                 <mat-select formControlName="emp_id_fk">
-                    <mat-option *ngFor="let empdata of empdata" [value]="empdata.emp_id">{{empdata.emp_name}}</mat-option>                                    
+                    <mat-option *ngFor="let empdata of empdata"
+                        [value]="empdata.emp_id">{{empdata.emp_name}}</mat-option>
                 </mat-select>
             </mat-form-field><br>
+
+            
+            <mat-form-field appearance="fill" style="width: 99.1%;" >
+                <mat-label>Area Distence</mat-label>
+                <input formControlName="alct_area_distance_id_fk" matInput placeholder="Distence" readonly>
+            </mat-form-field>
+            <br>
+        </div>
+
+        <div class="column">
 
             <mat-form-field appearance="fill">
                 <mat-label>Area</mat-label>
-                <mat-select formControlName="area_id_fk">
-                    <mat-option *ngFor="let areadata of areadata" [value]="areadata.area_id">{{areadata.area_name}}</mat-option>
+                <mat-select formControlName="area_id_fk" (valueChange)="getDistence($event)">
+                    <mat-option *ngFor="let areadata of areadata"
+                        [value]="areadata.area_id">{{areadata.area_name}}</mat-option>
                 </mat-select>
-            </mat-form-field><br> 
-            
-            <mat-form-field appearance="fill">
-                <mat-label>Area distance</mat-label>
-                <mat-select formControlName="alct_area_distance_id_fk">
-                    <mat-option *ngFor="let areadata of areadata" [value]="areadata.area_distance">{{areadata.area_distance}}</mat-option>                                    
-                </mat-select>
-            </mat-form-field><br>     
+            </mat-form-field><br>
             <mat-form-field appearance="fill">
                 <mat-label>Date</mat-label>
-                <input  formControlName="alct_area_date" matInput placeholder="Discription" type="date">
-            </mat-form-field><br>
-
-            <mat-form-field appearance="fill">
-                <mat-label>Discription</mat-label>
-                <input  formControlName="alct_area_des" matInput placeholder="Discription">
-            </mat-form-field><br>
-        </div>
+                <input formControlName="alct_area_date" matInput placeholder="Discription" type="date">
+            </mat-form-field>
+        </div><br>
+        <mat-form-field appearance="fill" style="width: 99.1%;" >
+            <mat-label>Discription</mat-label>
+            <input formControlName="alct_area_des" matInput placeholder="Discription">
+        </mat-form-field><br>
         <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
         <div mat-dialog-action [align]="'end'">
             <button mat-raised-button color="warn" (click)="resetArea()" class="reset_btn">Reset</button>

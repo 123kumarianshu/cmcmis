@@ -99,12 +99,12 @@ export class AddEditProductComponent implements OnInit {
           next: (res) => {    
             this.router.navigate(['/product']);
             this.productForm.reset();
-            this.popup.success({ detail: 'Success', summary: 'Product  Submit  Successfully...', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Product Add Successfully...', sticky: true, position: 'tr' })
             this.matref.close('save');
           },
           error: (err) => {
             console.log(err);
-            this.popup.error({ detail: 'message', summary: ' Product data is Not Submit', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'message', summary: ' Product data is Not Add', sticky: true, position: 'tr' })
           }
         });
       }

@@ -67,17 +67,17 @@ export class SizeComponent implements OnInit {
     this.partyservice.del_size(deldata).subscribe(
       (res:any)=>{
         this.router.navigate(['/size'])
-        this.popup.success({detail:'Success',summary:'Weight Delete Successfully...',sticky:true,position:'tr'})
+        this.popup.success({detail:'Success',summary:'Size Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {
         console.log(['message']);
-        this.popup.error({detail:'message',summary:'Weight data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+        this.popup.error({detail:'message',summary:'Size data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
       }
     )
     
   } 
   else{
-    this.popup.error({detail:'Error',summary:'Weight Delete Not...',sticky:true,position:'tr'})
+    this.popup.error({detail:'Error',summary:'Size Delete Not...',sticky:true,position:'tr'})
   }
 }
 

@@ -90,12 +90,12 @@ export class AddEditItemComponent implements OnInit {
           next: (res) => {       
             this.router.navigate(['/item']);   
             this.itemForm.reset();
-            this.popup.success({ detail: 'Success', summary: 'Item  Submit  Successfully...', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Item Add Successfully...', sticky: true, position: 'tr' })
             this.matref.close('save');
           },
           error: (err) => {
             console.log(err);
-            this.popup.error({ detail: 'message', summary: 'Item data is Not Submit', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'message', summary: 'Item data is Not Add', sticky: true, position: 'tr' })
           }
         });
       }

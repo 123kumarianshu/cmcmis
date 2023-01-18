@@ -303,6 +303,9 @@ export class ManageService {
   putAllocatearea(data: any) {
     return this.http.put<any>(this.baseUrl + 'allocate_area_update.php', data);
   }
+  get_area_by_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_area_by_id.php', data);
+  }
 
   // for sale  function starting here
   getSale() {

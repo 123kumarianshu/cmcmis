@@ -38,13 +38,9 @@ import { EmpHomeComponent } from './employee/emp-home/emp-home.component';
 
 
 
-
-
-
 const routes: Routes = [
 
-  
-      {path:'', component:DashboardComponent, redirectTo: '', pathMatch: 'full'},
+      {path:'', redirectTo:'dashbaord', pathMatch: 'full'},
       {path:'dashbaord', component:DashboardComponent},
       {path:'party',component:PartyComponent},
       {path:'unit',component:UnitComponent},
@@ -77,6 +73,8 @@ const routes: Routes = [
       {path:'profit',component:ProfitComponent},
       {path:'loss',component:LossComponent},
       {path:'emphome',component:EmpHomeComponent},
+
+      {path:'**',component:DashboardComponent},
 
 ]
   

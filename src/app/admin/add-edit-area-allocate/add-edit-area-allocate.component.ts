@@ -45,20 +45,20 @@ export class AddEditAreaAllocateComponent implements OnInit {
           this.area_allocateForm.controls['emp_id_fk'].setValue(this.editData.emp_id_fk);          
           this.area_allocateForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
         }
+        this.area_allocateForm.controls['alct_area_date'].setValue(new Date().toISOString().slice(0, 10));
+        
       }
   ngOnInit(): void {
     this.manageService.getEmployee().subscribe(
       (res:any)=>{
         console.log(res)
         this.empdata = res.data
-      
       }
     )
-
     this.manageService.getArea().subscribe(
       (res:any)=>{
-        // console.log(res)
         this.areadata = res.data
+
       }
     )
   }
@@ -104,6 +104,17 @@ export class AddEditAreaAllocateComponent implements OnInit {
     
     resetArea() {
       this.area_allocateForm.reset();
+    }
+    getDistence(event:any){
+      const formdata = new FormData()
+      formdata.append('area_id',event)
+      this.manageService.get_area_by_id(formdata).subscribe(
+        (res:any)=>{
+          // console.log(res.data.area_distance)
+          this.area_allocateForm.controls['alct_area_distance_id_fk'].setValue(res.data.area_distance);                              
+
+        }
+      )
     }
 
     // for get employee datata
