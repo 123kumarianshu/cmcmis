@@ -23,28 +23,28 @@ export class EmpLoginComponent implements OnInit {
     private router:Router,
     private popup: NgToastService,
     private matref: MatDialogRef<EmpLoginComponent>,
+
     private matdialog:MatDialog
   ) { }
 
   ngOnInit(): void {
     this.LoginForm = this.fb.group({
-      username: ['', Validators.required],
+      emp_email: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
   onLogin() {
     if (this.LoginForm.valid) {
       console.log(this.LoginForm.value)
-      this.servies.Login(this.LoginForm.value).subscribe(
+      this.servies.emp_login(this.LoginForm.value).subscribe(
         (result: any) => {
           console.log(result)
           if (result.success) {
-            this.router.navigate(['/emphome']);
             this.LoginForm.reset();
             localStorage.setItem('Token', JSON.stringify(result.uid[0]));
             this.popup.success({detail:'Success',summary:'Login Successfully...',sticky:true,position:'tr'})
-
-            this.matref.close();        
+            this.matref.close();    
+            this.router.navigate(['/emphome']);     
           }
           else {
             this.popup.error({detail:'Error',summary:'Login Fail...',sticky:true,position:'tr'})        
@@ -60,6 +60,7 @@ export class EmpLoginComponent implements OnInit {
     }
    }
    admin_login(){
+    this.matref.close()
     this.matdialog.open(LoginpageComponent,{
       width: '100%',
       maxWidth: '100vw',

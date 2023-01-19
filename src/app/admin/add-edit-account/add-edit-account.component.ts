@@ -16,6 +16,9 @@ export class AddEditAccountComponent implements OnInit {
   admin_id =1
   addAccount: any
   accountdata:any
+  sale_amount:Number = 0
+  expense:Number = 0
+  cash_in_hand:Number = 0
 
   constructor(
     private popup: NgToastService,
@@ -67,8 +70,12 @@ export class AddEditAccountComponent implements OnInit {
       this.addAccount.controls['account_date'].setValue(new Date().toISOString().slice(0, 10));
     }
 
-   
-   
+  //  for calc 
+
+  this.addAccount.controls['closing_amount'].setValue((this.addAccount.get('today_sale')?.value) + this.addAccount.get('cash_in_hand')?.value) - this.addAccount.get('expense')?.value ; 
+  this.addAccount.controls['closing_amount'].setValue(); 
+  console.log(((this.addAccount.get('today_sale')?.value) + this.addAccount.get('cash_in_hand')?.value) - this.addAccount.get('expense')?.value)
+
   }
   onSubmit() {
     console.log(this.addAccount.value);
@@ -91,7 +98,10 @@ export class AddEditAccountComponent implements OnInit {
     }
     else {
     } 
+
+
   } 
+ 
  
    resetaccount() {
     this.addAccount.reset();
@@ -101,6 +111,7 @@ export class AddEditAccountComponent implements OnInit {
   getCash(){
     this.manageService.get_account().subscribe(
       (res:any)=>{
+        this.cash_in_hand = res.data[0].closing_amount
         this.addAccount.controls['cash_in_hand'].setValue(res.data[0].closing_amount);
       }
     )
@@ -111,7 +122,7 @@ export class AddEditAccountComponent implements OnInit {
     saleformdata.append('sale_date',date)
     this.manageService.get_sale_by_date(saleformdata).subscribe(
       (res:any)=>{
-  
+        this.sale_amount = res.data[0].total_sale_amount
         this.addAccount.controls['today_sale'].setValue(res.data[0].total_sale_amount);
       }
     )
@@ -121,11 +132,18 @@ export class AddEditAccountComponent implements OnInit {
     expenceformdata.append('expense_date',date)
     this.manageService.get_expense_by_date(expenceformdata).subscribe(
       (res:any)=>{
+        this.expense = res.data[0].total_expense
         // console.log(res.data.total_expense)
         this.addAccount.controls['expense'].setValue(res.data[0].total_expense);
 
       }
     )
+  }
+
+  disp_in_bank(){
+  
+    this.addAccount.controls['closing_amount'].setValue(((Number(this.addAccount.get('cash_in_hand')?.value) +  Number(this.addAccount.get('today_sale')?.value)) - (Number(this.addAccount.get('expense')?.value) + Number(this.addAccount.get('deposit_into_bank')?.value )))); 
+
   }
 
 }

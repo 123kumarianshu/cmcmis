@@ -32,6 +32,7 @@ import { ExpencetypeComponent } from './admin/expencetype/expencetype.component'
 import { ProfitComponent } from './admin/profit/profit.component';
 import { LossComponent } from './admin/loss/loss.component';
 import { EmpHomeComponent } from './employee/emp-home/emp-home.component';
+import { EmpDashboardComponent } from './employee/emp-dashboard/emp-dashboard.component';
 
 
 
@@ -39,7 +40,6 @@ import { EmpHomeComponent } from './employee/emp-home/emp-home.component';
 
 
 const routes: Routes = [
-
       {path:'', redirectTo:'dashbaord', pathMatch: 'full'},
       {path:'dashbaord', component:DashboardComponent},
       {path:'party',component:PartyComponent},
@@ -72,7 +72,16 @@ const routes: Routes = [
       {path:'expencetype',component:ExpencetypeComponent},
       {path:'profit',component:ProfitComponent},
       {path:'loss',component:LossComponent},
+      
+
+
       {path:'emphome',component:EmpHomeComponent},
+        {path:'emp_dashboard',component:EmpDashboardComponent},
+        {path:'sale',component:SaleComponent},
+        {path:'dues',component:DuesComponent},
+        {path:'reciept',component:RecieptComponent},
+        {path:'stock_report',component:StockReportComponent},
+        // {path:'**',component:EmpDashboardComponent},
 
       {path:'**',component:DashboardComponent},
 

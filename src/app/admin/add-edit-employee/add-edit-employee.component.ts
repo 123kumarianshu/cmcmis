@@ -43,7 +43,7 @@ export class AddEditEmployeeComponent implements OnInit {
       emp_name: ['', Validators.required],
       emp_mobile: ['', Validators.required],
       emp_email: [''],
-      emp_whatsapp: [''],
+      password: [''],
       emp_address: ['', Validators.required],
       emp_ac_holder_name: [''],
       emp_aadhar_no: [''],
@@ -61,7 +61,7 @@ export class AddEditEmployeeComponent implements OnInit {
       this.empForm.controls['emp_name'].setValue(this.editData.emp_name);
       this.empForm.controls['emp_mobile'].setValue(this.editData.emp_mobile);
       this.empForm.controls['emp_email'].setValue(this.editData.emp_email);
-      this.empForm.controls['emp_whatsapp'].setValue(this.editData.emp_whatsapp);
+      this.empForm.controls['password'].setValue(this.editData.password);
       this.empForm.controls['emp_address'].setValue(this.editData.emp_address);
       this.empForm.controls['emp_ac_holder_name'].setValue(this.editData.emp_ac_holder_name);
       this.empForm.controls['emp_aadhar_no'].setValue(this.editData.emp_aadhar_no);
@@ -79,7 +79,7 @@ export class AddEditEmployeeComponent implements OnInit {
     formdata.append('emp_name', this.empForm.get('emp_name')?.value)
     formdata.append('emp_mobile', this.empForm.get('emp_mobile')?.value)
     formdata.append('emp_email', this.empForm.get('emp_email')?.value)
-    formdata.append('emp_whatsapp', this.empForm.get('emp_whatsapp')?.value)
+    formdata.append('password', this.empForm.get('password')?.value)
     formdata.append('emp_address', this.empForm.get('emp_address')?.value)
     formdata.append('emp_ac_holder_name', this.empForm.get('emp_ac_holder_name')?.value)
     formdata.append('emp_aadhar_no', this.empForm.get('emp_aadhar_no')?.value)

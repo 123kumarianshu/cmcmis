@@ -19,8 +19,10 @@ export class ManageService {
 
   // for Dashboard function starting here 
   Login(data: any) {
-
     return this.http.post<any>(this.baseUrl + 'login.php', data);
+  }
+  emp_login(data: any) {
+    return this.http.post<any>(this.baseUrl + 'emp_login.php', data);
   }
   dashboard_view() {
     return this.http.get<[]>(this.baseUrl + 'dashboard_view.php');

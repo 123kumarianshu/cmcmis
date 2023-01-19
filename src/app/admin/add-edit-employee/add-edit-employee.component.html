@@ -15,26 +15,26 @@
                 <mat-label>Email</mat-label>
                 <input type="email" formControlName="emp_email" matInput placeholder="Email">
             </mat-form-field>
-
+            <mat-form-field appearance="fill" >
+                <mat-label> A/C number</mat-label>
+                <input type="number" formControlName="emp_account_no" matInput placeholder="A/c number">
+            </mat-form-field>
+            
+        </div>
+        <div class="column">
             <mat-form-field appearance="fill" id="mobil">
                 <mat-label>Mobile</mat-label>
                 <input type="number" formControlName="emp_mobile" matInput placeholder="Mobile"
                     onkeypress="return this.value.length < 10;"
                     oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
             </mat-form-field>
-        </div>
-        <div class="column">
-            <mat-form-field appearance="fill">
-                <mat-label>Whatsapp</mat-label>
-                <input type="number" formControlName="emp_whatsapp" matInput placeholder="Whatsapp"
-                    onkeypress="return this.value.length < 10;"
-                    oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
-            </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Adhar Number </mat-label>
-                <input type="number" formControlName="emp_aadhar_no" matInput placeholder="AAdhar Number">
+                <mat-label>Password Created</mat-label>
+                <input type="text" formControlName="password" matInput placeholder="Password">
             </mat-form-field>
+
+         
 
             <mat-form-field appearance="fill" id="account">
                 <mat-label>A/C Holder Name </mat-label>
@@ -42,9 +42,9 @@
             </mat-form-field>
         </div>
         <div class="column">
-            <mat-form-field appearance="fill" >
-                <mat-label> A/C number</mat-label>
-                <input type="number" formControlName="emp_account_no" matInput placeholder="A/c number">
+            <mat-form-field appearance="fill">
+                <mat-label>Adhar Number </mat-label>
+                <input type="number" formControlName="emp_aadhar_no" matInput placeholder="AAdhar Number">
             </mat-form-field>
 
             <mat-form-field appearance="fill">

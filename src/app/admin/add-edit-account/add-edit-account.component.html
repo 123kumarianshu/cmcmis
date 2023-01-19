@@ -8,11 +8,11 @@
             <input type="number" formControlName="account_id" readonly hidden>
             <mat-form-field appearance="fill">
                 <mat-label>Cash In Hand </mat-label>
-                <input formControlName="cash_in_hand" matInput placeholder="Cash in Hand" type="number">
+                <input formControlName="cash_in_hand" matInput placeholder="Cash in Hand" type="number" readonly>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Today sale</mat-label>
-                <input formControlName="today_sale" matInput placeholder="Today Sale"  type="number">
+                <input formControlName="today_sale" matInput placeholder="Today Sale"  type="number" readonly>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Expense</mat-label>
@@ -22,12 +22,12 @@
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Deposit into Bank</mat-label>
-                <input formControlName="deposit_into_bank" matInput placeholder="Deposit into Bank" type="  ">
+                <input formControlName="deposit_into_bank" matInput placeholder="Deposit into Bank" type="number" (keyup)="disp_in_bank()">
             </mat-form-field><br>
 
             <mat-form-field appearance="fill">
                 <mat-label>Closing Amount</mat-label>
-                <input formControlName="closing_amount" matInput placeholder="Closing Amount" type="number">
+                <input formControlName="closing_amount" matInput placeholder="Closing Amount" type="number" readonly>
             </mat-form-field><br>
 
             <mat-form-field appearance="fill">

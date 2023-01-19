@@ -59,6 +59,7 @@ export class LoginpageComponent implements OnInit {
     }
    }
    emp_login(){
+    this.matref.close()
     this.dialog.open(EmpLoginComponent,{
       width: '100%',
       maxWidth: '100vw',
