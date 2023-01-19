@@ -173,16 +173,15 @@ export class AddEditSaleComponent implements OnInit {
     }
     else {
       this.saleformfinal.controls['sale_date'].setValue(new Date().toISOString().slice(0, 10))
-
     }
-
-
   }
+  
   AddCustomer() {
     if (!(this.draft_data.sale_bill_no)) {
       this.manageService.getSale().subscribe(
         (res: any) => {
           if (res.success == 1) {
+            // console.log(res.data[0].sale_id)
             // this.sale_id = Number(res.data[res.data.length - 1].sale_id);
             this.sale_id = Number(res.data[0].sale_id);
           }
@@ -385,7 +384,7 @@ GetDescData(salebillno:any){
         this.saleformprod.controls['product_weight_id'].setValue(this.prod_single_data.weight_name);
         this.saleformprod.controls['product_page'].setValue(this.prod_single_data.product_page);
         this.saleformprod.controls['product_unit_id'].setValue(this.prod_single_data.unit_name);
-        this.saleformprod.controls['product_rate'].setValue(this.prod_single_data.product_retail_price);
+        this.saleformprod.controls['product_rate'].setValue(this.prod_single_data.product_cost_price);
 
       }
     )
@@ -438,10 +437,12 @@ GetDescData(salebillno:any){
 
   //For calculation work start code here
   desc_amt_cal() {
-    if(this.saleformprod.get('product_quantity')?.value > this.stock_data){
+    if((this.stock_data) > this.saleformprod.get('product_quantity')?.value){  
+      
+    }
+    else{
       this.popup.warning({ detail: 'Warning', summary: 'Stock  Not Available...', })
       // this.saleformprod.controls['product_quantity'].setValue(0)
-      
     }
     this.saleformprod.controls['product_total_amount'].setValue(this.saleformprod.get('product_rate')?.value * this.saleformprod.get('product_quantity')?.value)
     this.saleformprod.controls['available_quantity'].setValue((this.stock_data) - this.saleformprod.get('product_quantity')?.value)

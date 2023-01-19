@@ -1,61 +1,81 @@
 <div id="wrapper">
-    <div class="view_notice">
-      <span class="notice_text">Loss</span>
+  <div class="view_notice">
+    <span class="notice_text">Loss</span>
+  </div>
+    <div class="count_search">
+      <span class="notice_text"> Total : {{count}}</span>       
+      <div class="search">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+      </div>
     </div>
-      <div class="count_search">
-        <span class="notice_text"> Total : {{count}}</span>       
-        <div class="search">
-          <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
-        </div>
-      </div>
-      <div class="cotainer">
-        <form>
-          <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort id="table">    
-              <ng-container matColumnDef="slno">
-                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
-                <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
-              </ng-container>    
-              <ng-container matColumnDef="product">
-                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
-                <td  class="data"mat-cell *matCellDef="let row">{{row.party_name}}</td>
-              </ng-container> 
-    
-              <ng-container matColumnDef="product_price">
-                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product Price</th>
-                <td  class="data"mat-cell *matCellDef="let row">{{row.party_mobile}}</td>
-              </ng-container>
-    
-              <ng-container matColumnDef="production_cost">
-                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Production Cost</th>
-                <td class="data" mat-cell *matCellDef="let row">{{row.party_address}}</td>
-              </ng-container>
-    
-              <ng-container matColumnDef="profit">
-                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Loss</th>
-                <td class="data" mat-cell *matCellDef="let row">{{row.party_contact_person}}</td>
-              </ng-container>
-             
+    <div class="cotainer">
+      <form>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort id="table">    
+            <ng-container matColumnDef="slno">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
+              <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
+            </ng-container>    
+            <ng-container matColumnDef="sale_bill_no">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Bill No</th>
+              <td  class="data"mat-cell *matCellDef="let row">{{row.sale_bill_no}}</td>
+            </ng-container> 
+  
+            <ng-container matColumnDef="party">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Customer</th>
+              <td  class="data"mat-cell *matCellDef="let row">{{row.cust_name}}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="address">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.cust_shop_address}}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="product">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_name}}</td>
+            </ng-container>
 
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>     
-              <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="6">No data show"{{input.value}}"</td>
-              </tr>
-            </table>    
-            <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-          </div>    
-        </form>
+            <ng-container matColumnDef="production_cost">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product Amount</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_cost_price}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="sale_amount">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Sale Amount</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.sale_amount}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="profit_amount">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Loss Amount</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.profit}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.sale_date}}</td>
+            </ng-container>
+           
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>     
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="6">No data show"{{input.value}}"</td>
+            </tr>
+          </table>    
+          <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>    
+      </form>
+    </div>
+    </div>
+  
+  
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Are you sure to delete </h4>
+      </div> 
+      <div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Conform</button> <span style="opacity: 0;">......................................................</span><button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
       </div>
-      </div>
+    </ng-template>
     
-    
-      <ng-template #content let-c="close" let-d="dismiss">
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title">Are you sure to delete </h4>
-        </div> 
-        <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Conform</button> <span style="opacity: 0;">......................................................</span><button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
-        </div>
-      </ng-template>
-      

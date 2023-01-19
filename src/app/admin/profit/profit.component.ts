@@ -10,7 +10,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./profit.component.css']
 })
 export class ProfitComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'product','product_price', 'production_cost','profit'];
+  displayedColumns: string[] = ['slno', 'sale_bill_no','party', 'address','product','production_cost','sale_amount','profit_amount','date',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -28,12 +28,13 @@ export class ProfitComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.servies.getParty().subscribe(
-      (partyresult: any) => {
-        this.dataSource = new MatTableDataSource(partyresult.data);
+    this.servies.get_profit().subscribe(
+      (res: any) => {
+
+        this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        this.count = partyresult.data.length
+        this.count = res.data.length
       }
     )
   }

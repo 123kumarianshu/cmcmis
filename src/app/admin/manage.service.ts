@@ -18,9 +18,9 @@ export class ManageService {
   baseUrl: string = 'http://adityaradhaya.com/api/';
 
   // for Dashboard function starting here 
-  Login(data:any) {
-    
-    return this.http.post<any>(this.baseUrl + 'login.php',data);
+  Login(data: any) {
+
+    return this.http.post<any>(this.baseUrl + 'login.php', data);
   }
   dashboard_view() {
     return this.http.get<[]>(this.baseUrl + 'dashboard_view.php');
@@ -94,7 +94,7 @@ export class ManageService {
   putSize(data: any) {
     return this.http.put<any>(this.baseUrl + 'size_update.php', data);
   }
-  
+
   del_size(data: any,) {
     return this.http.post(this.baseUrl + 'del_size.php', data)
   }
@@ -109,7 +109,7 @@ export class ManageService {
   putCategory(data: any) {
     return this.http.put<any>(this.baseUrl + 'cat_update.php', data);
   }
-  
+
   del_category(data: any,) {
     return this.http.post(this.baseUrl + 'del_cat.php', data)
   }
@@ -171,7 +171,7 @@ export class ManageService {
   del_cust(data: any,) {
     return this.http.post(this.baseUrl + 'del_cust.php', data)
   }
-  
+
 
   // for Area function starting here 
   postArea(data: any) {
@@ -186,7 +186,7 @@ export class ManageService {
   del_area(data: any,) {
     return this.http.post(this.baseUrl + 'del_area.php', data)
   }
-  
+
 
   // for Expence type function starting here 
   Post_expence_typ(data: any) {
@@ -201,7 +201,7 @@ export class ManageService {
   del_expence_type(data: any,) {
     return this.http.post(this.baseUrl + 'del_expence_type.php', data)
   }
-  
+
   // ********************master entery end **************************
 
   // for Purchase function starting here 
@@ -209,7 +209,7 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_party_by_party_id.php', data);
   }
 
-  
+
   get_purch() {
     return this.http.get<[]>(this.baseUrl + 'get_purch_view.php');
   }
@@ -238,14 +238,14 @@ export class ManageService {
   purch_final_submit(data: any) {
     return this.http.post<any>(this.baseUrl + 'purch_final_submit.php', data);
   }
-  
+
   get_purch_desc_view(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_purch_desc_view.php', data)
   }
-  purch_party_update(data:any){
+  purch_party_update(data: any) {
     return this.http.post<any>(this.baseUrl + 'purch_party_update.php', data);
   }
-  cancel_purch_bill(data:any){
+  cancel_purch_bill(data: any) {
     return this.http.post<any>(this.baseUrl + 'cancel_purch_bill.php', data);
   }
 
@@ -354,30 +354,30 @@ export class ManageService {
   // for Dues  function starting here
   getDues() {
     return this.http.get<[]>(this.baseUrl + 'get_dues_view.php');
-  } 
-  post_dues(data:any){
+  }
+  post_dues(data: any) {
     return this.http.post<any>(this.baseUrl + 'dues_update.php', data)
   }
   // for account funcation starting here
   getAccount() {
     return this.http.get<[]>(this.baseUrl + 'account_view.php');
-  } 
+  }
   postAccount(data: any) {
     return this.http.post<any>(this.baseUrl + 'account_insert.php', data);
-  } 
-   putAccount(data: any) {
-    return this.http.put<any>( this.baseUrl +'account_update.php', data);
+  }
+  putAccount(data: any) {
+    return this.http.put<any>(this.baseUrl + 'account_update.php', data);
   }
   get_sale_by_date(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_sale_by_date.php', data);
-  } 
-  get_expense_by_date(data:any) {
+  }
+  get_expense_by_date(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_expense_by_date.php', data);
   }
-  get_account_by_date(data:any) {
-    return this.http.post<any>(this.baseUrl + 'get_account_by_date.php', data);
+  get_account() {
+    return this.http.get<[]>(this.baseUrl + 'get_account.php');
   }
-  
+
   // for expense function stating...
   get_expense() {
     return this.http.get<[]>(this.baseUrl + 'expense_view.php');
@@ -391,9 +391,17 @@ export class ManageService {
 
   get_recive() {
     return this.http.get<[]>(this.baseUrl + 'get_recived.php');
-  } 
+  }
 
   get_stock() {
     return this.http.get<[]>(this.baseUrl + 'get_stock.php');
-  } 
+  }
+
+  get_profit() {
+    return this.http.get<[]>(this.baseUrl + 'get_profit_view.php');
+  }
+
+  get_loss() {
+    return this.http.get<[]>(this.baseUrl + 'get_loss_view.php');
+  }
 }

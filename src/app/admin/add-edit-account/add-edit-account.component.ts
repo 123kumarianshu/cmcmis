@@ -61,7 +61,7 @@ export class AddEditAccountComponent implements OnInit {
       this.addAccount.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
     }
     else{
-      this.getCash(new Date().toISOString().slice(0, 10))
+      this.getCash()
       this.getSale(new Date().toISOString().slice(0, 10))
       this.getExpence(new Date().toISOString().slice(0, 10))
       this.addAccount.controls['account_date'].setValue(new Date().toISOString().slice(0, 10));
@@ -98,12 +98,9 @@ export class AddEditAccountComponent implements OnInit {
 
   }
 
-  getCash(date:any){
-    const saleformdata = new FormData()
-    saleformdata.append('account_date',date)
-    this.manageService.get_account_by_date(saleformdata).subscribe(
+  getCash(){
+    this.manageService.get_account().subscribe(
       (res:any)=>{
-
         this.addAccount.controls['cash_in_hand'].setValue(res.data[0].closing_amount);
       }
     )
