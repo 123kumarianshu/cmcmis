@@ -371,6 +371,12 @@ export class ManageService {
   get_sale_by_date(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_sale_by_date.php', data);
   } 
+  get_expense_by_date(data:any) {
+    return this.http.post<any>(this.baseUrl + 'get_expense_by_date.php', data);
+  }
+  get_account_by_date(data:any) {
+    return this.http.post<any>(this.baseUrl + 'get_account_by_date.php', data);
+  }
   
   // for expense function stating...
   get_expense() {

@@ -39,26 +39,26 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Product</mat-label>
-                <mat-select formControlName="product_id_fk" (valueChange)="getProduct($event)" >
+                <mat-select formControlName="product_id_fk">
                     <mat-option *ngFor="let productdata of product_single_data"
                         [value]="productdata.product_id">{{productdata.product_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
             <mat-form-field appearance="fill" >
-              <mat-label>Production Cost</mat-label>
-              <input formControlName="production_cost" matInput placeholder="Production cost">
+              <mat-label>Labor Cost</mat-label>
+              <input formControlName="labor_cost" matInput placeholder="labor cost" (keyup)="total_calc()">
           </mat-form-field>
           <br>
 
             <mat-form-field appearance="fill">
                 <mat-label>Quantity</mat-label>
-                <input formControlName="production_quantity" matInput placeholder="Quantity">
+                <input formControlName="production_quantity" matInput placeholder="Quantity" (keyup)="total_calc()">
             </mat-form-field>
             
             <mat-form-field appearance="fill">
-                <mat-label>Quantity</mat-label>
-                <input formControlName="production_quantity" matInput placeholder="Quantity">
+                <mat-label>Total Amount</mat-label>
+                <input formControlName="total_amount" matInput placeholder="Total Amount" readonly>
             </mat-form-field>
 
 
@@ -67,12 +67,12 @@
                 <input formControlName="production_desc" matInput placeholder="Description">
             </mat-form-field>
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
-        </div>
+        </div><br><br><br>
         <button class="addbtn" (click)="Add()">Add</button>
     </form>
     <div class="cotainer">
         <div class="count_search">
-          <span class="notice_text"> Total : {{productioncount}}</span>
+          <span class="notice_text"> Total :{{productioncount}}</span>
           <div class="search">
             <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
           </div>
@@ -111,11 +111,15 @@
                   <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
                   <td class="data" mat-cell *matCellDef="let row">{{row.production_date}}</td>
                 </ng-container>
-    
-                <ng-container matColumnDef="Action">
-                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-                  <td class="data" mat-cell *matCellDef="let row"> <mat-icon>edit</mat-icon></td>
+                <ng-container matColumnDef="labor_cost">
+                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Labor Cost</th>
+                  <td class="data" mat-cell *matCellDef="let row">{{row.labor_cost}}</td>
                 </ng-container>
+                <ng-container matColumnDef="total_amount">
+                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>
+                  <td class="data" mat-cell *matCellDef="let row">{{row.total_amount}}</td>
+                </ng-container>
+    
     
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

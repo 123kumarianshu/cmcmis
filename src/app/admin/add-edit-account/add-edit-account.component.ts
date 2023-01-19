@@ -16,6 +16,7 @@ export class AddEditAccountComponent implements OnInit {
   admin_id =1
   addAccount: any
   accountdata:any
+
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
@@ -27,13 +28,12 @@ export class AddEditAccountComponent implements OnInit {
     this.addAccount = this.fb.group({
       account_id: [''],
       today_sale: ['',Validators.required],
-      deposit_into_bank: ['',Validators.required],
-      closing_amount: ['',Validators.required],
-      expense: ['',Validators.required],
+      deposit_into_bank: ['0',Validators.required],
+      closing_amount: ['0',Validators.required],
+      expense: ['0',Validators.required],
       account_date: ['',Validators.required],
-      remarks: ['',Validators.required],
       account_desc: ['',Validators.required],
-      cash_in_hand:['',Validators.required],
+      cash_in_hand:['0',Validators.required],
       admin_id_fk: [''],
     })
   }
@@ -42,13 +42,13 @@ export class AddEditAccountComponent implements OnInit {
     this.manageService.getAccount().subscribe(
       (res:any)=>{
         this.accountdata = res.data
-        console.log(res)
+        // console.log(res)
       }
       
     )
     console.log(this.editData)
     if (this.editData) {
-      console.log(this.editData)
+      // console.log(this.editData)
       this.actionBtn = 'Update'
       this.addAccount.controls['account_id'].setValue(this.editData.account_id);
       this.addAccount.controls['today_sale'].setValue(this.editData.today_sale);
@@ -56,11 +56,19 @@ export class AddEditAccountComponent implements OnInit {
       this.addAccount.controls['closing_amount'].setValue(this.editData.closing_amount);
       this.addAccount.controls['expense'].setValue(this.editData.expense);
       this.addAccount.controls['account_date'].setValue(this.editData.account_date);
-      this.addAccount.controls['remarks'].setValue(this.editData.remarks);
       this.addAccount.controls['account_desc'].setValue(this.editData.account_desc);
       this.addAccount.controls['cash_in_hand'].setValue(this.editData.cash_in_hand);
       this.addAccount.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
     }
+    else{
+      this.getCash(new Date().toISOString().slice(0, 10))
+      this.getSale(new Date().toISOString().slice(0, 10))
+      this.getExpence(new Date().toISOString().slice(0, 10))
+      this.addAccount.controls['account_date'].setValue(new Date().toISOString().slice(0, 10));
+    }
+
+   
+   
   }
   onSubmit() {
     console.log(this.addAccount.value);
@@ -75,7 +83,7 @@ export class AddEditAccountComponent implements OnInit {
             this.popup.success({detail:'Success',summary:'Account  Submit Successfully...',sticky:true,position:'tr'})
           },
           (error: any) => {
-            console.log(['message']);
+            // console.log(['message']);
             this.popup.error({detail:'message',summary:'Account  data is not Submit' , sticky:true,position:'tr',})
           }
         );
@@ -90,21 +98,35 @@ export class AddEditAccountComponent implements OnInit {
 
   }
 
+  getCash(date:any){
+    const saleformdata = new FormData()
+    saleformdata.append('account_date',date)
+    this.manageService.get_account_by_date(saleformdata).subscribe(
+      (res:any)=>{
+
+        this.addAccount.controls['cash_in_hand'].setValue(res.data[0].closing_amount);
+      }
+    )
+  }
+
   getSale(date:any){
     const saleformdata = new FormData()
-    saleformdata.append('date',date)
+    saleformdata.append('sale_date',date)
     this.manageService.get_sale_by_date(saleformdata).subscribe(
       (res:any)=>{
-        console.log(res)
+  
+        this.addAccount.controls['today_sale'].setValue(res.data[0].total_sale_amount);
       }
     )
   }
   getExpence(date:any){
     const expenceformdata = new FormData()
-    expenceformdata.append('date',date)
-    this.manageService.get_sale_by_date(expenceformdata).subscribe(
+    expenceformdata.append('expense_date',date)
+    this.manageService.get_expense_by_date(expenceformdata).subscribe(
       (res:any)=>{
-        console.log(res)
+        // console.log(res.data.total_expense)
+        this.addAccount.controls['expense'].setValue(res.data[0].total_expense);
+
       }
     )
   }

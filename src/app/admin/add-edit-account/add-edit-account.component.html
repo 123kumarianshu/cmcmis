@@ -33,13 +33,13 @@
             <mat-form-field appearance="fill">
                 <mat-label>Date</mat-label>
                 <input formControlName="account_date" matInput placeholder="Date" type="date">
-            </mat-form-field><br>
+            </mat-form-field>
         </div>      
-        
-        <div calss="full_txtbox">  <mat-form-field appearance="fill">
+            <br>
+      <mat-form-field appearance="fill" class="full_txtbox">
             <mat-label>Description</mat-label>
             <input formControlName="account_desc" matInput placeholder="Description">
-        </mat-form-field></div>
+        </mat-form-field>
         <div mat-dialog-action [align]="'end'" id="main_button">
             <button mat-raised-button color="warn" (click)="resetaccount()" class="reset_btn">Reset</button>
             <button mat-raised-button (click)="onSubmit()" class="add_btn" type="submit"

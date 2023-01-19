@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./add-edit-production.component.css']
 })
 export class AddEditProductionComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'emp_name', 'cat_name', 'product_name', 'production_quantity', 'production_date', 'Action',];
+  displayedColumns: string[] = ['slno', 'emp_name', 'cat_name', 'product_name', 'production_quantity', 'production_date','labor_cost' ,'total_amount',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -59,11 +59,12 @@ export class AddEditProductionComponent implements OnInit {
     this.ProductionForm = this.fb.group({
       production_id: [''],
       production_quantity: [''],
-      production_cost: [''],
+      labor_cost: [''],
       production_desc: [''],
       production_date: [''],
       emp_address: [''],
       emp_mobile: [''],
+      total_amount: [''],
       emp_id_fk: ['', Validators.required],
       product_id_fk: ['', Validators.required],
       cat_id_fk: ['', Validators.required],
@@ -78,7 +79,8 @@ export class AddEditProductionComponent implements OnInit {
       this.ProductionForm.controls['cat_id_fk'].setValue(this.editData.cat_id)
       this.ProductionForm.controls['product_id_fk'].setValue(this.editData.product_id)
       this.ProductionForm.controls['production_quantity'].setValue(this.editData.production_quantity)
-      this.ProductionForm.controls['production_cost'].setValue(this.editData.production_cost)
+      this.ProductionForm.controls['labor_cost'].setValue(this.editData.labor_cost)
+      this.ProductionForm.controls['total_amount'].setValue(this.editData.total_amount)
       this.ProductionForm.controls['production_desc'].setValue(this.editData.production_desc)
       this.getproductionDesData(this.editData.emp_id)
     }
@@ -146,6 +148,8 @@ console.log( new Date().toISOString().slice(0, 10))
     descFormdata.append('cat_id_fk', this.ProductionForm.get('cat_id_fk')?.value)
     descFormdata.append('product_id_fk', this.ProductionForm.get('product_id_fk')?.value)
     descFormdata.append('production_quantity', this.ProductionForm.get('production_quantity')?.value)
+    descFormdata.append('total_amount', this.ProductionForm.get('total_amount')?.value)
+    descFormdata.append('labor_cost', this.ProductionForm.get('labor_cost')?.value)
     descFormdata.append('production_desc', this.ProductionForm.get('production_desc')?.value)
     descFormdata.append('production_date', new Date().toISOString().slice(0, 10))
     descFormdata.append('admin_id_fk', this.ProductionForm.get('admin_id_fk')?.value)
@@ -159,16 +163,10 @@ console.log( new Date().toISOString().slice(0, 10))
     this.getproductionDesData(this.ProductionForm.get('emp_id_fk')?.value)
   }
 
-  getProduct(event:any){
-    const formdata =  new FormData();
-    formdata.append('product_id',event)
-    this.manageService.get_product_by_product_id(formdata).subscribe(
-      (res:any)=>{
-        // console.log(res.data.product_produ_cost)
-        this.ProductionForm.controls['production_cost'].setValue(res.data.product_produ_cost)
-      }
-    )
+  total_calc(){
+    this.ProductionForm.controls['total_amount'].setValue(this.ProductionForm.get('labor_cost')?.value * this.ProductionForm .get('production_quantity')?.value)
   }
+ 
 }
 
 

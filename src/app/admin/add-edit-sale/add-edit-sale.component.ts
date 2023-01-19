@@ -440,7 +440,7 @@ GetDescData(salebillno:any){
   desc_amt_cal() {
     if(this.saleformprod.get('product_quantity')?.value > this.stock_data){
       this.popup.warning({ detail: 'Warning', summary: 'Stock  Not Available...', })
-      this.saleformprod.controls['product_quantity'].setValue(0)
+      // this.saleformprod.controls['product_quantity'].setValue(0)
       
     }
     this.saleformprod.controls['product_total_amount'].setValue(this.saleformprod.get('product_rate')?.value * this.saleformprod.get('product_quantity')?.value)

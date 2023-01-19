@@ -7,6 +7,9 @@
     .column mat-form-field {
         width: 90%;
     }
+    .full_txtbox{
+        width: 96%;
+    }
 
     form {
         padding-left: 18px;
