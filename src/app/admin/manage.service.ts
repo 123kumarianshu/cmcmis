@@ -189,7 +189,6 @@ export class ManageService {
     return this.http.post(this.baseUrl + 'del_area.php', data)
   }
 
-
   // for Expence type function starting here 
   Post_expence_typ(data: any) {
     return this.http.post<any>(this.baseUrl + 'expence_type_ins.php', data);

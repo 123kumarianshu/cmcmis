@@ -97,7 +97,7 @@ export class AddEditSizeComponent implements OnInit {
 
   reset_Size() {
     this.addsize.reset();
-    this.matref.close();
+    
   
   }
 

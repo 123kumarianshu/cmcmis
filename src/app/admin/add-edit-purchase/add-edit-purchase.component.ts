@@ -168,6 +168,7 @@ export class AddEditPurchaseComponent implements OnInit {
         if(this.draft_data.status == 1){
           this.action_btn = true
         }  
+    
         const drapformdata = new FormData()
         drapformdata.append('purch_bill_no', this.draft_data.purch_bill_no)
         this.manageService.get_purch_bill_no(drapformdata).subscribe(

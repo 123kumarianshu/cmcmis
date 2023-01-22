@@ -67,9 +67,7 @@ export class AddEditPartyComponent implements OnInit {
       this.addparty.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
     }
   }
-  resetparty(){    
-      this.addparty.reset();    
-  }
+  
   onSubmit() {
     console.log(this.editData);
     if (!this.editData) {
@@ -112,6 +110,9 @@ export class AddEditPartyComponent implements OnInit {
     }
 
   }
+  resetparty(){    
+    this.addparty.reset();    
+}
 }
 
 

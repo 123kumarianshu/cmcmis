@@ -105,6 +105,18 @@ span {
     left: 0px;
 }
 
+.del_btn{
+    z-index: 11;
+    color: black;
+}
+
+
+tr:hover .del_btn  {
+    background-color: #0f575a;
+    color: aliceblue;
+    cursor: pointer;
+}
+
 @media (min-width:768px) and (max-width:1100px) {
 
     .column {

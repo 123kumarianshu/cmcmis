@@ -172,6 +172,10 @@ export class AddEditMaterialHandoverComponent implements OnInit {
     }
   }
 
+  del_matrial(data:any){
+    console.log(data.mh_id)
+
+  }
 }
 
 

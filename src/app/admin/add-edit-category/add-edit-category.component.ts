@@ -98,7 +98,5 @@ export class AddEditCategoryComponent implements OnInit {
 
   form_reset() {
     this.addcategory.reset()
-    this.matref.close()
-    alert('Data All Reset')
   }
 }
