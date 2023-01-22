@@ -33,58 +33,117 @@ import { ProfitComponent } from './admin/profit/profit.component';
 import { LossComponent } from './admin/loss/loss.component';
 import { EmpHomeComponent } from './employee/emp-home/emp-home.component';
 import { EmpDashboardComponent } from './employee/emp-dashboard/emp-dashboard.component';
-
-
+import { HomepageComponent } from './homepage/homepage.component';
+import { ViewportComponent } from './admin/viewport/viewport.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
+import { EmpLoginComponent } from './employee/emp-login/emp-login.component';
 
 
 
 
 const routes: Routes = [
-      {path:'', redirectTo:'dashbaord', pathMatch: 'full'},
-      {path:'dashbaord', component:DashboardComponent},
-      {path:'party',component:PartyComponent},
-      {path:'unit',component:UnitComponent},
-      {path:'gst',component:GstComponent},
-      {path:'weigth',component:WeightComponent},
-      {path:'category',component:CategoryComponent},
-      {path:'size',component:SizeComponent},
-      {path:'item',component:ItemComponent},
-      {path:'employee',component:EmployeeComponent},
-      {path:'customer',component:CustomerComponent},
-      {path:'area',component:AreaComponent},
-      {path:'area_allocate',component:AreaAllocateComponent},
-      {path:'purchase',component:PurchaseComponent},
-      {path:'add_edit_purchase',component:AddEditPurchaseComponent},
-      {path:'sale',component:SaleComponent},
-      {path:'dues',component:DuesComponent},
-      {path:'reciept',component:RecieptComponent},
-      {path:'account',component:AccountComponent},
-      {path:'expense',component:ExpenseComponent},
-      {path:'purchase_report',component:PurchaseReportComponent},
-      {path:'sale_report',component:SaleReportComponent},
-      {path:'stock_report',component:StockReportComponent},
-      {path:'purchase_cancel',component:PurchaseCancelComponent},
-      {path:'sale_cancel',component:SaleCancelComponent},
-      {path:'add_edit_sale',component:AddEditSaleComponent},
-      {path:'production',component:ProductionComponent},
-      {path:'material_handover',component:MaterialHandoverComponent},
-      {path:'product',component:ProductComponent},
-      {path:'expencetype',component:ExpencetypeComponent},
-      {path:'profit',component:ProfitComponent},
-      {path:'loss',component:LossComponent},
-      
+      // {path:'', redirectTo:'/', pathMatch: 'full'},
+      {path:'',component:LoginpageComponent},
+      {path:'login',component:LoginpageComponent},
 
+      {path:'home', component:HomepageComponent,
+      children:[
+        {path:'', component:DashboardComponent},
+        {path:'dashbaord', component:ViewportComponent,
+          children:[
+            {path:'', component:DashboardComponent},
+            {path:'party',component:PartyComponent},
+            {path:'unit',component:UnitComponent},
+            {path:'gst',component:GstComponent},
+            {path:'weigth',component:WeightComponent},
+            {path:'category',component:CategoryComponent},
+            {path:'size',component:SizeComponent},
+            {path:'item',component:ItemComponent},
+            {path:'employee',component:EmployeeComponent},
+            {path:'customer',component:CustomerComponent},
+            {path:'area',component:AreaComponent},
+            {path:'area_allocate',component:AreaAllocateComponent},
+            {path:'dues',component:DuesComponent},
+            {path:'reciept',component:RecieptComponent},
+            {path:'account',component:AccountComponent},
+            {path:'expense',component:ExpenseComponent},
+            {path:'purchase_report',component:PurchaseReportComponent},
+            {path:'sale_report',component:SaleReportComponent},
+            {path:'stock_report',component:StockReportComponent},
+            {path:'purchase_cancel',component:PurchaseCancelComponent},
+            {path:'production',component:ProductionComponent},
+            {path:'material_handover',component:MaterialHandoverComponent},
+            {path:'product',component:ProductComponent},
+            {path:'sale',component:SaleComponent},
 
-      {path:'emphome',component:EmpHomeComponent},
-        {path:'emp_dashboard',component:EmpDashboardComponent},
-        {path:'sale',component:SaleComponent},
+          ]
+      },
+        {path:'party',component:PartyComponent},
+        {path:'unit',component:UnitComponent},
+        {path:'gst',component:GstComponent},
+        {path:'weigth',component:WeightComponent},
+        {path:'category',component:CategoryComponent},
+        {path:'size',component:SizeComponent},
+        {path:'item',component:ItemComponent},
+        {path:'employee',component:EmployeeComponent},
+        {path:'customer',component:CustomerComponent},
+        {path:'area',component:AreaComponent},
+        {path:'area_allocate',component:AreaAllocateComponent},
+
+        {path:'purchase',component:ViewportComponent,
+          children:[
+            {path:'', component:PurchaseComponent},
+            {path:'add_edit_purchase',component:AddEditPurchaseComponent},
+
+          ]
+        },
+        {path:'sale',component:ViewportComponent,
+          children:[
+            {path:'', component:SaleComponent},
+            {path:'add_edit_sale',component:AddEditSaleComponent},
+          ]
+         },
         {path:'dues',component:DuesComponent},
         {path:'reciept',component:RecieptComponent},
+        {path:'account',component:AccountComponent},
+        {path:'expense',component:ExpenseComponent},
+        {path:'purchase_report',component:PurchaseReportComponent},
+        {path:'sale_report',component:SaleReportComponent},
         {path:'stock_report',component:StockReportComponent},
-        // {path:'**',component:EmpDashboardComponent},
+        {path:'purchase_cancel',component:PurchaseCancelComponent},
+        {path:'sale_cancel',component:SaleCancelComponent},
+        {path:'production',component:ProductionComponent},
+        {path:'material_handover',component:MaterialHandoverComponent},
+        {path:'product',component:ProductComponent},
+        {path:'expencetype',component:ExpencetypeComponent},
+        {path:'profit',component:ProfitComponent},
+        {path:'loss',component:LossComponent},
 
-      {path:'**',component:DashboardComponent},
+      ]
+      },
 
+      {path:'emplogin', component:EmpLoginComponent},
+      {path:'emphome',component:EmpHomeComponent,
+        children:[
+          {path:'',component:EmpDashboardComponent},
+          {path:'emp_dashboard',component:ViewportComponent,
+              children:[
+                {path:'',component:EmpDashboardComponent},
+                {path:'sale',component:SaleComponent},
+                {path:'dues',component:DuesComponent},
+                {path:'reciept',component:RecieptComponent},
+              ]
+          },
+          {path:'sale',component:SaleComponent},
+           {path:'dues',component:DuesComponent},
+           {path:'reciept',component:RecieptComponent},
+           {path:'stock_report',component:StockReportComponent},
+
+        ]
+      },
+
+      {path:'**',component:HomepageComponent},
+ 
 ]
   
 @NgModule({

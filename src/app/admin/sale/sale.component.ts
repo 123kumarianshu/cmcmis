@@ -78,7 +78,7 @@ export class SaleComponent implements OnInit {
   }
 
   on_draf_bill(data: any) {
-    this.route.navigate(['/add_edit_sale'], data);
+    this.route.navigate(['home/sale/add_edit_sale'], data);
 
   }
   on_cancel_bill(data:any) {

@@ -1,7 +1,7 @@
 <div id="wrapper">
   <div class="view_notice">
     <span class="notice_text">Sale Details</span>
-    <mat-icon id="add_sale" routerLink="/add_edit_sale">add_circle</mat-icon>
+    <mat-icon id="add_sale" [routerLink]="['add_edit_sale']">add_circle</mat-icon>
   </div>
   <div class="count_search">
     <span class="notice_text"> Total : {{sale_total}}</span>

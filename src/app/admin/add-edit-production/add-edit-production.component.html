@@ -1,6 +1,6 @@
 <mat-toolbar>
     <span class="example-spacer">Production</span>
-    <mat-icon mat-dialog-close>cancel</mat-icon>
+    <mat-icon mat-dialog-close routerLink="/production">cancel</mat-icon>
 </mat-toolbar>
 <span>Select Employee</span>
 <div mat-dialog-content>
@@ -118,6 +118,10 @@
                 <ng-container matColumnDef="total_amount">
                   <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>
                   <td class="data" mat-cell *matCellDef="let row">{{row.total_amount}}</td>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                  <td class="data" mat-cell *matCellDef="let row"> <mat-icon (click)="del_production(row)">delete</mat-icon></td>
                 </ng-container>
     
     

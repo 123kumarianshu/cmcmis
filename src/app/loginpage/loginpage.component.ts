@@ -21,7 +21,6 @@ export class LoginpageComponent implements OnInit {
     private servies:ManageService,
     private router:Router,
     private popup: NgToastService,
-    private matref: MatDialogRef<LoginpageComponent>,
     private dialog:MatDialog
   ) { }
 
@@ -43,7 +42,7 @@ export class LoginpageComponent implements OnInit {
             localStorage.setItem('Token', JSON.stringify(result.uid[0]));
             this.popup.success({detail:'Success',summary:'Login Successfully...',sticky:true,position:'tr'})
 
-            this.matref.close();        
+                
           }
           else {
             this.popup.error({detail:'Error',summary:'Login Fail...',sticky:true,position:'tr'})        
@@ -58,16 +57,7 @@ export class LoginpageComponent implements OnInit {
 
     }
    }
-   emp_login(){
-    this.matref.close()
-    this.dialog.open(EmpLoginComponent,{
-      width: '100%',
-      maxWidth: '100vw',
-      height:'100%',
-      maxHeight:'100vh',
-      panelClass:'loginclass'
-    })
-   }
+  
   Reset() {
     this.LoginForm.reset();
   }

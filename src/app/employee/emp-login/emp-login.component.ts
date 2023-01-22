@@ -22,7 +22,6 @@ export class EmpLoginComponent implements OnInit {
     private servies:ManageService,
     private router:Router,
     private popup: NgToastService,
-    private matref: MatDialogRef<EmpLoginComponent>,
 
     private matdialog:MatDialog
   ) { }
@@ -43,7 +42,7 @@ export class EmpLoginComponent implements OnInit {
             this.LoginForm.reset();
             localStorage.setItem('Token', JSON.stringify(result.uid[0]));
             this.popup.success({detail:'Success',summary:'Login Successfully...',sticky:true,position:'tr'})
-            this.matref.close();    
+    
             this.router.navigate(['/emphome']);     
           }
           else {
@@ -59,16 +58,7 @@ export class EmpLoginComponent implements OnInit {
 
     }
    }
-   admin_login(){
-    this.matref.close()
-    this.matdialog.open(LoginpageComponent,{
-      width: '100%',
-      maxWidth: '100vw',
-      height:'100%',
-      maxHeight:'100vh',
-      panelClass:'loginclass'
-    })
-   }
+  
   Reset() {
     this.LoginForm.reset();
   }

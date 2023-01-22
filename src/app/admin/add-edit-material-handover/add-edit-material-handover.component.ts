@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -35,7 +36,8 @@ export class AddEditMaterialHandoverComponent implements OnInit {
     private popup: NgToastService,
     private fb: FormBuilder,
     private manageService: ManageService,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
+    private router:Router
+,    @Inject(MAT_DIALOG_DATA) public editData: any,
     private matref: MatDialogRef<AddEditMaterialHandoverComponent>
   ) { }
 
@@ -163,6 +165,29 @@ export class AddEditMaterialHandoverComponent implements OnInit {
   resetmh() {
     this.MaterialForm.reset();
   }
+
+
+  del_mh(data:any){
+    if(confirm("Are you sure to delete")){
+    const deldata = new FormData();
+    deldata.append('mh_id',data.mh_id)
+    this.manageService.del_mh(deldata).subscribe(
+      (res:any)=>{
+        this.router.navigate(['/material_handover'])
+        this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
+      },
+      (error: any) => {
+        console.log(['message']);
+        this.popup.error({detail:'message',summary:'data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+      }
+    )
+    
+  } 
+  else{
+    this.popup.error({detail:'Error',summary:'Data Delete Not...',sticky:true,position:'tr'})
+  }
+}
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -170,11 +195,6 @@ export class AddEditMaterialHandoverComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  del_matrial(data:any){
-    console.log(data.mh_id)
-
   }
 }
 

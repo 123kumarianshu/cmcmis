@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./add-edit-production.component.css']
 })
 export class AddEditProductionComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'emp_name', 'cat_name', 'product_name', 'production_quantity', 'production_date','labor_cost' ,'total_amount',];
+  displayedColumns: string[] = ['slno', 'emp_name', 'cat_name', 'product_name', 'production_quantity', 'production_date','labor_cost' ,'total_amount','action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -166,7 +166,29 @@ console.log( new Date().toISOString().slice(0, 10))
   total_calc(){
     this.ProductionForm.controls['total_amount'].setValue(this.ProductionForm.get('labor_cost')?.value * this.ProductionForm .get('production_quantity')?.value)
   }
- 
+  
+  
+  del_production(data:any){
+    if(confirm("Are you sure to delete")){
+    const deldata = new FormData();
+    deldata.append('production_id',data.production_id)
+    this.manageService.del_production(deldata).subscribe(
+      (res:any)=>{
+        this.getproductionDesData(this.ProductionForm.get('emp_id_fk')?.value)
+        this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
+      },
+      (error: any) => {
+        console.log(['message']);
+        this.popup.error({detail:'message',summary:'data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+      }
+    )
+    
+  } 
+  else{
+    this.popup.error({detail:'Error',summary:'Data Delete Not...',sticky:true,position:'tr'})
+  }
+  }
+
 }
 
 

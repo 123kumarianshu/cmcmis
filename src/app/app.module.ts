@@ -90,6 +90,7 @@ import { LossComponent } from './admin/loss/loss.component';
 import { EmpLoginComponent } from './employee/emp-login/emp-login.component';
 import { EmpHomeComponent } from './employee/emp-home/emp-home.component';
 import { EmpDashboardComponent } from './employee/emp-dashboard/emp-dashboard.component';
+import { ViewportComponent } from './admin/viewport/viewport.component';
 
 
 @NgModule({
@@ -152,6 +153,7 @@ import { EmpDashboardComponent } from './employee/emp-dashboard/emp-dashboard.co
     EmpLoginComponent,
     EmpHomeComponent,
     EmpDashboardComponent,
+    ViewportComponent,
     
     
     

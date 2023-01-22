@@ -275,6 +275,11 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_single_data_view.php', data);
   }
 
+  del_mh(data: any) {
+    return this.http.post<any>(this.baseUrl + 'del_mh.php', data);
+  }
+
+
   // for production function starting here
   get_emp_by_emp_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_emp_by_emp_id.php', data);
@@ -293,6 +298,9 @@ export class ManageService {
     return this.http.get<[]>(this.baseUrl + 'production_view.php');
   }
 
+  del_production(data: any) {
+    return this.http.post<any>(this.baseUrl + 'del_production.php', data);
+  }
 
   // for area alct function starting here
   getAllocatearea() {

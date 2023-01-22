@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditMaterialHandoverComponent } from '../add-edit-material-handover/add-edit-material-handover.component';
+import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 
 
 @Component({
@@ -21,6 +23,8 @@ export class MaterialHandoverComponent implements OnInit {
   constructor(
     private addmh: MatDialog,
     private mhservice: ManageService,
+    private router:Router,
+    private popup: NgToastService,
   ) { }
  
 
@@ -44,6 +48,27 @@ editmaterialhandover(row: any) {
   this.addmh.open(AddEditMaterialHandoverComponent, {
     data: row
   })
+}
+
+del_mh(data:any){
+  if(confirm("Are you sure to delete")){
+  const deldata = new FormData();
+  deldata.append('mh_id',data.mh_id)
+  this.mhservice.del_mh(deldata).subscribe(
+    (res:any)=>{
+      this.router.navigate(['/material_handover'])
+      this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
+    },
+    (error: any) => {
+      console.log(['message']);
+      this.popup.error({detail:'message',summary:'data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+    }
+  )
+  
+} 
+else{
+  this.popup.error({detail:'Error',summary:'Data Delete Not...',sticky:true,position:'tr'})
+}
 }
 
 applyFilter(event: Event) {

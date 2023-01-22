@@ -29,7 +29,6 @@ export class EmpHomeComponent implements OnInit {
   
   constructor(
     private router:Router,
-    private matdilog:MatDialog,
 
   ) { 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false
@@ -43,13 +42,7 @@ export class EmpHomeComponent implements OnInit {
       
      }
     else {
-      this.matdilog.open(LoginpageComponent,{
-        width: '100%',
-      maxWidth: '100vw',
-      height:'100%',
-      maxHeight:'100vh',
-      panelClass:'loginclass'
-      })
+      
       this.admin_data = localStorage.getItem('Token');
       this.admin_data_check = JSON.parse(this.admin_data);
       this.name = this.admin_data_check.admin_name

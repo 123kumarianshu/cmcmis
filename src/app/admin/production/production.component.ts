@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ManageService } from '../manage.service';
 import { AddEditProductionComponent } from '../add-edit-production/add-edit-production.component';
+import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-production',
   templateUrl: './production.component.html',
@@ -19,6 +21,9 @@ export class ProductionComponent implements OnInit {
   constructor(
     private addproduction: MatDialog,
     private productionservice: ManageService,
+    private router:Router,
+    private popup: NgToastService,
+
   ) { }
 
   ngOnInit(): void {
@@ -46,6 +51,29 @@ export class ProductionComponent implements OnInit {
       data: row
     })
   }
+
+  
+  del_production(data:any){
+    if(confirm("Are you sure to delete")){
+    const deldata = new FormData();
+    deldata.append('production_id',data.production_id)
+    this.productionservice.del_production(deldata).subscribe(
+      (res:any)=>{
+        this.router.navigate(['/production'])
+        this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
+      },
+      (error: any) => {
+        console.log(['message']);
+        this.popup.error({detail:'message',summary:'data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
+      }
+    )
+    
+  } 
+  else{
+    this.popup.error({detail:'Error',summary:'Data Delete Not...',sticky:true,position:'tr'})
+  }
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

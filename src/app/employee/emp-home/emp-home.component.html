@@ -9,25 +9,25 @@
             </div>
             <div class="menu">
                 <div [ngClass]="'menu_item'">
-                    <button mat-button class="menu-button" routerLink="/dashbaord" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['emp_dashboard']" routerLinkActive="active">
                         <mat-icon id="dash_board">dashboard</mat-icon>
                         <span>Dashboard</span>
                     </button>
                     <div>
                        
-                <button mat-button class="menu-button" routerLink="/sale" routerLinkActive="active">
+                <button mat-button class="menu-button" [routerLink]="['sale']" routerLinkActive="active">
                     <mat-icon>local_grocery_store</mat-icon>
                     <span>Sale</span>
                 </button>
-                <button mat-button class="menu-button" routerLink="/stock_report" routerLinkActive="active">
+                <button mat-button class="menu-button" [routerLink]="['stock_report']" routerLinkActive="active">
                     <mat-icon>local_grocery_store</mat-icon>
                     <span>Stock </span>
                 </button>
-                <button mat-button class="menu-button" routerLink="/dues" routerLinkActive="active">
+                <button mat-button class="menu-button" [routerLink]="['dues']" routerLinkActive="active">
                     <mat-icon>payment</mat-icon>
                     <span>Dues</span>
                 </button>
-                <button mat-button class="menu-button" routerLink="/reciept" routerLinkActive="active">
+                <button mat-button class="menu-button" [routerLink]="['reciept']" routerLinkActive="active">
                     <mat-icon>receipt</mat-icon>
                     <span>Reciept</span>
                 </button>

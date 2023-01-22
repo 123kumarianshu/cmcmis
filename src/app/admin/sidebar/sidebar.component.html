@@ -6,7 +6,7 @@
     </div>
     <div class="menu">
         <div [ngClass]="'menu_item'">
-            <button mat-button class="menu-button" routerLink="/dashbaord" routerLinkActive="active">
+            <button mat-button class="menu-button" [routerLink]="['dashbaord']" routerLinkActive="active">
                 <mat-icon id="dash_board">dashboard</mat-icon>
                 <span>Dashboard</span>
             </button>
@@ -19,59 +19,59 @@
 
                 </button>
                 <div style=" background-color:#14595c; color:whitesmoke;" id="dropdown_item">
-                    <button mat-button class="menu-button" routerLink="/party" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['party']" routerLinkActive="active">
                         <mat-icon>person</mat-icon>
                         <span>Party</span>
                     </button>
-                    <button mat-button class="menu-button" routerLink="/unit" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['unit']" routerLinkActive="active">
                         <mat-icon> ac_unit</mat-icon>
                         <span>Unit</span>
                     </button>
 
-                    <button mat-button class="menu-button" routerLink="/gst" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['gst']" routerLinkActive="active">
                         <mat-icon>category</mat-icon>
                         <span>GST</span>
                     </button>
 
-                    <button mat-button class="menu-button" routerLink="/weigth" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['weigth']" routerLinkActive="active">
                         <mat-icon>line_weight</mat-icon>
                         <span>Weight</span>
                     </button>
 
-                    <button mat-button class="menu-button" routerLink="/size" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['size']" routerLinkActive="active">
                         <mat-icon>category</mat-icon>
                         <span>Size</span>
                     </button>
 
-                    <button mat-button class="menu-button" routerLink="/category" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['category']" routerLinkActive="active">
                         <mat-icon>category</mat-icon>
                         <span>Category</span>
                     </button>
 
-                    <button mat-button class="menu-button" routerLink="/item" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['item']" routerLinkActive="active">
                         <mat-icon>group_work</mat-icon>
                         <span>Item</span>
                     </button>
 
-                    <button mat-button class="menu-button" routerLink="/product" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['product']" routerLinkActive="active">
                         <mat-icon>area_chart</mat-icon>
                         <span>Product</span>
                     </button>
 
-                    <button mat-button class="menu-button" routerLink="/employee" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['employee']" routerLinkActive="active">
                         <mat-icon>people</mat-icon>
                         <span>Employee</span>
                     </button>
-                    <button mat-button class="menu-button" routerLink="/customer" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['customer']" routerLinkActive="active">
                         <mat-icon> supervisor_account </mat-icon>
                         <span>Customer</span>
                     </button>
-                    <button mat-button class="menu-button" routerLink="/area" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['area']" routerLinkActive="active">
                         <mat-icon>location_on</mat-icon>
                         <span>Area</span>
                     </button>
 
-                    <button mat-button class="menu-button" routerLink="/expencetype" routerLinkActive="active">
+                    <button mat-button class="menu-button" [routerLink]="['expencetype']" routerLinkActive="active">
                         <mat-icon>local_grocery_store</mat-icon>
                         <span>Expence Type</span>
                     </button>
@@ -80,40 +80,40 @@
                 </div>
             </div>
         </div>
-        <button mat-button class="menu-button" routerLink="/purchase" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['purchase']" routerLinkActive="active">
             <mat-icon>shoping</mat-icon>
             <span>Purchase</span>
         </button>
-        <button mat-button class="menu-button" routerLink="/material_handover" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['material_handover']" routerLinkActive="active">
             <mat-icon>gradient</mat-icon>
             <span>Material Handover</span>
         </button>
-        <button mat-button class="menu-button" routerLink="/production" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['production']" routerLinkActive="active">
             <mat-icon>business</mat-icon>
             <span>Production</span>
         </button>
-        <button mat-button class="menu-button" routerLink="/area_allocate" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['area_allocate']" routerLinkActive="active">
             <!-- <mat-icon>area_chart</mat-icon> -->
             <mat-icon> location_on</mat-icon>
             <span>Area Allocate</span>
         </button>
-        <button mat-button class="menu-button" routerLink="/sale" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['sale']" routerLinkActive="active">
             <mat-icon>local_grocery_store</mat-icon>
             <span>Sale</span>
         </button>
-        <button mat-button class="menu-button" routerLink="/stock_report" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['stock_report']" routerLinkActive="active">
             <mat-icon>local_grocery_store</mat-icon>
             <span>Stock </span>
         </button>
-        <button mat-button class="menu-button" routerLink="/dues" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['dues']" routerLinkActive="active">
             <mat-icon>payment</mat-icon>
             <span>Dues</span>
         </button>
-        <button mat-button class="menu-button" routerLink="/reciept" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['reciept']" routerLinkActive="active">
             <mat-icon>receipt</mat-icon>
             <span>Reciept</span>
         </button>
-        <button mat-button class="menu-button" routerLink="/expense" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['expense']" routerLinkActive="active">
             <mat-icon>monetization_on</mat-icon>
             <span>Expense</span>
         </button>
@@ -128,15 +128,15 @@
     
             </button>
             <div style=" background-color:#14595c; color:whitesmoke;" id="dropdown_item2">
-                <button mat-button class="menu-button" routerLink="/account" routerLinkActive="active">
+                <button mat-button class="menu-button" [routerLink]="['account']" routerLinkActive="active">
                     <mat-icon>account_circle</mat-icon>
                     <span>Ledger</span>
                 </button>
-                <button mat-button class="menu-button" routerLink="/profit" routerLinkActive="active">
+                <button mat-button class="menu-button" [routerLink]="['profit']" routerLinkActive="active">
                     <mat-icon> local_offer </mat-icon>
                     <span>Profit </span>
                 </button>  
-                <button mat-button class="menu-button" routerLink="/loss" routerLinkActive="active">
+                <button mat-button class="menu-button" [routerLink]="['loss']" routerLinkActive="active">
                      <mat-icon> local_offer </mat-icon>
                     <span>Loss </span>
                 </button>  
@@ -151,19 +151,19 @@
                 <mat-icon [hidden]="action_icon4">expand_more</mat-icon>
             </button>
             <div style="background-color:#14595c; color:whitesmoke;" id="report_dropdown_item">
-                <button mat-button class="menu-button" routerLink="/purchase_report" routerLinkActive="active">
+                <button mat-button class="menu-button" [routerLink]="['purchase_report']" routerLinkActive="active">
                     <mat-icon>area_chart</mat-icon>
                     <span>Purchase Report </span>
                 </button>
-                <button mat-button class="menu-button" routerLink="/sale_report" routerLinkActive="active">
+                <button mat-button class="menu-button" [routerLink]="['sale_report']" routerLinkActive="active">
                     <mat-icon> local_offer </mat-icon>
                     <span>Sale Report </span>
                 </button>              
-                <button mat-button class="menu-button" routerLink="/purchase_cancel" routerLinkActive="active">
+                <button mat-button class="menu-button" [routerLink]="['purchase_cancel']" routerLinkActive="active">
                     <mat-icon> cancel </mat-icon>
                     <span>Purchase Cancel </span>
                 </button>
-                <button mat-button class="menu-button" routerLink="/sale_cancel" routerLinkActive="active">
+                <button mat-button class="menu-button" [routerLink]="['sale_cancel']" routerLinkActive="active">
                     <mat-icon> cancel </mat-icon>
                     <span>Sale Cancel </span>
                 </button>

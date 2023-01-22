@@ -1,6 +1,6 @@
 <div class="main_thumbnail">
    
-    <a routerLink="/sale">
+    <a [routerLink]="['sale']">
         <div class="thumbnail">
             <mat-icon>local_grocery_store</mat-icon><br>
             <span style="color:	rgb(255, 255, 255)"><b>{{total_sale}}</b></span><br>
@@ -8,7 +8,15 @@
         </div>
     </a>
 
-    <a routerLink="/dues">
+    <a [routerLink]="['stock_report']">
+        <div class="thumbnail">
+            <mat-icon>monetization_on</mat-icon><br>
+            <span style="color:	rgb(255, 255, 255)"><b>{{total_expense}}</b></span><br>
+            <span style="color:#14595c;">Stock</span>
+        </div>
+    </a>
+
+    <a [routerLink]="['dues']">
         <div class="thumbnail">
             <mat-icon>payment</mat-icon><br>
             <span style="color:	rgb(255, 255, 255)"><b>{{total_dues}}</b></span><br>
@@ -16,7 +24,7 @@
         </div>
     </a>
 
-    <a routerLink="/reciept">
+    <a [routerLink]="['reciept']">
         <div class="thumbnail">
             <mat-icon>receipt</mat-icon><br>
             <span style="color:	rgb(255, 255, 255)"><b>{{total_recive}}</b></span><br>
@@ -24,11 +32,5 @@
         </div>
     </a>
 
-    <a routerLink="/expense">
-        <div class="thumbnail">
-            <mat-icon>monetization_on</mat-icon><br>
-            <span style="color:	rgb(255, 255, 255)"><b>{{total_expense}}</b></span><br>
-            <span style="color:#14595c;">Expense</span>
-        </div>
-    </a>
+  
     </div>
