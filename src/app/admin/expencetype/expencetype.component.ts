@@ -70,7 +70,7 @@ export class ExpencetypeComponent implements OnInit {
     deldata.append('id',data.id)
     this.empservice.del_expence_type(deldata).subscribe(
       (res:any)=>{
-        this.router.navigate(['/expencetype'])
+        this.router.navigate(['/home/expencetype'])
         this.popup.success({detail:'Success',summary:'Expence Type Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

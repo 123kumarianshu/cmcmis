@@ -64,7 +64,7 @@ export class ReceivedComponent implements OnInit {
         this.manageService.post_dues(duesform).subscribe(
           (data: any) => {
             console.log(data)
-            this.router.navigate(['/dues']);           
+            this.router.navigate(['/home/dues']);           
             this.matref.close('save');
             this.popup.success({detail:'Success',summary:' Recived Successfully...',sticky:true,position:'tr'})
           },

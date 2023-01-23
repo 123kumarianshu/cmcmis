@@ -67,7 +67,7 @@ export class EmployeeComponent implements OnInit {
     deldata.append('emp_id',data.emp_id)
     this.empservice.del_emp(deldata).subscribe(
       (res:any)=>{
-        this.router.navigate(['/employee'])
+        this.router.navigate(['/home/employee'])
         this.popup.success({detail:'Success',summary:'Category Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

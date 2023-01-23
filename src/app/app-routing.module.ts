@@ -118,6 +118,8 @@ const routes: Routes = [
         {path:'expencetype',component:ExpencetypeComponent},
         {path:'profit',component:ProfitComponent},
         {path:'loss',component:LossComponent},
+        {path:'**', component:HomepageComponent}
+
 
       ]
       },
@@ -132,12 +134,16 @@ const routes: Routes = [
                 {path:'sale',component:SaleComponent},
                 {path:'dues',component:DuesComponent},
                 {path:'reciept',component:RecieptComponent},
+                {path:'expense',component:ExpenseComponent},
+
               ]
           },
           {path:'sale',component:SaleComponent},
            {path:'dues',component:DuesComponent},
            {path:'reciept',component:RecieptComponent},
            {path:'stock_report',component:StockReportComponent},
+           {path:'expense',component:ExpenseComponent},
+
 
         ]
       },

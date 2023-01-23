@@ -74,7 +74,7 @@ export class AddEditPartyComponent implements OnInit {
       if (this.addparty.valid) {
         this.manageService.postParty(this.addparty.value).subscribe(
           (data: any) => {
-            this.router.navigate(['/party']);           
+            this.router.navigate(['/home/party']);           
             this.addparty.reset();
             this.matref.close('save');
             this.popup.success({detail:'Success',summary:'Party Add Successfully...',sticky:true,position:'tr'})
@@ -96,7 +96,7 @@ export class AddEditPartyComponent implements OnInit {
        this.manageService.putParty(this.addparty.value).subscribe(
         (res: any) => {  
           console.log(res)
-          this.router.navigate(['/party']);
+          this.router.navigate(['/home/party']);
          this.addparty.reset();
          this.matref.close('save');
          this.popup.success({detail:'Success',summary:'Party  Update Successfully...',sticky:true,position:'tr'})

@@ -66,7 +66,7 @@ export class CategoryComponent implements OnInit {
       deldata.append('cat_id',data.cat_id)
       this.partyservice.del_category(deldata).subscribe(
         (res:any)=>{
-          this.router.navigate(['/category'])
+          this.router.navigate(['/home/category'])
           this.popup.success({detail:'Success',summary:'Category Delete Successfully...',sticky:true,position:'tr'})
         },
         (error: any) => {

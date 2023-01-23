@@ -65,7 +65,7 @@ export class CustomerComponent implements OnInit {
     deldata.append('cust_id',data.cust_id)
     this.customerservice.del_cust(deldata).subscribe(
       (res:any)=>{
-        this.router.navigate(['/customer'])
+        this.router.navigate(['/home/customer'])
         this.popup.success({detail:'Success',summary:'Customer Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

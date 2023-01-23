@@ -173,7 +173,7 @@ export class AddEditMaterialHandoverComponent implements OnInit {
     deldata.append('mh_id',data.mh_id)
     this.manageService.del_mh(deldata).subscribe(
       (res:any)=>{
-        this.router.navigate(['/material_handover'])
+        this.router.navigate(['/home/material_handover'])
         this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

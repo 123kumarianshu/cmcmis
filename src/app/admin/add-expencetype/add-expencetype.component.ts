@@ -55,7 +55,7 @@ export class AddExpencetypeComponent implements OnInit {
         this.manageService.Post_expence_typ(formdata).subscribe(
           (result: any) => {
             console.log(result)
-            this.router.navigate(['/expencetype']);
+            this.router.navigate(['/home/expencetype']);
             this.expencetypeform.reset();
             this.matref.close('save');
             this.popup.success({detail:'Success',summary:'Expence Type Add Successfully...',sticky:true,position:'tr'})
@@ -78,7 +78,7 @@ export class AddExpencetypeComponent implements OnInit {
     this.manageService.put_expence_type(this.expencetypeform.value).subscribe({
       next: (result: any) => {
         console.log(result)
-        this.router.navigate(['/expencetype'])
+        this.router.navigate(['/home/expencetype'])
         this.matref.close();
         this.expencetypeform.reset();
         this.popup.success({detail:'Success',summary:'Expence Type Update Successfully...',sticky:true,position:'tr'})

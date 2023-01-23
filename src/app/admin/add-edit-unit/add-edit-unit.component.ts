@@ -59,12 +59,11 @@ export class AddEditUnitComponent implements OnInit {
       this.addUnit.reset();    
   }
   onSubmit() {
-    console.log(this.editData);
     if (!this.editData) {
       if (this.addUnit.valid) {
         this.manageService.postUnit(this.addUnit.value).subscribe(
           (data: any) => {
-            this.router.navigate(['/unit']);           
+            this.router.navigate(['/home/unit']);           
             this.addUnit.reset();
             this.matref.close('save');
             this.popup.success({detail:'Success',summary:'Unit Add Successfully...',sticky:true,position:'tr'})
@@ -80,7 +79,7 @@ export class AddEditUnitComponent implements OnInit {
         if (this.addUnit.valid) {
             this.manageService.putUnit(this.addUnit.value).subscribe(
              (data: any) => {
-              this.router.navigate(['/unit']);           
+              this.router.navigate(['/home/unit']);           
               this.addUnit.reset();
               this.matref.close('save');
               this.popup.success({detail:'Success',summary:'Unit  Update Successfully...',sticky:true,position:'tr'})

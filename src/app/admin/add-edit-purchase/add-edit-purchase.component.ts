@@ -444,7 +444,7 @@ if(!(this.draft_data.purch_bill_no)){
 
     this.manageService.purch_final_submit(finalformdata).subscribe({
       next: (res) => {
-        this.router.navigate(['/purchase'])
+        this.router.navigate(['/home/purchase'])
         // console.log(res)
         this.popup.success({ detail: 'Success', summary: 'Final Update Successfully...', sticky: true, position: 'tr' })
       },

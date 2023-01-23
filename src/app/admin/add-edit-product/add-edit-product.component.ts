@@ -97,7 +97,7 @@ export class AddEditProductComponent implements OnInit {
       if (this.productForm.valid) {
         this.manageService.postProduct(this.productForm.value).subscribe({
           next: (res) => {    
-            this.router.navigate(['/product']);
+            this.router.navigate(['/home/product']);
             this.productForm.reset();
             this.popup.success({ detail: 'Success', summary: 'Product Add Successfully...', sticky: true, position: 'tr' })
             this.matref.close('save');
@@ -118,7 +118,7 @@ export class AddEditProductComponent implements OnInit {
     this.manageService.putProduct(this.productForm.value).subscribe({
       next: (res) => {
         console.log(res);
-        this.router.navigate(['/product']);
+        this.router.navigate(['/home/product']);
         this.productForm.reset();
         this.popup.success({ detail: 'Success', summary: 'Product Update Successfully...', sticky: true, position: 'tr' })
         this.matref.close('save');

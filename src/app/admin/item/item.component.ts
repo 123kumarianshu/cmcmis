@@ -63,7 +63,7 @@ export class ItemComponent implements OnInit {
     deldata.append('item_id',data.item_id)
     this.itemservice.del_item(deldata).subscribe(
       (res:any)=>{
-        this.router.navigate(['/item'])
+        this.router.navigate(['/home/item'])
         this.popup.success({detail:'Success',summary:'Item Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

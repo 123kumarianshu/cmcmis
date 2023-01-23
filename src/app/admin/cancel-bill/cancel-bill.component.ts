@@ -51,7 +51,7 @@ onSubmit() {
     if (this.msgform.valid) {
          this.manageService.cancel_sale_bill(cancel_bill).subscribe(
         (data: any) => {
-          this.router.navigate(['/sale']);           
+          this.router.navigate(['/home/sale']);           
           this.matref.close('save');
           this.popup.success({detail:'Success',summary:'Bill Cancell Sucess...',sticky:true,position:'tr'})
         },
@@ -73,7 +73,7 @@ onSubmit() {
     if (this.msgform.valid) {
          this.manageService.cancel_purch_bill(cancel_bill).subscribe(
         (data: any) => {
-          this.router.navigate(['/purchase']);           
+          this.router.navigate(['/home/purchase']);           
           this.matref.close('save');
           this.popup.success({detail:'Success',summary:'Bill Cancell Sucess...',sticky:true,position:'tr'})
         },

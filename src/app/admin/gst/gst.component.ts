@@ -66,7 +66,7 @@ export class GstComponent implements OnInit {
     deldata.append('gst_id',data.gst_id)
     this.gstservice.del_gst(deldata).subscribe(
       (res:any)=>{
-        this.router.navigate(['/gst'])
+        this.router.navigate(['/home/gst'])
         this.popup.success({detail:'Success',summary:'Gst Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

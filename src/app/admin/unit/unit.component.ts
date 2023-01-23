@@ -66,7 +66,7 @@ export class UnitComponent implements OnInit {
     deldata.append('unit_id',data.unit_id)
     this.unitservice.del_unit(deldata).subscribe(
       (res:any)=>{
-        this.router.navigate(['/unit'])
+        this.router.navigate(['/home/unit']);
           this.popup.success({detail:'Success',summary:'Unit Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

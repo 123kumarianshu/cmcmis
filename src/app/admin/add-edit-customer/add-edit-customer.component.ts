@@ -67,7 +67,7 @@ export class AddEditCustomerComponent implements OnInit {
         (result: any) => {
           console.log(result);
           this.matref.close();
-          this.router.navigate(['/customer']);
+          this.router.navigate(['/home/customer']);
           this.popup.success({detail:'Success',summary:'Customer Add Successfully...',sticky:true,position:'tr'})
 
         },
@@ -86,7 +86,7 @@ export class AddEditCustomerComponent implements OnInit {
     console.log(this.custForm.value)
     this.manageService.putCustomer(this.custForm.value).subscribe({
       next: (res) => {
-        this.router.navigate(['/customer']);
+        this.router.navigate(['/home/customer']);
         this.popup.success({detail:'Success',summary:'Customer Update Successfully...',sticky:true,position:'tr'})
 
         this.matref.close();

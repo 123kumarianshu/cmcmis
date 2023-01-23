@@ -67,7 +67,7 @@ export class ProductComponent implements OnInit {
     deldata.append('product_id',data.product_id)
     this.productservice.del_product(deldata).subscribe(
       (res:any)=>{
-          this.router.navigate(['/product'])      
+          this.router.navigate(['/home/product'])      
         this.popup.success({detail:'Success',summary:'Product Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

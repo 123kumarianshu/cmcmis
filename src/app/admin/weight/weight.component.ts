@@ -64,7 +64,7 @@ export class WeightComponent implements OnInit {
     deldata.append('weight_id',data.weight_id)
     this.weightservice.del_weight(deldata).subscribe(
       (res:any)=>{
-        this.router.navigate(['/weigth'])
+        this.router.navigate(['/home/weigth'])
         this.popup.success({detail:'Success',summary:'Weight Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

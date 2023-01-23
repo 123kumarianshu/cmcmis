@@ -57,7 +57,7 @@ export class AddEditSizeComponent implements OnInit {
         (result: any) => {
           console.log(result)
           this.matref.close();
-          this.router.navigate(['/size'])
+          this.router.navigate(['/home/size'])
           this.popup.success({detail:'Success',summary:'Size Add Successfully...',sticky:true,position:'tr'})
       
         },
@@ -82,7 +82,7 @@ export class AddEditSizeComponent implements OnInit {
       next: (result: any) => {
         console.log(result)
         this.matref.close();
-        this.router.navigate(['/size'])
+        this.router.navigate(['/home/size'])
         this.popup.success({detail:'Success',summary:'Size Update Successfully...',sticky:true,position:'tr'})
       },
       error: () => {

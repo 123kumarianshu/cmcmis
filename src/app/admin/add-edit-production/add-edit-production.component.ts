@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./add-edit-production.component.css']
 })
 export class AddEditProductionComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'emp_name', 'cat_name', 'product_name', 'production_quantity', 'production_date','labor_cost' ,'total_amount','action',];
+  displayedColumns: string[] = ['slno', 'emp_name', 'cat_name', 'product_name', 'production_quantity','labor_cost' ,'total_amount','action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

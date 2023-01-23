@@ -84,7 +84,7 @@ export class AddEditAccountComponent implements OnInit {
         this.manageService.postAccount(this.addAccount.value).subscribe(
           (data: any) => {
             console.log(this.addAccount)
-            this.router.navigate(['/account']);           
+            this.router.navigate(['/home/account']);           
             this.addAccount.reset();
             this.matref.close('save');
             this.popup.success({detail:'Success',summary:'Account  Submit Successfully...',sticky:true,position:'tr'})

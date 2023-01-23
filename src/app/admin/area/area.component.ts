@@ -62,7 +62,7 @@ export class AreaComponent implements OnInit {
     deldata.append('area_id',data.area_id)
     this.areaservice.del_area(deldata).subscribe(
       (res:any)=>{
-          this.rout.navigate(['/area'])
+          this.rout.navigate(['/home/area'])
           this.popup.success({detail:'Success',summary:'Area Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

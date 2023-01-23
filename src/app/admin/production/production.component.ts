@@ -59,7 +59,7 @@ export class ProductionComponent implements OnInit {
     deldata.append('production_id',data.production_id)
     this.productionservice.del_production(deldata).subscribe(
       (res:any)=>{
-        this.router.navigate(['/production'])
+        this.router.navigate(['/home/production'])
         this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

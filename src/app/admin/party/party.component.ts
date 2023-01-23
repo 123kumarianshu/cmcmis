@@ -68,7 +68,7 @@ export class PartyComponent implements OnInit {
     deldata.append('party_id',data.party_id)
     this.partyservice.del_party(deldata).subscribe(
       (res:any)=>{
-        this.router.navigate(['/party'])
+        this.router.navigate(['/home/party'])
           this.popup.success({detail:'Success',summary:'party Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

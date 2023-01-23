@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ManageService } from 'src/app/admin/manage.service';
-import { LoginpageComponent } from 'src/app/loginpage/loginpage.component';
+
 
 @Component({
   selector: 'app-emp-login',
@@ -22,8 +21,7 @@ export class EmpLoginComponent implements OnInit {
     private servies:ManageService,
     private router:Router,
     private popup: NgToastService,
-
-    private matdialog:MatDialog
+    private dialog:MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -39,11 +37,12 @@ export class EmpLoginComponent implements OnInit {
         (result: any) => {
           console.log(result)
           if (result.success) {
+            this.router.navigate(['/emphome']);
             this.LoginForm.reset();
             localStorage.setItem('Token', JSON.stringify(result.uid[0]));
             this.popup.success({detail:'Success',summary:'Login Successfully...',sticky:true,position:'tr'})
-    
-            this.router.navigate(['/emphome']);     
+
+                
           }
           else {
             this.popup.error({detail:'Error',summary:'Login Fail...',sticky:true,position:'tr'})        

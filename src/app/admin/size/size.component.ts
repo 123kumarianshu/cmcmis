@@ -66,7 +66,7 @@ export class SizeComponent implements OnInit {
     deldata.append('size_id',data.size_id)
     this.partyservice.del_size(deldata).subscribe(
       (res:any)=>{
-        this.router.navigate(['/size'])
+        this.router.navigate(['/home/size'])
         this.popup.success({detail:'Success',summary:'Size Delete Successfully...',sticky:true,position:'tr'})
       },
       (error: any) => {

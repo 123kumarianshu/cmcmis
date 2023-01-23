@@ -64,7 +64,7 @@ onSubmit() {
     if (this.addGst.valid) {
       this.manageService.postGst(this.addGst.value).subscribe(
         (data: any) => {
-          this.router.navigate(['/gst']);
+          this.router.navigate(['/home/gst']);
           this.addGst.reset();
           this.matref.close('save');
           this.popup.success({ detail: 'Success', summary: 'GST Submit Successfully...', sticky: true, position: 'tr' })
@@ -96,7 +96,7 @@ updateGst() {
   if (this.addGst.valid) {
     this.manageService.putGst(this.addGst.value).subscribe(
       (data: any) => {
-        this.router.navigate(['/gst']);
+        this.router.navigate(['/home/gst']);
         this.addGst.reset();
         this.matref.close('save');
         this.popup.success({ detail: 'Success', summary: 'GST  Update Successfully...', sticky: true, position: 'tr' })

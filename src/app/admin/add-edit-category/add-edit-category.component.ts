@@ -59,7 +59,7 @@ export class AddEditCategoryComponent implements OnInit {
         (result: any) => {
           console.log(result)
           this.matref.close();
-          this.router.navigate(['/category'])
+          this.router.navigate(['/home/category'])
           this.popup.success({detail:'Success',summary:'Category Add Successfully...',sticky:true,position:'tr'})
 
         },
@@ -81,7 +81,7 @@ export class AddEditCategoryComponent implements OnInit {
     console.log(this.addcategory.value)
     this.manageService.putCategory(this.addcategory.value).subscribe({
       next: (result: any) => {
-        this.router.navigate(['/category'])
+        this.router.navigate(['/home/category'])
         this.matref.close();
         this.popup.success({detail:'Success',summary:'Category Update Successfully...',sticky:true,position:'tr'})
 
