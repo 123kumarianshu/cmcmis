@@ -45,7 +45,7 @@ const routes: Routes = [
       // {path:'', redirectTo:'/', pathMatch: 'full'},
       {path:'',component:LoginpageComponent},
       {path:'login',component:LoginpageComponent},
-
+      {path:'emplogin', component:EmpLoginComponent},
       {path:'home', component:HomepageComponent,
       children:[
         {path:'', component:DashboardComponent},
@@ -123,31 +123,7 @@ const routes: Routes = [
 
       ]
       },
-
-      {path:'emplogin', component:EmpLoginComponent},
-      {path:'emphome',component:EmpHomeComponent,
-        children:[
-          {path:'',component:EmpDashboardComponent},
-          {path:'emp_dashboard',component:ViewportComponent,
-              children:[
-                {path:'',component:EmpDashboardComponent},
-                {path:'sale',component:SaleComponent},
-                {path:'dues',component:DuesComponent},
-                {path:'reciept',component:RecieptComponent},
-                {path:'expense',component:ExpenseComponent},
-
-              ]
-          },
-          {path:'sale',component:SaleComponent},
-           {path:'dues',component:DuesComponent},
-           {path:'reciept',component:RecieptComponent},
-           {path:'stock_report',component:StockReportComponent},
-           {path:'expense',component:ExpenseComponent},
-
-
-        ]
-      },
-
+      
       {path:'**',component:HomepageComponent},
  
 ]

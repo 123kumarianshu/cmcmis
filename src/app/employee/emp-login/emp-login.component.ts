@@ -37,7 +37,7 @@ export class EmpLoginComponent implements OnInit {
         (result: any) => {
           console.log(result)
           if (result.success) {
-            this.router.navigate(['/emphome']);
+            this.router.navigate(['/home']);
             this.LoginForm.reset();
             localStorage.setItem('Token', JSON.stringify(result.uid[0]));
             this.popup.success({detail:'Success',summary:'Login Successfully...',sticky:true,position:'tr'})

@@ -29,22 +29,23 @@ export class DashboardComponent implements OnInit {
   total_expense:number = 0;
   total_recive:number = 0;
   defult:number=0
-
   loginuserdata: any;
-
+  login_data:any
+  login_data_check:any
   constructor(
     private servies:ManageService,
-     private router:Router
   ) {
    }
 
   ngOnInit(): void {
-    // const userdata = localStorage.getItem('Token');
-    // if (!userdata) {
-    //   return
-    // }
-    // else {
-
+    const userdata = localStorage.getItem('Token');
+    if (!userdata) {
+      return
+    }
+    else {
+      this.login_data = localStorage.getItem('Token');
+      this.login_data_check = JSON.parse(this.login_data);
+     
       this.servies.dashboard_view().subscribe(
         (result:any)=>{
           console.log(result)
@@ -82,6 +83,7 @@ export class DashboardComponent implements OnInit {
       )
     
     }
+  }
 
   }
 

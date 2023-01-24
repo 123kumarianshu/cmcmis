@@ -19,12 +19,27 @@ export class SidebarComponent implements OnInit {
   action_icon4:boolean = true
   action_icon5:boolean = false
   action_icon6:boolean = true
+  login_auth:boolean = false
+  login_data:any
+  login_data_check:any
   constructor(
     private router:Router
   ) { }
 
   ngOnInit(): void {
  
+    const userdata = localStorage.getItem('Token');
+    if (!userdata) {
+      return
+    }
+    else {
+
+      this.login_data = localStorage.getItem('Token');
+      this.login_data_check = JSON.parse(this.login_data);
+      if(  this.login_data_check.emp_id > 0 ){
+        this.login_auth = true
+      }
+    }
 }
 
 report_dropdown(){

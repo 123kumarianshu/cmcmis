@@ -5,12 +5,14 @@
         </span>
     </div>
     <div class="menu">
-        <div [ngClass]="'menu_item'">
+        <div [ngClass]="'menu_item'" >
+           
             <button mat-button class="menu-button" [routerLink]="['dashbaord']" routerLinkActive="active">
                 <mat-icon id="dash_board">dashboard</mat-icon>
                 <span>Dashboard</span>
             </button>
-            <div>
+
+            <div [hidden]="login_auth">
                 <button mat-button class="menu-button" (click)="masterDropdown()">
                     <mat-icon>card_travel</mat-icon>
                     <span> Master Entry</span>
@@ -80,24 +82,24 @@
                 </div>
             </div>
         </div>
-        <button mat-button class="menu-button" [routerLink]="['purchase']" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['purchase']" routerLinkActive="active" [hidden]="login_auth">
             <mat-icon>shoping</mat-icon>
             <span>Purchase</span>
         </button>
-        <button mat-button class="menu-button" [routerLink]="['material_handover']" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['material_handover']" routerLinkActive="active" [hidden]="login_auth">
             <mat-icon>gradient</mat-icon>
             <span>Material Handover</span>
         </button>
-        <button mat-button class="menu-button" [routerLink]="['production']" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['production']" routerLinkActive="active" [hidden]="login_auth">
             <mat-icon>business</mat-icon>
             <span>Production</span>
         </button>
-        <button mat-button class="menu-button" [routerLink]="['area_allocate']" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['area_allocate']" routerLinkActive="active" [hidden]="login_auth">
             <!-- <mat-icon>area_chart</mat-icon> -->
             <mat-icon> location_on</mat-icon>
             <span>Area Allocate</span>
         </button>
-        <button mat-button class="menu-button" [routerLink]="['sale']" routerLinkActive="active">
+        <button mat-button class="menu-button" [routerLink]="['sale']" routerLinkActive="active" >
             <mat-icon>local_grocery_store</mat-icon>
             <span>Sale</span>
         </button>
@@ -119,7 +121,7 @@
         </button>
       
         <!-- for account  -->
-        <div>
+        <div [hidden]="login_auth">
             <button mat-button class="menu-button" (click)="AccountDropdown()">
                 <mat-icon>card_travel</mat-icon>
                 <span>Account</span>
@@ -143,7 +145,7 @@
              </div>
         </div>
         <!-- for report  -->
-        <div>
+        <div [hidden]="login_auth">
             <button mat-button class="menu-button" (click)="report_dropdown()">
                 <mat-icon>card_travel</mat-icon>
                 <span>Report</span>
