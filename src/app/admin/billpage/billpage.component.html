@@ -1,83 +1,80 @@
+
 <div id="wrapper" >
-    <span>
+  <div id="printarea">
     <table style="width:100%;" class="tbl">
-        <tr>
-          <td><button mat-dialog-close  >Back</button></td>
-          <td></td>
-          <td style="text-align: right;"><button  (click)="onprint()" >Print</button></td>
-        </tr>
-        <tr>
-          
-          <td></td>
-          <td class="name_area">ADITY ARADHAYA</td>
-          <td >Mob:- 6589785421<br>
-             <span style="opacity:0 ;">..........</span> 6532542165  </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td style="text-align: center;">Address:- Deghi Kala , Hajipur , Vaishali (Bihar-844101)</td>
-          <td></td>
-        </tr> 
-        <br>
+      <tr>
+        <td><button mat-dialog-close  >Back</button></td>
+        <td></td>
+        <td style="text-align: right;"><button  (click)="onprint()" >Print</button></td>
+      </tr>
+      <tr>
         
-        <tr>
-          <td></td>
-          <td><b>Bill No: </b> {{ saledata.sale_bill_no}}</td>
-          
-          <td><b>Date:</b> {{saledata.sale_date}}</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><b>Name: </b> {{ saledata.cust_name}}</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><b>Address:</b> {{saledata.cust_shop_address}} </td>
-          <td></td>
-        </tr>
-      </table>
-      </span>
-      <br><br>
+        <td></td>
+        <td class="name_area">ADITYA AARADHYA CO. PVT. LTD.</td>
+        <td  style="text-align: right;">Mob:-6202042331<br>8969687189  </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td style="text-align: center;">Manufacturer:- Note Book & A4 size copie</td>
+        <td></td>
+      </tr> 
+      <tr>
+        <td></td>
+        <td colspan="2" style="text-align: center;">पुलिस लाइन मैदान (फायरफायर ब्रिगेड कार्यालय)  रेलवे गुमटी के पश्चिम, दिग्घी कला हाजीपुर (वैशाली) 844101</td>
+       
+      </tr> 
+      <br>
+      
+      <tr>
+        <td></td>
+        <td><b>GST - </b>10AAUCA3887CIZO</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><b>Bill No: </b> {{ saledata.sale_bill_no}}</td>
+        
+        <td><b>Date:</b> {{saledata.sale_date}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><b>Name: </b> {{ saledata.cust_name}}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><b>Address:</b> {{saledata.cust_shop_address}} </td>
+        <td></td>
+      </tr>
+    </table>
       <div class="middel_area">
       <table class="tbl_calc">
         <tr>
             <th>Sl. No.</th>
-            <th>PARTICULARS</th>
+            <th>Particulars</th>
             <th>Qty</th>
+            <th>Rate</th>
             <th>Amount</th>
         </tr>
         <tr *ngFor="let sale of des_data ; let i = index">
             <td class="col1">{{i+1}}</td>
             <td class="col2">{{sale.product_name}}</td>
             <td class="col3">{{sale.sale_dec_quantity}}</td>
+            <td class="col3">{{sale.sale_rate}}</td>
             <td class="col4">{{sale.sale_dec_total_amount}}</td>
         </tr>
       </table>
 
       <table class="final_amount">
-        <tr  >
+        <tr>
            <th class="col1"></th>
            <th class="col2"></th>
-            <th class="col3"> Total:</th>
-            <th  class="col4">{{saledata.sale_total_amount
-              | currency:'INR':true}}</th>
+           <th class="col3"></th>
+            <th class="col3"> Total: </th>
+            <th  class="col4"> {{saledata.sale_total_amount
+              | currency:'INR':true}} </th>
         </tr>
       </table>
-      </div><br><br>
-      <table class="tbl_button">
-        <tr><td>1. Good once sold shall not be returned.</td></tr>
-        <tr><td>2. Good once sold shall not be returned.</td></tr>
-        <tr><td>3. Good once sold shall not be returned Good once sold shall .</td></tr>
-        <tr><td>4. Good once sold shall not be returned.</td></tr>
-        <tr><td>5. Good once sold shall not be returned.</td></tr>
-        <tr><td>5. Good once sold shall not be returned.</td></tr>
-        <tr><td style="text-align: right;"> Authorised Signatory  <span style="opacity:0 ;">..........</span> </td></tr>
-      </table>
-</div>
-
-<div id="background_div">
-    <div class="box1"></div>
-    <div class="box2"></div>
-    <div class="box3"></div>
-</div>
+        <h3>Signature</h3>
+      </div>
+      </div>

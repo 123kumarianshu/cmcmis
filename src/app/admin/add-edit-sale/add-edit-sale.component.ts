@@ -124,10 +124,16 @@ export class AddEditSaleComponent implements OnInit {
       cust_name: [''],
     })
 
+    console.log(this.draft_data)
+    
+    if (this.draft_data.edit_sale_bill_no) {
+      console.log("edit sale billn no "+ this.draft_data.edit_sale_bill_no)
+    }
 
 
    
     if (this.draft_data.sale_bill_no) {
+      console.log("draf bill on " + this.draft_data.sale_bill_number)
       this.actionBtn = 'Update'
       if (this.draft_data.status == 1) {
         this.sale_action_btn = true

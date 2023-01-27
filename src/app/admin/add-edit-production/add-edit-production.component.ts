@@ -58,13 +58,13 @@ export class AddEditProductionComponent implements OnInit {
     )
     this.ProductionForm = this.fb.group({
       production_id: [''],
-      production_quantity: [''],
-      labor_cost: [''],
-      production_desc: [''],
-      production_date: [''],
+      production_quantity: ['',Validators.required],
+      labor_cost: ['',Validators.required ],
+      production_desc: ['',Validators.required],
+      production_date: ['',Validators.required],
       emp_address: [''],
       emp_mobile: [''],
-      total_amount: [''],
+      total_amount: ['',Validators.required],
       emp_id_fk: ['', Validators.required],
       product_id_fk: ['', Validators.required],
       cat_id_fk: ['', Validators.required],

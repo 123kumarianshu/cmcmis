@@ -68,7 +68,7 @@
             </mat-form-field>
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
         </div><br><br><br>
-        <button class="addbtn" (click)="Add()">Add</button>
+        <button class="addbtn" (click)="Add()" [disabled]="!ProductionForm.valid">Add</button>
     </form>
     <div class="cotainer">
         <div class="count_search">

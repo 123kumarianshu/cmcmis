@@ -20,7 +20,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Weight</mat-label>
+                <mat-label>Weight(kg)</mat-label>
                 <mat-select formControlName="weight_id_fk">
                     <mat-option *ngFor="let weightdata of weightdata"
                         [value]="weightdata.weight_id">{{weightdata.weight_name}}</mat-option>

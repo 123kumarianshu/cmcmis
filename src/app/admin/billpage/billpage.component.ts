@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { delay } from 'rxjs';
 import { ManageService } from '../manage.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class BillpageComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public saledata:any,
     private servies:ManageService,
     
-  ) { }
+  ) { 
+  }
 
   ngOnInit(): void {
     console.log(this.saledata)
@@ -26,6 +28,8 @@ export class BillpageComponent implements OnInit {
         console.log(res)
       }
     )
+    this.onprint()
+    
     
   }
 

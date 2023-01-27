@@ -81,8 +81,7 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Category</mat-label>
-								<mat-select formControlName="cat_id" (valueChange)="getCat($event)"
-									[disabled]="this.draft_data.status == 1">
+								<mat-select formControlName="cat_id" (valueChange)="getCat($event)">
 									<mat-option *ngFor="let cat of cat_data"
 										[value]="cat.cat_id">{{cat.cat_name}}</mat-option>
 								</mat-select>
@@ -90,8 +89,7 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Product</mat-label>
-								<mat-select formControlName="product_id" (valueChange)="getProd($event)"
-									[disabled]="this.draft_data.status == 1">
+								<mat-select formControlName="product_id" (valueChange)="getProd($event)">
 									<mat-option *ngFor="let prod of prod_data"
 										[value]="prod.product_id">{{prod.product_name}}</mat-option>
 								</mat-select>
@@ -207,8 +205,7 @@
 											<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action
 											</th>
 											<td class="data" mat-cell *matCellDef="let row"> <mat-icon
-													(click)="deleteDesc(row)"
-													[hidden]="this.draft_data.status == 1">delete</mat-icon>
+													(click)="deleteDesc(row)">delete</mat-icon>
 											</td>
 										</ng-container>
 
@@ -252,13 +249,12 @@
 							<mat-form-field appearance="fill">
 								<mat-label>Discount(%)</mat-label>
 								<input type="number" formControlName="sale_discount" matInput placeholder="Discount(%)"
-									(keyup)="disc_amt_cal()" [readonly]="this.draft_data.status == 1">
+									(keyup)="disc_amt_cal()" >
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>GST(%)</mat-label>
-								<mat-select formControlName="sale_gst" (valueChange)="gst_amt_cal($event)"
-									[disabled]="this.draft_data.status == 1">
+								<mat-select formControlName="sale_gst" (valueChange)="gst_amt_cal($event)">
 									<mat-option *ngFor="let gst of gst_data"
 										[value]="gst.gst_in_percentage">{{gst.gst_in_percentage}}</mat-option>
 								</mat-select>
@@ -267,7 +263,7 @@
 							<mat-form-field appearance="fill">
 								<mat-label>Payable Amount</mat-label>
 								<input type="number" formControlName="sale_gross_amount" matInput
-									placeholder="Payable Amount" [readonly]="this.draft_data.status == 1">
+									placeholder="Payable Amount" >
 							</mat-form-field>
 						</div>
 						<div class="column_first">
@@ -275,7 +271,7 @@
 							<mat-form-field appearance="fill">
 								<mat-label>Paid</mat-label>
 								<input type="number" formControlName="sale_paid" matInput placeholder="Paid Amount"
-									(keyup)="paid_amt_cal()" [readonly]="this.draft_data.status == 1">
+									(keyup)="paid_amt_cal()" >
 							</mat-form-field>
 							<mat-form-field appearance="fill">
 								<mat-label>Dues</mat-label>

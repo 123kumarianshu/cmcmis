@@ -81,25 +81,21 @@ export class SaleComponent implements OnInit {
     this.route.navigate(['home/sale/add_edit_sale'], data);
 
   }
-  on_cancel_bill(data:any) {
-    this.addsale.open(CancelBillComponent,{
-      disableClose: true,
-      data: data,
-    }).afterClosed().subscribe(val => {
-      if (val === 'save') {
-        this.ngOnInit();
-      }
-    })
-    
 
+  on_edit(data: any) {
 
+    const edit_sale_bill_no = data.sale_bill_no
+    const fromdata = new FormData()
+    fromdata.append('edit_sale_bill_no',data.sale_bill_no);
+    this.route.navigate(['home/sale/add_edit_sale'], );
   }
+ 
 
   onPrint(data: any) {
     this.addsale.open(BillpageComponent, {
       disableClose: true,
-      width: '100%',
-      maxWidth: '100vw',
+      maxWidth: '2480px',
+      height:'3508px',
       data: data,
     }).afterClosed().subscribe(val => {
       if (val === 'save') {

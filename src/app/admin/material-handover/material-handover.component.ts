@@ -50,26 +50,7 @@ editmaterialhandover(row: any) {
   })
 }
 
-del_mh(data:any){
-  if(confirm("Are you sure to delete")){
-  const deldata = new FormData();
-  deldata.append('mh_id',data.mh_id)
-  this.mhservice.del_mh(deldata).subscribe(
-    (res:any)=>{
-      this.router.navigate(['/material_handover'])
-      this.popup.success({detail:'Success',summary:'Data Delete Successfully...',sticky:true,position:'tr'})
-    },
-    (error: any) => {
-      console.log(['message']);
-      this.popup.error({detail:'message',summary:'data not deleted bcz it`s refrence used' , sticky:true,position:'tr',})
-    }
-  )
-  
-} 
-else{
-  this.popup.error({detail:'Error',summary:'Data Delete Not...',sticky:true,position:'tr'})
-}
-}
+
 
 applyFilter(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;
