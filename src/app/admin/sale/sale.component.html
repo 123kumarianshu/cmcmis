@@ -68,7 +68,7 @@
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
             <td class="data" mat-cell *matCellDef="let row">
               <mat-icon [hidden]="row.status !=1" (click)="onPrint(row)">print</mat-icon>
-              <mat-icon  (click)="on_draf_bill(row)">exposure</mat-icon>
+              <mat-icon [hidden]="row.status !=1" (click)="on_draf_bill(row)">exposure</mat-icon>
               <mat-icon [hidden]="row.status !=0" (click)="on_draf_bill(row)">description</mat-icon>
 
             </td>
