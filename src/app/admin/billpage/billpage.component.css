@@ -1,6 +1,7 @@
 #wrapper{
     width: 100vw;
     height: 100%;
+    padding: 20px;
 }
 #printarea{
     width: 100%;
@@ -8,19 +9,19 @@
 }
 .name_area{
     height: 70px;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
 }
 
 .tbl  table {
-    font-size: 18px;
+    font-size: 15px;
   }
   .tbl td{
     height: 25px;
   }
 th{
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
 }
 .tbl_calc{
     width: 100%;
@@ -74,7 +75,7 @@ button{
     width: 10%;
 }
 .col2{
-    width: 55%;
+    width: 40%;
 }
 .col3{
     width: 10%;
@@ -88,8 +89,8 @@ button{
 
 h3{
     position: absolute;
-    bottom: 47%;
-    right: 5px;
+    bottom: 10px;
+    right: 10px;
 
 }
 

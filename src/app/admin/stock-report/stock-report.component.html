@@ -35,14 +35,27 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.product_name}}</td>
           </ng-container>
 
+          <ng-container matColumnDef="size">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Size</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.size_name}}</td>
+          </ng-container>
+
           <ng-container matColumnDef="product">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product Reatail Price</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Reatail Price</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.product_retail_price}}</td>
           </ng-container>
 
+          <ng-container matColumnDef="productprice">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product Price</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.product_cost_price}}</td>
+          </ng-container>
+
+          
+
+
           <ng-container matColumnDef="qty">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Available qunatity</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.quantity}}</td>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Available</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.quantity}} {{row.unit_name}}</td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

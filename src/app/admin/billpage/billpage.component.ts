@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { delay } from 'rxjs';
 import { ManageService } from '../manage.service';
 
 @Component({

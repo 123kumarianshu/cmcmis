@@ -1,6 +1,6 @@
 <mat-toolbar>
     <span class="example-spacer">Production</span>
-    <mat-icon mat-dialog-close >cancel</mat-icon>
+    <mat-icon mat-dialog-close  [routerLink]="['home/production']">cancel</mat-icon>
 </mat-toolbar>
 <span>Select Employee</span>
 <div mat-dialog-content>
@@ -27,6 +27,10 @@
                 <mat-label>Address</mat-label>
                 <input type="text" formControlName="emp_address" matInput placeholder="Address">
             </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="text" formControlName="emp_email" matInput placeholder="Email">
+            </mat-form-field>
         <br>
             <span>Add Item</span><br>
             <mat-form-field appearance="fill">
@@ -39,21 +43,39 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Product</mat-label>
-                <mat-select formControlName="product_id_fk">
+                <mat-select formControlName="product_id_fk"  (valueChange)="getProduct($event)">
                     <mat-option *ngFor="let productdata of product_single_data"
                         [value]="productdata.product_id">{{productdata.product_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" >
-              <mat-label>Labor Cost</mat-label>
-              <input formControlName="labor_cost" matInput placeholder="labor cost" (keyup)="total_calc()">
+            <mat-form-field appearance="fill"  >
+              <mat-label>Size</mat-label>
+              <input formControlName="size_name" matInput placeholder="size" readonly>
+          </mat-form-field>
+
+            <mat-form-field appearance="fill"  class="small_box">
+              <mat-label>Unit</mat-label>
+              <input formControlName="unit_name" matInput placeholder="Unit" readonly >
+          </mat-form-field>
+            <mat-form-field appearance="fill" class="small_box">
+              <mat-label>Weight(kg)</mat-label>
+              <input formControlName="weight_name" matInput placeholder="weight" readonly>
           </mat-form-field>
           <br>
+          <mat-form-field appearance="fill" class="small_box" >
+            <mat-label>Labor Cost</mat-label>
+            <input formControlName="labor_cost" matInput placeholder="labor cost" (keyup)="total_calc()">
+        </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="small_box">
                 <mat-label>Quantity</mat-label>
-                <input formControlName="production_quantity" matInput placeholder="Quantity" (keyup)="total_calc()">
+                <input formControlName="production_quantity" matInput placeholder="Quantity" (keyup)="total_calc()"  >
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" >
+                <mat-label>Total Weight(kg)</mat-label>
+                <input formControlName="total_weight" matInput placeholder="Total weight" readonly  >
             </mat-form-field>
             
             <mat-form-field appearance="fill">
@@ -68,7 +90,7 @@
             </mat-form-field>
             <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
         </div><br><br><br>
-        <button class="addbtn" (click)="Add()" [disabled]="!ProductionForm.valid">Add</button>
+        <button class="addbtn" (click)="Add()" >Add</button>
     </form>
     <div class="cotainer">
         <div class="count_search">
