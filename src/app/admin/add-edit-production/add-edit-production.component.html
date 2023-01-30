@@ -36,7 +36,7 @@
                 <input type="text" formControlName="emp_addhar" matInput placeholder="Addhar no">
             </mat-form-field>
         <br>
-            <span>Add Item</span><br>
+            <span>Select Product</span><br>
             <mat-form-field appearance="fill">
                 <mat-label>Category</mat-label>
                 <mat-select formControlName="cat_id_fk" (valueChange)="getCatdata($event)">
@@ -73,13 +73,13 @@
         </mat-form-field>
 
             <mat-form-field appearance="fill" >
-                <mat-label>Quantity</mat-label>
-                <input formControlName="production_quantity" matInput placeholder="Quantity" (keyup)="total_calc()"  >
+                <mat-label>Quantity (Pcs)</mat-label>
+                <input formControlName="production_quantity" matInput placeholder="Quantity (Pcs)" (keyup)="total_calc()"  >
             </mat-form-field>
 
             <mat-form-field appearance="fill" >
-                <mat-label>Total Weight(kg)</mat-label>
-                <input formControlName="total_weight" matInput placeholder="Total weight" readonly  >
+                <mat-label>Total Weight (kg)</mat-label>
+                <input formControlName="total_weight" matInput placeholder="Total weight (Kg)" readonly  >
             </mat-form-field>
             
             <mat-form-field appearance="fill">
@@ -123,12 +123,12 @@
                 </ng-container>
     
                 <ng-container matColumnDef="production_quantity">
-                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity (Pic)</th>
                   <td class="data" mat-cell *matCellDef="let row">{{row.production_quantity}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="total_weight">
-                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Weight(Kg)</th>
+                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity (Kg)</th>
                   <td class="data" mat-cell *matCellDef="let row">{{row.total_weight}}</td>
                 </ng-container>
   
@@ -138,7 +138,7 @@
                 </ng-container>
                 <ng-container matColumnDef="total_amount">
                   <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>
-                  <td class="data" mat-cell *matCellDef="let row">{{row.total_amount}}</td>
+                  <td class="data" mat-cell *matCellDef="let row">{{row.total_amount | currency:'INR':true}}</td>
                 </ng-container>
                 <ng-container matColumnDef="action">
                   <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>

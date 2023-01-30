@@ -293,7 +293,7 @@ export class AddEditSaleComponent implements OnInit {
   }
   prod() {
     this.action_text = 'Add Product Details'
-
+    this.formreset()
     const salebillformdata = new FormData()
     salebillformdata.append('sale_bill_no', String(this.sale_bill_no))
 
@@ -391,7 +391,6 @@ export class AddEditSaleComponent implements OnInit {
         this.saleformprod.controls['product_rate'].setValue(this.prod_single_data.product_cost_price);
         if (this.prod_single_data.unit_name == 'KG') {
           this.action_qyt = 'Quantity (Kg)'
-          this.Production_qty  = true
           this.Production_kg  = false
 
         } 
@@ -454,17 +453,23 @@ export class AddEditSaleComponent implements OnInit {
 
   //For calculation work start code here
   desc_amt_cal() {
- 
+    if (this.saleformprod.get('product_unit_id')?.value == 'KG') {
+      this.saleformprod.controls['available_quantity'].setValue((this.stock_data_pic) - this.saleformprod.get('product_quantity')?.value)
 
-    this.saleformprod.controls['product_total_amount'].setValue(this.saleformprod.get('product_rate')?.value * this.saleformprod.get('product_quantity')?.value)
+
+    } 
+    else{
+      this.saleformprod.controls['product_total_amount'].setValue(this.saleformprod.get('product_rate')?.value * this.saleformprod.get('product_quantity')?.value)
     this.saleformprod.controls['available_quantity'].setValue((this.stock_data_pic) - this.saleformprod.get('product_quantity')?.value)
     this.saleformprod.controls['available_weight'].setValue((this.stock_data_kg) - this.saleformprod.get('product_quantity')?.value * this.saleformprod.get('product_weight_id')?.value)
     this.saleformprod.controls['product_weight'].setValue(this.saleformprod.get('product_quantity')?.value * this.saleformprod.get('product_weight_id')?.value)
 
+    }
+
+   
   }
   // for weight calc
   weight_amt_calc(){
-
     this.saleformprod.controls['product_total_amount'].setValue(((this.saleformprod.get('product_weight')?.value)  * this.saleformprod.get('product_rate')?.value))
     this.saleformprod.controls['available_weight'].setValue((this.stock_data_kg) -  (this.saleformprod.get('product_weight')?.value))
   }
@@ -473,8 +478,7 @@ export class AddEditSaleComponent implements OnInit {
   disc_amt_cal() {
     this.saleformfinal.controls['sale_paid'].reset()
     this.saleformfinal.controls['sale_gst'].reset()
-
-      this.saleformfinal.controls['sale_gross_amount'].setValue((this.saleformfinal.get('sale_total_amount')?.value) - (this.saleformfinal.get('sale_total_amount')?.value * this.saleformfinal.get('sale_discount')?.value) / 100)
+    this.saleformfinal.controls['sale_gross_amount'].setValue((this.saleformfinal.get('sale_total_amount')?.value) - (this.saleformfinal.get('sale_total_amount')?.value * this.saleformfinal.get('sale_discount')?.value) / 100)
   }
   gst_amt_cal(event: any) {
     this.saleformfinal.controls['sale_paid'].reset()

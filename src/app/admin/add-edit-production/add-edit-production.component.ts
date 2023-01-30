@@ -85,17 +85,7 @@ export class AddEditProductionComponent implements OnInit {
       this.ProductionForm.controls['emp_id_fk'].setValue(this.editData.emp_id)
       this.ProductionForm.controls['emp_address'].setValue(this.editData.emp_address)
       this.ProductionForm.controls['emp_addhar'].setValue(this.editData.emp_aadhar_no)
-      this.ProductionForm.controls['cat_id_fk'].setValue(this.editData.cat_id)
-      this.ProductionForm.controls['product_id_fk'].setValue(this.editData.product_id)
-      this.ProductionForm.controls['production_quantity'].setValue(this.editData.production_quantity)
-      this.ProductionForm.controls['labor_cost'].setValue(this.editData.labor_cost)
-      this.ProductionForm.controls['total_amount'].setValue(this.editData.total_amount)
-      this.ProductionForm.controls['production_desc'].setValue(this.editData.production_desc)
-      this.ProductionForm.controls['weight_name'].setValue(this.editData.weight_name)
-      this.ProductionForm.controls['unit_name'].setValue(this.editData.unit_name)
-      this.ProductionForm.controls['size_name'].setValue(this.editData.size_name)
-
-      this.getproductionDesData(this.editData.emp_id)
+        this.getproductionDesData(this.editData.emp_id)
     }
   }
 
@@ -202,6 +192,7 @@ export class AddEditProductionComponent implements OnInit {
         console.log(res)
         this.popup.success({ detail: 'Success', summary: ' Production Submit Successfully...', sticky: true, position: 'tr' })
         this.getproductionDesData(this.ProductionForm.get('emp_id_fk')?.value)
+        this.formreset( )
       }
     )
     this.getproductionDesData(this.ProductionForm.get('emp_id_fk')?.value)

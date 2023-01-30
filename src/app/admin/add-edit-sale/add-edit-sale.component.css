@@ -94,7 +94,7 @@
     left: 0px;
 }
 
-button {
+#billnobtn {
     height: 30px;
     margin-left: 50px;
     margin-top: -26px;
@@ -106,6 +106,16 @@ button {
 
 }
 
+.final_btn{
+    margin: 10px;
+    padding: 10px ;
+    background-color:#0a4547;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
 mat-form-field {
     margin-right: 5px;
 }
@@ -115,6 +125,7 @@ mat-form-field {
 }
 
 .content_area {
+    width: 100%;
     text-align: center;
     margin-top: 65px;
 }
@@ -209,46 +220,49 @@ tr.mat-row {
     text-align: left;
 }
 
-@media (min-width:1081px) and (max-width:2000px) {
-    .column {
-        width: 100%;
-        height: auto;
-        margin: auto;
-    }
-
-    .column mat-form-field {
-        width: 200px;
-    }
-
-    .column_1 mat-form-field {
-        width: 815px;
-        margin: 0px;
-        margin-right: 5px;
-    }
-    .content_area {
-        margin-top: 10px;
-    }
-    .addButton{
-        float: left;
-        margin: -10px 0px 0px 80px;
-    }
-    .column_first{
-        width: 820px;
-        height: auto;
-        margin: auto;
-    }
-    .column_first mat-form-field{
-        float: left;
-    }
-    .column_first input{
-        float: left;
-    }
+.column {
+    width: 100%;
 }
+
+
+.column mat-form-field {
+    width: 200px;
+}
+
+.column_1 mat-form-field {
+    width: 815px;
+    margin: 0px;
+    margin-right: 5px;
+}
+
+.content_area {
+    margin-top: 10px;
+}
+
+.addButton {
+    float: left;
+    margin: -10px 0px 0px 80px;
+}
+
+.column_first {
+    width: 1028px;
+    height: auto;
+    margin: auto;
+}
+
+.column_first mat-form-field {
+    float: left;
+}
+
+.column_first input {
+    float: left;
+}
+
 
 @media (min-width:769px) and (max-width:1080px) {
 
     .column {
-        width:500px;
+        width: 500px;
         height: auto;
         margin: auto;
     }
@@ -256,15 +270,18 @@ tr.mat-row {
     .column mat-form-field {
         width: 200px;
     }
+
     .column_1 mat-form-field {
         width: 410px;
     }
-    .column_first{
+
+    .column_first {
         width: 420px;
         height: auto;
         margin: auto;
     }
-    .column_first input{
+
+    .column_first input {
         float: left;
     }
 }
@@ -314,29 +331,25 @@ tr.mat-row {
         font-size: 14px;
     }
 
-    .btn_div .submitbtn {
-        width: 130px;
-        height: 35px;
-        position: relative;
-        bottom: -10px;
-        left: 33px;
-    }
 
     .btn_div {
         width: 150px;
         height: 35px;
         margin: auto;
     }
-    .column_first{  
+
+    .column_first {
         width: 100%;
         height: auto;
         margin: auto;
     }
-    .column_first  mat-form-field{
+
+    .column_first mat-form-field {
         width: 100%;
         margin: 0px;
     }
-    #formdate{
+
+    #formdate {
         width: 100%;
     }
 }
@@ -417,16 +430,19 @@ tr.mat-row {
         height: 35px;
         margin: auto;
     }
-    .column_first{
+
+    .column_first {
         width: 100%;
         height: auto;
         margin: auto;
     }
-    .column_first  mat-form-field{
+
+    .column_first mat-form-field {
         width: 100%;
         margin: 0px;
     }
-    #formdate{
+
+    #formdate {
         width: 100%;
     }
 }

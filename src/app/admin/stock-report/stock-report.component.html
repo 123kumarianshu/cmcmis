@@ -40,27 +40,32 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.size_name}}</td>
           </ng-container>
 
+          <ng-container matColumnDef="weight">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.weight_name}}</td>
+          </ng-container>
+
           <ng-container matColumnDef="product">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Reatail Price</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.product_retail_price}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{ row.product_retail_price  | currency:'INR':true}} {{row.unit_name}}</td>
           </ng-container>
 
           <ng-container matColumnDef="productprice">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product Price</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.product_cost_price}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.product_cost_price  | currency:'INR':true}} {{row.unit_name}}</td>
           </ng-container>
 
           
 
 
           <ng-container matColumnDef="qty">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Avl (Pcs)</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity (Pcs)</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.quantity}}</td>
           </ng-container>
 
 
-          <ng-container matColumnDef="weight">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Avl (Kg)</th>
+          <ng-container matColumnDef="qtykg">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity (Kg)</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.total_weight}} </td>
           </ng-container>
 

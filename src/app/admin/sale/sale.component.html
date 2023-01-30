@@ -32,30 +32,30 @@
 
           <ng-container matColumnDef="sale_basic_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.sale_total_amount}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.sale_total_amount  | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="sale_discount">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Discount (%)</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.sale_discount}}</td>
           </ng-container>
 
           <ng-container matColumnDef="sale_gst">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>GST (%)</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.sale_gst}}</td>
           </ng-container>
           <ng-container matColumnDef="gross_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.sale_gross_amount}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.sale_gross_amount  | currency:'INR':true}}</td>
           </ng-container>
           <ng-container matColumnDef="sale_paid">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Paid</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.sale_paid}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.sale_paid  | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="sale_dues">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Dues</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.sale_dues}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.sale_dues  | currency:'INR':true}}</td>
           </ng-container>
 
         
