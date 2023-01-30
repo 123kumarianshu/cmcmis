@@ -54,9 +54,16 @@
 
 
           <ng-container matColumnDef="qty">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Available</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.quantity}} {{row.unit_name}}</td>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Avl (Pcs)</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.quantity}}</td>
           </ng-container>
+
+
+          <ng-container matColumnDef="weight">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Avl (Kg)</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.total_weight}} </td>
+          </ng-container>
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr class="mat-row" *matNoDataRow>

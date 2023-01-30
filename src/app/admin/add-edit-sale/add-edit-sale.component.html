@@ -69,6 +69,7 @@
 			<ng-template ngbNavContent>
 				<div class="content_area">
 					<form [formGroup]="saleformprod">
+
 						<div class="column">
 							<input formControlName="admin_id_fk" matInput placeholder="Admin id" readonly
 								[ngModel]="admin_id" hidden>
@@ -126,25 +127,33 @@
 						<div class="column_first">
 							
 							<mat-form-field appearance="fill">
-								<mat-label>Available</mat-label>
-								<input formControlName="available_quantity" matInput placeholder="available" readonly>
+								<mat-label>Available(Pcs)</mat-label>
+								<input formControlName="available_quantity" matInput placeholder="available(Pcs)" readonly>
+							</mat-form-field>
+							
+							<mat-form-field appearance="fill" >
+								<mat-label>Available(Kg)</mat-label>
+								<input formControlName="available_weight" matInput placeholder="available(Kg)" readonly>
+							</mat-form-field>
+
+							<mat-form-field appearance="fill" >
+								<mat-label>Product Quantity</mat-label>
+								<input formControlName="product_quantity" matInput placeholder="Product Quantity"
+									(keyup)="desc_amt_cal()" [readonly]="Production_qty">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
-								<mat-label>{{action_qyt}}</mat-label>
-								<input formControlName="product_quantity" matInput placeholder={{action_qyt}}
-									(keyup)="desc_amt_cal()">
+								<mat-label>Product Weight</mat-label>
+								<input formControlName="product_weight" matInput placeholder="Product Weight"
+									(keyup)="weight_amt_calc()" [readonly]="Production_kg">
 							</mat-form-field>
 							
-
 							<mat-form-field appearance="fill">
 								<mat-label>Total Amount</mat-label>
 								<input formControlName="product_total_amount" matInput placeholder="Total Amount"
 									readonly>
 							</mat-form-field>
 							<br>
-
-
 							<mat-icon class="addButton" (click)="AddProduct()">add</mat-icon>
 						</div>
 					</form>
@@ -187,9 +196,16 @@
 										</ng-container>
 
 										<ng-container matColumnDef="product_quantity">
-											<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity
+											<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity(Pcs)
 											</th>
 											<td class="data" mat-cell *matCellDef="let row">{{row.sale_dec_quantity}}
+											</td>
+										</ng-container>
+
+										<ng-container matColumnDef="product_weight">
+											<th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity(Kg)
+											</th>
+											<td class="data" mat-cell *matCellDef="let row">{{row.sale_dec_weight}}
 											</td>
 										</ng-container>
 
@@ -212,7 +228,7 @@
 										<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 										<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 										<tr class="mat-row" *matNoDataRow>
-											<td class="mat-cell" colspan="7">No data show</td>
+											<td class="mat-cell" colspan="8">No data show</td>
 										</tr>
 									</table>
 								</div>

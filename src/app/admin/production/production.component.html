@@ -32,12 +32,12 @@
               <td class="data" mat-cell *matCellDef="let row">{{row.product_name}}</td>
             </ng-container>  
             <ng-container matColumnDef="production_quantity">
-              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.production_quantity}} {{row.unit_name}}</td>
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity(Pcs)</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.production_quantity}} </td>
             </ng-container>  
-            <ng-container matColumnDef="labor_cost">
-              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Labor Cost</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.labor_cost}}</td>
+            <ng-container matColumnDef="total_weight">
+              <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Weight(Kg)</th>
+              <td class="data" mat-cell *matCellDef="let row">{{row.total_weight}}</td>
             </ng-container>  
             <ng-container matColumnDef="total_amount">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>

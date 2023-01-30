@@ -31,6 +31,10 @@
                 <mat-label>Email</mat-label>
                 <input type="text" formControlName="emp_email" matInput placeholder="Email">
             </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Addhar</mat-label>
+                <input type="text" formControlName="emp_addhar" matInput placeholder="Addhar no">
+            </mat-form-field>
         <br>
             <span>Add Item</span><br>
             <mat-form-field appearance="fill">
@@ -54,21 +58,21 @@
               <input formControlName="size_name" matInput placeholder="size" readonly>
           </mat-form-field>
 
-            <mat-form-field appearance="fill"  class="small_box">
+            <mat-form-field appearance="fill"  >
               <mat-label>Unit</mat-label>
               <input formControlName="unit_name" matInput placeholder="Unit" readonly >
           </mat-form-field>
-            <mat-form-field appearance="fill" class="small_box">
+            <mat-form-field appearance="fill" >
               <mat-label>Weight(kg)</mat-label>
               <input formControlName="weight_name" matInput placeholder="weight" readonly>
           </mat-form-field>
           <br>
-          <mat-form-field appearance="fill" class="small_box" >
+          <mat-form-field appearance="fill"  >
             <mat-label>Labor Cost</mat-label>
             <input formControlName="labor_cost" matInput placeholder="labor cost" (keyup)="total_calc()">
         </mat-form-field>
 
-            <mat-form-field appearance="fill" class="small_box">
+            <mat-form-field appearance="fill" >
                 <mat-label>Quantity</mat-label>
                 <input formControlName="production_quantity" matInput placeholder="Quantity" (keyup)="total_calc()"  >
             </mat-form-field>
@@ -107,13 +111,7 @@
                   <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N.</th>
                   <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
                     paginatorRef.pageSize)+(i+1)}}</td>
-                </ng-container>
-    
-                <ng-container matColumnDef="emp_name">
-                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Employee</th>
-                  <td class="data" mat-cell *matCellDef="let row">{{row.emp_name}}</td>
-                </ng-container>
-    
+                </ng-container>    
                 <ng-container matColumnDef="cat_name">
                   <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
                   <td class="data" mat-cell *matCellDef="let row">{{row.cat_name}}</td>
@@ -127,6 +125,11 @@
                 <ng-container matColumnDef="production_quantity">
                   <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
                   <td class="data" mat-cell *matCellDef="let row">{{row.production_quantity}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="total_weight">
+                  <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Weight(Kg)</th>
+                  <td class="data" mat-cell *matCellDef="let row">{{row.total_weight}}</td>
                 </ng-container>
   
                 <ng-container matColumnDef="labor_cost">

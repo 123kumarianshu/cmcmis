@@ -62,6 +62,12 @@ tr:hover {
   color: aliceblue;
   cursor: pointer;
 }
+tr:hover td mat-icon {
+  color: aliceblue;
+  cursor: pointer;
+}
+
+
 
 ng-container {
   text-align: center;
@@ -338,9 +344,7 @@ span {
   top: -5px;
   left: 0px;
 }
-.small_box{
-  width: 95px;
-}
+
 
 @media (min-width:768px) and (max-width:1100px) {
 

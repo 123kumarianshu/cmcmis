@@ -13,7 +13,7 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./production.component.css']
 })
 export class ProductionComponent implements OnInit {
-  displayedColumns: string[] = ['slno','emp_name','cat_name','product_name','production_quantity','production_date','labor_cost','total_amount','Action'];
+  displayedColumns: string[] = ['slno','emp_name','cat_name','product_name','production_date','production_quantity','total_weight','total_amount','Action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -63,6 +63,7 @@ export class ProductionComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
 }
 
 

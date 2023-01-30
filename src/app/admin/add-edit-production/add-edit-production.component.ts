@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./add-edit-production.component.css']
 })
 export class AddEditProductionComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'emp_name', 'cat_name', 'product_name', 'production_quantity', 'labor_cost', 'total_amount', 'action',];
+  displayedColumns: string[] = ['slno', 'cat_name', 'product_name', 'production_quantity','total_weight', 'labor_cost', 'total_amount', 'action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -66,6 +66,7 @@ export class AddEditProductionComponent implements OnInit {
       emp_address: [''],
       emp_email: [''],
       emp_mobile: [''],
+      emp_addhar: [''],
       size_name: [''],
       unit_name: [''],
       weight_name: [''],
@@ -83,6 +84,7 @@ export class AddEditProductionComponent implements OnInit {
       this.ProductionForm.controls['emp_email'].setValue(this.editData.emp_email)
       this.ProductionForm.controls['emp_id_fk'].setValue(this.editData.emp_id)
       this.ProductionForm.controls['emp_address'].setValue(this.editData.emp_address)
+      this.ProductionForm.controls['emp_addhar'].setValue(this.editData.emp_aadhar_no)
       this.ProductionForm.controls['cat_id_fk'].setValue(this.editData.cat_id)
       this.ProductionForm.controls['product_id_fk'].setValue(this.editData.product_id)
       this.ProductionForm.controls['production_quantity'].setValue(this.editData.production_quantity)
@@ -130,17 +132,20 @@ export class AddEditProductionComponent implements OnInit {
     empformdata.append('emp_id', event)
     this.manageService.get_emp_by_emp_id(empformdata).subscribe(
       (res: any) => {
-        // console.log(res)
+        console.log(res)
         this.emp_data = res.data
         this.ProductionForm.controls['emp_id_fk'].setValue(this.emp_data.emp_id);
         this.ProductionForm.controls['emp_mobile'].setValue(this.emp_data.emp_mobile);
         this.ProductionForm.controls['emp_address'].setValue(this.emp_data.emp_address);
+        this.ProductionForm.controls['emp_email'].setValue(this.emp_data.emp_email);
+        this.ProductionForm.controls['emp_addhar'].setValue(this.emp_data.emp_aadhar_no);
         this.getproductionDesData(this.emp_data.emp_id)
       }
     )
   }
 
   getProduct(event: any) {
+    this.formreset()
     const proformdata = new FormData()
     proformdata.append('product_id', event)
     this.manageService.get_product_by_product_id(proformdata).subscribe(
@@ -150,14 +155,12 @@ export class AddEditProductionComponent implements OnInit {
         this.ProductionForm.controls['size_name'].setValue(this.product_data.size_name);
         this.ProductionForm.controls['weight_name'].setValue(this.product_data.weight_name);
         this.ProductionForm.controls['unit_name'].setValue(this.product_data.unit_name);
-
-       
-
       }
     )
   }
   getCatdata(event: any) {
-    // console.log(event)
+    this.ProductionForm.controls['product_id_fk'].reset()
+    this.formreset()
     const catformdata = new FormData()
     catformdata.append('cat_id', event)
     this.manageService.get_product_by_cat_id(catformdata).subscribe(
@@ -177,22 +180,15 @@ export class AddEditProductionComponent implements OnInit {
       this.popup.error({ detail: 'message', summary: 'Labor cost must be greater than zero', sticky: true, position: 'tr', })
       alert("Labor cost must be greater than zero")
       return
-    }
-
-
-    if (this.product_data.unit_name == 'KG') {
-      this.stock = this.ProductionForm.get('total_weight')?.value
-    } else {
-      this.stock = this.ProductionForm.get('production_quantity')?.value
-    }
-  
+    }  
     console.log(this.ProductionForm.value)
     console.log(new Date().toISOString().slice(0, 10))
     const descFormdata = new FormData()
     descFormdata.append('emp_id_fk', this.ProductionForm.get('emp_id_fk')?.value)
     descFormdata.append('cat_id_fk', this.ProductionForm.get('cat_id_fk')?.value)
     descFormdata.append('product_id_fk', this.ProductionForm.get('product_id_fk')?.value)
-    descFormdata.append('production_quantity', this.stock)
+    descFormdata.append('production_quantity', this.ProductionForm.get('production_quantity')?.value)
+    descFormdata.append('total_weight', this.ProductionForm.get('total_weight')?.value)
     descFormdata.append('total_amount', this.ProductionForm.get('total_amount')?.value)
     descFormdata.append('labor_cost', this.ProductionForm.get('labor_cost')?.value)
     descFormdata.append('production_desc', this.ProductionForm.get('production_desc')?.value)
@@ -238,6 +234,17 @@ export class AddEditProductionComponent implements OnInit {
     }
   }
 
+    formreset(){
+    
+      this.ProductionForm.controls['production_quantity'].reset()
+      this.ProductionForm.controls['labor_cost'].reset()
+      this.ProductionForm.controls['total_amount'].reset()
+      this.ProductionForm.controls['production_desc'].reset()
+      this.ProductionForm.controls['weight_name'].reset()
+      this.ProductionForm.controls['unit_name'].reset()
+      this.ProductionForm.controls['size_name'].reset()
+      this.ProductionForm.controls['total_weight'].reset()
+    }
 }
 
 

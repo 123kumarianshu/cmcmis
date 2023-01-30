@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-edit-sale.component.css']
 })
 export class AddEditSaleComponent implements OnInit {
-  displayedColumns: string[] = ['slno', 'cat_name', 'product_name', 'product_rate', 'product_quantity', 'product_amount', 'Action',];
+  displayedColumns: string[] = ['slno', 'cat_name', 'product_name', 'product_rate', 'product_quantity','product_weight', 'product_amount', 'Action',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -44,8 +44,11 @@ export class AddEditSaleComponent implements OnInit {
   draft_data: any;
   sale_edit_data: any;
   sale_action_btn: boolean = false
-  stock_data: any = 0
+  stock_data_pic: any = 0
+  stock_data_kg: any = 0
   action_qyt: string = 'Quantity'
+  Production_qty:boolean = false
+  Production_kg:boolean = false
   constructor(
     private manageService: ManageService,
     private router: Router,
@@ -82,11 +85,6 @@ export class AddEditSaleComponent implements OnInit {
       }
     )
 
-
-
-
-
-
     //////////// for customer table /////////////
     this.saleformcust = this.fb.group({
       cust_id: [''],
@@ -107,7 +105,9 @@ export class AddEditSaleComponent implements OnInit {
       product_page: [''],
       product_rate: [''],
       product_quantity: ['0', Validators.required],
+      product_weight: ['0', Validators.required],
       available_quantity: ['0'],
+      available_weight: ['0'],
       product_total_amount: ['0', Validators.required],
       admin_id_fk: ['', Validators.required],
 
@@ -140,7 +140,6 @@ export class AddEditSaleComponent implements OnInit {
         this.sale_action_btn = true
 
       }
-
       const drapformdata = new FormData()
       drapformdata.append('sale_bill_no', this.draft_data.sale_bill_no)
       this.manageService.get_sale_by_bill_no(drapformdata).subscribe(
@@ -227,6 +226,7 @@ export class AddEditSaleComponent implements OnInit {
     }
   }
 
+
   /////// function for add product in sale desc tbl ////////////
   AddProduct() {
     const prodformdata = new FormData()
@@ -234,6 +234,7 @@ export class AddEditSaleComponent implements OnInit {
     prodformdata.append('product_id_fk', this.saleformprod.get('product_id')?.value)
     prodformdata.append('product_rate', this.saleformprod.get('product_rate')?.value)
     prodformdata.append('product_quantity', this.saleformprod.get('product_quantity')?.value)
+    prodformdata.append('product_weight', this.saleformprod.get('product_weight')?.value)
     prodformdata.append('product_total_amount', this.saleformprod.get('product_total_amount')?.value)
     prodformdata.append('admin_id_fk', this.saleformprod.get('admin_id_fk')?.value)
     prodformdata.append('sale_id_fk', this.salebilldata['0'].sale_id)
@@ -243,14 +244,8 @@ export class AddEditSaleComponent implements OnInit {
       (res: any) => {
         this.popup.success({ detail: "Success", summary: 'Product Added Successfully...' })
         this.GetDescData(this.sale_bill_no)
-        this.saleformprod.controls['product_id'].reset();
-        this.saleformprod.controls['product_rate'].reset();
-        this.saleformprod.controls['product_quantity'].reset();
-        this.saleformprod.controls['product_total_amount'].reset();
-        this.saleformprod.controls['product_size_id'].reset();
-        this.saleformprod.controls['product_weight_id'].reset();
-        this.saleformprod.controls['product_page'].reset();
-        this.saleformprod.controls['product_unit_id'].reset();
+        this.formreset()
+
       },
       (error: any) => {
         // console.log(error)
@@ -265,7 +260,6 @@ export class AddEditSaleComponent implements OnInit {
 
   ///////////////// for final sale update  starting/////////////
   finalsubmit() {
-
     const finalformdata = new FormData()
     finalformdata.append('sale_total_amount', this.saleformfinal.get('sale_total_amount')?.value)
     finalformdata.append('sale_discount', this.saleformfinal.get('sale_discount')?.value)
@@ -316,8 +310,8 @@ export class AddEditSaleComponent implements OnInit {
     this.GetDescData(this.sale_bill_no)
   }
   final_bill() {
-
     this.action_text = 'Final Submission'
+    this.finalformreset()
     this.saleformfinal.controls['sale_date'].setValue(new Date().toISOString().slice(0, 10))
     // for get basic amount 
     const getbasicamtform = new FormData()
@@ -329,8 +323,6 @@ export class AddEditSaleComponent implements OnInit {
         this.saleformfinal.controls['sale_gross_amount'].setValue(amount.data[0].basic_amount)
       }
     )
-
-
   }
 
   GetDescData(salebillno: any) {
@@ -368,6 +360,8 @@ export class AddEditSaleComponent implements OnInit {
 
   ////////////////////// for category id Selection ending //////////////////////
   getCat(event: any) {
+    this.formreset()
+    this.saleformprod.controls['product_id'].reset();
     const catformdata = new FormData();
     catformdata.append('cat_id', event)
     this.manageService.get_product_by_cat_id(catformdata).subscribe(
@@ -395,13 +389,16 @@ export class AddEditSaleComponent implements OnInit {
         this.saleformprod.controls['product_page'].setValue(this.prod_single_data.product_page);
         this.saleformprod.controls['product_unit_id'].setValue(this.prod_single_data.unit_name);
         this.saleformprod.controls['product_rate'].setValue(this.prod_single_data.product_cost_price);
-
-
         if (this.prod_single_data.unit_name == 'KG') {
-          this.action_qyt = 'Weight(kg)'
-        }
+          this.action_qyt = 'Quantity (Kg)'
+          this.Production_qty  = true
+          this.Production_kg  = false
+
+        } 
         else{
-          this.action_qyt = 'Quantity'
+          this.Production_qty  = false
+          this.Production_kg  = true
+          this.action_qyt = 'Quantity (Pcs)'
         }
       }
     )
@@ -413,8 +410,10 @@ export class AddEditSaleComponent implements OnInit {
     this.manageService.get_stock_by_product_id(prodformdata).subscribe(
       (res: any) => {
 
-        this.stock_data = res.data[0].quantity
-        this.saleformprod.controls['available_quantity'].setValue(res.data[0].quantity + res.data[0].unit_name);
+        this.stock_data_pic = res.data[0].quantity
+        this.stock_data_kg = res.data[0].total_weight
+        this.saleformprod.controls['available_quantity'].setValue(res.data[0].quantity);
+        this.saleformprod.controls['available_weight'].setValue(res.data[0].total_weight);
       }
     )
   }
@@ -455,36 +454,27 @@ export class AddEditSaleComponent implements OnInit {
 
   //For calculation work start code here
   desc_amt_cal() {
+ 
 
-
-    if ((this.stock_data) > this.saleformprod.get('product_quantity')?.value) {
-
-    }
-    else {
-      this.popup.warning({ detail: 'Warning', summary: 'Stock  Not Available...', })
-      // this.saleformprod.controls['product_quantity'].setValue(0)
-    }
-
-    if(this.saleformprod.get('product_unit_id')?.value == 'KG'){
-      this.saleformprod.controls['product_total_amount'].setValue(((this.saleformprod.get('product_quantity')?.value) / (this.saleformprod.get('product_weight_id')?.value)) * this.saleformprod.get('product_rate')?.value)
-      this.saleformprod.controls['available_quantity'].setValue((this.stock_data) - this.saleformprod.get('product_quantity')?.value)
-
-    }else{
     this.saleformprod.controls['product_total_amount'].setValue(this.saleformprod.get('product_rate')?.value * this.saleformprod.get('product_quantity')?.value)
-    this.saleformprod.controls['available_quantity'].setValue((this.stock_data) - this.saleformprod.get('product_quantity')?.value)
-    }
-
+    this.saleformprod.controls['available_quantity'].setValue((this.stock_data_pic) - this.saleformprod.get('product_quantity')?.value)
+    this.saleformprod.controls['available_weight'].setValue((this.stock_data_kg) - this.saleformprod.get('product_quantity')?.value * this.saleformprod.get('product_weight_id')?.value)
+    this.saleformprod.controls['product_weight'].setValue(this.saleformprod.get('product_quantity')?.value * this.saleformprod.get('product_weight_id')?.value)
 
   }
+  // for weight calc
+  weight_amt_calc(){
 
+    this.saleformprod.controls['product_total_amount'].setValue(((this.saleformprod.get('product_weight')?.value)  * this.saleformprod.get('product_rate')?.value))
+    this.saleformprod.controls['available_weight'].setValue((this.stock_data_kg) -  (this.saleformprod.get('product_weight')?.value))
+  }
 
+// for descriptimon data calction 
   disc_amt_cal() {
     this.saleformfinal.controls['sale_paid'].reset()
     this.saleformfinal.controls['sale_gst'].reset()
 
       this.saleformfinal.controls['sale_gross_amount'].setValue((this.saleformfinal.get('sale_total_amount')?.value) - (this.saleformfinal.get('sale_total_amount')?.value * this.saleformfinal.get('sale_discount')?.value) / 100)
-
-
   }
   gst_amt_cal(event: any) {
     this.saleformfinal.controls['sale_paid'].reset()
@@ -497,7 +487,6 @@ export class AddEditSaleComponent implements OnInit {
 
 
   formreset(){
-    this.saleformprod.controls['product_id'].reset();
     this.saleformprod.controls['product_rate'].reset();
     this.saleformprod.controls['product_quantity'].reset();
     this.saleformprod.controls['product_total_amount'].reset();
@@ -506,5 +495,18 @@ export class AddEditSaleComponent implements OnInit {
     this.saleformprod.controls['product_page'].reset();
     this.saleformprod.controls['product_unit_id'].reset();
     this.saleformprod.controls['available_quantity'].reset();
+    this.saleformprod.controls['available_weight'].reset();
+    this.saleformprod.controls['product_weight'].reset();
   }
+
+  finalformreset(){
+    this.saleformfinal.controls['sale_total_amount'].reset();
+    this.saleformfinal.controls['sale_discount'].reset();
+    this.saleformfinal.controls['sale_gst'].reset();
+    this.saleformfinal.controls['sale_gross_amount'].reset();
+    this.saleformfinal.controls['sale_paid'].reset();
+    this.saleformfinal.controls['sale_dues'].reset();
+    this.saleformfinal.controls['sale_date'].reset();
+    this.saleformfinal.controls['sale_dues'].reset();
+  } 
 }
