@@ -1,8 +1,8 @@
 #wrapper{
     width: 100vw;
     height: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 #printarea{
     width: 100%;
@@ -15,26 +15,27 @@
 }
 
 .tbl  table {
-    font-size: 15px;
+    font-size: 12px;
+    padding: 10px;
   }
   .tbl td{
     height: 25px;
   }
 th{
     text-align: center;
-    font-size: 15px;
+    font-size: 12px;
 }
 .tbl_calc{
     width: 100%;
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.698);
+    border: 0.5px solid rgba(0, 0, 0, 0.698);
     
 }
 .tbl_calc td {
-    border: 1px solid rgba(0, 0, 0, 0.823);
+    border: 0.1px solid rgba(0, 0, 0, 0.823);
 }
 .tbl_calc th{
-    border: 1px solid black;
+    border: 0.5px solid black;
 }
 
 .final_amount{
@@ -42,11 +43,11 @@ th{
     position: relative;
 }
 .final_amount td{
-    border: 1px solid rgba(0, 0, 0, 0.698);
+    border: 0.5px solid rgba(0, 0, 0, 0.698);
 }
 .final_amount tr{
     width:90%;
-    border: 1px solid rgba(0, 0, 0, 0.698); 
+    border: 0.5px solid rgba(0, 0, 0, 0.698); 
 
    
 }
@@ -73,10 +74,10 @@ button{
 
 
 .col1{
-    width: 10%;
+    width: 5%;
 }
 .col2{
-    width: 40%;
+    width: 35%;
 }
 .col3{
     width: 10%;

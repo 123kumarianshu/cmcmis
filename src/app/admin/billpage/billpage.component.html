@@ -11,14 +11,15 @@
       <tr>   
         <td colspan="3" class="name_area"><b>ADITYA AARADHYA CO. PVT. LTD.</b></td>
       </tr>
-      <tr>
 
-        <td></td>
-        <td colspan="2" style="text-align: center;">Manufacturer:- Note Book & A4 size copie</td>
-      </tr> 
       <tr>
         <td></td>
-        <td colspan="2" style="text-align: center;">पुलिस लाइन मैदान (फायरफायर ब्रिगेड कार्यालय)  रेलवे गुमटी के पश्चिम,<br> दिग्घी कला हाजीपुर (वैशाली) 844101<br>Mob:- 6202042331 , 8969687189</td>
+        <td colspan="2" style="text-align: center;">Manufacturer:- Note Book & A4 size copie <br>Mob:- 6202042331 , 8969687189</td>
+      </tr> 
+
+      <tr>
+        <td></td>
+        <td colspan="2" style="text-align: center;">पुलिस लाइन मैदान (फायरफायर ब्रिगेड कार्यालय)  रेलवे गुमटी के पश्चिम,<br> दिग्घी कला हाजीपुर (वैशाली) 844101</td>
        
       </tr> 
       <br>
@@ -43,7 +44,7 @@
       <div class="middel_area">
       <table class="tbl_calc">
         <tr>
-            <th>Sl. No.</th>
+            <th>S.N.</th>
             <th>Particulars</th>
             <th>Size</th>
             <th>Qty</th>
@@ -51,7 +52,7 @@
             <th>Rate</th>
             <th>Amount</th>
         </tr>
-        <tr *ngFor="let sale of des_data ; let i = index">
+        <tr *ngFor="let sale of des_data ; let i = index" style="padding: 10px;">
             <td class="col1">{{i+1}}</td>
             <td class="col2">{{sale.product_name}}</td>
             <td class="col3">{{sale.size_name}}</td>
