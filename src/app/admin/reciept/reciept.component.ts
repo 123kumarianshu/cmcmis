@@ -12,7 +12,7 @@ import { ManageService } from '../manage.service';
   styleUrls: ['./reciept.component.css']
 })
 export class RecieptComponent implements OnInit {
-      displayedColumns: string[] = ['slno','reciept_customer','reciept_bill_number','reciept_Gross_amount','reciept_back_dues', 'reciept_paid','reciept_current_dues',];
+      displayedColumns: string[] = ['slno','reciept_customer','reciept_bill_number','reciept_Gross_amount','reciept_back_dues', 'reciept_paid','description','reciept_current_dues',];
       dataSource!: MatTableDataSource<any>;
       @ViewChild(MatPaginator) paginator!: MatPaginator;
       @ViewChild(MatSort) sort!: MatSort;

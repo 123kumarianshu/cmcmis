@@ -41,7 +41,7 @@
             </ng-container>  
             <ng-container matColumnDef="total_amount">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.total_amount}}</td>
+              <td class="data" mat-cell *matCellDef="let row">{{row.total_amount  | currency:'INR':true}}</td>
             </ng-container>  
             <ng-container matColumnDef="production_date">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>

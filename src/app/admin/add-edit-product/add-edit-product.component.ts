@@ -20,6 +20,7 @@ export class AddEditProductComponent implements OnInit {
       weightdata:any
       sizedata:any
       productdata:any
+      unit_add:string = ''
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
@@ -131,6 +132,23 @@ export class AddEditProductComponent implements OnInit {
   }
 }
 
+
+getUnit(event:any){
+  console.log(event)
+  const formdata = new FormData()
+  formdata.append('unit_id', event)
+  this.manageService.get_unit_by_unit_id(formdata).subscribe(
+    (res:any)=>{
+      if(res.data[0].unit_name == 'KG'){
+        this.unit_add = '(Kg)'
+     }else{
+      this.unit_add = ''
+     }
+
+    }
+  )
+ 
+}
 resetProduct() {
   this.productForm.reset();
 }

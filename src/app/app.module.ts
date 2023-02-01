@@ -91,6 +91,7 @@ import { EmpLoginComponent } from './employee/emp-login/emp-login.component';
 import { EmpHomeComponent } from './employee/emp-home/emp-home.component';
 import { EmpDashboardComponent } from './employee/emp-dashboard/emp-dashboard.component';
 import { ViewportComponent } from './admin/viewport/viewport.component';
+import { DecimalPipe } from '@angular/common';
 
 
 @NgModule({
@@ -154,16 +155,9 @@ import { ViewportComponent } from './admin/viewport/viewport.component';
     EmpHomeComponent,
     EmpDashboardComponent,
     ViewportComponent,
-    
-    
-    
-    
-    
-    
-  
-  
   ],
   imports: [
+    DecimalPipe,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -211,9 +205,6 @@ import { ViewportComponent } from './admin/viewport/viewport.component';
 
     DialogConfigModule.forRoot(), // optional
     ToastNotificationConfigModule.forRoot(), // optional
-
-   
-
   ],
   providers: [],
   bootstrap: [AppComponent]

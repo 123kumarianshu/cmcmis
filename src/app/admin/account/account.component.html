@@ -20,28 +20,28 @@
           </ng-container>
 
           <ng-container matColumnDef="today_sale">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header> Today sale</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.today_sale}}</td>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Payment Received</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.today_sale | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="expense">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Today Expense</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.expense}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="cash_in_hand">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Cash in Hand</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.cash_in_hand}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.cash_in_hand | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="deposit_into_bank">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Deposit into Bank</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.deposit_into_bank}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.deposit_into_bank | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="closing_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Closing Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.closing_amount}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.closing_amount | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="account_date">

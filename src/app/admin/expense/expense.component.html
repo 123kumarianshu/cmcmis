@@ -26,7 +26,7 @@
 
           <ng-container matColumnDef="expense_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.expense_amount}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_amount | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="expense_pay_to">

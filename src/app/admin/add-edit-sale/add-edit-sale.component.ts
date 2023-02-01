@@ -116,7 +116,7 @@ export class AddEditSaleComponent implements OnInit {
     this.saleformfinal = this.fb2.group({
       sale_total_amount: ['', Validators.required],
       sale_discount: ['0', Validators.required],
-      sale_gst: ['0', Validators.required],
+      sale_gst: ['', Validators.required],
       sale_gross_amount: ['0', Validators.required],
       sale_paid: ['0', Validators.required],
       sale_dues: ['0', Validators.required],
@@ -319,8 +319,8 @@ export class AddEditSaleComponent implements OnInit {
     this.manageService.get_sale_basic_amt(getbasicamtform).subscribe(
       (amount: any) => {
         console.log(amount.data[0].basic_amount)
-        this.saleformfinal.controls['sale_total_amount'].setValue(amount.data[0].basic_amount)
-        this.saleformfinal.controls['sale_gross_amount'].setValue(amount.data[0].basic_amount)
+        this.saleformfinal.controls['sale_total_amount'].setValue(Number(amount.data[0].basic_amount).toFixed(3))
+        this.saleformfinal.controls['sale_gross_amount'].setValue(Number(amount.data[0].basic_amount).toFixed(3))
       }
     )
   }
@@ -459,7 +459,7 @@ export class AddEditSaleComponent implements OnInit {
 
     } 
     else{
-      this.saleformprod.controls['product_total_amount'].setValue(this.saleformprod.get('product_rate')?.value * this.saleformprod.get('product_quantity')?.value)
+      this.saleformprod.controls['product_total_amount'].setValue((this.saleformprod.get('product_rate')?.value * this.saleformprod.get('product_quantity')?.value).toFixed(3))
     this.saleformprod.controls['available_quantity'].setValue((this.stock_data_pic) - this.saleformprod.get('product_quantity')?.value)
     this.saleformprod.controls['available_weight'].setValue((this.stock_data_kg) - this.saleformprod.get('product_quantity')?.value * this.saleformprod.get('product_weight_id')?.value)
     this.saleformprod.controls['product_weight'].setValue(this.saleformprod.get('product_quantity')?.value * this.saleformprod.get('product_weight_id')?.value)
@@ -470,7 +470,7 @@ export class AddEditSaleComponent implements OnInit {
   }
   // for weight calc
   weight_amt_calc(){
-    this.saleformprod.controls['product_total_amount'].setValue(((this.saleformprod.get('product_weight')?.value)  * this.saleformprod.get('product_rate')?.value))
+    this.saleformprod.controls['product_total_amount'].setValue((((this.saleformprod.get('product_weight')?.value)  * this.saleformprod.get('product_rate')?.value)).toFixed(3))
     this.saleformprod.controls['available_weight'].setValue((this.stock_data_kg) -  (this.saleformprod.get('product_weight')?.value))
   }
 
@@ -504,13 +504,13 @@ export class AddEditSaleComponent implements OnInit {
   }
 
   finalformreset(){
-    this.saleformfinal.controls['sale_total_amount'].reset();
-    this.saleformfinal.controls['sale_discount'].reset();
-    this.saleformfinal.controls['sale_gst'].reset();
-    this.saleformfinal.controls['sale_gross_amount'].reset();
-    this.saleformfinal.controls['sale_paid'].reset();
-    this.saleformfinal.controls['sale_dues'].reset();
+    this.saleformfinal.controls['sale_total_amount'].setValue(0);
+    this.saleformfinal.controls['sale_discount'].setValue(0);
+    this.saleformfinal.controls['sale_gst'].setValue(0);
+    this.saleformfinal.controls['sale_gross_amount'].setValue(0);
+    this.saleformfinal.controls['sale_paid'].setValue(0);
+    this.saleformfinal.controls['sale_dues'].setValue(0);
     this.saleformfinal.controls['sale_date'].reset();
-    this.saleformfinal.controls['sale_dues'].reset();
+    this.saleformfinal.controls['sale_dues'].setValue(0); 
   } 
 }

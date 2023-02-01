@@ -30,18 +30,23 @@
 
           <ng-container matColumnDef="reciept_Gross_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Back Dues</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.back_dues}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.back_dues | currency:'INR':true}}</td>
           </ng-container>
 
 
           <ng-container matColumnDef="reciept_back_dues">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Recived </th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.recived}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.recived | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="reciept_paid">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Current Dues</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.current_dues}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.current_dues | currency:'INR':true}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Description<th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.description}}</td>
           </ng-container>
 
           <ng-container matColumnDef="reciept_current_dues">

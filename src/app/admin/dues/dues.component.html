@@ -40,20 +40,21 @@
 
           <ng-container matColumnDef="sale_gross_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.sale_amount}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.sale_amount  | currency:'INR':true}}</td>
           </ng-container>
           <ng-container matColumnDef="sale_paid">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Paid</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.paid}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.paid  | currency:'INR':true}}</td>
           </ng-container>
           <ng-container matColumnDef="sale_dues">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Dues</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.current_dues}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.current_dues  | currency:'INR':true}}</td>
           </ng-container>
           <ng-container matColumnDef="sale_date">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.date}}</td>
           </ng-container>
+          
           <ng-container matColumnDef="Action">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Recive</th>
             <td class="data" mat-cell *matCellDef="let row">
@@ -66,6 +67,7 @@
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="10">No data show"{{input.value}}"</td>
           </tr>
+
         </table>
         <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
           aria-label="Select page of users"></mat-paginator>

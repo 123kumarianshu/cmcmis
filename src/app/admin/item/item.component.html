@@ -33,7 +33,7 @@
 
           <ng-container matColumnDef="item_rate">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.item_rate}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.item_rate | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="size_name">

@@ -13,7 +13,7 @@ import { NgToastService } from 'ng-angular-popup';
 export class AddEditExpenseComponent implements OnInit {
   emp_data: any
   expenseForm !: FormGroup;
-  actionBtn = 'add'
+  actionBtn = 'Add'
   admin_id = 1
   expense_emp_id: any
   expence_type:any

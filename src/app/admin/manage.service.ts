@@ -144,6 +144,10 @@ export class ManageService {
   del_product(data: any,) {
     return this.http.post(this.baseUrl + 'del_product.php', data)
   }
+  get_unit_by_unit_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_unit_by_unit_id.php', data);
+  }
+
 
 
   // for Employee function starting here 

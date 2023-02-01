@@ -42,11 +42,11 @@
             </ng-container>
             <ng-container matColumnDef="product_produ_cost">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Production Cost</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.product_produ_cost}}</td>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_produ_cost | currency:'INR':true}}</td>
             </ng-container>
             <ng-container matColumnDef="product_cost_price">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Product Price</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.product_cost_price}}</td>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_cost_price | currency:'INR':true}}</td>
             </ng-container>
 
             <ng-container matColumnDef="product_desc">
@@ -56,7 +56,7 @@
            
             <ng-container matColumnDef="product_retail_price">
               <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Retail Price</th>
-              <td class="data" mat-cell *matCellDef="let row">{{row.product_retail_price}}</td>
+              <td class="data" mat-cell *matCellDef="let row">{{row.product_retail_price | currency:'INR':true}}</td>
             </ng-container>
 
             <ng-container matColumnDef="unit_name">

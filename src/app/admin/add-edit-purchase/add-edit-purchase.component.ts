@@ -470,7 +470,7 @@ if(!(this.draft_data.purch_bill_no)){
 
 
   desc_amt_cal() {
-    this.final_form.controls['product_total_amount'].setValue(this.final_form.get('product_rate')?.value * this.final_form.get('product_quantity')?.value)
+    this.final_form.controls['product_total_amount'].setValue((this.final_form.get('product_rate')?.value * this.final_form.get('product_quantity')?.value).toFixed(3))
   }
 
 

@@ -48,17 +48,17 @@
 
           <ng-container matColumnDef="purch_gross_amount">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Gross Amount</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gross_amount}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_gross_amount | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="purch_paid">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Paid</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_paid}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_paid | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="purch_dues">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Dues</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.purch_dues}}</td>
+            <td class="data" mat-cell *matCellDef="let row">{{row.purch_dues | currency:'INR':true}}</td>
           </ng-container>
 
           <ng-container matColumnDef="purch_memo_no">

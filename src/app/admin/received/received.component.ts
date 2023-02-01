@@ -27,13 +27,13 @@ export class ReceivedComponent implements OnInit {
   ) { 
 
     this.addRecived = this.fb.group({
-   
       dues_id: [''],
       cust_name: ['', Validators.required],
       sale_bill_no: ['', Validators.required],
       sale_dues: ['', Validators.required],
        recived: ['', Validators.required],
       current_dues: ['', Validators.required],
+      description: [''],
       admin_id_fk: ['', Validators.required],
     })
   }
@@ -45,6 +45,7 @@ export class ReceivedComponent implements OnInit {
       this.addRecived.controls['sale_bill_no'].setValue(this.editData.sale_bill_no);
       this.addRecived.controls['sale_dues'].setValue(this.editData.current_dues);
       this.addRecived.controls['current_dues'].setValue(this.editData.sale_dues);
+      this.addRecived.controls['description'].setValue(this.editData.description);
       
     }
     this.addRecived.recived.focus()
@@ -58,6 +59,7 @@ export class ReceivedComponent implements OnInit {
         duesform.append('sale_amount',this.addRecived.get('sale_dues')?.value)
         duesform.append('paid',this.addRecived.get('recived')?.value)
         duesform.append('current_dues',this.addRecived.get('current_dues')?.value)
+        duesform.append('description',this.addRecived.get('description')?.value)
         duesform.append('date',(new Date().toISOString().slice(0, 10)))
         duesform.append('sale_id_fk',this.editData.sale_id_fk)
 

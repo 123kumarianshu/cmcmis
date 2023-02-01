@@ -27,6 +27,11 @@
             <mat-label>Current Dues</mat-label>
             <input formControlName="current_dues" matInput placeholder="Current Dues" readonly>
         </mat-form-field>       
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input formControlName="description" matInput placeholder="Description">
+        </mat-form-field>       
         <input formControlName="admin_id_fk" ngModel={{admin_id}} readonly hidden >
     </form>
 </div>
