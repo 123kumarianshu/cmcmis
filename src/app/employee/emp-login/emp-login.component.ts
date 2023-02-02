@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/admin/manage.service';
 
 
@@ -21,7 +21,6 @@ export class EmpLoginComponent implements OnInit {
     private servies:ManageService,
     private router:Router,
     private popup: NgToastService,
-    private dialog:MatDialog
   ) { }
 
   ngOnInit(): void {

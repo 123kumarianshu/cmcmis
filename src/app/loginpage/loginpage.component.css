@@ -3,6 +3,9 @@
     padding: 0;
 }
 
+input{
+    background-color:none;
+}
 #wrapper {
     position: fixed;
     top: 0;
@@ -50,6 +53,7 @@ mat-form-field {
 mat-form-field mat-label {
     color: rgb(243, 239, 239);
 }
+
 
 .icon_1{
     position: relative;

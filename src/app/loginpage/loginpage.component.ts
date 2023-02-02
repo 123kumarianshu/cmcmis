@@ -30,7 +30,6 @@ export class LoginpageComponent implements OnInit {
   }
   onLogin() {
     if (!this.LoginForm.valid) {
-      alert('jv')
       this.popup.warning({detail:'Warning',summary:'Plz Fill Correct Detalis...',sticky:true,position:'tr'})
       return
     }else{

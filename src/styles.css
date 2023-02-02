@@ -7,6 +7,16 @@ button{
     background-color:transparent;
 }
 
+/* for a auto fill color transpatent */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000000s ease-in-out 0s;
+}
+
 .loginclass{
   background-color: rgb(255, 255, 255);
 }
@@ -28,7 +38,8 @@ button{
 ::-webkit-scrollbar-thumb{
   border-radius: 50px;
   background-color: #033b3e;
-}
+} 
+/* 
 @media(min-width:920px)and (max-width:1199px){
   .openLogin .mat-dialog-container{
     background-size:100%; 
@@ -45,13 +56,13 @@ button{
   .openLogin .mat-dialog-container{
     background-size:100%;  
     
-  }  
-}
+  }   
+}  */
 /* ..for mobile size.. */
 
-@media(max-width:420px){
+/* @media(max-width:420px){
   .openLogin .mat-dialog-container{  
      background-size:100%;    
 }
-}
+} */
 
