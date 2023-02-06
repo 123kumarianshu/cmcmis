@@ -60,6 +60,7 @@ export class HomepageComponent implements OnInit {
 
   Logout(){
     localStorage.removeItem('Token');
+    this.router.navigate(['/'])
 
   }
    

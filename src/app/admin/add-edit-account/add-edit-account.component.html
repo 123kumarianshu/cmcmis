@@ -30,10 +30,17 @@
                 <input formControlName="closing_amount" matInput placeholder="Closing Amount" type="number" readonly>
             </mat-form-field><br>
 
-            <mat-form-field appearance="fill">
-                <mat-label>Date</mat-label>
-                <input formControlName="account_date" matInput placeholder="Date" type="date">
-            </mat-form-field>
+
+              
+        
+
+            <mat-form-field>
+                <input  matInput [matDatepicker]="datepicker" required placeholder="Choose a date" (dateChange)="valueChanged($event)">
+                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker></mat-datepicker>
+              </mat-form-field>
+
+              <input hidden formControlName="account_date"  type="date">
         </div>      
             <br>
       <mat-form-field appearance="fill" class="full_txtbox">

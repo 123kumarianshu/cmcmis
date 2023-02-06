@@ -391,6 +391,11 @@ export class ManageService {
     return this.http.get<[]>(this.baseUrl + 'get_account.php');
   }
 
+  
+  get_account_calc(data: any) {
+    return this.http.post<any>('http://localhost/cmcmisapi/account_view_by_store.php', data);
+  }
+
   // for expense function stating...
   get_expense() {
     return this.http.get<[]>(this.baseUrl + 'expense_view.php');

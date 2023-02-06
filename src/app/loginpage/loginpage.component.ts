@@ -29,9 +29,6 @@ export class LoginpageComponent implements OnInit {
     })
   }
   onLogin() {
-    this.popup.success({detail:'Success',summary:'Rukkk jaa...',sticky:true,position:'tr'})     
-    alert("ki") 
-return
     if (!this.LoginForm.valid) {
       this.popup.warning({detail:'Warning',summary:'Plz Fill Correct Detalis...',sticky:true,position:'tr'})
       return

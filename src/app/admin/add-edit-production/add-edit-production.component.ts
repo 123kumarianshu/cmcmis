@@ -2,7 +2,6 @@ import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from '../manage.service';
 import { Router } from '@angular/router';
-import { DialogConfig } from '@angular/cdk/dialog';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgToastService } from 'ng-angular-popup';
 import { MatPaginator } from '@angular/material/paginator';
@@ -79,20 +78,22 @@ export class AddEditProductionComponent implements OnInit {
 
     })
     if (this.editData) {
-      console.log(this.editData)
+      console.log(this.editData.production_date)
       this.ProductionForm.controls['emp_mobile'].setValue(this.editData.emp_mobile)
       this.ProductionForm.controls['emp_email'].setValue(this.editData.emp_email)
       this.ProductionForm.controls['emp_id_fk'].setValue(this.editData.emp_id)
       this.ProductionForm.controls['emp_address'].setValue(this.editData.emp_address)
       this.ProductionForm.controls['emp_addhar'].setValue(this.editData.emp_aadhar_no)
         this.getproductionDesData(this.editData.emp_id)
+
+        
     }
   }
 
   getproductionDesData(emp_id: any) {
     const formdata = new FormData()
     formdata.append('emp_id', emp_id);
-    formdata.append('current_date', new Date().toISOString().slice(0, 10));
+    formdata.append('current_date', this.editData.production_date);
 
     this.manageService.get_production_by_date(formdata).subscribe(
       (res: any) => {

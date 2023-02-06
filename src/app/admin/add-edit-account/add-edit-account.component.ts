@@ -45,13 +45,10 @@ export class AddEditAccountComponent implements OnInit {
     this.manageService.getAccount().subscribe(
       (res:any)=>{
         this.accountdata = res.data
-        // console.log(res)
       }
       
     )
-    console.log(this.editData)
     if (this.editData) {
-      // console.log(this.editData)
       this.actionBtn = 'Update'
       this.addAccount.controls['account_id'].setValue(this.editData.account_id);
       this.addAccount.controls['today_sale'].setValue(this.editData.today_sale);
@@ -64,19 +61,40 @@ export class AddEditAccountComponent implements OnInit {
       this.addAccount.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
     }
     else{
-      this.getCash()
-      this.getSale(new Date().toISOString().slice(0, 10))
-      this.getExpence(new Date().toISOString().slice(0, 10))
-      this.addAccount.controls['account_date'].setValue(new Date().toISOString().slice(0, 10));
+     
     }
-
-  //  for calc 
-
   this.addAccount.controls['closing_amount'].setValue((this.addAccount.get('today_sale')?.value) + this.addAccount.get('cash_in_hand')?.value) - this.addAccount.get('expense')?.value ; 
   this.addAccount.controls['closing_amount'].setValue(); 
   console.log(((this.addAccount.get('today_sale')?.value) + this.addAccount.get('cash_in_hand')?.value) - this.addAccount.get('expense')?.value)
 
   }
+
+  
+  valueChanged(event:any){
+    const date = JSON.stringify(event.target.value)
+    const date1 = date.slice(1,11)
+    console.log(date1)
+    this.addAccount.controls['account_date'].setValue(date1); 
+  const formdata =  new FormData()
+  formdata.append('cur_date', date1)
+  this.manageService.get_account_calc(formdata).subscribe(
+    (res:any)=>{
+      console.log(res)
+      this.addAccount.controls['today_sale'].setValue( Number(res.data[0].sale_paid) + Number(res.data[0].sale_recived) );
+      this.addAccount.controls['closing_amount'].setValue(res.data[0].received_amount);
+      this.addAccount.controls['expense'].setValue(res.data[0].expense_amount );
+      this.addAccount.controls['cash_in_hand'].setValue(res.data[0].closing_amount);  
+     
+
+
+    }
+  )
+
+  }
+
+
+
+
   onSubmit() {
     console.log(this.addAccount.value);
     if (!this.editData) {
@@ -108,37 +126,8 @@ export class AddEditAccountComponent implements OnInit {
 
   }
 
-  getCash(){
-    this.manageService.get_account().subscribe(
-      (res:any)=>{
-        this.cash_in_hand = res.data[0].closing_amount
-        this.addAccount.controls['cash_in_hand'].setValue(res.data[0].closing_amount);
-      }
-    )
-  }
 
-  getSale(date:any){
-    const saleformdata = new FormData()
-    saleformdata.append('sale_date',date)
-    this.manageService.get_sale_by_date(saleformdata).subscribe(
-      (res:any)=>{
-        this.sale_amount = res.data[0].total_sale_amount
-        this.addAccount.controls['today_sale'].setValue(res.data[0].total_sale_amount);
-      }
-    )
-  }
-  getExpence(date:any){
-    const expenceformdata = new FormData()
-    expenceformdata.append('expense_date',date)
-    this.manageService.get_expense_by_date(expenceformdata).subscribe(
-      (res:any)=>{
-        this.expense = res.data[0].total_expense
-        // console.log(res.data.total_expense)
-        this.addAccount.controls['expense'].setValue(res.data[0].total_expense);
-
-      }
-    )
-  }
+ 
 
   disp_in_bank(){
   

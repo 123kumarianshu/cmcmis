@@ -17,7 +17,7 @@ import {MatTableModule} from '@angular/material/table';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MatSelectModule } from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { NativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, NativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { HttpClientModule, } from '@angular/common/http';
@@ -199,12 +199,17 @@ import { DecimalPipe } from '@angular/common';
         danger: '#e46464', // optional
         customOne: '#3ebb1a', // optional
         customTwo: '#bd47fa', // optional (up to custom five)
+
+        
       },
     }),
     ConfirmBoxConfigModule.forRoot(),
 
     DialogConfigModule.forRoot(), // optional
     ToastNotificationConfigModule.forRoot(), // optional
+
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
