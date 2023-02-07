@@ -378,22 +378,22 @@ export class ManageService {
   postAccount(data: any) {
     return this.http.post<any>(this.baseUrl + 'account_insert.php', data);
   }
+
+  check_account(data: any) {
+    return this.http.post<any>(this.baseUrl + 'check_account.php', data);
+  }
   putAccount(data: any) {
     return this.http.put<any>(this.baseUrl + 'account_update.php', data);
   }
-  get_sale_by_date(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_sale_by_date.php', data);
-  }
-  get_expense_by_date(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_expense_by_date.php', data);
-  }
+  
   get_account() {
     return this.http.get<[]>(this.baseUrl + 'get_account.php');
   }
+  
 
   
   get_account_calc(data: any) {
-    return this.http.post<any>('http://localhost/cmcmisapi/account_view_by_store.php', data);
+    return this.http.post<any>(this.baseUrl + 'account_view_by_store.php', data);
   }
 
   // for expense function stating...

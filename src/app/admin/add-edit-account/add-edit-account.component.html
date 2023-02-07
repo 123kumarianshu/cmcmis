@@ -22,7 +22,7 @@
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Deposit into Bank</mat-label>
-                <input formControlName="deposit_into_bank" matInput placeholder="Deposit into Bank" type="number" (keyup)="disp_in_bank()">
+                <input type="number" formControlName="deposit_into_bank" matInput placeholder="Deposit into Bank" (keyup)="disp_in_bank()">
             </mat-form-field><br>
 
             <mat-form-field appearance="fill">
@@ -30,17 +30,7 @@
                 <input formControlName="closing_amount" matInput placeholder="Closing Amount" type="number" readonly>
             </mat-form-field><br>
 
-
-              
-        
-
-            <mat-form-field>
-                <input  matInput [matDatepicker]="datepicker" required placeholder="Choose a date" (dateChange)="valueChanged($event)">
-                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-                <mat-datepicker #datepicker></mat-datepicker>
-              </mat-form-field>
-
-              <input hidden formControlName="account_date"  type="date">
+            <input formControlName="account_date" type="date" (change)="CurDate($event)" class="date_box"  >
         </div>      
             <br>
       <mat-form-field appearance="fill" class="full_txtbox">
